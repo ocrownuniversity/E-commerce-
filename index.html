@@ -493,14 +493,13 @@ body{padding-bottom:70px}
 .slider-dots{bottom:8px!important}
 
 /* HOME SECTIONS */
-.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 12px 18px!important}
-.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important}
-.home-section-header{margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important}
+.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 0 18px!important}
+.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important;padding:0 12px!important}
+.home-section-header{margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 12px!important}
 .home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important;cursor:pointer!important}
 
 /* PRODUCT GRID — force clean white, no extra bg */
 #flash-section,#page-home .home-section{border-radius:0!important}
-.product-grid .pc{border-radius:8px!important}
 
 /* PAGE BACKGROUNDS — slightly off-white between sections */
 #page-home{background:#f0f0f0!important}
@@ -512,12 +511,14 @@ body{padding-bottom:70px}
 .flash-time{color:#e8420a!important;font-size:12px!important;font-weight:900!important}
 .flash-colon{color:#e8420a!important;font-weight:900!important}
 .flash-bolt{color:#e8420a!important}
+/* Flash section header needs padding too */
+#flash-section .home-section-header{padding:0 12px!important}
 
-/* PRODUCT GRID &mdash; 3 columns on ALL screen sizes */
-.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
+/* PRODUCT GRID — 3 columns full width, no side padding */
+.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2px!important;width:100%!important}
 
 /* PRODUCT CARD — matches screenshot exactly */
-.pc{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #f0f0f0}
+.pc{background:#fff;border-radius:0;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:none;border:none;border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
 .pc:hover{box-shadow:0 3px 12px rgba(0,0,0,.12)}
 .pc-img-wrap{position:relative;width:100%;aspect-ratio:1;background:#f5f5f5;overflow:hidden;flex-shrink:0}
 .pc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
@@ -2875,12 +2876,16 @@ INSTRUCTIONS:
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        max_tokens: 300,
         system: systemPrompt,
-        messages: chatHistory.slice(-10) // last 10 turns for context
+        messages: chatHistory.slice(-10)
       })
     });
     const data = await res.json();
@@ -2997,8 +3002,8 @@ function startCountdown() {
 }
 
 // ===== NAVIGATION =====
-const _navStack = [];
-let _navBusy = false;
+// Simple stack-based navigation — no history API tricks that cause exit-site issues
+const _navStack = ['home'];
 
 function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3018,32 +3023,28 @@ function _showPage(page) {
 
 window.navigate = function(page) {
   if(page==='admin' && !isAdmin) { navigate('home'); return; }
+  // Push a dummy history entry so back button is intercepted
+  history.pushState(null, '', location.href);
+  if(_navStack[_navStack.length-1] !== page) _navStack.push(page);
   _showPage(page);
-  if(_navStack[_navStack.length-1] !== page) {
-    _navStack.push(page);
-    _navBusy = true;
-    history.pushState({ benimPage: page }, '', '#'+page);
-    _navBusy = false;
-  }
 };
 
 window.goBack = function() {
   if(_navStack.length > 1) {
     _navStack.pop();
-    const prev = _navStack[_navStack.length-1];
-    _showPage(prev);
-    _navBusy = true;
-    history.replaceState({ benimPage: prev }, '', '#'+prev);
-    _navBusy = false;
+    _showPage(_navStack[_navStack.length-1]);
   } else {
     _showPage('home');
-    _navStack.length = 0;
-    _navStack.push('home');
-    _navBusy = true;
-    history.replaceState({ benimPage: 'home' }, '', '#home');
-    _navBusy = false;
   }
 };
+
+// Intercept browser back button — NEVER leave the site
+window.addEventListener('popstate', function() {
+  // Always push state back to keep user on site
+  history.pushState(null, '', location.href);
+  // Then perform in-app back
+  goBack();
+});
 
 // ===== FAQ TOGGLE =====
 window.toggleFaq = function(el) {
@@ -3066,24 +3067,6 @@ window.sendContactMessage = function() {
   showToast('Opening WhatsApp to send your message!');
 };
 
-window.addEventListener('popstate', (e) => {
-  if(_navBusy) return;
-  if(e.state && e.state.benimPage) {
-    const page = e.state.benimPage;
-    const idx = _navStack.lastIndexOf(page);
-    if(idx >= 0) _navStack.splice(idx+1);
-    else _navStack.push(page);
-    _showPage(page);
-  } else {
-    // went back past site entry — push home back so user stays
-    _showPage('home');
-    _navStack.length = 0;
-    _navStack.push('home');
-    _navBusy = true;
-    history.pushState({ benimPage: 'home' }, '', '#home');
-    _navBusy = false;
-  }
-});
 
 // ===== SIDEBAR =====
 window.toggleSidebar = function() {
@@ -3122,19 +3105,15 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
+  // Push initial state so back button is interceptable from the start
+  history.pushState(null, '', location.href);
   initSlider();
   startCountdown();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
   renderSkeletons('trending-grid',8);
   await loadProducts();
-  // Handle hash navigation
-  // Seed the nav stack with home first
-  _navStack.push('home');
-  history.replaceState({ benimPage: 'home' }, '', '#home');
-  // Then navigate to hash page if present
-  const hash = location.hash.replace('#','');
-  if(hash && hash !== 'home' && document.getElementById('page-'+hash)) navigate(hash);
+  _showPage('home');
 }
 
 init();
