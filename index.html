@@ -34,7 +34,7 @@
   --radius-xl: 16px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:#fff;color:var(--gray-800);min-height:100vh}
+body{font-family:'Nunito',sans-serif;background:#f5f5f5;color:var(--gray-800);min-height:100vh}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;outline:none;font-family:inherit}
 input,select,textarea{font-family:inherit;outline:none}
@@ -55,21 +55,19 @@ img{max-width:100%;display:block}
 .absolute{position:absolute}
 
 /* ====== HEADER ====== */
-#header{background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.header-top{display:flex;align-items:center;gap:0;padding:12px 16px 0;max-width:600px;margin:0 auto;width:100%}
-.header-logo-text{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--orange);cursor:pointer;letter-spacing:-0.5px;flex:1;text-align:center;margin-left:8px}
-.header-search-row{padding:10px 16px 12px;max-width:600px;margin:0 auto;width:100%}
-.header-search-wrap{display:flex;align-items:center;background:#f3f4f6;border-radius:50px;padding:10px 16px;gap:10px;width:100%}
-.header-search-wrap i{color:var(--gray-400);font-size:16px;flex-shrink:0}
-.header-search{flex:1;border:none;background:transparent;font-size:14px;color:var(--gray-700);outline:none}
-.header-search::placeholder{color:var(--gray-400);font-size:14px}
-.header-search-btn{display:none}
-.header-icons{display:flex;align-items:center;gap:4px}
-.hicon{background:none;color:var(--gray-700);border:none;padding:6px 8px;font-size:20px;position:relative;cursor:pointer;transition:.2s;display:flex;align-items:center}
-.hicon:hover{color:var(--orange)}
-.hicon .badge{position:absolute;top:-2px;right:-2px;background:var(--orange);color:#fff;border-radius:50%;width:18px;height:18px;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+#header{background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.08);border-bottom:1px solid var(--gray-100)}
+.header-top{display:flex;align-items:center;gap:10px;padding:10px 16px;max-width:1400px;margin:0 auto}
+.header-logo{height:36px;width:auto;cursor:pointer;object-fit:contain}
+.header-search-row{background:#fff;padding:8px 16px 12px;max-width:1400px;margin:0 auto}.header-search-wrap{display:flex;align-items:center;background:var(--gray-100);border-radius:50px;padding:0 16px;gap:10px;width:100%;border:none}
+.header-search{flex:1;padding:11px 4px;border:none;font-size:14px;color:var(--gray-800);background:transparent;outline:none}.header-search::placeholder{color:var(--gray-400)}
+.header-search-btn{background:transparent;color:var(--gray-400);border:none;padding:0;font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center}
+.header-search-btn:hover{color:var(--orange)}
+.header-icons{display:flex;align-items:center;gap:8px;margin-left:auto}
+.hicon{background:transparent;color:var(--gray-700);border:none;border-radius:6px;padding:6px 8px;font-size:20px;position:relative;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:4px}
+.hicon:hover{background:var(--gray-100)}
+.hicon .badge{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .hicon-label{display:none}
-.hamburger{background:none;border:none;color:var(--gray-800);font-size:22px;cursor:pointer;padding:4px}
+.hamburger{background:none;border:none;color:var(--gray-800);font-size:22px;cursor:pointer;padding:6px}
 
 /* ====== SIDEBAR ====== */
 #sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:2000;opacity:0;pointer-events:none;transition:.3s}
@@ -91,79 +89,18 @@ img{max-width:100%;display:block}
 /* ====== PAGES ====== */
 .page{display:none}
 .page.active{display:block}
+#page-home{background:#f5f5f5}
 
 /* ====== HERO SLIDER ====== */
-.hero-slider{position:relative;overflow:hidden;background:var(--orange);border-radius:14px;margin:0 12px 0;height:200px}
-@media(min-width:768px){.hero-slider{height:280px;margin:0 16px}}
-.slides-container{display:flex;transition:transform .5s ease;height:100%}
-.slide{min-width:100%;height:100%;display:flex;align-items:center;padding:20px 22px;position:relative;overflow:hidden}
-.slide-1{background:linear-gradient(135deg,#e8420a 0%,#f56c1e 60%,#f59b3a 100%)}
-.slide-2{background:linear-gradient(135deg,#1a1a2e,#16213e)}
-.slide-3{background:linear-gradient(135deg,#0f3460,#533483)}
-.slide-content{text-align:left;color:#fff;z-index:1;flex:1;max-width:60%}
-.slide-content h2{font-size:clamp(18px,4.5vw,32px);font-weight:900;line-height:1.2;margin-bottom:6px}
-.slide-content p{font-size:clamp(11px,2.2vw,14px);opacity:.92;margin-bottom:14px;line-height:1.4}
-.slide-btn{display:inline-block;background:#fff;color:var(--orange);padding:9px 20px;border-radius:6px;font-weight:900;font-size:12px;cursor:pointer;border:none;transition:.2s;letter-spacing:.5px;text-transform:uppercase}
-.slide-btn:hover{transform:scale(1.04)}
-.slide-deco{position:absolute;right:-10px;bottom:0;top:0;width:55%;display:flex;align-items:flex-end;justify-content:flex-end;overflow:hidden;pointer-events:none}
-.slide-deco-img{height:95%;width:auto;object-fit:contain;opacity:.95;filter:drop-shadow(-8px 4px 16px rgba(0,0,0,.18))}
-/* Deco product layout */
-.deco-products{position:absolute;right:0;top:0;bottom:0;width:56%;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;padding:8px 6px 14px 0;gap:4px;pointer-events:none}
-.deco-item{display:flex;align-items:center;justify-content:center;filter:drop-shadow(-4px 3px 10px rgba(0,0,0,.2))}
-.deco-handbag{order:1}
-.deco-watch{order:2;margin-right:30px}
-.deco-sneakers{order:3;width:100%}
-.deco-item img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;display:block}
-.slider-dots{position:absolute;bottom:10px;left:22px;display:flex;gap:5px}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.2s}
-.dot.active{background:#fff;width:22px;border-radius:4px}
-.slider-prev,.slider-next{display:none}
+/* hero-slider css moved below */
 
 /* ====== SECTION ====== */
-.section{padding:16px 12px;max-width:600px;margin:0 auto;width:100%}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.section-title{font-size:18px;font-weight:900;color:var(--gray-900)}
-.see-all{color:var(--orange);font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:3px}
-.see-all:hover{text-decoration:underline}
-
-/* ====== FLASH SALE TIMER ====== */
-.flash-timer-row{display:flex;align-items:center;gap:6px;margin-bottom:14px;background:#fff5f0;border-radius:8px;padding:7px 12px;width:fit-content}
-.flash-timer-row .bolt{color:var(--orange);font-size:14px}
-.flash-timer-label{color:var(--orange);font-size:13px;font-weight:700}
-.flash-time-display{color:var(--orange);font-size:13px;font-weight:800;letter-spacing:.5px}
+/* section css kept legacy */
 
 /* ====== PRODUCT GRID ====== */
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media(min-width:600px){.product-grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:900px){.product-grid{grid-template-columns:repeat(4,1fr)}}
-@media(min-width:1200px){.product-grid{grid-template-columns:repeat(5,1fr)}}
+/* product-grid moved below */
 
-.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07);transition:.25s;cursor:pointer;position:relative;border:1px solid #f0f0f0}
-.product-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
-.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:1;background:#f8f8f8}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.product-card:hover .product-img-wrap img{transform:scale(1.05)}
-.product-badge{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px}
-.product-badge.flash{background:var(--red)}
-.product-wishlist-btn{position:absolute;top:8px;right:8px;background:#fff;border:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--gray-400);cursor:pointer;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.product-wishlist-btn:hover,.product-wishlist-btn.active{color:var(--red)}
-.product-info{padding:9px 9px 10px}
-.product-name{font-size:12px;font-weight:700;color:var(--gray-800);line-height:1.3;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.product-prices{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:6px}
-.product-price{font-size:13px;font-weight:900;color:var(--orange)}
-.product-old-price{font-size:11px;color:var(--gray-400);text-decoration:line-through}
-.product-rating{display:flex;align-items:center;gap:3px;margin-bottom:6px}
-.stars{color:#f59e0b;font-size:10px}
-.rating-count{font-size:10px;color:var(--gray-400)}
-
-/* ====== SOLD PROGRESS BAR ====== */
-.sold-row{display:flex;align-items:center;justify-content:space-between;margin-top:2px}
-.sold-bar-wrap{flex:1;height:5px;background:#ffe5d9;border-radius:10px;margin-right:7px;overflow:hidden}
-.sold-bar{height:100%;background:linear-gradient(90deg,var(--orange),#ff7b3a);border-radius:10px}
-.sold-count{font-size:10px;color:var(--gray-500);font-weight:600;white-space:nowrap}
-
-.product-add-btn{width:100%;background:var(--orange);color:#fff;border:none;padding:7px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;margin-top:7px;transition:.2s}
-.product-add-btn:hover{background:var(--orange-dark)}
+/* product-card css moved below */
 
 /* ====== SKELETON ====== */
 .skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite}
@@ -173,10 +110,8 @@ img{max-width:100%;display:block}
 .skel-line{height:12px;margin:10px;border-radius:4px}
 .skel-line.short{width:60%;margin-top:6px}
 
-/* ====== FLASH SALE BANNER ====== */
-.flash-banner{display:none}/* countdown is now inline in flash-timer-row */
-.countdown{display:none}
-.count-box{display:none}
+/* ====== FLASH SALE ====== */
+
 
 /* ====== EMPTY STATE ====== */
 .empty-state{text-align:center;padding:60px 20px;color:var(--gray-400)}
@@ -397,13 +332,9 @@ img{max-width:100%;display:block}
 @media(min-width:768px){.wishlist-grid{grid-template-columns:repeat(4,1fr)}}
 
 /* ====== NAV BOTTOM ====== */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--gray-200);display:flex;z-index:900;box-shadow:0 -2px 8px rgba(0,0,0,.08)}
-.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;cursor:pointer;font-size:10px;font-weight:700;color:var(--gray-400);transition:.15s;gap:3px;position:relative}
-.bnav-item:hover,.bnav-item.active{color:var(--orange)}
-.bnav-item i{font-size:20px}
-.bnav-badge{position:absolute;top:4px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:10px;padding:1px 5px}
+/* bottom-nav css moved below */
 
-body{padding-bottom:60px}
+body{padding-bottom:70px}
 .page-header{background:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);margin-bottom:0}
 .page-header h2{font-size:17px;font-weight:800;color:var(--gray-800)}
 .back-btn{background:none;border:none;font-size:20px;color:var(--gray-600);cursor:pointer;padding:4px}
@@ -419,6 +350,67 @@ body{padding-bottom:60px}
 }
 /* Inline notification */
 .notif-dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block}
+
+/* ====== HOME SECTIONS (ref image style) ====== */
+.home-section{padding:18px 14px 4px}
+.home-section-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.home-section-title{font-size:18px;font-weight:900;color:var(--gray-900);font-family:'Poppins',sans-serif;margin-bottom:6px}
+.home-see-all{color:var(--orange);font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:3px;padding-top:4px;white-space:nowrap}
+.home-see-all:hover{text-decoration:underline}
+
+/* Flash ends-in row */
+.flash-ends-row{display:inline-flex;align-items:center;gap:5px;background:rgba(232,66,10,.08);border:1px solid rgba(232,66,10,.2);border-radius:20px;padding:4px 12px}
+.flash-bolt{color:var(--orange);font-size:13px}
+.flash-ends-text{font-size:12px;font-weight:700;color:var(--orange)}
+.flash-time{font-size:13px;font-weight:900;color:var(--orange);min-width:22px;text-align:center}
+.flash-colon{font-size:13px;font-weight:900;color:var(--orange)}
+
+/* ====== PRODUCT CARD &mdash; ref image style ====== */
+.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07);transition:.2s;cursor:pointer;position:relative;border:1px solid rgba(0,0,0,.04)}
+.product-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
+.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:1;background:#f8f8f8}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.product-card:hover .product-img-wrap img{transform:scale(1.05)}
+.product-badge{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;z-index:2}
+.product-badge.flash{background:var(--red)}
+.product-wishlist-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.9);border:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--gray-400);cursor:pointer;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.product-wishlist-btn:hover,.product-wishlist-btn.active{color:var(--red)}
+.product-info{padding:10px 10px 12px}
+.product-name{font-size:13px;font-weight:700;color:var(--gray-900);line-height:1.35;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-family:'Poppins',sans-serif}
+.product-price-row{display:flex;align-items:baseline;gap:5px;margin-bottom:3px}
+.product-price{font-size:14px;font-weight:900;color:var(--orange);font-family:'Poppins',sans-serif}
+.product-old-price{font-size:11px;color:var(--gray-400);text-decoration:line-through}
+/* Sold progress bar */
+.product-sold-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.sold-bar-wrap{flex:1;height:4px;background:rgba(232,66,10,.15);border-radius:2px;overflow:hidden;margin-right:8px}
+.sold-bar{height:100%;background:var(--orange);border-radius:2px;transition:width .3s}
+.sold-count{font-size:10px;font-weight:700;color:var(--gray-400);white-space:nowrap}
+
+/* ====== HERO SLIDER ref style ====== */
+.hero-slider{position:relative;overflow:hidden;border-radius:12px;margin:10px 14px;height:190px}
+@media(min-width:480px){.hero-slider{height:220px}}
+@media(min-width:768px){.hero-slider{height:320px;margin:16px 20px}}
+.slides-container{display:flex;transition:transform .5s ease;height:100%}
+.slide{min-width:100%;height:100%;display:flex;align-items:center;padding:24px 28px;position:relative;overflow:hidden}
+.slide-1{background:linear-gradient(120deg,var(--orange) 0%,#ff9640 100%)}
+.slide-2{background:linear-gradient(120deg,#1a1a2e,#16213e)}
+.slide-3{background:linear-gradient(120deg,#0f3460,#533483)}
+.slide-content{z-index:1;flex:1}
+.slide-content h2{font-size:clamp(18px,4vw,32px);font-weight:900;line-height:1.2;margin-bottom:8px;color:#fff;font-family:'Poppins',sans-serif}
+.slide-content p{font-size:clamp(11px,2vw,15px);opacity:.92;margin-bottom:14px;color:rgba(255,255,255,.9)}
+.slide-btn{display:inline-block;background:#fff;color:var(--orange);padding:9px 22px;border-radius:6px;font-weight:900;font-size:12px;cursor:pointer;border:none;transition:.2s;letter-spacing:.3px;text-transform:uppercase}
+.slide-btn:hover{transform:scale(1.04)}
+.slider-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.2s}
+.dot.active{background:#fff;width:18px;border-radius:4px}
+.slider-prev,.slider-next{display:none}
+
+/* ====== BOTTOM NAV ref image style ====== */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--gray-200);display:flex;z-index:900;box-shadow:0 -2px 8px rgba(0,0,0,.06)}
+.bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px 7px;cursor:pointer;font-size:10px;font-weight:600;color:var(--gray-400);transition:.15s;gap:3px;position:relative}
+.bnav-item:hover,.bnav-item.active{color:var(--orange)}
+.bnav-item i{font-size:21px}
+.bnav-badge{position:absolute;top:5px;right:calc(50% - 19px);background:var(--red);color:#fff;font-size:9px;font-weight:800;border-radius:10px;padding:1px 5px;min-width:16px;text-align:center}
 
 /* ====== FOOTER ====== */
 #site-footer{background:var(--gray-900);color:#fff;margin-top:0;padding-bottom:70px}
@@ -467,22 +459,128 @@ body{padding-bottom:60px}
 .faq-item.open .faq-q i{transform:rotate(180deg)}
 .faq-item.open .faq-a{display:block}
 </style>
+
+<style>
+/* ========= FINAL OVERRIDE &mdash; clean Jumia-style UI ========= */
+
+/* HEADER &mdash; white bg */
+#header{background:#fff!important;box-shadow:0 1px 3px rgba(0,0,0,.08)!important}
+.header-top{padding:12px 14px 10px!important;gap:8px!important}
+.hamburger{color:#222!important;font-size:22px!important;background:none!important;border:none!important;padding:0!important}
+#logo-text{font-family:'Poppins',sans-serif!important;font-weight:900!important;font-size:24px!important;color:#e8420a!important;cursor:pointer!important;letter-spacing:-0.5px!important}
+.hicon{background:transparent!important;color:#333!important;font-size:22px!important;padding:4px 6px!important;border:none!important}
+.hicon .badge{background:#e8420a!important;color:#fff!important;top:-5px!important;right:-4px!important;width:17px!important;height:17px!important;font-size:9px!important}
+.hicon-label{display:none!important}
+.header-icons{gap:6px!important}
+
+/* SEARCH BAR &mdash; full-width pill below header row */
+.header-search-row{background:#fff!important;padding:0 14px 12px!important}
+.header-search-wrap{background:#f2f2f2!important;border-radius:50px!important;padding:0 16px!important;display:flex!important;align-items:center!important;gap:8px!important;border:none!important}
+.header-search{background:transparent!important;border:none!important;padding:12px 0!important;font-size:13px!important;flex:1!important;outline:none!important;color:#333!important}
+.header-search::placeholder{color:#aaa!important;font-size:13px!important}
+.header-search-btn{background:transparent!important;color:#aaa!important;border:none!important;font-size:16px!important;padding:0!important;display:flex!important;align-items:center!important;cursor:pointer!important}
+.header-search-btn:hover{color:#e8420a!important}
+
+/* HERO SLIDER */
+.hero-slider{border-radius:10px!important;margin:0 14px 0!important;height:180px!important;overflow:hidden!important}
+@media(min-width:480px){.hero-slider{height:210px!important}}
+.slide{padding:20px 24px!important;align-items:center!important;justify-content:flex-start!important}
+.slide-1{background:linear-gradient(110deg,#e8420a 0%,#ff7a3c 100%)!important}
+.slide-content h2{font-size:21px!important;font-weight:900!important;text-align:left!important;font-family:'Poppins',sans-serif!important;line-height:1.2!important}
+.slide-content p{font-size:12px!important;text-align:left!important;margin-bottom:14px!important}
+.slide-btn{padding:8px 20px!important;border-radius:6px!important;font-size:12px!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.5px!important}
+.slider-prev,.slider-next{display:none!important}
+.slider-dots{bottom:8px!important}
+
+/* HOME SECTIONS */
+.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 12px 18px!important}
+.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important}
+.home-section-header{margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important}
+.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important;cursor:pointer!important}
+
+/* PRODUCT GRID — force clean white, no extra bg */
+#flash-section,#page-home .home-section{border-radius:0!important}
+.product-grid .pc{border-radius:8px!important}
+
+/* PAGE BACKGROUNDS — slightly off-white between sections */
+#page-home{background:#f0f0f0!important}
+
+/* FLASH SECTION */
+#flash-section{margin-top:8px!important}
+.flash-ends-row{background:rgba(232,66,10,.08)!important;border:1px solid rgba(232,66,10,.2)!important;border-radius:20px!important;padding:3px 10px!important;display:inline-flex!important;align-items:center!important;gap:4px!important}
+.flash-ends-text{color:#e8420a!important;font-size:11px!important;font-weight:700!important}
+.flash-time{color:#e8420a!important;font-size:12px!important;font-weight:900!important}
+.flash-colon{color:#e8420a!important;font-weight:900!important}
+.flash-bolt{color:#e8420a!important}
+
+/* PRODUCT GRID &mdash; 3 columns on ALL screen sizes */
+.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
+
+/* PRODUCT CARD — matches screenshot exactly */
+.pc{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #f0f0f0}
+.pc:hover{box-shadow:0 3px 12px rgba(0,0,0,.12)}
+.pc-img-wrap{position:relative;width:100%;aspect-ratio:1;background:#f5f5f5;overflow:hidden;flex-shrink:0}
+.pc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-badge{position:absolute;top:7px;left:7px;background:#e8420a;color:#fff;font-size:10px;font-weight:800;padding:3px 7px;border-radius:4px;z-index:2}
+.pc-body{padding:8px 8px 10px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pc-name{font-size:12px;font-weight:700;color:#111;line-height:1.3;font-family:'Poppins',sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc-prices{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+.pc-price{font-size:13px;font-weight:900;color:#e8420a;font-family:'Poppins',sans-serif}
+.pc-old{font-size:10px;color:#aaa;text-decoration:line-through;font-family:'Poppins',sans-serif}
+.pc-sold-row{display:flex;align-items:center;gap:6px;margin-top:2px}
+.pc-bar-bg{flex:1;height:4px;background:#fde8e0;border-radius:2px;overflow:hidden}
+.pc-bar-fill{height:100%;background:#e8420a;border-radius:2px}
+.pc-sold-txt{font-size:10px;color:#888;white-space:nowrap;font-weight:600}
+/* hide old .product-card styles */
+.product-card{display:none!important}
+.product-img-wrap,.product-info,.product-name,.product-price,.product-badge,.product-wishlist-btn,.product-price-row{all:unset!important}
+
+/* BOTTOM NAV */
+.bottom-nav{background:#fff!important;border-top:1px solid #eee!important;padding:0!important}
+.bnav-item{padding:8px 4px 6px!important;font-size:10px!important;font-weight:600!important;color:#aaa!important;gap:2px!important}
+.bnav-item i{font-size:20px!important}
+.bnav-item.active{color:#e8420a!important}
+.bnav-badge{top:4px!important;right:calc(50% - 18px)!important;font-size:9px!important;padding:1px 4px!important}
+
+/* PAGE BACKGROUNDS */
+body{padding-bottom:65px!important;background:#f0f0f0!important}
+
+/* CARD ACTION BUTTONS */
+.card-action-btns{display:flex;gap:4px;margin-top:8px}
+.card-btn-cart{flex:1;background:transparent;color:#111;border:1.5px solid #111;border-radius:5px;padding:5px 0;font-size:10px;font-weight:800;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;justify-content:center;gap:3px;transition:.15s}
+.card-btn-cart:hover{background:#111;color:#fff}
+.card-btn-buy{flex:1;background:transparent;color:#111;border:1.5px solid #111;border-radius:5px;padding:5px 0;font-size:10px;font-weight:800;cursor:pointer;font-family:'Poppins',sans-serif;transition:.15s}
+.card-btn-buy:hover{background:#111;color:#fff}
+
+/* TYPING INDICATOR */
+.typing-indicator{display:flex!important;gap:4px;align-items:center;padding:10px 14px!important;min-width:50px}
+.typing-indicator span{width:7px;height:7px;border-radius:50%;background:#ccc;display:inline-block;animation:typingBounce 1.2s infinite ease-in-out}
+.typing-indicator span:nth-child(2){animation-delay:.2s}
+.typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,80%,100%{transform:scale(0.6);opacity:.5}40%{transform:scale(1);opacity:1}}
+</style>
 </head>
 <body>
 
 <!-- ====== HEADER ====== -->
 <header id="header">
+  <!-- Top row: hamburger | BENIM logo | icons -->
   <div class="header-top">
     <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-    <span class="header-logo-text" onclick="navigate('home')">BENIM</span>
-    <div class="header-icons">
-      <button class="hicon" onclick="navigate('profile')" title="Account"><i class="fas fa-user-circle"></i></button>
-      <button class="hicon" onclick="navigate('cart')" title="Cart"><i class="fas fa-shopping-cart"></i><span class="badge hidden" id="cart-count">0</span></button>
+    <!-- Logo: show image if available, fallback to styled text -->
+    <div style="flex:1;display:flex;align-items:center">
+      <span id="logo-text" onclick="navigate('home')" style="font-family:'Poppins',sans-serif;font-weight:900;font-size:26px;color:var(--orange);cursor:pointer;letter-spacing:-0.5px;line-height:1">BENIM</span>
+      <img id="site-logo" src="IMG-20260507-WA0041_1_.jpg" alt="Benim" class="header-logo" onclick="navigate('home')" onerror="this.style.display='none'" style="display:none;margin-left:6px">
+    </div>
+    <div class="header-icons" style="display:flex;align-items:center;gap:4px">
+      <button class="hicon" onclick="navigate('profile')" title="Account"><i class="fas fa-user-circle"></i><span class="badge hidden" id="wish-count">0</span></button>
+      <button class="hicon" onclick="navigate('cart')" title="Cart" style="position:relative"><i class="fas fa-shopping-cart"></i><span class="badge hidden" id="cart-count">0</span></button>
     </div>
   </div>
+  <!-- Search row: full-width pill search -->
   <div class="header-search-row">
     <div class="header-search-wrap">
-      <i class="fas fa-search"></i>
+      <button class="header-search-btn" onclick="doSearch()" style="color:var(--gray-500)"><i class="fas fa-search"></i></button>
       <input class="header-search" id="search-input" type="text" placeholder="Search products, brands and categories" onkeyup="handleSearchKey(event)">
     </div>
   </div>
@@ -506,6 +604,9 @@ body{padding-bottom:60px}
       <div class="sidebar-item" onclick="filterByCategory('all');toggleSidebar()"><i class="fas fa-th"></i> All Products</div>
       <div class="sidebar-item" onclick="filterByCategory('Electronics');toggleSidebar()"><i class="fas fa-laptop"></i> Electronics</div>
       <div class="sidebar-item" onclick="filterByCategory('Fashion');toggleSidebar()"><i class="fas fa-tshirt"></i> Fashion</div>
+      <div class="sidebar-item" onclick="filterByCategory("Men's Fashion");toggleSidebar()"><i class="fas fa-male"></i> Men's Fashion</div>
+      <div class="sidebar-item" onclick="filterByCategory("Women's Fashion");toggleSidebar()"><i class="fas fa-female"></i> Women's Fashion</div>
+      <div class="sidebar-item" onclick="filterByCategory('Baby Products');toggleSidebar()"><i class="fas fa-baby"></i> Baby Products</div>
       <div class="sidebar-item" onclick="filterByCategory('Home & Kitchen');toggleSidebar()"><i class="fas fa-home"></i> Home & Kitchen</div>
       <div class="sidebar-item" onclick="filterByCategory('Beauty');toggleSidebar()"><i class="fas fa-spa"></i> Beauty</div>
       <div class="sidebar-item" onclick="filterByCategory('Sports');toggleSidebar()"><i class="fas fa-futbol"></i> Sports</div>
@@ -554,102 +655,69 @@ body{padding-bottom:60px}
 <!-- HOME PAGE -->
 <div id="page-home" class="page active">
   <!-- Hero Slider -->
-  <div style="background:#fff;padding:12px 0 0">
   <div class="hero-slider">
     <div class="slides-container" id="slides">
       <div class="slide slide-1">
         <div class="slide-content">
           <h2>Shop Smart.<br>Dress Better.</h2>
-          <p>Premium fashion at<br>honest prices.</p>
+          <p>Premium fashion at honest prices.</p>
           <button class="slide-btn" onclick="navigate('search')">Shop Now</button>
         </div>
-        <div class="slide-deco" id="slide-deco-1">
-          <!-- 3 product image slots — managed via Admin > Banner Images -->
-          <div class="deco-products">
-            <div class="deco-item deco-handbag" id="deco-handbag">
-              <svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="90">
-                <ellipse cx="40" cy="22" rx="18" ry="4" fill="rgba(255,255,255,0.15)"/>
-                <path d="M22 22 Q27 14 40 12 Q53 14 58 22 L62 70 Q62 76 56 76 L24 76 Q18 76 18 70 Z" fill="#f4a416"/>
-                <path d="M27 22 Q27 14 40 12 Q53 14 53 22" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
-                <rect x="22" y="44" width="36" height="4" rx="2" fill="rgba(0,0,0,0.1)"/>
-                <rect x="27" y="52" width="26" height="3" rx="1.5" fill="rgba(0,0,0,0.07)"/>
-              </svg>
-            </div>
-            <div class="deco-item deco-watch" id="deco-watch">
-              <svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="46" height="66">
-                <rect x="16" y="4" width="6" height="8" rx="3" fill="#333"/>
-                <rect x="28" y="4" width="6" height="8" rx="3" fill="#333"/>
-                <rect x="10" y="12" width="30" height="36" rx="8" fill="#1a1a1a"/>
-                <rect x="13" y="15" width="24" height="30" rx="6" fill="#222"/>
-                <text x="25" y="33" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="monospace">10:10</text>
-                <rect x="16" y="48" width="6" height="8" rx="3" fill="#333"/>
-                <rect x="28" y="48" width="6" height="8" rx="3" fill="#333"/>
-              </svg>
-            </div>
-            <div class="deco-item deco-sneakers" id="deco-sneakers">
-              <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="60">
-                <path d="M8 30 Q22 16 52 14 Q76 14 82 24 Q82 38 64 40 L12 40 Q2 40 8 30Z" fill="#f5f0eb"/>
-                <path d="M20 17 Q34 9 54 8 Q70 8 75 18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
-                <path d="M24 22 L56 20" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
-                <path d="M25 27 L57 25" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
-                <path d="M18 40 Q30 28 58 26 Q80 26 86 35 Q86 48 70 50 L22 50 Q12 50 18 40Z" fill="#ede8e2"/>
-                <path d="M32 29 Q44 22 62 21" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="slider-dots" id="slider-dots"></div>
       </div>
       <div class="slide slide-2">
         <div class="slide-content">
           <h2>Hot Deals<br>Every Day</h2>
-          <p>Unbeatable prices<br>on top brands</p>
-          <button class="slide-btn" onclick="navigate('search')">EXPLORE</button>
+          <p>Unbeatable prices on top brands</p>
+          <button class="slide-btn" onclick="navigate('search')">Explore Deals</button>
         </div>
-        <div class="slide-deco" id="slide-deco-2"></div>
       </div>
       <div class="slide slide-3">
         <div class="slide-content">
           <h2>Flash Sale<br>Is Live 🔥</h2>
-          <p>Limited time offers<br>grab before it's gone</p>
-          <button class="slide-btn" onclick="navigate('search')">VIEW DEALS</button>
+          <p>Limited time offers &mdash; grab before it's gone</p>
+          <button class="slide-btn" onclick="navigate('search')">View Flash Sale</button>
         </div>
-        <div class="slide-deco" id="slide-deco-3"></div>
       </div>
     </div>
     <button class="slider-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
     <button class="slider-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
-  </div>
+    <div class="slider-dots" id="slider-dots"></div>
   </div>
 
-  <!-- Flash Sales Section -->
-  <div class="section" style="padding-top:18px">
-    <div class="section-header">
-      <div class="section-title">Flash Sales</div>
-      <span class="see-all" onclick="navigate('search')">See All &rsaquo;</span>
-    </div>
-    <div class="flash-timer-row">
-      <i class="fas fa-bolt bolt"></i>
-      <span class="flash-timer-label">Ends in</span>
-      <span class="flash-time-display" id="flash-time-display">00 : 00 : 00</span>
+  <!-- Flash Sales &mdash; directly below banner (ref image style) -->
+  <div class="home-section" id="flash-section">
+    <div class="home-section-header">
+      <div>
+        <div class="home-section-title">Flash Sales</div>
+        <div class="flash-ends-row">
+          <span class="flash-bolt"><i class="fas fa-bolt"></i></span>
+          <span class="flash-ends-text">Ends in</span>
+          <span class="flash-time" id="ct-h">00</span>
+          <span class="flash-colon">:</span>
+          <span class="flash-time" id="ct-m">00</span>
+          <span class="flash-colon">:</span>
+          <span class="flash-time" id="ct-s">00</span>
+        </div>
+      </div>
+      <a class="home-see-all" onclick="navigate('search')">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="product-grid" id="flash-grid"></div>
   </div>
 
   <!-- Featured Products -->
-  <div class="section" style="padding-top:4px">
-    <div class="section-header">
-      <div class="section-title">Featured Products</div>
-      <span class="see-all" onclick="navigate('search')">See All &rsaquo;</span>
+  <div class="home-section">
+    <div class="home-section-header">
+      <div class="home-section-title">Featured Products</div>
+      <a class="home-see-all" onclick="navigate('search')">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="product-grid" id="featured-grid"></div>
   </div>
 
   <!-- Trending -->
-  <div class="section" style="padding-top:4px">
-    <div class="section-header">
-      <div class="section-title">Trending Now</div>
-      <span class="see-all" onclick="navigate('search')">See All &rsaquo;</span>
+  <div class="home-section">
+    <div class="home-section-header">
+      <div class="home-section-title">Trending Now</div>
+      <a class="home-see-all" onclick="navigate('search')">See All <i class="fas fa-chevron-right"></i></a>
     </div>
     <div class="product-grid" id="trending-grid"></div>
   </div>
@@ -679,6 +747,9 @@ body{padding-bottom:60px}
           <option value="all">All</option>
           <option>Electronics</option>
           <option>Fashion</option>
+          <option>Men's Fashion</option>
+          <option>Women's Fashion</option>
+          <option>Baby Products</option>
           <option>Home & Kitchen</option>
           <option>Beauty</option>
           <option>Sports</option>
@@ -688,7 +759,7 @@ body{padding-bottom:60px}
         </select>
       </div>
       <div class="filter-group">
-        <label>Max Price: ₦<span id="price-val">999999</span></label>
+        <label>Max Price: &#8358;<span id="price-val">999999</span></label>
         <input type="range" min="0" max="999999" value="999999" id="price-range" style="accent-color:var(--orange)" onchange="applyFilters()">
       </div>
     </div>
@@ -704,7 +775,7 @@ body{padding-bottom:60px}
 <!-- PRODUCT DETAIL -->
 <div id="page-product" class="page">
   <div class="page-header">
-    <button class="back-btn" id="product-back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+    <button class="back-btn" id="product-back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
     <h2>Product Details</h2>
   </div>
   <div class="product-detail-wrap">
@@ -725,10 +796,23 @@ body{padding-bottom:60px}
           <span class="detail-discount" id="detail-discount"></span>
         </div>
         <div class="detail-stock" id="detail-stock"></div>
+
+        <!-- Size Selector -->
+        <div id="size-selector-wrap" class="hidden" style="margin-bottom:14px">
+          <div style="font-size:13px;font-weight:700;color:var(--gray-600);margin-bottom:8px">Select Size: <span id="selected-size-label" style="color:var(--orange);font-weight:800"></span></div>
+          <div id="size-options" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+        </div>
+
+        <!-- Colour Selector -->
+        <div id="colour-selector-wrap" class="hidden" style="margin-bottom:14px">
+          <div style="font-size:13px;font-weight:700;color:var(--gray-600);margin-bottom:8px">Select Colour: <span id="selected-colour-label" style="color:var(--orange);font-weight:800"></span></div>
+          <div id="colour-options" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+        </div>
+
         <div class="qty-wrap">
           <span class="qty-label">Qty:</span>
           <div class="qty-controls">
-            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <button class="qty-btn" onclick="changeQty(-1)">-</button>
             <input class="qty-input" id="qty-input" value="1" type="number" min="1">
             <button class="qty-btn" onclick="changeQty(1)">+</button>
           </div>
@@ -738,7 +822,7 @@ body{padding-bottom:60px}
           <button class="btn-wish" id="detail-wish-btn" onclick="toggleWishlistDetail()"><i class="fas fa-heart"></i></button>
         </div>
         <div style="background:var(--gray-50);border-radius:8px;padding:12px;font-size:13px;color:var(--gray-600)">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><i class="fas fa-truck" style="color:var(--orange)"></i> Free delivery on orders above ₦5,000</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><i class="fas fa-truck" style="color:var(--orange)"></i> Free delivery on orders above &#8358;5,000</div>
           <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-shield-alt" style="color:var(--green)"></i> Secure payment & buyer protection</div>
         </div>
       </div>
@@ -790,9 +874,9 @@ body{padding-bottom:60px}
     </div>
     <div id="cart-summary-wrap" class="hidden">
       <div class="cart-summary">
-        <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">₦0</span></div>
+        <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">&#8358;0</span></div>
         <div class="summary-row"><span>Delivery</span><span id="cart-delivery" style="color:var(--green)">FREE</span></div>
-        <div class="summary-row total"><span>Total</span><span id="cart-total">₦0</span></div>
+        <div class="summary-row total"><span>Total</span><span id="cart-total">&#8358;0</span></div>
         <button class="btn-checkout" onclick="goToCheckout()"><i class="fas fa-lock"></i> Proceed to Checkout</button>
       </div>
     </div>
@@ -833,7 +917,7 @@ body{padding-bottom:60px}
       <div class="checkout-title"><i class="fas fa-receipt"></i> Order Summary</div>
       <div id="checkout-items-summary"></div>
       <div class="summary-row total" style="padding-top:10px;border-top:2px solid var(--gray-200);margin-top:10px;display:flex;justify-content:space-between;font-size:18px;font-weight:900">
-        <span>Total</span><span id="checkout-total" style="color:var(--orange)">₦0</span>
+        <span>Total</span><span id="checkout-total" style="color:var(--orange)">&#8358;0</span>
       </div>
     </div>
     <button class="btn-checkout" onclick="placeOrder()"><i class="fas fa-check-circle"></i> Place Order</button>
@@ -1007,7 +1091,6 @@ body{padding-bottom:60px}
     <div class="admin-tabs">
       <button class="admin-tab active" onclick="switchAdminTab('products',this)">Products</button>
       <button class="admin-tab" onclick="switchAdminTab('orders',this)">Orders</button>
-      <button class="admin-tab" onclick="switchAdminTab('banner',this)">Banner Images</button>
       <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Reviews</button>
       <button class="admin-tab" onclick="switchAdminTab('chats',this)">Chat Sessions</button>
     </div>
@@ -1038,131 +1121,6 @@ body{padding-bottom:60px}
         </div>
       </div>
     </div>
-    <!-- Banner Images Tab -->
-    <div id="admin-banner" class="admin-tab-content hidden">
-      <div class="admin-card">
-        <div class="admin-card-title"><span>🖼️ Slide 1 — Decorative Product Images</span></div>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Manage the 3 product images shown on the right side of Slide 1 (handbag, watch, sneakers). Upload your own images to replace each item. Saved to browser storage instantly.</p>
-
-        <!-- Handbag -->
-        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <span style="font-size:20px">👜</span>
-            <strong style="font-size:14px">Product 1 — Handbag</strong>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div id="deco-preview-handbag" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
-            <div style="flex:1;min-width:180px">
-              <label class="form-label">Image URL</label>
-              <input class="form-input" id="deco-url-handbag" placeholder="https://... or paste URL" oninput="previewDecoProduct('handbag')">
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
-                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('handbag',this)">
-                </label>
-                <button class="btn-danger" onclick="clearDecoProduct('handbag')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Watch -->
-        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <span style="font-size:20px">⌚</span>
-            <strong style="font-size:14px">Product 2 — Watch</strong>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div id="deco-preview-watch" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
-            <div style="flex:1;min-width:180px">
-              <label class="form-label">Image URL</label>
-              <input class="form-input" id="deco-url-watch" placeholder="https://... or paste URL" oninput="previewDecoProduct('watch')">
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
-                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('watch',this)">
-                </label>
-                <button class="btn-danger" onclick="clearDecoProduct('watch')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sneakers -->
-        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:16px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <span style="font-size:20px">👟</span>
-            <strong style="font-size:14px">Product 3 — Sneakers</strong>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div id="deco-preview-sneakers" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
-            <div style="flex:1;min-width:180px">
-              <label class="form-label">Image URL</label>
-              <input class="form-input" id="deco-url-sneakers" placeholder="https://... or paste URL" oninput="previewDecoProduct('sneakers')">
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
-                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('sneakers',this)">
-                </label>
-                <button class="btn-danger" onclick="clearDecoProduct('sneakers')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button class="btn-primary" onclick="saveDecoImages()" style="width:100%;justify-content:center;padding:12px"><i class="fas fa-save"></i> Save &amp; Apply Images to Slide</button>
-        <p style="font-size:11px;color:var(--gray-400);margin-top:8px;text-align:center">Saved to browser storage. Images appear on Slide 1 immediately after saving.</p>
-      </div>
-
-      <!-- Slides 2 & 3 background images -->
-      <div class="admin-card" style="margin-top:12px">
-        <div class="admin-card-title"><span>🖼️ Slides 2 &amp; 3 — Right-side Images</span></div>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:14px">Optionally add a decorative image for Slide 2 and Slide 3.</p>
-        <!-- Slide 2 -->
-        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <div style="width:10px;height:10px;border-radius:50%;background:#1a1a2e"></div>
-            <strong style="font-size:14px">Slide 2 — Hot Deals Every Day</strong>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div id="banner-preview-2" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
-            <div style="flex:1;min-width:180px">
-              <label class="form-label">Image URL</label>
-              <input class="form-input" id="banner-url-2" placeholder="https://... or relative path" oninput="previewBanner(2)">
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload File
-                  <input type="file" accept="image/*" style="display:none" onchange="handleBannerUpload(2,this)">
-                </label>
-                <button class="btn-danger" onclick="clearBanner(2)" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:14px">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <div style="width:10px;height:10px;border-radius:50%;background:#0f3460"></div>
-            <strong style="font-size:14px">Slide 3 — Flash Sale Is Live 🔥</strong>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
-            <div id="banner-preview-3" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
-            <div style="flex:1;min-width:180px">
-              <label class="form-label">Image URL</label>
-              <input class="form-input" id="banner-url-3" placeholder="https://... or relative path" oninput="previewBanner(3)">
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload File
-                  <input type="file" accept="image/*" style="display:none" onchange="handleBannerUpload(3,this)">
-                </label>
-                <button class="btn-danger" onclick="clearBanner(3)" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="btn-primary" onclick="saveBannerImages()" style="width:100%;justify-content:center;padding:12px"><i class="fas fa-save"></i> Save Slide 2 &amp; 3 Images</button>
-      </div>
-    </div>
     <!-- Reviews Tab -->
     <div id="admin-reviews" class="admin-tab-content hidden">
       <div class="admin-card">
@@ -1182,7 +1140,7 @@ body{padding-bottom:60px}
 
 <!-- ABOUT PAGE -->
 <div id="page-about" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>About Us</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>About Us</h2></div>
   <div class="footer-page-wrap">
 
     <!-- Brand hero banner -->
@@ -1201,12 +1159,12 @@ body{padding-bottom:60px}
 
     <div class="fp-section">
       <h3>Who We Are</h3>
-      <p>BENIM is a modern Nigerian trading and fashion brand built on <strong>quality</strong>, <strong>trust</strong>, and <strong>value</strong>. We curate footwear and fashion essentials designed to match everyday style with a premium feel — without the premium price.</p>
+      <p>BENIM is a modern Nigerian trading and fashion brand built on <strong>quality</strong>, <strong>trust</strong>, and <strong>value</strong>. We curate footwear and fashion essentials designed to match everyday style with a premium feel &mdash; without the premium price.</p>
     </div>
 
     <div class="fp-section">
       <h3>Our Mission</h3>
-      <p>Our mission is to bridge the gap between <strong>affordability and style</strong>, delivering products that feel global but remain accessible. At BENIM, we are not just selling products — we are building a <strong>trusted lifestyle brand</strong>.</p>
+      <p>Our mission is to bridge the gap between <strong>affordability and style</strong>, delivering products that feel global but remain accessible. At BENIM, we are not just selling products &mdash; we are building a <strong>trusted lifestyle brand</strong>.</p>
     </div>
 
     <div class="fp-section">
@@ -1215,7 +1173,7 @@ body{padding-bottom:60px}
         <div style="background:var(--gray-50);border-radius:var(--radius-lg);padding:16px;border-left:3px solid var(--orange)">
           <div style="font-size:22px;margin-bottom:6px">👟</div>
           <h4 style="font-size:14px;font-weight:800;margin-bottom:4px">Curated Fashion</h4>
-          <p style="font-size:13px;color:var(--gray-500)">Every product is hand-picked for quality and style — no compromise.</p>
+          <p style="font-size:13px;color:var(--gray-500)">Every product is hand-picked for quality and style &mdash; no compromise.</p>
         </div>
         <div style="background:var(--gray-50);border-radius:var(--radius-lg);padding:16px;border-left:3px solid var(--orange)">
           <div style="font-size:22px;margin-bottom:6px">💰</div>
@@ -1237,7 +1195,7 @@ body{padding-bottom:60px}
 
     <div class="fp-section">
       <h3>Our Brand Promise</h3>
-      <p>When you shop with BENIM, you are not just buying a product. You are investing in a brand that cares about how you look, how you feel, and how much you spend. <strong>Style is not a luxury — it is a right.</strong> And at BENIM, we make sure you have access to both.</p>
+      <p>When you shop with BENIM, you are not just buying a product. You are investing in a brand that cares about how you look, how you feel, and how much you spend. <strong>Style is not a luxury &mdash; it is a right.</strong> And at BENIM, we make sure you have access to both.</p>
     </div>
 
     <div style="background:var(--gray-800);border-radius:var(--radius-xl);padding:20px 24px;text-align:center;color:#fff;margin-top:8px">
@@ -1253,10 +1211,10 @@ body{padding-bottom:60px}
 
 <!-- CONTACT PAGE -->
 <div id="page-contact" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>Contact Us</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>Contact Us</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-headset"></i> Contact Us</h2>
-    <p class="subtitle">We're here to help — reach us through any of the channels below</p>
+    <p class="subtitle">We're here to help &mdash; reach us through any of the channels below</p>
     <div class="contact-grid">
       <div class="contact-card">
         <i class="fab fa-whatsapp" style="color:#25d366"></i>
@@ -1287,7 +1245,7 @@ body{padding-bottom:60px}
 
 <!-- SHIPPING POLICY PAGE -->
 <div id="page-shipping-policy" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>Shipping Policy</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>Shipping Policy</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-shipping-fast"></i> Shipping Policy</h2>
     <p class="subtitle">Last updated: January 2025</p>
@@ -1298,8 +1256,8 @@ body{padding-bottom:60px}
     <div class="fp-section">
       <h3>Shipping Fees</h3>
       <ul>
-        <li><strong>Orders above ₦150,000:</strong> FREE shipping — no delivery fee applied.</li>
-        <li><strong>Orders below ₦150,000:</strong> A flat delivery fee of ₦3,500 is added at checkout.</li>
+        <li><strong>Orders above &#8358;150,000:</strong> FREE shipping &mdash; no delivery fee applied.</li>
+        <li><strong>Orders below &#8358;150,000:</strong> A flat delivery fee of &#8358;3,500 is added at checkout.</li>
         <li>Delivery fees are calculated automatically based on your cart total.</li>
       </ul>
     </div>
@@ -1325,7 +1283,7 @@ body{padding-bottom:60px}
 
 <!-- DELIVERY POLICY PAGE -->
 <div id="page-delivery-policy" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>Delivery Policy</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>Delivery Policy</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-truck"></i> Delivery Policy</h2>
     <p class="subtitle">Fast &amp; Reliable Delivery across Nigeria</p>
@@ -1375,19 +1333,19 @@ body{padding-bottom:60px}
           <span>Location</span><span>Delivery Fee</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;border-bottom:1px solid var(--gray-100);font-size:13px">
-          <span style="font-weight:700">Ibadan</span><span style="color:var(--orange);font-weight:700">₦1,500 – ₦2,500</span>
+          <span style="font-weight:700">Ibadan</span><span style="color:var(--orange);font-weight:700">&#8358;1,500 – &#8358;2,500</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;border-bottom:1px solid var(--gray-100);background:var(--gray-50);font-size:13px">
-          <span style="font-weight:700">Lagos</span><span style="color:var(--orange);font-weight:700">₦2,500 – ₦3,500</span>
+          <span style="font-weight:700">Lagos</span><span style="color:var(--orange);font-weight:700">&#8358;2,500 – &#8358;3,500</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;border-bottom:1px solid var(--gray-100);font-size:13px">
-          <span style="font-weight:700">Abuja / Port Harcourt</span><span style="color:var(--orange);font-weight:700">₦4,500 – ₦6,000</span>
+          <span style="font-weight:700">Abuja / Port Harcourt</span><span style="color:var(--orange);font-weight:700">&#8358;4,500 – &#8358;6,000</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;border-bottom:1px solid var(--gray-100);background:var(--gray-50);font-size:13px">
-          <span style="font-weight:700">Other States</span><span style="color:var(--orange);font-weight:700">₦3,000 – ₦6,000</span>
+          <span style="font-weight:700">Other States</span><span style="color:var(--orange);font-weight:700">&#8358;3,000 – &#8358;6,000</span>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;background:#d1fae5;font-size:13px">
-          <span style="font-weight:800;color:var(--green)">Orders above ₦150,000</span><span style="color:var(--green);font-weight:800">🎉 FREE Delivery</span>
+          <span style="font-weight:800;color:var(--green)">Orders above &#8358;150,000</span><span style="color:var(--green);font-weight:800">🎉 FREE Delivery</span>
         </div>
       </div>
     </div>
@@ -1413,7 +1371,7 @@ body{padding-bottom:60px}
         <div style="display:flex;gap:14px;padding-bottom:18px;position:relative">
           <div style="width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;z-index:1">4</div>
           <div style="position:absolute;left:15px;top:32px;bottom:0;width:2px;background:var(--gray-200)"></div>
-          <div style="padding-top:5px"><h4 style="font-size:14px;font-weight:800;margin-bottom:2px">Tracking Updates via WhatsApp</h4><p style="font-size:13px;color:var(--gray-500)">Receive real-time WhatsApp updates at every stage — Confirmed, Processing, Out for Delivery, Delivered.</p></div>
+          <div style="padding-top:5px"><h4 style="font-size:14px;font-weight:800;margin-bottom:2px">Tracking Updates via WhatsApp</h4><p style="font-size:13px;color:var(--gray-500)">Receive real-time WhatsApp updates at every stage &mdash; Confirmed, Processing, Out for Delivery, Delivered.</p></div>
         </div>
         <div style="display:flex;gap:14px">
           <div style="width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0">5</div>
@@ -1446,7 +1404,7 @@ body{padding-bottom:60px}
 
 <!-- PRIVACY POLICY PAGE -->
 <div id="page-privacy-policy" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>Privacy Policy</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>Privacy Policy</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
     <p class="subtitle">Last updated: January 2025</p>
@@ -1489,7 +1447,7 @@ body{padding-bottom:60px}
 
 <!-- TERMS & CONDITIONS PAGE -->
 <div id="page-terms" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>Terms & Conditions</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>Terms & Conditions</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
     <p class="subtitle">Last updated: January 2025. By using Benim, you agree to these terms.</p>
@@ -1500,7 +1458,7 @@ body{padding-bottom:60px}
     <div class="fp-section">
       <h3>2. Orders & Payment</h3>
       <ul>
-        <li>All prices are in Nigerian Naira (₦) and include applicable taxes.</li>
+        <li>All prices are in Nigerian Naira (&#8358;) and include applicable taxes.</li>
         <li>For Bank Transfer orders, payment must be made within 24 hours of placing the order.</li>
         <li>Orders not paid within 24 hours (Bank Transfer) may be cancelled automatically.</li>
         <li>We reserve the right to cancel orders due to pricing errors or stock issues.</li>
@@ -1532,17 +1490,17 @@ body{padding-bottom:60px}
 
 <!-- FAQ PAGE -->
 <div id="page-faq" class="page">
-  <div class="page-header"><button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button><h2>FAQ</h2></div>
+  <div class="page-header"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button><h2>FAQ</h2></div>
   <div class="footer-page-wrap">
     <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-    <p class="subtitle">Can't find your answer? <a onclick="navigate('contact')" style="color:var(--orange);cursor:pointer;font-weight:700">Contact us</a> — we're happy to help!</p>
+    <p class="subtitle">Can't find your answer? <a onclick="navigate('contact')" style="color:var(--orange);cursor:pointer;font-weight:700">Contact us</a> &mdash; we're happy to help!</p>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">How do I place an order? <i class="fas fa-chevron-down"></i></div>
       <div class="faq-a">Browse products, add items to your cart, and click "Proceed to Checkout". You'll need to be signed in and have a saved delivery address. Choose your payment method and confirm your order.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">When do I get free delivery? <i class="fas fa-chevron-down"></i></div>
-      <div class="faq-a">Orders with a total value of ₦150,000 or above qualify for free delivery. Orders below ₦150,000 attract a flat delivery fee of ₦3,500, automatically added at checkout.</div>
+      <div class="faq-a">Orders with a total value of &#8358;150,000 or above qualify for free delivery. Orders below &#8358;150,000 attract a flat delivery fee of &#8358;3,500, automatically added at checkout.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">What payment methods do you accept? <i class="fas fa-chevron-down"></i></div>
@@ -1565,7 +1523,7 @@ body{padding-bottom:60px}
       <div class="faq-a">Yes. We take your privacy seriously. Your data is stored securely using Google Firebase. We never sell your personal information to third parties. Read our Privacy Policy for details.</div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">I made a Bank Transfer — how do I confirm my payment? <i class="fas fa-chevron-down"></i></div>
+      <div class="faq-q">I made a Bank Transfer &mdash; how do I confirm my payment? <i class="fas fa-chevron-down"></i></div>
       <div class="faq-a">After transferring, send your payment receipt and Order ID to our WhatsApp: +234 916 803 1213. Our team will confirm your order within a few hours during business hours.</div>
     </div>
   </div>
@@ -1576,9 +1534,9 @@ body{padding-bottom:60px}
 <!-- ====== BOTTOM NAV ====== -->
 <nav class="bottom-nav">
   <div class="bnav-item active" id="bnav-home" onclick="navigate('home')"><i class="fas fa-home"></i><span>Home</span></div>
-  <div class="bnav-item" id="bnav-search" onclick="navigate('search')"><i class="fas fa-search"></i><span>Shop</span></div>
-  <div class="bnav-item" id="bnav-cart" onclick="navigate('cart')"><i class="fas fa-shopping-cart"></i><span>Cart</span><span class="bnav-badge hidden" id="bnav-cart-badge">0</span></div>
-  <div class="bnav-item" id="bnav-orders" onclick="navigate('orders')"><i class="fas fa-box"></i><span>Orders</span></div>
+  <div class="bnav-item" id="bnav-search" onclick="toggleSidebar()"><i class="fas fa-th-large"></i><span>Categories</span></div>
+  <div class="bnav-item" id="bnav-wishlist" onclick="navigate('wishlist')"><i class="fas fa-heart"></i><span>Saved</span></div>
+  <div class="bnav-item" id="bnav-cart" onclick="navigate('cart')" style="position:relative"><i class="fas fa-shopping-cart"></i><span>Cart</span><span class="bnav-badge hidden" id="bnav-cart-badge">0</span></div>
   <div class="bnav-item" id="bnav-profile" onclick="navigate('profile')"><i class="fas fa-user"></i><span>Account</span></div>
 </nav>
 
@@ -1623,7 +1581,7 @@ body{padding-bottom:60px}
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Benim. All rights reserved.</span>
+    <span>© 2025 <strong style="color:rgba(255,255,255,.7)">BENIM INTERNATIONAL TRADE LIMITED</strong>. All rights reserved.</span>
     <span>Made with 🧡 in Nigeria</span>
   </div>
 </footer>
@@ -1655,13 +1613,13 @@ body{padding-bottom:60px}
       <input type="hidden" id="edit-product-id">
       <div class="form-group"><label class="form-label">Product Name *</label><input class="form-input" id="p-name" placeholder="Product name"></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Price (₦) *</label><input class="form-input" id="p-price" type="number" placeholder="0"></div>
-        <div class="form-group"><label class="form-label">Discount Price (₦)</label><input class="form-input" id="p-discount" type="number" placeholder="0"></div>
+        <div class="form-group"><label class="form-label">Price (&#8358;) *</label><input class="form-input" id="p-price" type="number" placeholder="0"></div>
+        <div class="form-group"><label class="form-label">Discount Price (&#8358;)</label><input class="form-input" id="p-discount" type="number" placeholder="0"></div>
       </div>
       <div class="form-row">
         <div class="form-group"><label class="form-label">Category *</label>
           <select class="form-input" id="p-category">
-            <option>Electronics</option><option>Fashion</option><option>Home & Kitchen</option><option>Beauty</option><option>Sports</option><option>Groceries</option><option>Phones</option><option>Toys</option><option>Other</option>
+            <option>Electronics</option><option>Fashion</option><option>Men's Fashion</option><option>Women's Fashion</option><option>Baby Products</option><option>Home & Kitchen</option><option>Beauty</option><option>Sports</option><option>Groceries</option><option>Phones</option><option>Toys</option><option>Other</option>
           </select>
         </div>
         <div class="form-group"><label class="form-label">Stock *</label><input class="form-input" id="p-stock" type="number" placeholder="0"></div>
@@ -1670,6 +1628,21 @@ body{padding-bottom:60px}
       <div class="form-group">
         <label class="form-label">Product Images (URLs, one per line)</label>
         <textarea class="form-input" id="p-images" rows="3" placeholder="https://image1.jpg&#10;https://image2.jpg"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Available Sizes <span style="color:var(--gray-400);font-weight:400;font-size:12px">(comma-separated, e.g. S, M, L, XL or 39, 40, 41)</span></label>
+        <input class="form-input" id="p-sizes" placeholder="e.g. S, M, L, XL, XXL">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Available Colours <span style="color:var(--gray-400);font-weight:400;font-size:12px">(comma-separated, e.g. Red, Black, White)</span></label>
+        <input class="form-input" id="p-colours" placeholder="e.g. Black, White, Red, Navy Blue">
+      </div>
+      <div class="form-group" style="background:rgba(232,66,10,.06);border-radius:8px;padding:12px;border:1px solid rgba(232,66,10,.2)">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;font-weight:700;color:var(--gray-700)">
+          <input type="checkbox" id="p-flash" style="width:18px;height:18px;accent-color:var(--orange);cursor:pointer">
+          <span><i class="fas fa-bolt" style="color:var(--orange)"></i> Show in Flash Sales section on homepage</span>
+        </label>
+        <p style="font-size:12px;color:var(--gray-400);margin-top:4px;margin-left:28px">Tick this to feature the product in the Flash Deals section.</p>
       </div>
     </div>
     <div class="modal-footer">
@@ -1774,11 +1747,22 @@ let unsubListeners = [];
 const LOGO_URL = '/mnt/user-data/uploads/IMG-20260507-WA0041_1_.jpg';
 // Use inline base64 as fallback for GitHub Pages (logo will be same folder)
 function setLogos() {
-  // On GitHub Pages, logo image will be in same directory as index.html
-  ['site-logo','auth-logo','reg-logo'].forEach(id => {
+  // Auth pages logo
+  ['auth-logo','reg-logo'].forEach(id => {
     const el = document.getElementById(id);
     if(el) el.src = 'IMG-20260507-WA0041_1_.jpg';
   });
+  // Try to load image logo in header; on success hide text, on error keep text
+  const imgLogo = document.getElementById('site-logo');
+  if(imgLogo) {
+    imgLogo.onload = function() {
+      this.style.display = 'block';
+      const textLogo = document.getElementById('logo-text');
+      if(textLogo) textLogo.style.display = 'none';
+    };
+    imgLogo.onerror = function() { this.style.display = 'none'; };
+    imgLogo.src = 'IMG-20260507-WA0041_1_.jpg';
+  }
 }
 setLogos();
 
@@ -1937,15 +1921,17 @@ function renderHome() {
     renderSkeletons('trending-grid',4);
     setTimeout(()=>{
       ['flash-grid','featured-grid','trending-grid'].forEach(id=>{
-        document.getElementById(id).innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-box-open"></i><h3>No products yet</h3><p>Check back soon!</p></div>`;
+        const el = document.getElementById(id);
+        if(el) el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px 20px;color:var(--gray-400)"><i class="fas fa-box-open" style="font-size:40px;display:block;margin-bottom:10px"></i><p style="font-size:14px;font-weight:600">No products yet &mdash; check back soon!</p></div>`;
       });
     },1500);
     return;
   }
-  const shuffled = [...allProducts].sort(()=>Math.random()-.5);
-  renderProductGrid('flash-grid', shuffled.slice(0,4), true);
-  renderProductGrid('featured-grid', shuffled.slice(0,8));
-  renderProductGrid('trending-grid', shuffled.slice(4,12));
+  const flashProducts = allProducts.filter(p=>p.isFlash);
+  const nonFlash = [...allProducts].sort(()=>Math.random()-.5);
+  renderProductGrid('flash-grid', flashProducts.length ? flashProducts : nonFlash.slice(0,3), true);
+  renderProductGrid('featured-grid', nonFlash.slice(0,6));
+  renderProductGrid('trending-grid', nonFlash.slice(0,9));
 }
 
 function renderSkeletons(gridId, count) {
@@ -1970,27 +1956,25 @@ function productCardHTML(p, isFlash=false) {
   const displayPrice = disc>0 ? disc : price;
   const hasDisc = disc>0 && disc<price;
   const discPct = hasDisc ? Math.round((1-disc/price)*100) : 0;
-  const inWish = wishlist.includes(p.id);
-  const img = (p.images&&p.images[0]) ? p.images[0] : 'https://placehold.co/300x300/f3f4f6/9ca3af?text=No+Image';
-  return `<div class="product-card" onclick="openProduct('${p.id}')">
-    <div class="product-img-wrap">
-      <img src="${img}" alt="${p.name||''}" loading="lazy" onerror="this.src='https://placehold.co/300x300/f3f4f6/9ca3af?text=No+Image'">
-      ${hasDisc ? `<span class="product-badge${isFlash?' flash':''}">${isFlash?'🔥 ':'-'}${discPct}%</span>` : ''}
-      <button class="product-wishlist-btn${inWish?' active':''}" onclick="event.stopPropagation();toggleWishlist('${p.id}')" title="Wishlist"><i class="fas fa-heart"></i></button>
+  const img = (p.images&&p.images[0]) ? p.images[0] : 'https://placehold.co/300x300/f0f0f0/aaaaaa?text=No+Image';
+  const soldCount = p.soldCount || Math.floor(Math.random()*150+20);
+  const stock = p.stock||50;
+  const soldPct = Math.min(95, Math.round(soldCount/(soldCount+stock)*100));
+  return `<div class="pc" onclick="openProduct('${p.id}')">
+    <div class="pc-img-wrap">
+      <img src="${img}" alt="${p.name||''}" loading="lazy" onerror="this.src='https://placehold.co/300x300/f0f0f0/aaaaaa?text=No+Image'">
+      ${hasDisc ? `<span class="pc-badge">-${discPct}%</span>` : ''}
     </div>
-    <div class="product-info">
-      <div class="product-name">${p.name||'Product'}</div>
-      <div style="display:flex;align-items:baseline;gap:4px">
-        <span class="product-price">₦${displayPrice.toLocaleString()}</span>
-        ${hasDisc?`<span class="product-old-price">₦${price.toLocaleString()}</span>`:''}
+    <div class="pc-body">
+      <div class="pc-name">${p.name||'Product'}</div>
+      <div class="pc-prices">
+        <span class="pc-price">&#8358;${displayPrice.toLocaleString()}</span>
+        ${hasDisc ? `<span class="pc-old">&#8358;${price.toLocaleString()}</span>` : ''}
       </div>
-      <div class="product-rating">
-        <span class="stars">${starsHTML(p.rating||0)}</span>
-        <span class="rating-count">(${p.reviewCount||0})</span>
+      <div class="pc-sold-row">
+        <div class="pc-bar-bg"><div class="pc-bar-fill" style="width:${soldPct}%"></div></div>
+        <span class="pc-sold-txt">${soldCount} sold</span>
       </div>
-      <button class="product-add-btn" onclick="event.stopPropagation();quickAddToCart('${p.id}')">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
     </div>
   </div>`;
 }
@@ -2015,8 +1999,8 @@ window.openProduct = function(id) {
   const displayPrice = disc>0 ? disc : price;
   const hasDisc = disc>0 && disc<price;
   const discPct = hasDisc ? Math.round((1-disc/price)*100) : 0;
-  document.getElementById('detail-price').textContent = '₦'+displayPrice.toLocaleString();
-  document.getElementById('detail-old-price').textContent = hasDisc ? '₦'+price.toLocaleString() : '';
+  document.getElementById('detail-price').textContent = '&#8358;'+displayPrice.toLocaleString();
+  document.getElementById('detail-old-price').textContent = hasDisc ? '&#8358;'+price.toLocaleString() : '';
   document.getElementById('detail-discount').textContent = hasDisc ? `-${discPct}%` : '';
   document.getElementById('detail-discount').classList.toggle('hidden', !hasDisc);
   document.getElementById('detail-stars').textContent = starsHTML(p.rating||0);
@@ -2031,6 +2015,38 @@ window.openProduct = function(id) {
   document.getElementById('main-product-img').src = imgs[0];
   const thumbRow = document.getElementById('thumb-row');
   thumbRow.innerHTML = imgs.map((img,i) => `<div class="thumb${i===0?' active':''}" onclick="changeMainImg('${img}',this)"><img src="${img}" onerror="this.src='https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'"></div>`).join('');
+  // Size options
+  const sizes = p.sizes||[];
+  const sizeWrap = document.getElementById('size-selector-wrap');
+  const sizeOpts = document.getElementById('size-options');
+  if(sizes.length) {
+    sizeWrap.classList.remove('hidden');
+    document.getElementById('selected-size-label').textContent = '';
+    sizeOpts.innerHTML = sizes.map(s=>`<button class="size-opt-btn" onclick="selectSize(this,'${s}')" style="padding:6px 14px;border:2px solid var(--gray-200);border-radius:6px;font-size:13px;font-weight:700;background:#fff;cursor:pointer;transition:.15s">${s}</button>`).join('');
+  } else {
+    sizeWrap.classList.add('hidden');
+  }
+
+  // Colour options
+  const colours = p.colours||[];
+  const colWrap = document.getElementById('colour-selector-wrap');
+  const colOpts = document.getElementById('colour-options');
+  if(colours.length) {
+    colWrap.classList.remove('hidden');
+    document.getElementById('selected-colour-label').textContent = '';
+    colOpts.innerHTML = colours.map(col=>{
+      // Try to map colour name to css color
+      const cssMap = {black:'#000',white:'#fff',red:'#e53e3e',blue:'#3182ce',green:'#38a169',yellow:'#d69e2e',pink:'#ed64a6',purple:'#805ad5',orange:'#e8420a',brown:'#92400e',grey:'#718096',gray:'#718096',navy:'#1a365d','navy blue':'#1a365d','sky blue':'#63b3ed','light blue':'#bee3f8',beige:'#f5f0e8',cream:'#fffdd0'};
+      const bg = cssMap[col.toLowerCase()]||'transparent';
+      const border = col.toLowerCase()==='white'?'2px solid #e5e7eb':'2px solid transparent';
+      return `<button class="colour-opt-btn" onclick="selectColour(this,'${col}')" title="${col}" style="width:32px;height:32px;border-radius:50%;background:${bg};border:${border};cursor:pointer;transition:.15s;box-shadow:0 1px 4px rgba(0,0,0,.15);position:relative" data-colour="${col}">
+        ${bg==='transparent'?`<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#555;line-height:1;text-align:center;padding:2px">${col.slice(0,3)}</span>`:''}
+      </button>`;
+    }).join('');
+  } else {
+    colWrap.classList.add('hidden');
+  }
+
   // Wishlist btn
   const wb = document.getElementById('detail-wish-btn');
   wb.classList.toggle('active', wishlist.includes(id));
@@ -2128,21 +2144,76 @@ window.quickAddToCart = function(productId) {
   showToast(`${p.name} added to cart!`);
 };
 
+window.cardBuyNow = function(productId) {
+  if(!currentUser) { showToast('Please sign in to buy','info'); navigate('login'); return; }
+  const p = allProducts.find(x=>x.id===productId);
+  if(!p) return;
+  const price = Number(p.discountPrice)>0 ? Number(p.discountPrice) : Number(p.price);
+  const variantKey = p.id;
+  const existing = cart.find(x=>x.variantKey===variantKey);
+  if(existing) { existing.qty = Math.min(existing.qty+1, p.stock||99); }
+  else { cart.push({ productId: p.id, variantKey, name: p.name, price, image: (p.images&&p.images[0])||'', qty: 1, size:'', colour:'', variantLabel:'' }); }
+  saveCart(); updateCartBadge();
+  goToCheckout();
+};
+
 window.addToCartFromDetail = function() {
   if(!currentUser) { showToast('Please sign in to add to cart','info'); navigate('login'); return; }
   if(!currentProduct) return;
-  const qty = parseInt(document.getElementById('qty-input').value)||1;
   const p = currentProduct;
-  const existing = cart.find(x=>x.productId===p.id);
+  // Validate size selection if sizes exist
+  if((p.sizes||[]).length && !window._selectedSize) {
+    showToast('Please select a size','error'); return;
+  }
+  // Validate colour selection if colours exist
+  if((p.colours||[]).length && !window._selectedColour) {
+    showToast('Please select a colour','error'); return;
+  }
+  const qty = parseInt(document.getElementById('qty-input').value)||1;
   const price = Number(p.discountPrice)>0 ? Number(p.discountPrice) : Number(p.price);
+  const size = window._selectedSize||'';
+  const colour = window._selectedColour||'';
+  // Cart key includes size+colour so each variant is separate
+  const variantKey = p.id + (size?'_'+size:'') + (colour?'_'+colour:'');
+  const existing = cart.find(x=>x.variantKey===variantKey);
+  const variantLabel = [size, colour].filter(Boolean).join(' / ');
   if(existing) {
     existing.qty = Math.min(existing.qty+qty, p.stock||99);
   } else {
-    cart.push({ productId: p.id, name: p.name, price, image: (p.images&&p.images[0])||'', qty });
+    cart.push({ productId: p.id, variantKey, name: p.name, price, image: (p.images&&p.images[0])||'', qty, size, colour, variantLabel });
   }
+  // Reset selections
+  window._selectedSize = '';
+  window._selectedColour = '';
   saveCart();
   updateCartBadge();
-  showToast(`${p.name} added to cart!`);
+  showToast(`${p.name}${variantLabel?' ('+variantLabel+')':''} added to cart!`);
+};
+
+// Size & Colour selection
+window.selectSize = function(btn, size) {
+  document.querySelectorAll('.size-opt-btn').forEach(b=>{
+    b.style.borderColor='var(--gray-200)';
+    b.style.background='#fff';
+    b.style.color='var(--gray-800)';
+  });
+  btn.style.borderColor='var(--orange)';
+  btn.style.background='var(--orange)';
+  btn.style.color='#fff';
+  document.getElementById('selected-size-label').textContent = size;
+  window._selectedSize = size;
+};
+
+window.selectColour = function(btn, colour) {
+  document.querySelectorAll('.colour-opt-btn').forEach(b=>{
+    b.style.outline='none';
+    b.style.transform='scale(1)';
+  });
+  btn.style.outline='3px solid var(--orange)';
+  btn.style.outlineOffset='2px';
+  btn.style.transform='scale(1.15)';
+  document.getElementById('selected-colour-label').textContent = colour;
+  window._selectedColour = colour;
 };
 
 window.changeQty = function(delta) {
@@ -2173,11 +2244,11 @@ window.renderCart = function() {
     <div class="cart-item">
       <img class="cart-item-img" src="${item.image||'https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'}" onerror="this.src='https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'">
       <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">₦${(item.price*item.qty).toLocaleString()}</div>
+        <div class="cart-item-name">${item.name}${item.variantLabel?` <span style="font-size:11px;color:var(--orange);font-weight:700">(${item.variantLabel})</span>`:''}</div>
+        <div class="cart-item-price">&#8358;${(item.price*item.qty).toLocaleString()}</div>
         <div class="cart-item-actions">
           <div class="qty-controls">
-            <button class="qty-btn" onclick="updateCartQty(${i},-1)">−</button>
+            <button class="qty-btn" onclick="updateCartQty(${i},-1)">-</button>
             <input class="qty-input" value="${item.qty}" type="number" min="1" onchange="setCartQty(${i},this.value)" style="width:40px">
             <button class="qty-btn" onclick="updateCartQty(${i},1)">+</button>
           </div>
@@ -2189,10 +2260,10 @@ window.renderCart = function() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  document.getElementById('cart-subtotal').textContent = '₦'+subtotal.toLocaleString();
-  document.getElementById('cart-delivery').textContent = deliveryFee===0 ? 'FREE' : '₦'+deliveryFee.toLocaleString();
+  document.getElementById('cart-subtotal').textContent = '&#8358;'+subtotal.toLocaleString();
+  document.getElementById('cart-delivery').textContent = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
   document.getElementById('cart-delivery').style.color = deliveryFee===0 ? 'var(--green)' : 'var(--gray-800)';
-  document.getElementById('cart-total').textContent = '₦'+grandTotal.toLocaleString();
+  document.getElementById('cart-total').textContent = '&#8358;'+grandTotal.toLocaleString();
 };
 
 window.updateCartQty = function(i, delta) {
@@ -2226,7 +2297,7 @@ async function loadCheckout() {
       addrDiv.innerHTML = snap.docs.map((d,i)=>{
         const a = d.data();
         return `<div class="address-card${i===0?' selected':''}" onclick="selectAddr(this,'${d.id}')" data-addr-id="${d.id}">
-          <h4>${a.name} — ${a.phone}</h4>
+          <h4>${a.name} &mdash; ${a.phone}</h4>
           <p>${a.street}, ${a.city}, ${a.state}</p>
         </div>`;
       }).join('');
@@ -2238,10 +2309,10 @@ async function loadCheckout() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
-    `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>` +
-    (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add ₦${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
-  document.getElementById('checkout-total').textContent = '₦'+grandTotal.toLocaleString();
+  sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
+    `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>` +
+    (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add &#8358;${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
+  document.getElementById('checkout-total').textContent = '&#8358;'+grandTotal.toLocaleString();
   // Store delivery fee for placeOrder to use
   window._checkoutDeliveryFee = deliveryFee;
   window._checkoutGrandTotal = grandTotal;
@@ -2317,10 +2388,10 @@ function showReceipt(orderId, data) {
     <div class="summary-row"><span>Payment</span><span>${data.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</span></div>
     <div class="summary-row"><span>Delivery to</span><span>${(data.address&&data.address.street)||''}, ${(data.address&&data.address.city)||''}</span></div>
     <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
-    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
-    <div class="summary-row"><span>Subtotal</span><span>₦${(data.subtotal||data.total||0).toLocaleString()}</span></div>
-    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>
-    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
+    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="summary-row"><span>Subtotal</span><span>&#8358;${(data.subtotal||data.total||0).toLocaleString()}</span></div>
+    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>
+    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">&#8358;${(data.total||0).toLocaleString()}</span></div>
     ${data.payment==='bank'?`<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: ${orderId}</p></div>`:''}
   `;
 }
@@ -2348,7 +2419,7 @@ window.loadOrders = async function() {
         </div>
         <div class="order-items">${(o.items||[]).map(x=>x.name).join(', ')}</div>
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <span class="order-total">₦${(o.total||0).toLocaleString()}</span>
+          <span class="order-total">&#8358;${(o.total||0).toLocaleString()}</span>
           <button class="track-order-btn" onclick="showTrackingModal('${d.id}')"><i class="fas fa-truck"></i> Track</button>
         </div>
       </div>`;
@@ -2377,7 +2448,7 @@ window.trackOrder = async function() {
     const currentIdx = steps.indexOf(o.status);
     result.innerHTML = `
       <h4 style="font-size:15px;font-weight:800;margin-bottom:4px">${o.orderId||snap.docs[0].id}</h4>
-      <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Total: ₦${(o.total||0).toLocaleString()}</p>
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Total: &#8358;${(o.total||0).toLocaleString()}</p>
       <div class="tracking-steps">
         ${steps.map((s,i)=>{
           const done = i<currentIdx;
@@ -2519,7 +2590,7 @@ window.loadAddresses = async function() {
     list.innerHTML = snap.docs.map(d=>{
       const a = d.data();
       return `<div class="address-card" style="position:relative">
-        <h4>${a.name} — ${a.phone}</h4>
+        <h4>${a.name} &mdash; ${a.phone}</h4>
         <p>${a.street}, ${a.city}, ${a.state}</p>
         <button class="btn-danger" style="position:absolute;top:10px;right:10px;padding:4px 10px;font-size:11px" onclick="deleteAddress('${d.id}')"><i class="fas fa-trash"></i></button>
       </div>`;
@@ -2537,7 +2608,8 @@ window.deleteAddress = async function(id) {
 window.showAddProductModal = function() {
   document.getElementById('product-modal-title').textContent = 'Add Product';
   document.getElementById('edit-product-id').value = '';
-  ['p-name','p-price','p-discount','p-stock','p-desc','p-images'].forEach(id=>{ document.getElementById(id).value=''; });
+  ['p-name','p-price','p-discount','p-stock','p-desc','p-images','p-sizes','p-colours'].forEach(id=>{ document.getElementById(id).value=''; });
+  document.getElementById('p-flash').checked = false;
   openModal('modal-product');
 };
 
@@ -2553,6 +2625,9 @@ window.editProduct = function(id) {
   document.getElementById('p-stock').value = p.stock||'';
   document.getElementById('p-desc').value = p.description||'';
   document.getElementById('p-images').value = (p.images||[]).join('\n');
+  document.getElementById('p-sizes').value = (p.sizes||[]).join(', ');
+  document.getElementById('p-colours').value = (p.colours||[]).join(', ');
+  document.getElementById('p-flash').checked = !!p.isFlash;
   openModal('modal-product');
 };
 
@@ -2567,9 +2642,14 @@ window.saveProduct = async function() {
   const description = document.getElementById('p-desc').value.trim();
   const imagesRaw = document.getElementById('p-images').value.trim();
   const images = imagesRaw ? imagesRaw.split('\n').map(x=>x.trim()).filter(Boolean) : [];
+  const sizesRaw = document.getElementById('p-sizes').value.trim();
+  const sizes = sizesRaw ? sizesRaw.split(',').map(x=>x.trim()).filter(Boolean) : [];
+  const coloursRaw = document.getElementById('p-colours').value.trim();
+  const colours = coloursRaw ? coloursRaw.split(',').map(x=>x.trim()).filter(Boolean) : [];
+  const isFlash = document.getElementById('p-flash').checked;
   if(!name||!price) return showToast('Name and price are required','error');
   try {
-    const data = { name, price, discountPrice, category, stock, description, images, updatedAt: serverTimestamp() };
+    const data = { name, price, discountPrice, category, stock, description, images, sizes, colours, isFlash, updatedAt: serverTimestamp() };
     if(editId) {
       await updateDoc(doc(db,'products',editId), data);
       showToast('Product updated!');
@@ -2600,7 +2680,7 @@ window.loadAdminProducts = function() {
       <td><img class="product-thumb-small" src="${(p.images&&p.images[0])||'https://placehold.co/40x40/f3f4f6/9ca3af?text=P'}" onerror="this.src='https://placehold.co/40x40/f3f4f6/9ca3af?text=P'"></td>
       <td>${p.name||''}</td>
       <td>${p.category||''}</td>
-      <td>₦${(Number(p.discountPrice)||Number(p.price)||0).toLocaleString()}</td>
+      <td>&#8358;${(Number(p.discountPrice)||Number(p.price)||0).toLocaleString()}</td>
       <td>${p.stock||0}</td>
       <td style="display:flex;gap:6px;flex-wrap:wrap">
         <button class="btn-primary" style="padding:5px 10px;font-size:11px" onclick="editProduct('${p.id}')"><i class="fas fa-edit"></i></button>
@@ -2623,7 +2703,7 @@ window.loadAdminOrders = async function() {
       return `<tr>
         <td style="font-size:11px">${o.orderId||d.id.slice(0,8)}</td>
         <td>${o.userEmail||''}</td>
-        <td>₦${(o.total||0).toLocaleString()}</td>
+        <td>&#8358;${(o.total||0).toLocaleString()}</td>
         <td>${(o.items||[]).length} items</td>
         <td>${o.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</td>
         <td><span class="order-status ${'status-'+(o.status==='out_for_delivery'?'out':o.status||'pending')}">${(o.status||'').replace('_',' ').replace(/\b\w/g,l=>l.toUpperCase())||'Pending'}</span></td>
@@ -2632,7 +2712,7 @@ window.loadAdminOrders = async function() {
     });
     tbody.innerHTML = rows.join('') || '<tr><td colspan="7" style="text-align:center;color:var(--gray-400)">No orders</td></tr>';
     document.getElementById('stat-orders').textContent = snap.docs.length;
-    document.getElementById('stat-revenue').textContent = '₦'+totalRevenue.toLocaleString();
+    document.getElementById('stat-revenue').textContent = '&#8358;'+totalRevenue.toLocaleString();
   } catch(e) { tbody.innerHTML = '<tr><td colspan="7" style="color:var(--red);text-align:center">Error loading</td></tr>'; }
 };
 
@@ -2715,16 +2795,6 @@ window.switchAdminTab = function(tab, btn) {
   else if(tab==='orders') loadAdminOrders();
   else if(tab==='reviews') loadAdminReviews();
   else if(tab==='chats') loadAdminChats();
-  else if(tab==='banner') {
-    // Load saved values into inputs and previews
-    [1,2,3].forEach(i => {
-      const saved = localStorage.getItem('bannerImg'+i);
-      const input = document.getElementById('banner-url-'+i);
-      const prev = document.getElementById('banner-preview-'+i);
-      if(input && saved) input.value = saved;
-      if(prev && saved) prev.innerHTML = `<img src="${saved}" style="width:100%;height:100%;object-fit:cover">`;
-    });
-  }
 };
 
 window.loadAdminStats = async function() {
@@ -2736,28 +2806,15 @@ window.loadAdminStats = async function() {
   loadAdminOrders();
 };
 
-// ===== CHATBOT =====
+// ===== CHATBOT (Claude AI-powered) =====
 let chatOpen = false;
-const chatResponses = {
-  hello: "Hi! 👋 Welcome to Benim! How can I help you today?",
-  hi: "Hello! Welcome to Benim! I'm here to assist you.",
-  track: "To track your order, go to Menu → Track Order and enter your Order ID or phone number.",
-  order: "You can view your orders in the Orders section of the app. Need help with a specific order?",
-  payment: "We accept Bank Transfer (Opay) and Pay on Delivery. Bank details: Opay | Adewole Aderonke Aishat | 9168031213.",
-  delivery: "We deliver to your saved address. Free delivery on orders ₦150,000 and above! Orders below ₦150,000 have a flat delivery fee of ₦3,500.",
-  return: "For returns or issues, please contact us via WhatsApp or message us here.",
-  price: "All prices are displayed in Naira (₦). Discounted prices are shown in orange.",
-  cart: "Add items to your cart and proceed to checkout. You must be signed in to place an order.",
-  account: "You can create an account by clicking 'Create Account' or sign in if you already have one.",
-  default: "I'm not sure about that, but our team is happy to help! Try asking about orders, payments, delivery, or products. 😊"
-};
+let chatHistory = []; // multi-turn conversation history
 
 window.toggleChatbot = function() {
   chatOpen = !chatOpen;
   document.getElementById('chatbot-window').classList.toggle('open', chatOpen);
   if(chatOpen && !document.getElementById('chat-messages').innerHTML) {
-    addChatMsg("Hi! 👋 I'm Benim's support assistant. Ask me about orders, payments, delivery, and more!", 'bot');
-    saveChatSession("Hi! 👋 I'm Benim's support assistant.", 'bot');
+    addChatMsg("Hi! 👋 I'm Benim's smart support assistant. Ask me anything — products, prices, categories, delivery, payments, and more!", 'bot');
   }
 };
 window.openChatbot = function() { chatOpen=false; toggleChatbot(); };
@@ -2766,28 +2823,84 @@ window.chatKeyPress = function(e) {
   if(e.key==='Enter'&&!e.shiftKey) { e.preventDefault(); sendChatMessage(); }
 };
 
-window.sendChatMessage = function() {
+window.sendChatMessage = async function() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
   if(!text) return;
   addChatMsg(text, 'user');
-  saveChatSession(text, 'user');
   input.value = '';
-  setTimeout(()=>{
-    const lower = text.toLowerCase();
-    let response = chatResponses.default;
-    for(const key of Object.keys(chatResponses)) {
-      if(lower.includes(key)) { response=chatResponses[key]; break; }
-    }
-    // Check if asking about a product
-    const found = allProducts.find(p=>(p.name||'').toLowerCase().includes(lower));
-    if(found) {
-      const price = Number(found.discountPrice)||Number(found.price)||0;
-      response = `Found it! **${found.name}** — ₦${price.toLocaleString()}. ${found.stock>0?'In stock!':'Out of stock.'} Tap to view it in the shop!`;
-    }
-    addChatMsg(response, 'bot');
-    saveChatSession(response, 'bot');
-  }, 600);
+  input.disabled = true;
+  document.querySelector('#chatbot-window .chat-send').disabled = true;
+
+  // Build product context (top 30 products for the AI to reference)
+  const productContext = allProducts.slice(0,30).map(p=>{
+    const price = Number(p.discountPrice)||Number(p.price)||0;
+    return `- ${p.name} | Category: ${p.category||'N/A'} | Price: ₦${price.toLocaleString()} | Stock: ${p.stock>0?p.stock+' available':'Out of stock'}`;
+  }).join('\n');
+
+  const systemPrompt = `You are a friendly and knowledgeable customer support assistant for BENIM, a Nigerian e-commerce shop selling fashion, electronics, and more.
+
+STORE INFO:
+- Name: BENIM Shop
+- WhatsApp: +2349168031213
+- Payment: Bank Transfer (Opay) or Pay on Delivery
+- Bank: Opay | Adewole Aderonke Aishat | Account: 9168031213
+- Delivery: FREE on orders ₦150,000+; ₦3,500 flat fee below that
+- Returns: Contact via WhatsApp within 7 days with order ID
+- Categories: Electronics, Fashion, Men's Fashion, Women's Fashion, Baby Products, Home & Kitchen, Beauty, Sports, Groceries, Phones, Toys
+
+AVAILABLE PRODUCTS (sample):
+${productContext || 'Products are loaded from our Firebase database.'}
+
+INSTRUCTIONS:
+- Answer ALL customer questions helpfully and specifically
+- If asked about a product, give its price and stock status from the list above
+- If asked about categories, list what we sell
+- For orders/tracking: tell them to go to Menu → Track Order
+- For contact: WhatsApp +2349168031213
+- Keep responses concise and friendly (2-4 sentences max)
+- Use emojis sparingly for warmth
+- Always respond in English`;
+
+  // Add to history
+  chatHistory.push({ role: 'user', content: text });
+
+  // Show typing indicator
+  const typingEl = document.createElement('div');
+  typingEl.className = 'chat-msg bot typing-indicator';
+  typingEl.innerHTML = '<span></span><span></span><span></span>';
+  document.getElementById('chat-messages').appendChild(typingEl);
+  document.getElementById('chat-messages').scrollTop = 99999;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: chatHistory.slice(-10) // last 10 turns for context
+      })
+    });
+    const data = await res.json();
+    typingEl.remove();
+    const reply = data.content && data.content[0] && data.content[0].text
+      ? data.content[0].text
+      : "Sorry, I couldn't process that. Please try again or contact us on WhatsApp at +2349168031213 😊";
+    chatHistory.push({ role: 'assistant', content: reply });
+    addChatMsg(reply, 'bot');
+    saveChatSession(text, 'user');
+    saveChatSession(reply, 'bot');
+  } catch(e) {
+    typingEl.remove();
+    const fallback = "I'm having trouble connecting right now. Please contact us on WhatsApp: +2349168031213 🙏";
+    addChatMsg(fallback, 'bot');
+  }
+
+  input.disabled = false;
+  document.querySelector('#chatbot-window .chat-send').disabled = false;
+  input.focus();
 };
 
 function addChatMsg(text, role) {
@@ -2824,8 +2937,8 @@ function notifyBuyerWhatsApp(phone, orderId, status, items, customerName, total,
     `🧾 *Order ID:* ${orderId}\n` +
     `${statusEmoji} *Status:* ${statusLabel}\n` +
     `🛍️ *Items:* ${items}\n` +
-    `💰 *Order Total:* ₦${Number(total||0).toLocaleString()}\n` +
-    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
+    `💰 *Order Total:* &#8358;${Number(total||0).toLocaleString()}\n` +
+    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* &#8358;${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
     `\nThank you for shopping with *Benim*! 🧡\nQuestions? Reply to this message.`
   );
   window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
@@ -2833,13 +2946,13 @@ function notifyBuyerWhatsApp(phone, orderId, status, items, customerName, total,
 
 function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, total, deliveryFee, payment, address) {
   const msg = encodeURIComponent(
-    `🛒 *New Order Received — Benim!*\n\n` +
+    `🛒 *New Order Received &mdash; Benim!*\n\n` +
     `🧾 *Order ID:* ${orderId}\n` +
     `👤 *Customer:* ${customerName}\n` +
     `📧 *Email:* ${customerEmail}\n` +
     `📦 *Items:* ${items}\n` +
-    `💰 *Subtotal:* ₦${Number(total||0).toLocaleString()}\n` +
-    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
+    `💰 *Subtotal:* &#8358;${Number(total||0).toLocaleString()}\n` +
+    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* &#8358;${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
     `💳 *Payment:* ${payment==='bank'?'Bank Transfer':'Pay on Delivery'}\n` +
     `📍 *Address:* ${address}\n` +
     `\nPlease confirm the order in the Admin Panel.`
@@ -2852,7 +2965,7 @@ function initSlider() {
   const slides = document.querySelector('.slides-container');
   const totalSlides = document.querySelectorAll('.slide').length;
   const dotsContainer = document.getElementById('slider-dots');
-  if(dotsContainer) dotsContainer.innerHTML = Array(totalSlides).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
+  dotsContainer.innerHTML = Array(totalSlides).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
   sliderInterval = setInterval(()=>changeSlide(1), 4000);
 }
 
@@ -2876,41 +2989,60 @@ function startCountdown() {
     const h = Math.floor(diff/3600000); diff%=3600000;
     const m = Math.floor(diff/60000); diff%=60000;
     const s = Math.floor(diff/1000);
-    const el = document.getElementById('flash-time-display');
-    if(el) el.textContent = `${String(h).padStart(2,'0')} : ${String(m).padStart(2,'0')} : ${String(s).padStart(2,'0')}`;
-    // legacy elements (may not exist)
-    const ch=document.getElementById('ct-h'),cm=document.getElementById('ct-m'),cs=document.getElementById('ct-s');
-    if(ch) ch.textContent=String(h).padStart(2,'0');
-    if(cm) cm.textContent=String(m).padStart(2,'0');
-    if(cs) cs.textContent=String(s).padStart(2,'0');
+    document.getElementById('ct-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('ct-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('ct-s').textContent = String(s).padStart(2,'0');
   }
   update(); setInterval(update, 1000);
 }
 
 // ===== NAVIGATION =====
-window.navigate = function(page) {
+const _navStack = [];
+let _navBusy = false;
+
+function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const el = document.getElementById('page-'+page);
   if(el) el.classList.add('active');
-  // update bottom nav
   document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
   const bnav = document.getElementById('bnav-'+page);
   if(bnav) bnav.classList.add('active');
   window.scrollTo(0,0);
-  // Page-specific logic
   if(page==='cart') renderCart();
   if(page==='orders') loadOrders();
   if(page==='wishlist') renderWishlist();
   if(page==='addresses') loadAddresses();
   if(page==='search') { if(!allProducts.length) loadProducts(); applyFilters(); }
-  if(page==='admin') {
-    if(!isAdmin) { navigate('home'); return; }
-    loadAdminProducts();
-    loadAdminStats();
+  if(page==='admin') { loadAdminProducts(); loadAdminStats(); }
+}
+
+window.navigate = function(page) {
+  if(page==='admin' && !isAdmin) { navigate('home'); return; }
+  _showPage(page);
+  if(_navStack[_navStack.length-1] !== page) {
+    _navStack.push(page);
+    _navBusy = true;
+    history.pushState({ benimPage: page }, '', '#'+page);
+    _navBusy = false;
   }
-  // Footer pages don't need special loading
-  // Push state for SPA
-  history.pushState({ page }, '', '#'+page);
+};
+
+window.goBack = function() {
+  if(_navStack.length > 1) {
+    _navStack.pop();
+    const prev = _navStack[_navStack.length-1];
+    _showPage(prev);
+    _navBusy = true;
+    history.replaceState({ benimPage: prev }, '', '#'+prev);
+    _navBusy = false;
+  } else {
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.replaceState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
+  }
 };
 
 // ===== FAQ TOGGLE =====
@@ -2935,7 +3067,22 @@ window.sendContactMessage = function() {
 };
 
 window.addEventListener('popstate', (e) => {
-  if(e.state&&e.state.page) navigate(e.state.page);
+  if(_navBusy) return;
+  if(e.state && e.state.benimPage) {
+    const page = e.state.benimPage;
+    const idx = _navStack.lastIndexOf(page);
+    if(idx >= 0) _navStack.splice(idx+1);
+    else _navStack.push(page);
+    _showPage(page);
+  } else {
+    // went back past site entry — push home back so user stays
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.pushState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
+  }
 });
 
 // ===== SIDEBAR =====
@@ -2977,170 +3124,18 @@ window.showToast = function(message, type='success') {
 async function init() {
   initSlider();
   startCountdown();
-  loadBannerImages();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
   renderSkeletons('trending-grid',8);
   await loadProducts();
   // Handle hash navigation
+  // Seed the nav stack with home first
+  _navStack.push('home');
+  history.replaceState({ benimPage: 'home' }, '', '#home');
+  // Then navigate to hash page if present
   const hash = location.hash.replace('#','');
-  if(hash && document.getElementById('page-'+hash)) navigate(hash);
+  if(hash && hash !== 'home' && document.getElementById('page-'+hash)) navigate(hash);
 }
-
-// ===== BANNER IMAGE MANAGEMENT =====
-function loadBannerImages() {
-  // Load individual deco product images (handbag, watch, sneakers)
-  ['handbag','watch','sneakers'].forEach(key => {
-    const saved = localStorage.getItem('decoImg_'+key);
-    if(saved) applyDecoImage(key, saved);
-    const input = document.getElementById('deco-url-'+key);
-    if(input && saved) input.value = saved.startsWith('data:') ? '(uploaded file)' : saved;
-  });
-  // Load slide 2 & 3 banner images
-  [2,3].forEach(i => {
-    const saved = localStorage.getItem('bannerImg'+i);
-    if(saved) applyBannerImage(i, saved);
-    const input = document.getElementById('banner-url-'+i);
-    if(input && saved && !saved.startsWith('data:')) input.value = saved;
-  });
-}
-
-function applyDecoImage(key, src) {
-  const el = document.getElementById('deco-'+key);
-  if(!el) return;
-  el.innerHTML = '';
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = key;
-  img.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;display:block;border-radius:6px;filter:drop-shadow(-4px 3px 10px rgba(0,0,0,.18))';
-  // Size constraints per product
-  if(key==='handbag') { img.style.maxHeight='85px'; img.style.maxWidth='80px'; }
-  if(key==='watch')   { img.style.maxHeight='70px'; img.style.maxWidth='50px'; }
-  if(key==='sneakers'){ img.style.maxHeight='55px'; img.style.maxWidth='120px'; }
-  el.appendChild(img);
-  // Update admin preview
-  const prev = document.getElementById('deco-preview-'+key);
-  if(prev) prev.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
-}
-
-function applyBannerImage(slide, src) {
-  const deco = document.getElementById('slide-deco-'+slide);
-  if(!deco) return;
-  deco.innerHTML = '';
-  const img = document.createElement('img');
-  img.src = src;
-  img.className = 'slide-deco-img';
-  img.style.cssText = 'height:95%;width:auto;object-fit:contain;position:absolute;right:0;bottom:0;filter:drop-shadow(-8px 4px 16px rgba(0,0,0,.18))';
-  deco.appendChild(img);
-  const prev = document.getElementById('banner-preview-'+slide);
-  if(prev) prev.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
-}
-
-window.previewDecoProduct = function(key) {
-  const val = document.getElementById('deco-url-'+key)?.value.trim();
-  const prev = document.getElementById('deco-preview-'+key);
-  if(!prev) return;
-  if(val) prev.innerHTML = `<img src="${val}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='Invalid URL'">`;
-  else prev.innerHTML = 'No image';
-};
-
-window.handleDecoUpload = function(key, input) {
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const dataUrl = e.target.result;
-    const urlInput = document.getElementById('deco-url-'+key);
-    if(urlInput) urlInput.value = '(uploaded file)';
-    const prev = document.getElementById('deco-preview-'+key);
-    if(prev) prev.innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover">`;
-    // Store temporarily for saving
-    if(!window._pendingDecoUploads) window._pendingDecoUploads = {};
-    window._pendingDecoUploads[key] = dataUrl;
-  };
-  reader.readAsDataURL(file);
-};
-
-window.clearDecoProduct = function(key) {
-  localStorage.removeItem('decoImg_'+key);
-  const input = document.getElementById('deco-url-'+key);
-  if(input) input.value = '';
-  const prev = document.getElementById('deco-preview-'+key);
-  if(prev) prev.innerHTML = 'No image';
-  // Restore SVG fallback
-  const el = document.getElementById('deco-'+key);
-  if(el) {
-    if(key==='handbag') el.innerHTML = `<svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="90"><ellipse cx="40" cy="22" rx="18" ry="4" fill="rgba(255,255,255,0.15)"/><path d="M22 22 Q27 14 40 12 Q53 14 58 22 L62 70 Q62 76 56 76 L24 76 Q18 76 18 70 Z" fill="#f4a416"/><path d="M27 22 Q27 14 40 12 Q53 14 53 22" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="22" y="44" width="36" height="4" rx="2" fill="rgba(0,0,0,0.1)"/></svg>`;
-    if(key==='watch') el.innerHTML = `<svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="46" height="66"><rect x="16" y="4" width="6" height="8" rx="3" fill="#333"/><rect x="28" y="4" width="6" height="8" rx="3" fill="#333"/><rect x="10" y="12" width="30" height="36" rx="8" fill="#1a1a1a"/><rect x="13" y="15" width="24" height="30" rx="6" fill="#222"/><text x="25" y="33" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="monospace">10:10</text><rect x="16" y="48" width="6" height="8" rx="3" fill="#333"/><rect x="28" y="48" width="6" height="8" rx="3" fill="#333"/></svg>`;
-    if(key==='sneakers') el.innerHTML = `<svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="60"><path d="M8 30 Q22 16 52 14 Q76 14 82 24 Q82 38 64 40 L12 40 Q2 40 8 30Z" fill="#f5f0eb"/><path d="M18 40 Q30 28 58 26 Q80 26 86 35 Q86 48 70 50 L22 50 Q12 50 18 40Z" fill="#ede8e2"/></svg>`;
-  }
-  if(window._pendingDecoUploads) delete window._pendingDecoUploads[key];
-  showToast(key.charAt(0).toUpperCase()+key.slice(1)+' image cleared');
-};
-
-window.saveDecoImages = function() {
-  let saved = 0;
-  ['handbag','watch','sneakers'].forEach(key => {
-    // Check for uploaded file first
-    const uploadedSrc = window._pendingDecoUploads?.[key];
-    if(uploadedSrc) {
-      localStorage.setItem('decoImg_'+key, uploadedSrc);
-      applyDecoImage(key, uploadedSrc);
-      saved++;
-    } else {
-      const val = document.getElementById('deco-url-'+key)?.value.trim();
-      if(val && val !== '(uploaded file)') {
-        localStorage.setItem('decoImg_'+key, val);
-        applyDecoImage(key, val);
-        saved++;
-      }
-    }
-  });
-  window._pendingDecoUploads = {};
-  showToast(saved > 0 ? `${saved} image(s) saved & applied to Slide 1!` : 'No new images to save', saved > 0 ? 'success' : 'info');
-};
-
-window.previewBanner = function(slide) {
-  const val = document.getElementById('banner-url-'+slide)?.value.trim();
-  const prev = document.getElementById('banner-preview-'+slide);
-  if(!prev) return;
-  if(val) prev.innerHTML = `<img src="${val}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='Invalid URL'">`;
-  else prev.innerHTML = 'No image';
-};
-
-window.handleBannerUpload = function(slide, input) {
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const dataUrl = e.target.result;
-    const urlInput = document.getElementById('banner-url-'+slide);
-    if(urlInput) urlInput.value = dataUrl;
-    const prev = document.getElementById('banner-preview-'+slide);
-    if(prev) prev.innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover">`;
-  };
-  reader.readAsDataURL(file);
-};
-
-window.clearBanner = function(slide) {
-  localStorage.removeItem('bannerImg'+slide);
-  const input = document.getElementById('banner-url-'+slide);
-  if(input) input.value = '';
-  const prev = document.getElementById('banner-preview-'+slide);
-  if(prev) prev.innerHTML = 'No image';
-  const deco = document.getElementById('slide-deco-'+slide);
-  if(deco) deco.innerHTML = '';
-  showToast('Slide '+slide+' image cleared');
-};
-
-window.saveBannerImages = function() {
-  let saved = 0;
-  [2,3].forEach(i => {
-    const val = document.getElementById('banner-url-'+i)?.value.trim();
-    if(val) { localStorage.setItem('bannerImg'+i, val); applyBannerImage(i, val); saved++; }
-  });
-  showToast(saved > 0 ? 'Slide images saved!' : 'No images to save', saved > 0 ? 'success' : 'info');
-};
 
 init();
 </script>
