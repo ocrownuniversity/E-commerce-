@@ -57,7 +57,7 @@ img{max-width:100%;display:block}
 /* ====== HEADER ====== */
 #header{background:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .header-top{display:flex;align-items:center;gap:0;padding:12px 16px 0;max-width:600px;margin:0 auto;width:100%}
-.header-logo-text{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--orange);cursor:pointer;letter-spacing:-0.5px;flex:1;text-align:center}
+.header-logo-text{font-family:'Nunito',sans-serif;font-weight:900;font-size:26px;color:var(--orange);cursor:pointer;letter-spacing:-0.5px;flex:1;text-align:center;margin-left:8px}
 .header-search-row{padding:10px 16px 12px;max-width:600px;margin:0 auto;width:100%}
 .header-search-wrap{display:flex;align-items:center;background:#f3f4f6;border-radius:50px;padding:10px 16px;gap:10px;width:100%}
 .header-search-wrap i{color:var(--gray-400);font-size:16px;flex-shrink:0}
@@ -107,6 +107,13 @@ img{max-width:100%;display:block}
 .slide-btn:hover{transform:scale(1.04)}
 .slide-deco{position:absolute;right:-10px;bottom:0;top:0;width:55%;display:flex;align-items:flex-end;justify-content:flex-end;overflow:hidden;pointer-events:none}
 .slide-deco-img{height:95%;width:auto;object-fit:contain;opacity:.95;filter:drop-shadow(-8px 4px 16px rgba(0,0,0,.18))}
+/* Deco product layout */
+.deco-products{position:absolute;right:0;top:0;bottom:0;width:56%;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;padding:8px 6px 14px 0;gap:4px;pointer-events:none}
+.deco-item{display:flex;align-items:center;justify-content:center;filter:drop-shadow(-4px 3px 10px rgba(0,0,0,.2))}
+.deco-handbag{order:1}
+.deco-watch{order:2;margin-right:30px}
+.deco-sneakers{order:3;width:100%}
+.deco-item img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;display:block}
 .slider-dots{position:absolute;bottom:10px;left:22px;display:flex;gap:5px}
 .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.2s}
 .dot.active{background:#fff;width:22px;border-radius:4px}
@@ -552,36 +559,44 @@ body{padding-bottom:60px}
     <div class="slides-container" id="slides">
       <div class="slide slide-1">
         <div class="slide-content">
-          <h2>Mega Savings<br>on Top Deals</h2>
-          <p>Shop the best offers<br>selected for you.</p>
-          <button class="slide-btn" onclick="navigate('search')">SHOP NOW</button>
+          <h2>Shop Smart.<br>Dress Better.</h2>
+          <p>Premium fashion at<br>honest prices.</p>
+          <button class="slide-btn" onclick="navigate('search')">Shop Now</button>
         </div>
-        <div class="slide-deco">
-          <svg class="slide-deco-img" viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Handbag -->
-            <ellipse cx="110" cy="62" rx="38" ry="8" fill="rgba(255,255,255,0.15)"/>
-            <path d="M85 62 Q95 48 110 45 Q125 48 135 62 L140 130 Q140 140 130 140 L90 140 Q80 140 80 130 Z" fill="#f4a416"/>
-            <path d="M95 62 Q95 50 110 47 Q125 50 125 62" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <rect x="85" y="88" width="50" height="6" rx="3" fill="rgba(0,0,0,0.1)"/>
-            <rect x="95" y="100" width="30" height="4" rx="2" fill="rgba(0,0,0,0.08)"/>
-            <!-- Watch -->
-            <rect x="52" y="95" width="22" height="28" rx="6" fill="#1a1a1a"/>
-            <rect x="55" y="98" width="16" height="22" rx="4" fill="#222"/>
-            <rect x="55" y="91" width="4" height="6" rx="2" fill="#333"/>
-            <rect x="65" y="91" width="4" height="6" rx="2" fill="#333"/>
-            <rect x="55" y="123" width="4" height="6" rx="2" fill="#333"/>
-            <rect x="65" y="123" width="4" height="6" rx="2" fill="#333"/>
-            <text x="63" y="111" text-anchor="middle" font-size="5" fill="#fff" font-weight="bold">10:10</text>
-            <!-- Sneakers -->
-            <path d="M130 145 Q145 132 175 130 Q195 130 200 138 Q200 150 185 152 L135 152 Q125 152 130 145Z" fill="#f5f0eb"/>
-            <path d="M145 133 Q155 125 170 124 Q183 124 187 132" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
-            <path d="M150 136 L168 134" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-            <path d="M152 139 L170 137" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-            <path d="M154 142 L172 140" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2"/>
-            <!-- Second sneaker (slightly offset) -->
-            <path d="M145 152 Q158 141 185 139 Q202 139 207 147 Q207 158 193 160 L148 160 Q138 160 145 152Z" fill="#ede8e2"/>
-            <path d="M160 143 Q170 136 183 135" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-          </svg>
+        <div class="slide-deco" id="slide-deco-1">
+          <!-- 3 product image slots — managed via Admin > Banner Images -->
+          <div class="deco-products">
+            <div class="deco-item deco-handbag" id="deco-handbag">
+              <svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="90">
+                <ellipse cx="40" cy="22" rx="18" ry="4" fill="rgba(255,255,255,0.15)"/>
+                <path d="M22 22 Q27 14 40 12 Q53 14 58 22 L62 70 Q62 76 56 76 L24 76 Q18 76 18 70 Z" fill="#f4a416"/>
+                <path d="M27 22 Q27 14 40 12 Q53 14 53 22" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <rect x="22" y="44" width="36" height="4" rx="2" fill="rgba(0,0,0,0.1)"/>
+                <rect x="27" y="52" width="26" height="3" rx="1.5" fill="rgba(0,0,0,0.07)"/>
+              </svg>
+            </div>
+            <div class="deco-item deco-watch" id="deco-watch">
+              <svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="46" height="66">
+                <rect x="16" y="4" width="6" height="8" rx="3" fill="#333"/>
+                <rect x="28" y="4" width="6" height="8" rx="3" fill="#333"/>
+                <rect x="10" y="12" width="30" height="36" rx="8" fill="#1a1a1a"/>
+                <rect x="13" y="15" width="24" height="30" rx="6" fill="#222"/>
+                <text x="25" y="33" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="monospace">10:10</text>
+                <rect x="16" y="48" width="6" height="8" rx="3" fill="#333"/>
+                <rect x="28" y="48" width="6" height="8" rx="3" fill="#333"/>
+              </svg>
+            </div>
+            <div class="deco-item deco-sneakers" id="deco-sneakers">
+              <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="60">
+                <path d="M8 30 Q22 16 52 14 Q76 14 82 24 Q82 38 64 40 L12 40 Q2 40 8 30Z" fill="#f5f0eb"/>
+                <path d="M20 17 Q34 9 54 8 Q70 8 75 18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/>
+                <path d="M24 22 L56 20" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+                <path d="M25 27 L57 25" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+                <path d="M18 40 Q30 28 58 26 Q80 26 86 35 Q86 48 70 50 L22 50 Q12 50 18 40Z" fill="#ede8e2"/>
+                <path d="M32 29 Q44 22 62 21" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"/>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="slider-dots" id="slider-dots"></div>
       </div>
@@ -591,7 +606,7 @@ body{padding-bottom:60px}
           <p>Unbeatable prices<br>on top brands</p>
           <button class="slide-btn" onclick="navigate('search')">EXPLORE</button>
         </div>
-        <div class="slide-deco"></div>
+        <div class="slide-deco" id="slide-deco-2"></div>
       </div>
       <div class="slide slide-3">
         <div class="slide-content">
@@ -599,7 +614,7 @@ body{padding-bottom:60px}
           <p>Limited time offers<br>grab before it's gone</p>
           <button class="slide-btn" onclick="navigate('search')">VIEW DEALS</button>
         </div>
-        <div class="slide-deco"></div>
+        <div class="slide-deco" id="slide-deco-3"></div>
       </div>
     </div>
     <button class="slider-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
@@ -992,6 +1007,7 @@ body{padding-bottom:60px}
     <div class="admin-tabs">
       <button class="admin-tab active" onclick="switchAdminTab('products',this)">Products</button>
       <button class="admin-tab" onclick="switchAdminTab('orders',this)">Orders</button>
+      <button class="admin-tab" onclick="switchAdminTab('banner',this)">Banner Images</button>
       <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Reviews</button>
       <button class="admin-tab" onclick="switchAdminTab('chats',this)">Chat Sessions</button>
     </div>
@@ -1020,6 +1036,131 @@ body{padding-bottom:60px}
             <tbody id="admin-orders-body"></tbody>
           </table>
         </div>
+      </div>
+    </div>
+    <!-- Banner Images Tab -->
+    <div id="admin-banner" class="admin-tab-content hidden">
+      <div class="admin-card">
+        <div class="admin-card-title"><span>🖼️ Slide 1 — Decorative Product Images</span></div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Manage the 3 product images shown on the right side of Slide 1 (handbag, watch, sneakers). Upload your own images to replace each item. Saved to browser storage instantly.</p>
+
+        <!-- Handbag -->
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:20px">👜</span>
+            <strong style="font-size:14px">Product 1 — Handbag</strong>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+            <div id="deco-preview-handbag" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
+            <div style="flex:1;min-width:180px">
+              <label class="form-label">Image URL</label>
+              <input class="form-input" id="deco-url-handbag" placeholder="https://... or paste URL" oninput="previewDecoProduct('handbag')">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
+                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('handbag',this)">
+                </label>
+                <button class="btn-danger" onclick="clearDecoProduct('handbag')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch -->
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:20px">⌚</span>
+            <strong style="font-size:14px">Product 2 — Watch</strong>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+            <div id="deco-preview-watch" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
+            <div style="flex:1;min-width:180px">
+              <label class="form-label">Image URL</label>
+              <input class="form-input" id="deco-url-watch" placeholder="https://... or paste URL" oninput="previewDecoProduct('watch')">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
+                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('watch',this)">
+                </label>
+                <button class="btn-danger" onclick="clearDecoProduct('watch')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sneakers -->
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:20px">👟</span>
+            <strong style="font-size:14px">Product 3 — Sneakers</strong>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+            <div id="deco-preview-sneakers" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
+            <div style="flex:1;min-width:180px">
+              <label class="form-label">Image URL</label>
+              <input class="form-input" id="deco-url-sneakers" placeholder="https://... or paste URL" oninput="previewDecoProduct('sneakers')">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload
+                  <input type="file" accept="image/*" style="display:none" onchange="handleDecoUpload('sneakers',this)">
+                </label>
+                <button class="btn-danger" onclick="clearDecoProduct('sneakers')" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="saveDecoImages()" style="width:100%;justify-content:center;padding:12px"><i class="fas fa-save"></i> Save &amp; Apply Images to Slide</button>
+        <p style="font-size:11px;color:var(--gray-400);margin-top:8px;text-align:center">Saved to browser storage. Images appear on Slide 1 immediately after saving.</p>
+      </div>
+
+      <!-- Slides 2 & 3 background images -->
+      <div class="admin-card" style="margin-top:12px">
+        <div class="admin-card-title"><span>🖼️ Slides 2 &amp; 3 — Right-side Images</span></div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:14px">Optionally add a decorative image for Slide 2 and Slide 3.</p>
+        <!-- Slide 2 -->
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#1a1a2e"></div>
+            <strong style="font-size:14px">Slide 2 — Hot Deals Every Day</strong>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+            <div id="banner-preview-2" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
+            <div style="flex:1;min-width:180px">
+              <label class="form-label">Image URL</label>
+              <input class="form-input" id="banner-url-2" placeholder="https://... or relative path" oninput="previewBanner(2)">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload File
+                  <input type="file" accept="image/*" style="display:none" onchange="handleBannerUpload(2,this)">
+                </label>
+                <button class="btn-danger" onclick="clearBanner(2)" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:14px;margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#0f3460"></div>
+            <strong style="font-size:14px">Slide 3 — Flash Sale Is Live 🔥</strong>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+            <div id="banner-preview-3" style="width:90px;height:80px;background:#f3f3f3;border-radius:8px;overflow:hidden;border:2px dashed var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gray-400);flex-shrink:0">No image</div>
+            <div style="flex:1;min-width:180px">
+              <label class="form-label">Image URL</label>
+              <input class="form-input" id="banner-url-3" placeholder="https://... or relative path" oninput="previewBanner(3)">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <label style="background:var(--gray-100);border:1px solid var(--gray-300);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+                  <i class="fas fa-upload" style="color:var(--orange)"></i> Upload File
+                  <input type="file" accept="image/*" style="display:none" onchange="handleBannerUpload(3,this)">
+                </label>
+                <button class="btn-danger" onclick="clearBanner(3)" style="font-size:11px;padding:5px 10px"><i class="fas fa-times"></i> Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="saveBannerImages()" style="width:100%;justify-content:center;padding:12px"><i class="fas fa-save"></i> Save Slide 2 &amp; 3 Images</button>
       </div>
     </div>
     <!-- Reviews Tab -->
@@ -2574,6 +2715,16 @@ window.switchAdminTab = function(tab, btn) {
   else if(tab==='orders') loadAdminOrders();
   else if(tab==='reviews') loadAdminReviews();
   else if(tab==='chats') loadAdminChats();
+  else if(tab==='banner') {
+    // Load saved values into inputs and previews
+    [1,2,3].forEach(i => {
+      const saved = localStorage.getItem('bannerImg'+i);
+      const input = document.getElementById('banner-url-'+i);
+      const prev = document.getElementById('banner-preview-'+i);
+      if(input && saved) input.value = saved;
+      if(prev && saved) prev.innerHTML = `<img src="${saved}" style="width:100%;height:100%;object-fit:cover">`;
+    });
+  }
 };
 
 window.loadAdminStats = async function() {
@@ -2826,6 +2977,7 @@ window.showToast = function(message, type='success') {
 async function init() {
   initSlider();
   startCountdown();
+  loadBannerImages();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
   renderSkeletons('trending-grid',8);
@@ -2834,6 +2986,161 @@ async function init() {
   const hash = location.hash.replace('#','');
   if(hash && document.getElementById('page-'+hash)) navigate(hash);
 }
+
+// ===== BANNER IMAGE MANAGEMENT =====
+function loadBannerImages() {
+  // Load individual deco product images (handbag, watch, sneakers)
+  ['handbag','watch','sneakers'].forEach(key => {
+    const saved = localStorage.getItem('decoImg_'+key);
+    if(saved) applyDecoImage(key, saved);
+    const input = document.getElementById('deco-url-'+key);
+    if(input && saved) input.value = saved.startsWith('data:') ? '(uploaded file)' : saved;
+  });
+  // Load slide 2 & 3 banner images
+  [2,3].forEach(i => {
+    const saved = localStorage.getItem('bannerImg'+i);
+    if(saved) applyBannerImage(i, saved);
+    const input = document.getElementById('banner-url-'+i);
+    if(input && saved && !saved.startsWith('data:')) input.value = saved;
+  });
+}
+
+function applyDecoImage(key, src) {
+  const el = document.getElementById('deco-'+key);
+  if(!el) return;
+  el.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = key;
+  img.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;display:block;border-radius:6px;filter:drop-shadow(-4px 3px 10px rgba(0,0,0,.18))';
+  // Size constraints per product
+  if(key==='handbag') { img.style.maxHeight='85px'; img.style.maxWidth='80px'; }
+  if(key==='watch')   { img.style.maxHeight='70px'; img.style.maxWidth='50px'; }
+  if(key==='sneakers'){ img.style.maxHeight='55px'; img.style.maxWidth='120px'; }
+  el.appendChild(img);
+  // Update admin preview
+  const prev = document.getElementById('deco-preview-'+key);
+  if(prev) prev.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
+}
+
+function applyBannerImage(slide, src) {
+  const deco = document.getElementById('slide-deco-'+slide);
+  if(!deco) return;
+  deco.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = src;
+  img.className = 'slide-deco-img';
+  img.style.cssText = 'height:95%;width:auto;object-fit:contain;position:absolute;right:0;bottom:0;filter:drop-shadow(-8px 4px 16px rgba(0,0,0,.18))';
+  deco.appendChild(img);
+  const prev = document.getElementById('banner-preview-'+slide);
+  if(prev) prev.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
+}
+
+window.previewDecoProduct = function(key) {
+  const val = document.getElementById('deco-url-'+key)?.value.trim();
+  const prev = document.getElementById('deco-preview-'+key);
+  if(!prev) return;
+  if(val) prev.innerHTML = `<img src="${val}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='Invalid URL'">`;
+  else prev.innerHTML = 'No image';
+};
+
+window.handleDecoUpload = function(key, input) {
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const dataUrl = e.target.result;
+    const urlInput = document.getElementById('deco-url-'+key);
+    if(urlInput) urlInput.value = '(uploaded file)';
+    const prev = document.getElementById('deco-preview-'+key);
+    if(prev) prev.innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover">`;
+    // Store temporarily for saving
+    if(!window._pendingDecoUploads) window._pendingDecoUploads = {};
+    window._pendingDecoUploads[key] = dataUrl;
+  };
+  reader.readAsDataURL(file);
+};
+
+window.clearDecoProduct = function(key) {
+  localStorage.removeItem('decoImg_'+key);
+  const input = document.getElementById('deco-url-'+key);
+  if(input) input.value = '';
+  const prev = document.getElementById('deco-preview-'+key);
+  if(prev) prev.innerHTML = 'No image';
+  // Restore SVG fallback
+  const el = document.getElementById('deco-'+key);
+  if(el) {
+    if(key==='handbag') el.innerHTML = `<svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="90"><ellipse cx="40" cy="22" rx="18" ry="4" fill="rgba(255,255,255,0.15)"/><path d="M22 22 Q27 14 40 12 Q53 14 58 22 L62 70 Q62 76 56 76 L24 76 Q18 76 18 70 Z" fill="#f4a416"/><path d="M27 22 Q27 14 40 12 Q53 14 53 22" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="22" y="44" width="36" height="4" rx="2" fill="rgba(0,0,0,0.1)"/></svg>`;
+    if(key==='watch') el.innerHTML = `<svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="46" height="66"><rect x="16" y="4" width="6" height="8" rx="3" fill="#333"/><rect x="28" y="4" width="6" height="8" rx="3" fill="#333"/><rect x="10" y="12" width="30" height="36" rx="8" fill="#1a1a1a"/><rect x="13" y="15" width="24" height="30" rx="6" fill="#222"/><text x="25" y="33" text-anchor="middle" font-size="7" fill="#fff" font-weight="bold" font-family="monospace">10:10</text><rect x="16" y="48" width="6" height="8" rx="3" fill="#333"/><rect x="28" y="48" width="6" height="8" rx="3" fill="#333"/></svg>`;
+    if(key==='sneakers') el.innerHTML = `<svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="60"><path d="M8 30 Q22 16 52 14 Q76 14 82 24 Q82 38 64 40 L12 40 Q2 40 8 30Z" fill="#f5f0eb"/><path d="M18 40 Q30 28 58 26 Q80 26 86 35 Q86 48 70 50 L22 50 Q12 50 18 40Z" fill="#ede8e2"/></svg>`;
+  }
+  if(window._pendingDecoUploads) delete window._pendingDecoUploads[key];
+  showToast(key.charAt(0).toUpperCase()+key.slice(1)+' image cleared');
+};
+
+window.saveDecoImages = function() {
+  let saved = 0;
+  ['handbag','watch','sneakers'].forEach(key => {
+    // Check for uploaded file first
+    const uploadedSrc = window._pendingDecoUploads?.[key];
+    if(uploadedSrc) {
+      localStorage.setItem('decoImg_'+key, uploadedSrc);
+      applyDecoImage(key, uploadedSrc);
+      saved++;
+    } else {
+      const val = document.getElementById('deco-url-'+key)?.value.trim();
+      if(val && val !== '(uploaded file)') {
+        localStorage.setItem('decoImg_'+key, val);
+        applyDecoImage(key, val);
+        saved++;
+      }
+    }
+  });
+  window._pendingDecoUploads = {};
+  showToast(saved > 0 ? `${saved} image(s) saved & applied to Slide 1!` : 'No new images to save', saved > 0 ? 'success' : 'info');
+};
+
+window.previewBanner = function(slide) {
+  const val = document.getElementById('banner-url-'+slide)?.value.trim();
+  const prev = document.getElementById('banner-preview-'+slide);
+  if(!prev) return;
+  if(val) prev.innerHTML = `<img src="${val}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='Invalid URL'">`;
+  else prev.innerHTML = 'No image';
+};
+
+window.handleBannerUpload = function(slide, input) {
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const dataUrl = e.target.result;
+    const urlInput = document.getElementById('banner-url-'+slide);
+    if(urlInput) urlInput.value = dataUrl;
+    const prev = document.getElementById('banner-preview-'+slide);
+    if(prev) prev.innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover">`;
+  };
+  reader.readAsDataURL(file);
+};
+
+window.clearBanner = function(slide) {
+  localStorage.removeItem('bannerImg'+slide);
+  const input = document.getElementById('banner-url-'+slide);
+  if(input) input.value = '';
+  const prev = document.getElementById('banner-preview-'+slide);
+  if(prev) prev.innerHTML = 'No image';
+  const deco = document.getElementById('slide-deco-'+slide);
+  if(deco) deco.innerHTML = '';
+  showToast('Slide '+slide+' image cleared');
+};
+
+window.saveBannerImages = function() {
+  let saved = 0;
+  [2,3].forEach(i => {
+    const val = document.getElementById('banner-url-'+i)?.value.trim();
+    if(val) { localStorage.setItem('bannerImg'+i, val); applyBannerImage(i, val); saved++; }
+  });
+  showToast(saved > 0 ? 'Slide images saved!' : 'No images to save', saved > 0 ? 'success' : 'info');
+};
 
 init();
 </script>
