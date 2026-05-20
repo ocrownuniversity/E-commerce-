@@ -2000,8 +2000,8 @@ window.openProduct = function(id) {
   const displayPrice = disc>0 ? disc : price;
   const hasDisc = disc>0 && disc<price;
   const discPct = hasDisc ? Math.round((1-disc/price)*100) : 0;
-  document.getElementById('detail-price').textContent = '&#8358;'+displayPrice.toLocaleString();
-  document.getElementById('detail-old-price').textContent = hasDisc ? '&#8358;'+price.toLocaleString() : '';
+  document.getElementById('detail-price').innerHTML = '&#8358;'+displayPrice.toLocaleString();
+  document.getElementById('detail-old-price').innerHTML = hasDisc ? '&#8358;'+price.toLocaleString() : '';
   document.getElementById('detail-discount').textContent = hasDisc ? `-${discPct}%` : '';
   document.getElementById('detail-discount').classList.toggle('hidden', !hasDisc);
   document.getElementById('detail-stars').textContent = starsHTML(p.rating||0);
@@ -2261,10 +2261,10 @@ window.renderCart = function() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  document.getElementById('cart-subtotal').textContent = '&#8358;'+subtotal.toLocaleString();
-  document.getElementById('cart-delivery').textContent = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
+  document.getElementById('cart-subtotal').innerHTML = '&#8358;'+subtotal.toLocaleString();
+  document.getElementById('cart-delivery').innerHTML = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
   document.getElementById('cart-delivery').style.color = deliveryFee===0 ? 'var(--green)' : 'var(--gray-800)';
-  document.getElementById('cart-total').textContent = '&#8358;'+grandTotal.toLocaleString();
+  document.getElementById('cart-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
 };
 
 window.updateCartQty = function(i, delta) {
@@ -2313,7 +2313,7 @@ async function loadCheckout() {
   sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
     `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>` +
     (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add &#8358;${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
-  document.getElementById('checkout-total').textContent = '&#8358;'+grandTotal.toLocaleString();
+  document.getElementById('checkout-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
   // Store delivery fee for placeOrder to use
   window._checkoutDeliveryFee = deliveryFee;
   window._checkoutGrandTotal = grandTotal;
@@ -2713,7 +2713,7 @@ window.loadAdminOrders = async function() {
     });
     tbody.innerHTML = rows.join('') || '<tr><td colspan="7" style="text-align:center;color:var(--gray-400)">No orders</td></tr>';
     document.getElementById('stat-orders').textContent = snap.docs.length;
-    document.getElementById('stat-revenue').textContent = '&#8358;'+totalRevenue.toLocaleString();
+    document.getElementById('stat-revenue').innerHTML = '&#8358;'+totalRevenue.toLocaleString();
   } catch(e) { tbody.innerHTML = '<tr><td colspan="7" style="color:var(--red);text-align:center">Error loading</td></tr>'; }
 };
 
@@ -3002,7 +3002,7 @@ function startCountdown() {
 }
 
 // ===== NAVIGATION =====
-// Simple stack-based navigation — no history API tricks that cause exit-site issues
+// Stack-based in-app navigation. Browser back is intercepted and never exits the site.
 const _navStack = ['home'];
 
 function _showPage(page) {
@@ -3023,27 +3023,33 @@ function _showPage(page) {
 
 window.navigate = function(page) {
   if(page==='admin' && !isAdmin) { navigate('home'); return; }
-  // Push a dummy history entry so back button is intercepted
-  history.pushState(null, '', location.href);
   if(_navStack[_navStack.length-1] !== page) _navStack.push(page);
+  // Push TWO sentinel entries: one that popstate will consume, one as buffer
+  history.pushState({benim:true}, '', location.href);
+  history.pushState({benim:true}, '', location.href);
   _showPage(page);
 };
 
 window.goBack = function() {
   if(_navStack.length > 1) {
     _navStack.pop();
-    _showPage(_navStack[_navStack.length-1]);
-  } else {
-    _showPage('home');
   }
+  // Always replenish sentinels after going back
+  history.pushState({benim:true}, '', location.href);
+  history.pushState({benim:true}, '', location.href);
+  _showPage(_navStack[_navStack.length-1]);
 };
 
-// Intercept browser back button — NEVER leave the site
-window.addEventListener('popstate', function() {
-  // Always push state back to keep user on site
-  history.pushState(null, '', location.href);
-  // Then perform in-app back
-  goBack();
+// Intercept browser back — ALWAYS stay on site
+window.addEventListener('popstate', function(e) {
+  // Immediately push two new sentinels back
+  history.pushState({benim:true}, '', location.href);
+  history.pushState({benim:true}, '', location.href);
+  // Then do in-app back
+  if(_navStack.length > 1) {
+    _navStack.pop();
+  }
+  _showPage(_navStack[_navStack.length-1]);
 });
 
 // ===== FAQ TOGGLE =====
@@ -3105,8 +3111,9 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
-  // Push initial state so back button is interceptable from the start
-  history.pushState(null, '', location.href);
+  // Push two sentinel entries so back button is always interceptable
+  history.pushState({benim:true}, '', location.href);
+  history.pushState({benim:true}, '', location.href);
   initSlider();
   startCountdown();
   renderSkeletons('flash-grid',4);
