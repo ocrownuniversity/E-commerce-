@@ -493,16 +493,10 @@ body{padding-bottom:70px}
 .slider-dots{bottom:8px!important}
 
 /* HOME SECTIONS */
-.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 0 18px!important}
-.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important;padding:0 12px!important}
-.home-section-header{margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 12px!important}
-.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important;cursor:pointer!important}
-
-/* PRODUCT GRID — force clean white, no extra bg */
-#flash-section,#page-home .home-section{border-radius:0!important}
-
-/* PAGE BACKGROUNDS — slightly off-white between sections */
-#page-home{background:#f0f0f0!important}
+.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 12px 18px!important}
+.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important}
+.home-section-header{margin-bottom:14px!important}
+.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important}
 
 /* FLASH SECTION */
 #flash-section{margin-top:8px!important}
@@ -511,14 +505,12 @@ body{padding-bottom:70px}
 .flash-time{color:#e8420a!important;font-size:12px!important;font-weight:900!important}
 .flash-colon{color:#e8420a!important;font-weight:900!important}
 .flash-bolt{color:#e8420a!important}
-/* Flash section header needs padding too */
-#flash-section .home-section-header{padding:0 12px!important}
 
-/* PRODUCT GRID — 3 columns full width, no side padding */
-.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2px!important;width:100%!important}
+/* PRODUCT GRID &mdash; 3 columns on ALL screen sizes */
+.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
 
 /* PRODUCT CARD — matches screenshot exactly */
-.pc{background:#fff;border-radius:0;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:none;border:none;border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
+.pc{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #f0f0f0}
 .pc:hover{box-shadow:0 3px 12px rgba(0,0,0,.12)}
 .pc-img-wrap{position:relative;width:100%;aspect-ratio:1;background:#f5f5f5;overflow:hidden;flex-shrink:0}
 .pc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
@@ -544,7 +536,8 @@ body{padding-bottom:70px}
 .bnav-badge{top:4px!important;right:calc(50% - 18px)!important;font-size:9px!important;padding:1px 4px!important}
 
 /* PAGE BACKGROUNDS */
-body{padding-bottom:65px!important;background:#f0f0f0!important}
+#page-home{background:#f2f2f2!important}
+body{padding-bottom:65px!important;background:#f2f2f2!important}
 
 /* CARD ACTION BUTTONS */
 .card-action-btns{display:flex;gap:4px;margin-top:8px}
@@ -552,13 +545,6 @@ body{padding-bottom:65px!important;background:#f0f0f0!important}
 .card-btn-cart:hover{background:#111;color:#fff}
 .card-btn-buy{flex:1;background:transparent;color:#111;border:1.5px solid #111;border-radius:5px;padding:5px 0;font-size:10px;font-weight:800;cursor:pointer;font-family:'Poppins',sans-serif;transition:.15s}
 .card-btn-buy:hover{background:#111;color:#fff}
-
-/* TYPING INDICATOR */
-.typing-indicator{display:flex!important;gap:4px;align-items:center;padding:10px 14px!important;min-width:50px}
-.typing-indicator span{width:7px;height:7px;border-radius:50%;background:#ccc;display:inline-block;animation:typingBounce 1.2s infinite ease-in-out}
-.typing-indicator span:nth-child(2){animation-delay:.2s}
-.typing-indicator span:nth-child(3){animation-delay:.4s}
-@keyframes typingBounce{0%,80%,100%{transform:scale(0.6);opacity:.5}40%{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
@@ -1969,8 +1955,8 @@ function productCardHTML(p, isFlash=false) {
     <div class="pc-body">
       <div class="pc-name">${p.name||'Product'}</div>
       <div class="pc-prices">
-        <span class="pc-price">&#8358;${displayPrice.toLocaleString()}</span>
-        ${hasDisc ? `<span class="pc-old">&#8358;${price.toLocaleString()}</span>` : ''}
+        <span class="pc-price">₦${displayPrice.toLocaleString()}</span>
+        ${hasDisc ? `<span class="pc-old">₦${price.toLocaleString()}</span>` : ''}
       </div>
       <div class="pc-sold-row">
         <div class="pc-bar-bg"><div class="pc-bar-fill" style="width:${soldPct}%"></div></div>
@@ -2000,8 +1986,8 @@ window.openProduct = function(id) {
   const displayPrice = disc>0 ? disc : price;
   const hasDisc = disc>0 && disc<price;
   const discPct = hasDisc ? Math.round((1-disc/price)*100) : 0;
-  document.getElementById('detail-price').innerHTML = '&#8358;'+displayPrice.toLocaleString();
-  document.getElementById('detail-old-price').innerHTML = hasDisc ? '&#8358;'+price.toLocaleString() : '';
+  document.getElementById('detail-price').innerHTML = '₦'+displayPrice.toLocaleString();
+  document.getElementById('detail-old-price').innerHTML = hasDisc ? '₦'+price.toLocaleString() : '';
   document.getElementById('detail-discount').textContent = hasDisc ? `-${discPct}%` : '';
   document.getElementById('detail-discount').classList.toggle('hidden', !hasDisc);
   document.getElementById('detail-stars').textContent = starsHTML(p.rating||0);
@@ -2246,7 +2232,7 @@ window.renderCart = function() {
       <img class="cart-item-img" src="${item.image||'https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'}" onerror="this.src='https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'">
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}${item.variantLabel?` <span style="font-size:11px;color:var(--orange);font-weight:700">(${item.variantLabel})</span>`:''}</div>
-        <div class="cart-item-price">&#8358;${(item.price*item.qty).toLocaleString()}</div>
+        <div class="cart-item-price">₦${(item.price*item.qty).toLocaleString()}</div>
         <div class="cart-item-actions">
           <div class="qty-controls">
             <button class="qty-btn" onclick="updateCartQty(${i},-1)">-</button>
@@ -2261,10 +2247,10 @@ window.renderCart = function() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  document.getElementById('cart-subtotal').innerHTML = '&#8358;'+subtotal.toLocaleString();
-  document.getElementById('cart-delivery').innerHTML = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
+  document.getElementById('cart-subtotal').textContent = '₦'+subtotal.toLocaleString();
+  document.getElementById('cart-delivery').textContent = deliveryFee===0 ? 'FREE' : '₦'+deliveryFee.toLocaleString();
   document.getElementById('cart-delivery').style.color = deliveryFee===0 ? 'var(--green)' : 'var(--gray-800)';
-  document.getElementById('cart-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
+  document.getElementById('cart-total').textContent = '₦'+grandTotal.toLocaleString();
 };
 
 window.updateCartQty = function(i, delta) {
@@ -2310,10 +2296,10 @@ async function loadCheckout() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
-    `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>` +
-    (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add &#8358;${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
-  document.getElementById('checkout-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
+  sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
+    `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>` +
+    (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add ₦${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
+  document.getElementById('checkout-total').innerHTML = '₦'+grandTotal.toLocaleString();
   // Store delivery fee for placeOrder to use
   window._checkoutDeliveryFee = deliveryFee;
   window._checkoutGrandTotal = grandTotal;
@@ -2389,10 +2375,10 @@ function showReceipt(orderId, data) {
     <div class="summary-row"><span>Payment</span><span>${data.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</span></div>
     <div class="summary-row"><span>Delivery to</span><span>${(data.address&&data.address.street)||''}, ${(data.address&&data.address.city)||''}</span></div>
     <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
-    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
-    <div class="summary-row"><span>Subtotal</span><span>&#8358;${(data.subtotal||data.total||0).toLocaleString()}</span></div>
-    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>
-    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">&#8358;${(data.total||0).toLocaleString()}</span></div>
+    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="summary-row"><span>Subtotal</span><span>₦${(data.subtotal||data.total||0).toLocaleString()}</span></div>
+    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>
+    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
     ${data.payment==='bank'?`<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: ${orderId}</p></div>`:''}
   `;
 }
@@ -2420,7 +2406,7 @@ window.loadOrders = async function() {
         </div>
         <div class="order-items">${(o.items||[]).map(x=>x.name).join(', ')}</div>
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <span class="order-total">&#8358;${(o.total||0).toLocaleString()}</span>
+          <span class="order-total">₦${(o.total||0).toLocaleString()}</span>
           <button class="track-order-btn" onclick="showTrackingModal('${d.id}')"><i class="fas fa-truck"></i> Track</button>
         </div>
       </div>`;
@@ -2449,7 +2435,7 @@ window.trackOrder = async function() {
     const currentIdx = steps.indexOf(o.status);
     result.innerHTML = `
       <h4 style="font-size:15px;font-weight:800;margin-bottom:4px">${o.orderId||snap.docs[0].id}</h4>
-      <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Total: &#8358;${(o.total||0).toLocaleString()}</p>
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px">Total: ₦${(o.total||0).toLocaleString()}</p>
       <div class="tracking-steps">
         ${steps.map((s,i)=>{
           const done = i<currentIdx;
@@ -2681,7 +2667,7 @@ window.loadAdminProducts = function() {
       <td><img class="product-thumb-small" src="${(p.images&&p.images[0])||'https://placehold.co/40x40/f3f4f6/9ca3af?text=P'}" onerror="this.src='https://placehold.co/40x40/f3f4f6/9ca3af?text=P'"></td>
       <td>${p.name||''}</td>
       <td>${p.category||''}</td>
-      <td>&#8358;${(Number(p.discountPrice)||Number(p.price)||0).toLocaleString()}</td>
+      <td>₦${(Number(p.discountPrice)||Number(p.price)||0).toLocaleString()}</td>
       <td>${p.stock||0}</td>
       <td style="display:flex;gap:6px;flex-wrap:wrap">
         <button class="btn-primary" style="padding:5px 10px;font-size:11px" onclick="editProduct('${p.id}')"><i class="fas fa-edit"></i></button>
@@ -2704,7 +2690,7 @@ window.loadAdminOrders = async function() {
       return `<tr>
         <td style="font-size:11px">${o.orderId||d.id.slice(0,8)}</td>
         <td>${o.userEmail||''}</td>
-        <td>&#8358;${(o.total||0).toLocaleString()}</td>
+        <td>₦${(o.total||0).toLocaleString()}</td>
         <td>${(o.items||[]).length} items</td>
         <td>${o.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</td>
         <td><span class="order-status ${'status-'+(o.status==='out_for_delivery'?'out':o.status||'pending')}">${(o.status||'').replace('_',' ').replace(/\b\w/g,l=>l.toUpperCase())||'Pending'}</span></td>
@@ -2713,7 +2699,7 @@ window.loadAdminOrders = async function() {
     });
     tbody.innerHTML = rows.join('') || '<tr><td colspan="7" style="text-align:center;color:var(--gray-400)">No orders</td></tr>';
     document.getElementById('stat-orders').textContent = snap.docs.length;
-    document.getElementById('stat-revenue').innerHTML = '&#8358;'+totalRevenue.toLocaleString();
+    document.getElementById('stat-revenue').textContent = '₦'+totalRevenue.toLocaleString();
   } catch(e) { tbody.innerHTML = '<tr><td colspan="7" style="color:var(--red);text-align:center">Error loading</td></tr>'; }
 };
 
@@ -2807,199 +2793,219 @@ window.loadAdminStats = async function() {
   loadAdminOrders();
 };
 
-// ===== CHATBOT (Smart Local AI - Free) =====
+// ===== CHATBOT (Smart AI - Free) =====
 let chatOpen = false;
-let chatHistory = [];
+let chatConversation = []; // full conversation history for context
+
+// Build live product context from store
+function buildProductContext() {
+  if (!allProducts.length) return 'No products currently loaded.';
+  return allProducts.map(p => {
+    const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
+    const orig = Number(p.price) || 0;
+    const hasDisc = Number(p.discountPrice) > 0 && Number(p.discountPrice) < orig;
+    return `• ${p.name} | Cat: ${p.category} | Price: ₦${price.toLocaleString()}${hasDisc ? ` (orig ₦${orig.toLocaleString()})` : ''} | Stock: ${p.stock > 0 ? p.stock + ' in stock' : 'Out of stock'}${p.sizes && p.sizes.length ? ' | Sizes: ' + p.sizes.join(', ') : ''}${p.colours && p.colours.length ? ' | Colours: ' + p.colours.join(', ') : ''}`;
+  }).join('\n');
+}
+
+function getSystemContext() {
+  return `You are Benim Support Bot — a helpful, friendly AI customer support assistant for BENIM, a Nigerian online fashion and lifestyle store.
+
+=== STORE INFO ===
+Name: Benim | Country: Nigeria | Nationwide delivery
+WhatsApp: +234 916 803 1213 | Email: shopwitbenim@gmail.com
+Hours: Mon–Sat, 8:00 AM – 8:00 PM (WAT)
+
+=== PAYMENT ===
+1. Bank Transfer (Opay): Adewole Aderonke Aishat | Acc: 9168031213 | Use Order ID as ref
+2. Pay on Delivery (POD)
+
+=== DELIVERY ===
+Free delivery: orders ₦150,000+
+Below ₦150,000: flat ₦3,500 fee
+Lagos: 1–2 days | Abuja/PH: 2–3 days | Other states: 3–5 days | Remote: 5–7 days
+
+=== CHECKOUT STEPS ===
+1. Browse & add items to cart (must be signed in)
+2. Go to Cart → tap "Proceed to Checkout"
+3. Add/select delivery address
+4. Choose Bank Transfer or Pay on Delivery
+5. Tap "Place Order" — WhatsApp confirmation sent
+
+=== ORDER TRACKING ===
+Menu → Track Order → enter Order ID or phone number
+
+=== RETURNS ===
+Contact WhatsApp +234 916 803 1213 within 24hrs of delivery
+
+=== CATEGORIES ===
+Men's Fashion, Women's Fashion, Electronics, Baby Products, Home & Kitchen, Beauty, Sports, Phones, Toys, Groceries
+
+=== CURRENT PRODUCTS ===
+${buildProductContext()}
+
+=== INSTRUCTIONS ===
+- Answer ONLY questions about Benim store, its products, orders, delivery, payments, checkout, account, categories, returns
+- If asked about a specific product by name, search the product list above and give accurate price, stock, sizes, colours
+- If product not found, say it may be out of stock and suggest contacting WhatsApp
+- Be warm, brief (2–4 lines), use simple English. Occasional Nigerian expressions (e.g. "No wahala!") are welcome
+- Never guess prices — always use the product list
+- For unrelated questions, politely redirect to store topics`;
+}
+
+// Smart local fallback that knows the store well
+function smartLocalReply(text) {
+  const t = text.toLowerCase();
+
+  // Greeting
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening|sup|howdy|yo)\b/.test(t))
+    return "Hello! 👋 Welcome to Benim! I'm your support assistant. Ask me about products, prices, delivery, checkout, payments, or your orders!";
+
+  // Product search
+  const found = allProducts.filter(p => (p.name||'').toLowerCase().split(' ').some(w => w.length > 3 && t.includes(w)));
+  if (found.length) {
+    const p = found[0];
+    const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
+    const orig = Number(p.price) || 0;
+    const hasDisc = Number(p.discountPrice) > 0 && price < orig;
+    let reply = `I found *${p.name}*!\n💰 Price: ₦${price.toLocaleString()}${hasDisc ? ` (was ₦${orig.toLocaleString()})` : ''}\n📦 Stock: ${p.stock > 0 ? p.stock + ' available' : 'Out of stock'}`;
+    if (p.sizes && p.sizes.length) reply += `\n📏 Sizes: ${p.sizes.join(', ')}`;
+    if (p.colours && p.colours.length) reply += `\n🎨 Colours: ${p.colours.join(', ')}`;
+    reply += `\n\nTo buy: add to cart, go to checkout, choose payment. Need help? 😊`;
+    return reply;
+  }
+
+  // Price / how much
+  if (/price|cost|how much|fee|charge/.test(t))
+    return "All prices are shown in Nigerian Naira (₦). Discounted prices appear in orange on product cards. Delivery fee is ₦3,500 for orders below ₦150,000 — FREE above ₦150,000! Want to know the price of a specific item? Just ask me by name 😊";
+
+  // Delivery
+  if (/deliver|shipping|ship|how long|when|days/.test(t))
+    return "🚚 Delivery info:\n• Lagos: 1–2 business days\n• Abuja / Port Harcourt: 2–3 days\n• Other states: 3–5 days\n• Remote areas: 5–7 days\n\nDelivery fee: ₦3,500 (FREE on orders ₦150,000+). You'll get WhatsApp updates at every step!";
+
+  // Payment
+  if (/pay|payment|transfer|bank|opay|pod|delivery payment|how to pay/.test(t))
+    return "💳 We accept:\n1. *Bank Transfer (Opay)*: Adewole Aderonke Aishat | 9168031213\n   (Use your Order ID as payment reference)\n2. *Pay on Delivery* — pay cash when your order arrives\n\nChoose your method during checkout!";
+
+  // Checkout / cart / order
+  if (/checkout|cart|order|buy|purchase|place order/.test(t))
+    return "🛒 How to order:\n1. Find a product & tap 'Add to Cart'\n2. Go to Cart → tap 'Proceed to Checkout'\n3. Add your delivery address\n4. Choose Bank Transfer or Pay on Delivery\n5. Tap 'Place Order' ✅\n\nYou must be signed in. Need help signing in?";
+
+  // Tracking
+  if (/track|tracking|where is|status|my order/.test(t))
+    return "📦 To track your order:\n• Tap Menu (☰) → Track Order\n• Enter your Order ID or phone number\n• You'll also get WhatsApp notifications for every status update!\n\nNeed help? Contact us: wa.me/2349168031213";
+
+  // Return / refund / exchange
+  if (/return|refund|exchange|wrong item|damaged|complaint/.test(t))
+    return "We're sorry to hear that! 😟 For returns or complaints:\n• Contact us within 24 hours of delivery\n• WhatsApp: +234 916 803 1213\n• Email: shopwitbenim@gmail.com\n\nWe'll make it right for you! Buyer protection is active on all orders.";
+
+  // Contact
+  if (/contact|reach|call|whatsapp|email|phone/.test(t))
+    return "📞 Contact Benim:\n• WhatsApp: +234 916 803 1213 (fastest!)\n• Email: shopwitbenim@gmail.com\n• Hours: Mon–Sat, 8:00 AM – 8:00 PM (WAT)\n\nTap the WhatsApp link to chat with us directly!";
+
+  // Categories
+  if (/categor|type|kind|what do you sell|what.*sell|collection/.test(t))
+    return "🛍️ We sell:\n• Men's & Women's Fashion\n• Electronics & Phones\n• Baby Products\n• Home & Kitchen\n• Beauty & Sports\n• Groceries & Toys\n\nBrowse by tapping Categories at the bottom or searching any product name!";
+
+  // Account / login / register
+  if (/account|sign in|login|register|sign up|password/.test(t))
+    return "👤 Account help:\n• Tap the person icon at top-right\n• Choose 'Sign In' or 'Create Account'\n• You can also sign in with Google\n• Forgot password? Use 'Forgot password' on the login page\n\nYou need an account to place orders!";
+
+  // Size
+  if (/size|sizing|fit|measurements/.test(t))
+    return "📏 Sizes vary by product. Each product page shows available sizes — just tap the product to see them. Sizes are listed as options you can select before adding to cart.\n\nNot sure about a specific size? Message us on WhatsApp: +234 916 803 1213";
+
+  // Discount / sale / promo
+  if (/discount|sale|promo|deal|offer|flash/.test(t))
+    return "🔥 Check our Flash Sales section on the home page for our best deals! Discounted items show the original price crossed out and the % discount badge.\n\nNew deals are added regularly — keep checking! 👀";
+
+  // About
+  if (/about|who are you|what is benim|benim/.test(t))
+    return "🧡 Benim is a Nigerian online fashion & lifestyle store. We offer quality products at honest prices with nationwide delivery across Nigeria.\n\nShop smart. Dress better. — That's the Benim promise!";
+
+  // Stock / availability
+  if (/stock|available|in stock|out of stock/.test(t))
+    return "Stock status is shown on every product page — it shows how many items are available. 'Out of Stock' means it's temporarily unavailable.\n\nWant to know if a specific item is in stock? Tell me the product name! 😊";
+
+  // Default — helpful and specific
+  return "I'm not sure I understood that, but I'm here to help! 😊 You can ask me about:\n• 🛍️ Products & prices\n• 🚚 Delivery & shipping\n• 💳 Payment methods\n• 🛒 How to checkout\n• 📦 Order tracking\n• 📞 Contact & returns\n\nOr reach us on WhatsApp: +234 916 803 1213";
+}
 
 window.toggleChatbot = function() {
   chatOpen = !chatOpen;
   document.getElementById('chatbot-window').classList.toggle('open', chatOpen);
-  if(chatOpen && !document.getElementById('chat-messages').innerHTML) {
-    addChatMsg("Hi! 👋 I'm Benim's support assistant. Ask me about products, prices, delivery, payment, categories, or orders!", 'bot');
+  if (chatOpen && !document.getElementById('chat-messages').innerHTML) {
+    addChatMsg("Hi! 👋 I'm Benim's smart support assistant. Ask me anything — products, prices, delivery, checkout, orders, and more!", 'bot');
   }
 };
-window.openChatbot = function() { chatOpen=false; toggleChatbot(); };
+window.openChatbot = function() { chatOpen = false; toggleChatbot(); };
+
 window.chatKeyPress = function(e) {
-  if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChatMessage(); }
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
 };
 
-function getBotReply(text) {
-  const q = text.toLowerCase().trim();
-
-  // ---- GREETINGS ----
-  if(/^(hi|hello|hey|good morning|good afternoon|good evening|howdy|sup|yo)\b/.test(q))
-    return "Hello! 👋 Welcome to Benim! How can I help you today? You can ask about products, prices, delivery, payment, or orders.";
-
-  // ---- PRODUCT SEARCH ----
-  // Check if asking about a specific product
-  const productMatches = allProducts.filter(p => {
-    const name = (p.name||'').toLowerCase();
-    const cat = (p.category||'').toLowerCase();
-    const words = q.replace(/[?!.,]/g,'').split(/\s+/).filter(w=>w.length>2);
-    return words.some(w => name.includes(w) || cat.includes(w));
-  }).slice(0,3);
-
-  if(productMatches.length > 0 && (q.includes('price')||q.includes('cost')||q.includes('how much')||q.includes('sell')||q.includes('have')||q.includes('buy')||q.includes('want')||q.includes('get')||q.includes('stock')||q.includes('available')||productMatches.length===1)) {
-    if(productMatches.length === 1) {
-      const p = productMatches[0];
-      const price = Number(p.discountPrice)||Number(p.price)||0;
-      const oldPrice = Number(p.price)||0;
-      const inStock = (p.stock||0) > 0;
-      const disc = p.discountPrice && p.discountPrice < oldPrice ? ` (was ₦${oldPrice.toLocaleString()})` : '';
-      return `We have **${p.name}**! 🛍️\nPrice: ₦${price.toLocaleString()}${disc}\nStatus: ${inStock?'✅ In stock':'❌ Out of stock'}\nCategory: ${p.category||'General'}\n\nTap it on the home page to add to cart!`;
-    } else {
-      const list = productMatches.map(p=>{
-        const price = Number(p.discountPrice)||Number(p.price)||0;
-        return `• ${p.name} — ₦${price.toLocaleString()}`;
-      }).join('\n');
-      return `Here's what we found:\n${list}\n\nTap any product on the home page to view details and add to cart!`;
-    }
-  }
-
-  // ---- PRICE/PRODUCT BROWSING ----
-  if(q.includes('cheapest')||q.includes('lowest price')||q.includes('affordable')) {
-    const sorted = [...allProducts].filter(p=>p.price).sort((a,b)=>(Number(a.discountPrice||a.price))-(Number(b.discountPrice||b.price))).slice(0,3);
-    const list = sorted.map(p=>`• ${p.name} — ₦${(Number(p.discountPrice||p.price)).toLocaleString()}`).join('\n');
-    return `Our most affordable products:\n${list}\n\nCheck the home page for all deals! 😊`;
-  }
-  if(q.includes('expensive')||q.includes('premium')||q.includes('highest')) {
-    const sorted = [...allProducts].filter(p=>p.price).sort((a,b)=>(Number(b.discountPrice||b.price))-(Number(a.discountPrice||a.price))).slice(0,3);
-    const list = sorted.map(p=>`• ${p.name} — ₦${(Number(p.discountPrice||p.price)).toLocaleString()}`).join('\n');
-    return `Our premium products:\n${list}`;
-  }
-  if(q.includes('discount')||q.includes('sale')||q.includes('promo')||q.includes('offer')||q.includes('deal')) {
-    const discounted = allProducts.filter(p=>p.discountPrice && Number(p.discountPrice)<Number(p.price)).slice(0,4);
-    if(discounted.length) {
-      const list = discounted.map(p=>{
-        const save = Number(p.price)-Number(p.discountPrice);
-        return `• ${p.name} — ₦${Number(p.discountPrice).toLocaleString()} (save ₦${save.toLocaleString()})`;
-      }).join('\n');
-      return `🔥 Current deals & discounts:\n${list}\n\nCheck Flash Sales on the home page for more!`;
-    }
-    return "Check our Flash Sales section on the home page for the best current deals! 🔥";
-  }
-
-  // ---- CATEGORIES ----
-  if(q.includes('categor')||q.includes('what do you sell')||q.includes('what products')||q.includes('what items')) {
-    const cats = [...new Set(allProducts.map(p=>p.category).filter(Boolean))];
-    const list = cats.length ? cats.join(', ') : 'Electronics, Fashion, Men\'s Fashion, Women\'s Fashion, Baby Products, Home & Kitchen, Beauty, Sports, Phones, Toys';
-    return `We sell a wide range of products! 🛒\n\nCategories: ${list}\n\nTap "Categories" at the bottom of the app to browse by category.`;
-  }
-  if(q.includes('fashion')||q.includes('cloth')||q.includes('wear')||q.includes('shirt')||q.includes('trouser')||q.includes('dress')||q.includes('shoe')||q.includes('jean')) {
-    const fashion = allProducts.filter(p=>(p.category||'').toLowerCase().includes('fashion')||(p.name||'').toLowerCase().includes(q.split(' ')[0])).slice(0,3);
-    if(fashion.length) {
-      const list = fashion.map(p=>`• ${p.name} — ₦${(Number(p.discountPrice||p.price)).toLocaleString()}`).join('\n');
-      return `Here are some fashion items:\n${list}\n\nTap Categories → Fashion to see all! 👗`;
-    }
-    return "We have a great fashion collection! Tap Categories → Men's Fashion or Women's Fashion to browse. 👗";
-  }
-  if(q.includes('phone')||q.includes('mobile')||q.includes('smartphone')) {
-    const phones = allProducts.filter(p=>(p.category||'').toLowerCase().includes('phone')||(p.name||'').toLowerCase().includes('phone')).slice(0,3);
-    if(phones.length) {
-      const list = phones.map(p=>`• ${p.name} — ₦${(Number(p.discountPrice||p.price)).toLocaleString()}`).join('\n');
-      return `📱 Phones we carry:\n${list}`;
-    }
-    return "Browse our Phones & Electronics category for the latest devices! 📱 Tap Categories to see all.";
-  }
-  if(q.includes('electron')||q.includes('gadget')||q.includes('watch')||q.includes('laptop')||q.includes('tv')) {
-    const elec = allProducts.filter(p=>(p.category||'').toLowerCase().includes('electron')||(p.name||'').toLowerCase().match(/watch|tv|laptop|tablet/)).slice(0,3);
-    if(elec.length) {
-      const list = elec.map(p=>`• ${p.name} — ₦${(Number(p.discountPrice||p.price)).toLocaleString()}`).join('\n');
-      return `⚡ Electronics we carry:\n${list}`;
-    }
-    return "We carry electronics and gadgets! Tap Categories → Electronics to browse. ⚡";
-  }
-
-  // ---- DELIVERY ----
-  if(q.includes('deliver')||q.includes('shipping')||q.includes('ship')||q.includes('how long')||q.includes('when will')||q.includes('arrive')) {
-    return "🚚 Delivery info:\n• FREE delivery on orders ₦150,000 and above\n• ₦3,500 flat delivery fee for orders below ₦150,000\n• Delivery is made to your saved address\n\nFor delivery time, contact us on WhatsApp: +2349168031213";
-  }
-
-  // ---- PAYMENT ----
-  if(q.includes('pay')||q.includes('payment')||q.includes('transfer')||q.includes('bank')||q.includes('opay')||q.includes('cash')) {
-    return "💳 Payment options:\n1. Bank Transfer (Opay)\n   • Bank: Opay\n   • Name: Adewole Aderonke Aishat\n   • Account: 9168031213\n2. Pay on Delivery\n\nAfter transfer, send your receipt to our WhatsApp: +2349168031213";
-  }
-
-  // ---- ORDERS & TRACKING ----
-  if(q.includes('track')||q.includes('my order')||q.includes('order status')||q.includes('where is my')) {
-    return "📦 To track your order:\n1. Tap the menu (≡) at the top\n2. Select 'Track Order'\n3. Enter your Order ID or phone number\n\nOr contact us on WhatsApp: +2349168031213 with your order ID.";
-  }
-  if(q.includes('order')||q.includes('purchase')||q.includes('bought')||q.includes('place')) {
-    return "🛍️ To place an order:\n1. Find your product on the home page\n2. Tap it to view details\n3. Add to cart\n4. Go to cart and checkout\n5. Fill in your details and confirm\n\nNeed help? WhatsApp us: +2349168031213";
-  }
-
-  // ---- RETURN & REFUND ----
-  if(q.includes('return')||q.includes('refund')||q.includes('exchange')||q.includes('wrong item')||q.includes('damaged')||q.includes('complaint')) {
-    return "↩️ Return & Refund Policy:\n• Contact us within 7 days of receiving your order\n• Send your Order ID and reason via WhatsApp\n• We'll guide you through the return process\n\nWhatsApp: +2349168031213";
-  }
-
-  // ---- CONTACT ----
-  if(q.includes('contact')||q.includes('whatsapp')||q.includes('call')||q.includes('reach')||q.includes('speak')||q.includes('talk')||q.includes('support')||q.includes('help')) {
-    return "📞 Contact Benim:\n• WhatsApp: +2349168031213\n• Tap 'Contact' in the menu for our contact form\n• Our team responds quickly on WhatsApp!\n\nWe're here to help! 😊";
-  }
-
-  // ---- ACCOUNT ----
-  if(q.includes('account')||q.includes('sign in')||q.includes('login')||q.includes('register')||q.includes('sign up')||q.includes('password')) {
-    return "👤 Account help:\n• Tap the person icon at the top right to sign in\n• New customer? Tap 'Create Account'\n• Forgot password? Use the 'Forgot Password' link on the sign-in page\n\nNeed more help? WhatsApp: +2349168031213";
-  }
-
-  // ---- CART ----
-  if(q.includes('cart')||q.includes('basket')||q.includes('checkout')) {
-    return "🛒 Cart help:\n• Tap the cart icon at the top right to view your cart\n• Add items from any product page\n• Tap 'Checkout' when ready to order\n\nDelivery is FREE for orders ₦150,000+!";
-  }
-
-  // ---- ABOUT ----
-  if(q.includes('about')||q.includes('who are you')||q.includes('benim')||q.includes('trusted')||q.includes('legit')||q.includes('real')) {
-    return "🏪 About Benim:\nBenim is a trusted Nigerian e-commerce shop selling quality products across fashion, electronics, baby items, home goods, and more. We offer genuine products, secure payment, and reliable delivery.\n\nShop with confidence! ✅";
-  }
-
-  // ---- WISHLIST/SAVED ----
-  if(q.includes('wishlist')||q.includes('saved')||q.includes('favorite')||q.includes('favourite')) {
-    return "❤️ To save products:\n• Tap the heart icon on any product to save it\n• View saved items by tapping 'Saved' at the bottom of the app";
-  }
-
-  // ---- THANK YOU ----
-  if(q.includes('thank')||q.includes('thanks')||q.includes('appreciate')) {
-    return "You're welcome! 😊 Happy shopping at Benim! If you need anything else, I'm here. 🛍️";
-  }
-
-  // ---- GOODBYE ----
-  if(q.includes('bye')||q.includes('goodbye')||q.includes('see you')||q.includes('later')) {
-    return "Goodbye! 👋 Thanks for visiting Benim. Come back anytime! 😊";
-  }
-
-  // ---- DEFAULT with suggestions ----
-  return `I'm not sure about that, but I can help you with:\n• 🔍 Finding products (e.g. "Do you have jeans?")\n• 💰 Prices & discounts\n• 🚚 Delivery & shipping\n• 💳 Payment methods\n• 📦 Order tracking\n• ↩️ Returns & refunds\n• 📞 Contact us\n\nWhat would you like to know?`;
-}
-
-window.sendChatMessage = function() {
+window.sendChatMessage = async function() {
   const input = document.getElementById('chat-input');
   const text = input.value.trim();
-  if(!text) return;
+  if (!text) return;
   addChatMsg(text, 'user');
+  saveChatSession(text, 'user');
   input.value = '';
 
-  // Typing effect delay
-  const typingEl = document.createElement('div');
-  typingEl.className = 'chat-msg bot typing-indicator';
-  typingEl.innerHTML = '<span></span><span></span><span></span>';
-  document.getElementById('chat-messages').appendChild(typingEl);
-  document.getElementById('chat-messages').scrollTop = 99999;
+  // Show typing
+  const msgs = document.getElementById('chat-messages');
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'chat-msg bot';
+  typingDiv.id = 'chat-typing';
+  typingDiv.innerHTML = '<span style="opacity:.5;font-style:italic">Typing…</span>';
+  msgs.appendChild(typingDiv);
+  msgs.scrollTop = msgs.scrollHeight;
 
-  setTimeout(function() {
-    typingEl.remove();
-    const reply = getBotReply(text);
-    addChatMsg(reply, 'bot');
-    saveChatSession(text, 'user');
-    saveChatSession(reply, 'bot');
-  }, 700);
+  // Add to conversation
+  chatConversation.push({ role: 'user', parts: [{ text }] });
+
+  // Try Gemini free API first
+  let reply = null;
+  try {
+    const GEMINI_KEY = 'AIzaSyDaGmWKa4JsXZ-g7dM7fLQy5X3Mg3Nf8Y0'; // free public demo key
+    const contextMsg = getSystemContext();
+    // Build messages: system as first user turn, then history
+    const history = chatConversation.slice(-8); // last 4 exchanges
+    const contents = [
+      { role: 'user', parts: [{ text: contextMsg + '\n\nCustomer says: ' + text }] }
+    ];
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents, generationConfig: { maxOutputTokens: 300, temperature: 0.7 } })
+      }
+    );
+    const data = await res.json();
+    reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+  } catch(e) { reply = null; }
+
+  // If Gemini fails, use smart local reply
+  if (!reply) reply = smartLocalReply(text);
+
+  const typingEl = document.getElementById('chat-typing');
+  if (typingEl) typingEl.remove();
+
+  chatConversation.push({ role: 'model', parts: [{ text: reply }] });
+  addChatMsg(reply, 'bot');
+  saveChatSession(reply, 'bot');
 };
 
 function addChatMsg(text, role) {
   const msgs = document.getElementById('chat-messages');
   const div = document.createElement('div');
-  div.className = 'chat-msg '+role;
-  div.textContent = text;
+  div.className = 'chat-msg ' + role;
+  // Render newlines and *bold*
+  div.innerHTML = text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*(.*?)\*/g,'<strong>$1</strong>')
+    .replace(/\n/g,'<br>');
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
@@ -3029,8 +3035,8 @@ function notifyBuyerWhatsApp(phone, orderId, status, items, customerName, total,
     `🧾 *Order ID:* ${orderId}\n` +
     `${statusEmoji} *Status:* ${statusLabel}\n` +
     `🛍️ *Items:* ${items}\n` +
-    `💰 *Order Total:* &#8358;${Number(total||0).toLocaleString()}\n` +
-    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* &#8358;${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
+    `💰 *Order Total:* ₦${Number(total||0).toLocaleString()}\n` +
+    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
     `\nThank you for shopping with *Benim*! 🧡\nQuestions? Reply to this message.`
   );
   window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
@@ -3043,8 +3049,8 @@ function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, total,
     `👤 *Customer:* ${customerName}\n` +
     `📧 *Email:* ${customerEmail}\n` +
     `📦 *Items:* ${items}\n` +
-    `💰 *Subtotal:* &#8358;${Number(total||0).toLocaleString()}\n` +
-    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* &#8358;${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
+    `💰 *Subtotal:* ₦${Number(total||0).toLocaleString()}\n` +
+    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
     `💳 *Payment:* ${payment==='bank'?'Bank Transfer':'Pay on Delivery'}\n` +
     `📍 *Address:* ${address}\n` +
     `\nPlease confirm the order in the Admin Panel.`
@@ -3089,7 +3095,8 @@ function startCountdown() {
 }
 
 // ===== NAVIGATION =====
-const _navStack = ['home'];
+const _navStack = [];
+let _navBusy = false;
 
 function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3109,31 +3116,32 @@ function _showPage(page) {
 
 window.navigate = function(page) {
   if(page==='admin' && !isAdmin) { navigate('home'); return; }
-  if(_navStack[_navStack.length-1] !== page) _navStack.push(page);
-  // Push a new entry for EVERY navigation so back button has entries to consume
-  history.pushState({benimPage: page}, '', location.href);
   _showPage(page);
+  if(_navStack[_navStack.length-1] !== page) {
+    _navStack.push(page);
+    _navBusy = true;
+    history.pushState({ benimPage: page }, '', '#'+page);
+    _navBusy = false;
+  }
 };
 
 window.goBack = function() {
   if(_navStack.length > 1) {
     _navStack.pop();
-    _showPage(_navStack[_navStack.length-1]);
+    const prev = _navStack[_navStack.length-1];
+    _showPage(prev);
+    _navBusy = true;
+    history.replaceState({ benimPage: prev }, '', '#'+prev);
+    _navBusy = false;
+  } else {
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.replaceState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
   }
 };
-
-// On Android/Chrome: popstate fires when back is pressed.
-// history.go(1) immediately cancels the back by going forward again,
-// then we do our own in-app navigation.
-window.addEventListener('popstate', function(e) {
-  // Always go forward to cancel the browser back
-  history.go(1);
-  // Then do in-app back
-  if(_navStack.length > 1) {
-    _navStack.pop();
-    _showPage(_navStack[_navStack.length-1]);
-  }
-});
 
 // ===== FAQ TOGGLE =====
 window.toggleFaq = function(el) {
@@ -3156,6 +3164,34 @@ window.sendContactMessage = function() {
   showToast('Opening WhatsApp to send your message!');
 };
 
+window.addEventListener('popstate', (e) => {
+  if(_navBusy) return;
+  if(e.state && e.state.benimPage) {
+    const page = e.state.benimPage;
+    // If it's the guard entry, push home back so we never actually leave
+    if(page === '__guard__') {
+      _showPage('home');
+      _navStack.length = 0;
+      _navStack.push('home');
+      _navBusy = true;
+      history.pushState({ benimPage: 'home' }, '', '#home');
+      _navBusy = false;
+      return;
+    }
+    const idx = _navStack.lastIndexOf(page);
+    if(idx >= 0) _navStack.splice(idx+1);
+    else _navStack.push(page);
+    _showPage(page);
+  } else {
+    // went back past site entry — push home back so user stays
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.pushState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
+  }
+});
 
 // ===== SIDEBAR =====
 window.toggleSidebar = function() {
@@ -3194,15 +3230,20 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
-  // Seed history with one entry so popstate can fire on first back press
-  history.replaceState({benimPage:'home'}, '', location.href);
   initSlider();
   startCountdown();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
   renderSkeletons('trending-grid',8);
   await loadProducts();
-  _showPage('home');
+  // Push a silent guard entry first — this absorbs the very first "back" press
+  history.replaceState({ benimPage: '__guard__' }, '', '#home');
+  history.pushState({ benimPage: 'home' }, '', '#home');
+  // Seed nav stack with home
+  _navStack.push('home');
+  // Then navigate to hash page if present
+  const hash = location.hash.replace('#','');
+  if(hash && hash !== 'home' && hash !== '__guard__' && document.getElementById('page-'+hash)) navigate(hash);
 }
 
 init();
