@@ -493,16 +493,10 @@ body{padding-bottom:70px}
 .slider-dots{bottom:8px!important}
 
 /* HOME SECTIONS */
-.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 0 18px!important}
-.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important;padding:0 12px!important}
-.home-section-header{margin-bottom:14px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 12px!important}
-.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important;cursor:pointer!important}
-
-/* PRODUCT GRID — force clean white, no extra bg */
-#flash-section,#page-home .home-section{border-radius:0!important}
-
-/* PAGE BACKGROUNDS — slightly off-white between sections */
-#page-home{background:#f0f0f0!important}
+.home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 12px 18px!important}
+.home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important}
+.home-section-header{margin-bottom:14px!important}
+.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important}
 
 /* FLASH SECTION */
 #flash-section{margin-top:8px!important}
@@ -511,14 +505,12 @@ body{padding-bottom:70px}
 .flash-time{color:#e8420a!important;font-size:12px!important;font-weight:900!important}
 .flash-colon{color:#e8420a!important;font-weight:900!important}
 .flash-bolt{color:#e8420a!important}
-/* Flash section header needs padding too */
-#flash-section .home-section-header{padding:0 12px!important}
 
-/* PRODUCT GRID — 3 columns full width, no side padding */
-.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2px!important;width:100%!important}
+/* PRODUCT GRID &mdash; 3 columns on ALL screen sizes */
+.product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
 
 /* PRODUCT CARD — matches screenshot exactly */
-.pc{background:#fff;border-radius:0;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:none;border:none;border-right:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
+.pc{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,.07);border:1px solid #f0f0f0}
 .pc:hover{box-shadow:0 3px 12px rgba(0,0,0,.12)}
 .pc-img-wrap{position:relative;width:100%;aspect-ratio:1;background:#f5f5f5;overflow:hidden;flex-shrink:0}
 .pc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
@@ -544,7 +536,8 @@ body{padding-bottom:70px}
 .bnav-badge{top:4px!important;right:calc(50% - 18px)!important;font-size:9px!important;padding:1px 4px!important}
 
 /* PAGE BACKGROUNDS */
-body{padding-bottom:65px!important;background:#f0f0f0!important}
+#page-home{background:#f2f2f2!important}
+body{padding-bottom:65px!important;background:#f2f2f2!important}
 
 /* CARD ACTION BUTTONS */
 .card-action-btns{display:flex;gap:4px;margin-top:8px}
@@ -552,13 +545,6 @@ body{padding-bottom:65px!important;background:#f0f0f0!important}
 .card-btn-cart:hover{background:#111;color:#fff}
 .card-btn-buy{flex:1;background:transparent;color:#111;border:1.5px solid #111;border-radius:5px;padding:5px 0;font-size:10px;font-weight:800;cursor:pointer;font-family:'Poppins',sans-serif;transition:.15s}
 .card-btn-buy:hover{background:#111;color:#fff}
-
-/* TYPING INDICATOR */
-.typing-indicator{display:flex!important;gap:4px;align-items:center;padding:10px 14px!important;min-width:50px}
-.typing-indicator span{width:7px;height:7px;border-radius:50%;background:#ccc;display:inline-block;animation:typingBounce 1.2s infinite ease-in-out}
-.typing-indicator span:nth-child(2){animation-delay:.2s}
-.typing-indicator span:nth-child(3){animation-delay:.4s}
-@keyframes typingBounce{0%,80%,100%{transform:scale(0.6);opacity:.5}40%{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
@@ -2261,10 +2247,10 @@ window.renderCart = function() {
   const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
   const deliveryFee = subtotal >= 150000 ? 0 : 3500;
   const grandTotal = subtotal + deliveryFee;
-  document.getElementById('cart-subtotal').innerHTML = '&#8358;'+subtotal.toLocaleString();
-  document.getElementById('cart-delivery').innerHTML = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
+  document.getElementById('cart-subtotal').textContent = '&#8358;'+subtotal.toLocaleString();
+  document.getElementById('cart-delivery').textContent = deliveryFee===0 ? 'FREE' : '&#8358;'+deliveryFee.toLocaleString();
   document.getElementById('cart-delivery').style.color = deliveryFee===0 ? 'var(--green)' : 'var(--gray-800)';
-  document.getElementById('cart-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
+  document.getElementById('cart-total').textContent = '&#8358;'+grandTotal.toLocaleString();
 };
 
 window.updateCartQty = function(i, delta) {
@@ -2313,7 +2299,7 @@ async function loadCheckout() {
   sumDiv.innerHTML = cart.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>&#8358;${(x.price*x.qty).toLocaleString()}</span></div>`).join('') +
     `<div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'&#8358;'+deliveryFee.toLocaleString()}</span></div>` +
     (deliveryFee===0 ? `<div style="font-size:11px;color:var(--green);margin-top:-6px;margin-bottom:4px"><i class="fas fa-check-circle"></i> Your order qualifies for free delivery!</div>` : `<div style="font-size:11px;color:var(--gray-400);margin-top:-6px;margin-bottom:4px"><i class="fas fa-info-circle"></i> Add &#8358;${(150000-subtotal).toLocaleString()} more for free delivery</div>`);
-  document.getElementById('checkout-total').innerHTML = '&#8358;'+grandTotal.toLocaleString();
+  document.getElementById('checkout-total').textContent = '&#8358;'+grandTotal.toLocaleString();
   // Store delivery fee for placeOrder to use
   window._checkoutDeliveryFee = deliveryFee;
   window._checkoutGrandTotal = grandTotal;
@@ -2713,7 +2699,7 @@ window.loadAdminOrders = async function() {
     });
     tbody.innerHTML = rows.join('') || '<tr><td colspan="7" style="text-align:center;color:var(--gray-400)">No orders</td></tr>';
     document.getElementById('stat-orders').textContent = snap.docs.length;
-    document.getElementById('stat-revenue').innerHTML = '&#8358;'+totalRevenue.toLocaleString();
+    document.getElementById('stat-revenue').textContent = '&#8358;'+totalRevenue.toLocaleString();
   } catch(e) { tbody.innerHTML = '<tr><td colspan="7" style="color:var(--red);text-align:center">Error loading</td></tr>'; }
 };
 
@@ -2807,15 +2793,77 @@ window.loadAdminStats = async function() {
   loadAdminOrders();
 };
 
-// ===== CHATBOT (Claude AI-powered) =====
+// ===== CHATBOT =====
 let chatOpen = false;
-let chatHistory = []; // multi-turn conversation history
+let chatHistory = []; // holds {role, content} for multi-turn context
+
+// Build a product catalog summary for the AI system prompt
+function buildProductContext() {
+  if(!allProducts.length) return 'No products loaded yet.';
+  return allProducts.slice(0, 40).map(p => {
+    const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
+    const hasDisc = Number(p.discountPrice) > 0 && Number(p.discountPrice) < Number(p.price);
+    return `- ${p.name} | Category: ${p.category} | Price: ₦${price.toLocaleString()}${hasDisc ? ` (was ₦${Number(p.price).toLocaleString()})` : ''} | Stock: ${p.stock > 0 ? p.stock + ' available' : 'Out of stock'}${p.sizes && p.sizes.length ? ' | Sizes: ' + p.sizes.join(', ') : ''}${p.colours && p.colours.length ? ' | Colours: ' + p.colours.join(', ') : ''}`;
+  }).join('\n');
+}
+
+function getBenimSystemPrompt() {
+  return `You are Benim Support, a friendly and knowledgeable customer support AI for Benim — a Nigerian fashion and lifestyle online store.
+
+STORE INFO:
+- Store name: Benim
+- Contact: WhatsApp +234 916 803 1213 | Email: shopwitbenim@gmail.com
+- Business Hours: Monday–Saturday, 8:00 AM – 8:00 PM (WAT)
+- Location: Nigeria — nationwide delivery
+
+PAYMENT OPTIONS:
+- Bank Transfer via Opay: Account Name: Adewole Aderonke Aishat, Account Number: 9168031213
+- Pay on Delivery (POD) is also available
+- Always include your Order ID as payment reference
+
+DELIVERY & SHIPPING:
+- Free delivery on orders ₦150,000 and above
+- Flat ₦3,500 delivery fee for orders below ₦150,000
+- Lagos: 1–2 business days
+- Abuja / Port Harcourt: 2–3 business days
+- Other states: 3–5 business days
+- Remote areas: 5–7 business days
+
+CATEGORIES AVAILABLE: Electronics, Fashion, Men's Fashion, Women's Fashion, Baby Products, Home & Kitchen, Beauty, Sports, Groceries, Phones, Toys
+
+CHECKOUT PROCESS:
+1. Add items to cart (sign-in required)
+2. Go to Cart → Proceed to Checkout
+3. Select delivery address (add new if needed)
+4. Choose payment method
+5. Place Order
+
+ORDER TRACKING:
+- Use Menu → Track Order, enter Order ID or phone number
+- WhatsApp notifications sent at each status change
+
+RETURNS/ISSUES:
+- Contact via WhatsApp +234 916 803 1213 for returns or complaints
+- Buyer protection is available
+
+CURRENT PRODUCTS IN STORE:
+${buildProductContext()}
+
+INSTRUCTIONS:
+- Be warm, concise, and helpful. Use Nigerian-friendly language where appropriate.
+- If asked about a specific product, check the product list above and give accurate price and availability.
+- If a product isn't in the list, say it may not be currently in stock and suggest checking the store or contacting support.
+- For checkout issues, guide step by step.
+- Never make up prices or availability — always use the product list provided.
+- Keep replies short and clear (2–5 sentences unless a detailed answer is needed).
+- Use emojis sparingly to stay friendly.`;
+}
 
 window.toggleChatbot = function() {
   chatOpen = !chatOpen;
   document.getElementById('chatbot-window').classList.toggle('open', chatOpen);
   if(chatOpen && !document.getElementById('chat-messages').innerHTML) {
-    addChatMsg("Hi! 👋 I'm Benim's smart support assistant. Ask me anything — products, prices, categories, delivery, payments, and more!", 'bot');
+    addChatMsg("Hi! 👋 I'm Benim's AI support assistant. Ask me anything about products, orders, delivery, payment, or checkout!", 'bot');
   }
 };
 window.openChatbot = function() { chatOpen=false; toggleChatbot(); };
@@ -2829,83 +2877,52 @@ window.sendChatMessage = async function() {
   const text = input.value.trim();
   if(!text) return;
   addChatMsg(text, 'user');
+  saveChatSession(text, 'user');
   input.value = '';
-  input.disabled = true;
-  document.querySelector('#chatbot-window .chat-send').disabled = true;
-
-  // Build product context (top 30 products for the AI to reference)
-  const productContext = allProducts.slice(0,30).map(p=>{
-    const price = Number(p.discountPrice)||Number(p.price)||0;
-    return `- ${p.name} | Category: ${p.category||'N/A'} | Price: ₦${price.toLocaleString()} | Stock: ${p.stock>0?p.stock+' available':'Out of stock'}`;
-  }).join('\n');
-
-  const systemPrompt = `You are a friendly and knowledgeable customer support assistant for BENIM, a Nigerian e-commerce shop selling fashion, electronics, and more.
-
-STORE INFO:
-- Name: BENIM Shop
-- WhatsApp: +2349168031213
-- Payment: Bank Transfer (Opay) or Pay on Delivery
-- Bank: Opay | Adewole Aderonke Aishat | Account: 9168031213
-- Delivery: FREE on orders ₦150,000+; ₦3,500 flat fee below that
-- Returns: Contact via WhatsApp within 7 days with order ID
-- Categories: Electronics, Fashion, Men's Fashion, Women's Fashion, Baby Products, Home & Kitchen, Beauty, Sports, Groceries, Phones, Toys
-
-AVAILABLE PRODUCTS (sample):
-${productContext || 'Products are loaded from our Firebase database.'}
-
-INSTRUCTIONS:
-- Answer ALL customer questions helpfully and specifically
-- If asked about a product, give its price and stock status from the list above
-- If asked about categories, list what we sell
-- For orders/tracking: tell them to go to Menu → Track Order
-- For contact: WhatsApp +2349168031213
-- Keep responses concise and friendly (2-4 sentences max)
-- Use emojis sparingly for warmth
-- Always respond in English`;
 
   // Add to history
   chatHistory.push({ role: 'user', content: text });
 
   // Show typing indicator
-  const typingEl = document.createElement('div');
-  typingEl.className = 'chat-msg bot typing-indicator';
-  typingEl.innerHTML = '<span></span><span></span><span></span>';
-  document.getElementById('chat-messages').appendChild(typingEl);
-  document.getElementById('chat-messages').scrollTop = 99999;
+  const typingId = 'typing-' + Date.now();
+  const msgs = document.getElementById('chat-messages');
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'chat-msg bot';
+  typingDiv.id = typingId;
+  typingDiv.innerHTML = '<span style="opacity:.5;font-style:italic">Typing…</span>';
+  msgs.appendChild(typingDiv);
+  msgs.scrollTop = msgs.scrollHeight;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 300,
-        system: systemPrompt,
-        messages: chatHistory.slice(-10)
+        max_tokens: 400,
+        system: getBenimSystemPrompt(),
+        messages: chatHistory.slice(-10) // keep last 10 turns for context
       })
     });
-    const data = await res.json();
-    typingEl.remove();
-    const reply = data.content && data.content[0] && data.content[0].text
-      ? data.content[0].text
-      : "Sorry, I couldn't process that. Please try again or contact us on WhatsApp at +2349168031213 😊";
-    chatHistory.push({ role: 'assistant', content: reply });
-    addChatMsg(reply, 'bot');
-    saveChatSession(text, 'user');
-    saveChatSession(reply, 'bot');
-  } catch(e) {
-    typingEl.remove();
-    const fallback = "I'm having trouble connecting right now. Please contact us on WhatsApp: +2349168031213 🙏";
-    addChatMsg(fallback, 'bot');
-  }
+    const data = await response.json();
+    const reply = (data.content && data.content[0] && data.content[0].text) || "Sorry, I couldn't respond right now. Please try again or contact us on WhatsApp +234 916 803 1213 😊";
 
-  input.disabled = false;
-  document.querySelector('#chatbot-window .chat-send').disabled = false;
-  input.focus();
+    // Remove typing indicator
+    const typingEl = document.getElementById(typingId);
+    if(typingEl) typingEl.remove();
+
+    // Add assistant reply to history
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    addChatMsg(reply, 'bot');
+    saveChatSession(reply, 'bot');
+  } catch(err) {
+    const typingEl = document.getElementById(typingId);
+    if(typingEl) typingEl.remove();
+    const fallback = "Sorry, I'm having trouble connecting right now. Please contact us on WhatsApp: +234 916 803 1213 🙏";
+    addChatMsg(fallback, 'bot');
+    saveChatSession(fallback, 'bot');
+  }
 };
 
 function addChatMsg(text, role) {
@@ -3002,8 +3019,8 @@ function startCountdown() {
 }
 
 // ===== NAVIGATION =====
-const _navStack = ['home'];
-let _popBusy = false;
+const _navStack = [];
+let _navBusy = false;
 
 function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3021,33 +3038,34 @@ function _showPage(page) {
   if(page==='admin') { loadAdminProducts(); loadAdminStats(); }
 }
 
-// Keep two entries in history so popstate always fires before browser exits
-function _park() {
-  history.replaceState({benim:1}, '');
-  history.pushState({benim:2}, '');
-}
-
 window.navigate = function(page) {
   if(page==='admin' && !isAdmin) { navigate('home'); return; }
-  if(_navStack[_navStack.length-1] !== page) _navStack.push(page);
-  _park();
   _showPage(page);
+  if(_navStack[_navStack.length-1] !== page) {
+    _navStack.push(page);
+    _navBusy = true;
+    history.pushState({ benimPage: page }, '', '#'+page);
+    _navBusy = false;
+  }
 };
 
 window.goBack = function() {
-  if(_navStack.length > 1) _navStack.pop();
-  _park();
-  _showPage(_navStack[_navStack.length-1]);
+  if(_navStack.length > 1) {
+    _navStack.pop();
+    const prev = _navStack[_navStack.length-1];
+    _showPage(prev);
+    _navBusy = true;
+    history.replaceState({ benimPage: prev }, '', '#'+prev);
+    _navBusy = false;
+  } else {
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.replaceState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
+  }
 };
-
-window.addEventListener('popstate', function() {
-  if(_popBusy) return;
-  _popBusy = true;
-  _park();
-  if(_navStack.length > 1) _navStack.pop();
-  _showPage(_navStack[_navStack.length-1]);
-  setTimeout(function(){ _popBusy = false; }, 50);
-});
 
 // ===== FAQ TOGGLE =====
 window.toggleFaq = function(el) {
@@ -3070,6 +3088,34 @@ window.sendContactMessage = function() {
   showToast('Opening WhatsApp to send your message!');
 };
 
+window.addEventListener('popstate', (e) => {
+  if(_navBusy) return;
+  if(e.state && e.state.benimPage) {
+    const page = e.state.benimPage;
+    // If it's the guard entry, push home back so we never actually leave
+    if(page === '__guard__') {
+      _showPage('home');
+      _navStack.length = 0;
+      _navStack.push('home');
+      _navBusy = true;
+      history.pushState({ benimPage: 'home' }, '', '#home');
+      _navBusy = false;
+      return;
+    }
+    const idx = _navStack.lastIndexOf(page);
+    if(idx >= 0) _navStack.splice(idx+1);
+    else _navStack.push(page);
+    _showPage(page);
+  } else {
+    // went back past site entry — push home back so user stays
+    _showPage('home');
+    _navStack.length = 0;
+    _navStack.push('home');
+    _navBusy = true;
+    history.pushState({ benimPage: 'home' }, '', '#home');
+    _navBusy = false;
+  }
+});
 
 // ===== SIDEBAR =====
 window.toggleSidebar = function() {
@@ -3108,14 +3154,20 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
-  _park();
   initSlider();
   startCountdown();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
   renderSkeletons('trending-grid',8);
   await loadProducts();
-  _showPage('home');
+  // Push a silent guard entry first — this absorbs the very first "back" press
+  history.replaceState({ benimPage: '__guard__' }, '', '#home');
+  history.pushState({ benimPage: 'home' }, '', '#home');
+  // Seed nav stack with home
+  _navStack.push('home');
+  // Then navigate to hash page if present
+  const hash = location.hash.replace('#','');
+  if(hash && hash !== 'home' && hash !== '__guard__' && document.getElementById('page-'+hash)) navigate(hash);
 }
 
 init();
