@@ -3002,8 +3002,8 @@ function startCountdown() {
 }
 
 // ===== NAVIGATION =====
-// Stack-based in-app navigation. Browser back is intercepted and never exits the site.
 const _navStack = ['home'];
+let _popBusy = false;
 
 function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3021,35 +3021,32 @@ function _showPage(page) {
   if(page==='admin') { loadAdminProducts(); loadAdminStats(); }
 }
 
+// Keep two entries in history so popstate always fires before browser exits
+function _park() {
+  history.replaceState({benim:1}, '');
+  history.pushState({benim:2}, '');
+}
+
 window.navigate = function(page) {
   if(page==='admin' && !isAdmin) { navigate('home'); return; }
   if(_navStack[_navStack.length-1] !== page) _navStack.push(page);
-  // Push TWO sentinel entries: one that popstate will consume, one as buffer
-  history.pushState({benim:true}, '', location.href);
-  history.pushState({benim:true}, '', location.href);
+  _park();
   _showPage(page);
 };
 
 window.goBack = function() {
-  if(_navStack.length > 1) {
-    _navStack.pop();
-  }
-  // Always replenish sentinels after going back
-  history.pushState({benim:true}, '', location.href);
-  history.pushState({benim:true}, '', location.href);
+  if(_navStack.length > 1) _navStack.pop();
+  _park();
   _showPage(_navStack[_navStack.length-1]);
 };
 
-// Intercept browser back — ALWAYS stay on site
-window.addEventListener('popstate', function(e) {
-  // Immediately push two new sentinels back
-  history.pushState({benim:true}, '', location.href);
-  history.pushState({benim:true}, '', location.href);
-  // Then do in-app back
-  if(_navStack.length > 1) {
-    _navStack.pop();
-  }
+window.addEventListener('popstate', function() {
+  if(_popBusy) return;
+  _popBusy = true;
+  _park();
+  if(_navStack.length > 1) _navStack.pop();
   _showPage(_navStack[_navStack.length-1]);
+  setTimeout(function(){ _popBusy = false; }, 50);
 });
 
 // ===== FAQ TOGGLE =====
@@ -3111,9 +3108,7 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
-  // Push two sentinel entries so back button is always interceptable
-  history.pushState({benim:true}, '', location.href);
-  history.pushState({benim:true}, '', location.href);
+  _park();
   initSlider();
   startCountdown();
   renderSkeletons('flash-grid',4);
