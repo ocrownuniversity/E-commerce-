@@ -465,6 +465,16 @@ body{padding-bottom:70px}
 .slide-1{background:linear-gradient(120deg,var(--orange) 0%,#ff9640 100%)}
 .slide-2{background:linear-gradient(120deg,#1a1a2e,#16213e)}
 .slide-3{background:linear-gradient(120deg,#0f3460,#533483)}
+/* Image slide styles */
+.slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.slide-overlay{position:absolute;inset:0}
+.slide-overlay.orange{background:linear-gradient(110deg,rgba(232,66,10,.82) 0%,rgba(232,66,10,.35) 55%,transparent 100%)}
+.slide-overlay.dark{background:linear-gradient(110deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.35) 60%,transparent 100%)}
+.slide-overlay.none{background:linear-gradient(110deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.1) 100%)}
+.slide.has-image{background:#222}
+.slide.has-image .slide-content{z-index:2}
+.slide.text-dark .slide-content h2,.slide.text-dark .slide-content p{color:#1a1a1a}
+.slide.text-dark .slide-btn{background:var(--orange);color:#fff}
 .slide-content{z-index:1;flex:1}
 .slide-content h2{font-size:clamp(18px,4vw,32px);font-weight:900;line-height:1.2;margin-bottom:8px;color:#fff;font-family:'Poppins',sans-serif}
 .slide-content p{font-size:clamp(11px,2vw,15px);opacity:.92;margin-bottom:14px;color:rgba(255,255,255,.9)}
@@ -545,13 +555,12 @@ body{padding-bottom:70px}
 .splash-brand{font-family:'Poppins',sans-serif;font-size:clamp(72px,18vw,110px);font-weight:900;line-height:1;color:#e8420a;letter-spacing:-2px;text-shadow:0 0 60px rgba(232,66,10,.5),0 0 120px rgba(232,66,10,.2);margin-bottom:16px;animation:splashBrandPop .9s cubic-bezier(.34,1.56,.64,1) .1s both}
 .splash-tagline{font-family:'Poppins',sans-serif;font-size:clamp(14px,3.5vw,18px);font-weight:500;color:rgba(255,255,255,.55);text-align:center;margin-bottom:10px;letter-spacing:.5px;animation:splashFadeUp .7s ease .5s both;font-style:italic}
 .splash-tagline strong{color:rgba(255,255,255,.75);font-weight:700;font-style:normal}
-.splash-subtitle{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(232,66,10,.6);margin-bottom:40px;animation:splashFadeUp .7s ease .7s both}
+.splash-subtitle-hidden{display:none}
 .splash-loader{width:200px;display:flex;flex-direction:column;align-items:center;gap:8px;animation:splashFadeUp .7s ease .9s both}
 .splash-bar{width:100%;height:2px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
 .splash-fill{height:100%;width:0%;background:linear-gradient(90deg,#e8420a,#ff6b35,#ff9800);border-radius:99px;transition:width .12s ease;box-shadow:0 0 12px rgba(232,66,10,.8)}
 .splash-pct{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:2px}
-/* Copyright footer on splash */
-.splash-footer{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.5px;animation:splashFadeUp .7s ease 1s both}
+
 @keyframes splashBrandPop{0%{opacity:0;transform:scale(.6) translateY(20px);filter:blur(8px)}60%{filter:blur(0)}100%{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes splashFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
@@ -678,13 +687,11 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
   <div class="splash-content">
     <div class="splash-brand">BENIM</div>
     <div class="splash-tagline">Where smart <strong>TRADE</strong> begins.</div>
-    <div class="splash-subtitle">Nigeria's Fashion Destination</div>
     <div class="splash-loader">
       <div class="splash-bar"><div class="splash-fill" id="splash-fill"></div></div>
       <div class="splash-pct" id="splash-pct">0%</div>
     </div>
   </div>
-  <div class="splash-footer">1999–2025 BENIM · China Factories Sourced Directly</div>
 </div>
 
 
@@ -781,30 +788,10 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 
 <!-- HOME PAGE -->
 <div id="page-home" class="page active">
-  <!-- Hero Slider -->
+  <!-- Hero Slider — Dynamic (managed from Admin Panel) -->
   <div class="hero-slider">
     <div class="slides-container" id="slides">
-      <div class="slide slide-1">
-        <div class="slide-content">
-          <h2>Shop Smart.<br>Dress Better.</h2>
-          <p>Premium fashion at honest prices.</p>
-          <button class="slide-btn" onclick="filterByCategory('all')">Shop Now</button>
-        </div>
-      </div>
-      <div class="slide slide-2">
-        <div class="slide-content">
-          <h2>Hot Deals<br>Every Day</h2>
-          <p>Unbeatable prices on top brands</p>
-          <button class="slide-btn" onclick="filterByCategory('all')">Explore Deals</button>
-        </div>
-      </div>
-      <div class="slide slide-3">
-        <div class="slide-content">
-          <h2>Flash Sale<br>Is Live 🔥</h2>
-          <p>Limited time offers &mdash; grab before it's gone</p>
-          <button class="slide-btn" onclick="filterByCategory('all')">View Flash Sale</button>
-        </div>
-      </div>
+      <!-- Slides rendered dynamically by JS from Firestore banners -->
     </div>
     <button class="slider-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
     <button class="slider-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
@@ -1243,6 +1230,7 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     <div class="admin-tabs">
       <button class="admin-tab active" onclick="switchAdminTab('products',this)">Products</button>
       <button class="admin-tab" onclick="switchAdminTab('orders',this)">Orders</button>
+      <button class="admin-tab" onclick="switchAdminTab('banners',this)"><i class="fas fa-images" style="margin-right:4px"></i>Banners</button>
       <button class="admin-tab" onclick="switchAdminTab('users',this)">Users</button>
       <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Reviews</button>
       <button class="admin-tab" onclick="switchAdminTab('chats',this)">Chat Sessions</button>
@@ -1274,6 +1262,18 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
         </div>
       </div>
     </div>
+    <!-- Banners Tab -->
+    <div id="admin-banners" class="admin-tab-content hidden">
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fas fa-images" style="color:var(--orange);margin-right:6px"></i>Homepage Banners / Slides</span>
+          <button class="btn-primary" onclick="showAddBannerModal()"><i class="fas fa-plus"></i> Add Banner</button>
+        </div>
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:16px">Upload image URLs for the homepage slider. Each banner shows a product image with text and a call-to-action button.</p>
+        <div id="admin-banners-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"></div>
+      </div>
+    </div>
+
     <!-- Reviews Tab -->
     <div id="admin-reviews" class="admin-tab-content hidden">
       <div class="admin-card">
@@ -1927,6 +1927,81 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     </div>
   </div>
 </div>
+<!-- Add/Edit Banner Modal -->
+<div class="modal-overlay" id="modal-banner">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <span class="modal-title" id="banner-modal-title">Add Banner</span>
+      <button class="modal-close" onclick="closeModal('modal-banner')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-banner-id">
+      <div class="form-group">
+        <label class="form-label">Banner Image URL *</label>
+        <input class="form-input" id="b-image" placeholder="https://example.com/banner.jpg">
+        <p style="font-size:11px;color:var(--gray-400);margin-top:4px">Use a direct image URL (jpg, png, webp). Recommended size: 900×400px</p>
+      </div>
+      <div id="b-image-preview" style="margin:10px 0;display:none">
+        <img id="b-preview-img" src="" style="width:100%;height:140px;object-fit:cover;border-radius:8px;border:2px solid var(--gray-200)" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Headline Text *</label>
+        <input class="form-input" id="b-title" placeholder="e.g. Mega Savings on Top Deals">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subtext</label>
+        <input class="form-input" id="b-subtitle" placeholder="e.g. Shop the best offers selected for you">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Button Text</label>
+          <input class="form-input" id="b-btn-text" placeholder="SHOP NOW">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Button Action</label>
+          <select class="form-input" id="b-btn-action">
+            <option value="all">All Products</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Men's Fashion">Men's Fashion</option>
+            <option value="Women's Fashion">Women's Fashion</option>
+            <option value="Baby Products">Baby Products</option>
+            <option value="Home & Kitchen">Home & Kitchen</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Sports">Sports</option>
+            <option value="Phones">Phones</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Text Colour (on slide)</label>
+          <select class="form-input" id="b-text-color">
+            <option value="white">White (default)</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Overlay Tint</label>
+          <select class="form-input" id="b-overlay">
+            <option value="orange">Orange gradient</option>
+            <option value="dark">Dark overlay</option>
+            <option value="none">None (image only)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Sort Order <span style="color:var(--gray-400);font-weight:400;font-size:11px">(lower = shows first)</span></label>
+        <input class="form-input" id="b-order" type="number" placeholder="1" value="1">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('modal-banner')">Cancel</button>
+      <button class="btn-primary" onclick="saveBanner()"><i class="fas fa-save"></i> Save Banner</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast-container"></div>
 
 <!-- ====== FIREBASE + APP SCRIPT ====== -->
@@ -3541,6 +3616,7 @@ window.switchAdminTab = function(tab, btn) {
   btn.classList.add('active');
   if(tab==='products') loadAdminProducts();
   else if(tab==='orders') loadAdminOrders();
+  else if(tab==='banners') loadAdminBanners();
   else if(tab==='users') loadAdminUsers();
   else if(tab==='reviews') loadAdminReviews();
   else if(tab==='chats') loadAdminChats();
@@ -3945,13 +4021,182 @@ function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, total,
 }
 
 // ===== SLIDER =====
-function initSlider() {
-  const slides = document.querySelector('.slides-container');
-  const totalSlides = document.querySelectorAll('.slide').length;
-  const dotsContainer = document.getElementById('slider-dots');
-  dotsContainer.innerHTML = Array(totalSlides).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
-  sliderInterval = setInterval(()=>changeSlide(1), 4000);
+// ===== BANNER/SLIDER MANAGEMENT =====
+let allBanners = []; // loaded from Firestore
+
+async function loadBanners() {
+  try {
+    const snap = await getDocs(query(collection(db,'banners'), orderBy('order','asc')));
+    allBanners = snap.docs.map(d=>({id:d.id,...d.data()}));
+  } catch(e) {
+    // Firestore might not have 'order' index yet — fall back without orderBy
+    try {
+      const snap2 = await getDocs(collection(db,'banners'));
+      allBanners = snap2.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0));
+    } catch(e2){ allBanners = []; }
+  }
+  renderSlider();
 }
+
+function renderSlider() {
+  const container = document.getElementById('slides');
+  const dotsContainer = document.getElementById('slider-dots');
+  if(!container) return;
+
+  // Use Firestore banners if any, otherwise show default slides
+  const banners = allBanners.length ? allBanners : [
+    { title:'Shop Smart.<br>Dress Better.', subtitle:'Premium fashion at honest prices.', btnText:'SHOP NOW', btnAction:'all', overlay:'orange', textColor:'white' },
+    { title:'Hot Deals<br>Every Day', subtitle:'Unbeatable prices on top brands', btnText:'EXPLORE DEALS', btnAction:'all', overlay:'dark', textColor:'white' },
+    { title:'Flash Sale<br>Is Live 🔥', subtitle:'Limited time offers — grab before they are gone', btnText:'VIEW FLASH SALE', btnAction:'all', overlay:'dark', textColor:'white' }
+  ];
+
+  container.innerHTML = banners.map((b,i) => {
+    const textClass = (b.textColor==='dark') ? ' text-dark' : '';
+    const imgClass = b.image ? ' has-image' : '';
+    const bgStyle = (!b.image) ? `style="background:${i===0?'linear-gradient(120deg,var(--orange),#ff9640)':i===1?'linear-gradient(120deg,#1a1a2e,#16213e)':'linear-gradient(120deg,#0f3460,#533483)'}"` : '';
+    const titleLines = (b.title||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>');
+    return `<div class="slide${imgClass}${textClass}" ${bgStyle}>
+      ${b.image ? `<img class="slide-img" src="${b.image}" alt="${b.title||''}" onerror="this.style.display='none'">` : ''}
+      ${b.image ? `<div class="slide-overlay ${b.overlay||'orange'}"></div>` : ''}
+      <div class="slide-content">
+        <h2>${titleLines}</h2>
+        ${b.subtitle ? `<p>${b.subtitle}</p>` : ''}
+        <button class="slide-btn" onclick="filterByCategory('${b.btnAction||'all'}')">${b.btnText||'SHOP NOW'}</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  currentSlide = 0;
+  const total = container.querySelectorAll('.slide').length;
+  if(dotsContainer) dotsContainer.innerHTML = Array(total).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
+  if(sliderInterval) clearInterval(sliderInterval);
+  sliderInterval = setInterval(()=>changeSlide(1), 4500);
+  updateSlider();
+}
+
+function initSlider() {
+  // Just render with defaults; loadBanners() will refresh with real data
+  renderSlider();
+}
+
+// ===== ADMIN BANNER FUNCTIONS =====
+window.loadAdminBanners = async function() {
+  const listEl = document.getElementById('admin-banners-list');
+  if(!listEl) return;
+  listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--gray-400)"><i class="fas fa-spinner fa-spin" style="font-size:24px"></i><p style="margin-top:10px;font-size:13px">Loading banners...</p></div>';
+  await loadBanners();
+  if(!allBanners.length) {
+    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--gray-400)"><i class="fas fa-image" style="font-size:40px;display:block;margin-bottom:10px"></i><p style="font-size:14px;font-weight:600">No banners yet</p><p style="font-size:12px;margin-top:4px">Add your first banner to customize the homepage slider</p></div>';
+    return;
+  }
+  listEl.innerHTML = allBanners.map(b => `
+    <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid var(--gray-100)">
+      <div style="position:relative;height:130px;background:${b.image?'#111':'linear-gradient(120deg,var(--orange),#ff9640)'};overflow:hidden">
+        ${b.image ? `<img src="${b.image}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">` : ''}
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;padding:12px">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:14px;font-weight:800;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.5)">${(b.title||'').replace(/\n/g,'<br>')}</div>
+            ${b.subtitle?`<div style="font-size:11px;opacity:.85;margin-top:4px">${b.subtitle}</div>`:''}
+          </div>
+        </div>
+        <div style="position:absolute;top:8px;right:8px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">#${b.order||1}</div>
+      </div>
+      <div style="padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--gray-700)">Button: ${b.btnText||'SHOP NOW'}</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:2px">→ ${b.btnAction||'all'}</div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn-primary" style="padding:6px 10px;font-size:11px" onclick="editBanner('${b.id}')"><i class="fas fa-edit"></i></button>
+          <button class="btn-danger" onclick="deleteBanner('${b.id}')"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>`).join('');
+};
+
+window.showAddBannerModal = function() {
+  document.getElementById('banner-modal-title').textContent = 'Add Banner';
+  document.getElementById('edit-banner-id').value = '';
+  ['b-image','b-title','b-subtitle','b-btn-text'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('b-btn-action').value = 'all';
+  document.getElementById('b-overlay').value = 'orange';
+  document.getElementById('b-text-color').value = 'white';
+  document.getElementById('b-order').value = (allBanners.length+1).toString();
+  document.getElementById('b-image-preview').style.display = 'none';
+  openModal('modal-banner');
+};
+
+window.editBanner = function(id) {
+  const b = allBanners.find(x=>x.id===id);
+  if(!b) return;
+  document.getElementById('banner-modal-title').textContent = 'Edit Banner';
+  document.getElementById('edit-banner-id').value = id;
+  document.getElementById('b-image').value = b.image||'';
+  document.getElementById('b-title').value = b.title||'';
+  document.getElementById('b-subtitle').value = b.subtitle||'';
+  document.getElementById('b-btn-text').value = b.btnText||'';
+  document.getElementById('b-btn-action').value = b.btnAction||'all';
+  document.getElementById('b-overlay').value = b.overlay||'orange';
+  document.getElementById('b-text-color').value = b.textColor||'white';
+  document.getElementById('b-order').value = b.order||1;
+  const prev = document.getElementById('b-image-preview');
+  const prevImg = document.getElementById('b-preview-img');
+  if(b.image) { prevImg.src=b.image; prev.style.display='block'; } else { prev.style.display='none'; }
+  openModal('modal-banner');
+};
+
+// Live image preview in modal
+document.addEventListener('DOMContentLoaded', ()=>{
+  const imgInput = document.getElementById('b-image');
+  if(imgInput) {
+    imgInput.addEventListener('input', function() {
+      const prev = document.getElementById('b-image-preview');
+      const prevImg = document.getElementById('b-preview-img');
+      if(this.value) { prevImg.src=this.value; prev.style.display='block'; }
+      else { prev.style.display='none'; }
+    });
+  }
+});
+
+window.saveBanner = async function() {
+  if(!isAdmin) return;
+  const editId = document.getElementById('edit-banner-id').value;
+  const image = document.getElementById('b-image').value.trim();
+  const title = document.getElementById('b-title').value.trim();
+  const subtitle = document.getElementById('b-subtitle').value.trim();
+  const btnText = document.getElementById('b-btn-text').value.trim() || 'SHOP NOW';
+  const btnAction = document.getElementById('b-btn-action').value;
+  const overlay = document.getElementById('b-overlay').value;
+  const textColor = document.getElementById('b-text-color').value;
+  const order = Number(document.getElementById('b-order').value)||1;
+  if(!title) return showToast('Headline text is required','error');
+  const data = { image, title, subtitle, btnText, btnAction, overlay, textColor, order, updatedAt: serverTimestamp() };
+  try {
+    if(editId) {
+      await updateDoc(doc(db,'banners',editId), data);
+      showToast('Banner updated!');
+    } else {
+      data.createdAt = serverTimestamp();
+      await addDoc(collection(db,'banners'), data);
+      showToast('Banner added!');
+    }
+    closeModal('modal-banner');
+    await loadBanners();
+    renderSlider();
+    loadAdminBanners();
+  } catch(e) { showToast('Failed to save banner: '+e.message,'error'); }
+};
+
+window.deleteBanner = async function(id) {
+  if(!isAdmin || !confirm('Delete this banner?')) return;
+  try {
+    await deleteDoc(doc(db,'banners',id));
+    showToast('Banner deleted');
+    await loadBanners();
+    renderSlider();
+    loadAdminBanners();
+  } catch(e) { showToast('Failed to delete banner','error'); }
+};
 
 window.changeSlide = function(dir) {
   const totalSlides = document.querySelectorAll('.slide').length;
@@ -4136,6 +4381,7 @@ window.showToast = function(message, type='success') {
 // ===== INIT =====
 async function init() {
   initSlider();
+  loadBanners(); // load dynamic banners from Firestore
   startCountdown();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
