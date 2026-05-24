@@ -3182,7 +3182,7 @@ window.placeOrder = async function() {
       } catch(e) { console.warn('Stock update failed for', pid, e); }
     }
     // Notify ADMIN first (gets the browser popup, most important)
-    notifyAdminWhatsApp(orderId, addr.name||currentUser.email.split('@')[0], currentUser.email, itemNames, subtotal, deliveryFee, selectedPayment, addrStr, addr.phone||'');
+    notifyAdminWhatsApp(orderId, addr.name||currentUser.email.split('@')[0], currentUser.email, itemNames, subtotal, deliveryFee, selectedPayment, addrStr, addr.phone||'', couponDiscount, appliedCoupon?.code||'', loyaltyDiscount);
     // Notify BUYER after a short delay (secondary popup — buyer gets receipt on screen anyway)
     setTimeout(()=>{
       notifyBuyerWhatsApp(addr.phone||'', orderId, 'pending', itemNames, addr.name||currentUser.email.split('@')[0], grandTotal, deliveryFee);
@@ -3199,6 +3199,11 @@ window.placeOrder = async function() {
 function showReceipt(orderId, data) {
   const wrap = document.getElementById('receipt-wrap');
   const deliveryFee = data.deliveryFee || 0;
+  const subtotal = data.subtotal || 0;
+  const couponDiscount = data.couponDiscount || 0;
+  const loyaltyDiscount = data.loyaltyDiscount || 0;
+  const couponCode = data.couponCode || '';
+  const savings = couponDiscount + loyaltyDiscount;
   wrap.innerHTML = `
     <h3 style="font-size:16px;font-weight:900;margin-bottom:14px;color:var(--orange)">🧾 Order Receipt</h3>
     <div class="summary-row"><span>Order ID</span><span style="font-weight:800">${orderId}</span></div>
@@ -3206,11 +3211,15 @@ function showReceipt(orderId, data) {
     <div class="summary-row"><span>Payment</span><span>${data.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</span></div>
     <div class="summary-row"><span>${data.deliveryType==='pickup'?'Pickup Station':'Delivery to'}</span><span>${data.deliveryType==='pickup'?(data.pickupStation||data.address?.street||''):((data.address&&data.address.street)||'')+', '+((data.address&&data.address.city)||'')}</span></div>
     <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
-    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
-    <div class="summary-row"><span>Subtotal</span><span>₦${(data.subtotal||data.total||0).toLocaleString()}</span></div>
-    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>
-    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
-    ${data.payment==='bank'?`<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: ${orderId}</p></div>`:''}
+    ${data.items.map(x=>'<div class="summary-row"><span>'+x.name+' × '+x.qty+'</span><span>₦'+(x.price*x.qty).toLocaleString()+'</span></div>').join('')}
+    <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
+    <div class="summary-row"><span>Subtotal</span><span>₦${subtotal.toLocaleString()}</span></div>
+    <div class="summary-row"><span style="color:${deliveryFee===0?'var(--green)':'inherit'}">Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE ✅':'₦'+deliveryFee.toLocaleString()}</span></div>
+    ${couponDiscount>0 ? '<div class="summary-row"><span style="color:var(--green)">🏷️ Coupon ('+(couponCode||'DISCOUNT')+')</span><span style="color:var(--green);font-weight:800">-₦'+couponDiscount.toLocaleString()+'</span></div>' : ''}
+    ${loyaltyDiscount>0 ? '<div class="summary-row"><span style="color:var(--green)">⭐ Loyalty Points</span><span style="color:var(--green);font-weight:800">-₦'+loyaltyDiscount.toLocaleString()+'</span></div>' : ''}
+    ${savings>0 ? '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 10px;margin:6px 0;font-size:12px;color:var(--green);font-weight:700;text-align:center">🎉 You saved ₦'+savings.toLocaleString()+' on this order!</div>' : ''}
+    <div class="summary-row total" style="border-top:2px solid var(--gray-200);padding-top:10px;margin-top:6px"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
+    ${data.payment==='bank'?'<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: '+orderId+'</p></div>':''}
   `;
 }
 
@@ -4213,24 +4222,29 @@ If you have any issues, reply to this message within 24 hours.`
   window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
 }
 
-function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, total, deliveryFee, payment, address, buyerPhone) {
-  const grandTotal = Number(total||0) + Number(deliveryFee||0);
+function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, subtotal, deliveryFee, payment, address, buyerPhone, couponDiscount, couponCode, loyaltyDiscount) {
+  const cd = Number(couponDiscount||0);
+  const ld = Number(loyaltyDiscount||0);
   const cleanBuyerPhone = String(buyerPhone||'').replace(/[^0-9]/g,'');
+  const grandTotal = Math.max(0, Number(subtotal||0) - cd - ld + Number(deliveryFee||0));
   const msg = encodeURIComponent(
-    `🛒 *NEW ORDER — Benim!*\n\n` +
-    `🧾 *Order ID:* ${orderId}\n` +
-    `👤 *Customer:* ${customerName}\n` +
-    `📧 *Email:* ${customerEmail}\n` +
-    (cleanBuyerPhone ? `📱 *Phone:* ${buyerPhone}\n` : '') +
-    `\n📦 *Items Ordered:*\n${items}\n\n` +
-    `💰 *Subtotal:* ₦${Number(total||0).toLocaleString()}\n` +
-    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE ✅\n`) +
-    `💵 *Grand Total:* ₦${grandTotal.toLocaleString()}\n` +
-    `💳 *Payment:* ${payment==='bank'?'Bank Transfer (Opay)':'Pay on Delivery'}\n` +
-    `📍 *Address:* ${address}\n\n` +
-    `👉 Go to Admin Panel → Orders to confirm.`
+    '🛒 *NEW ORDER — Benim!*\n\n' +
+    '🧾 *Order ID:* '+orderId+'\n' +
+    '👤 *Customer:* '+customerName+'\n' +
+    '📧 *Email:* '+customerEmail+'\n' +
+    (cleanBuyerPhone ? '📱 *Phone:* '+buyerPhone+'\n' : '') +
+    '\n📦 *Items Ordered:*\n'+items+'\n\n' +
+    '💰 *Subtotal:* ₦'+Number(subtotal||0).toLocaleString()+'\n' +
+    (Number(deliveryFee)>0 ? '🚚 *Delivery Fee:* ₦'+Number(deliveryFee).toLocaleString()+'\n' : '🚚 *Delivery:* FREE ✅\n') +
+    (cd>0 ? '🏷️ *Coupon ('+(couponCode||'DISCOUNT')+'):* -₦'+cd.toLocaleString()+'\n' : '') +
+    (ld>0 ? '⭐ *Loyalty Points:* -₦'+ld.toLocaleString()+'\n' : '') +
+    (cd>0||ld>0 ? '🎉 *Total Savings:* ₦'+(cd+ld).toLocaleString()+'\n' : '') +
+    '💵 *Grand Total:* ₦'+grandTotal.toLocaleString()+'\n' +
+    '💳 *Payment:* '+(payment==='bank'?'Bank Transfer (Opay)':'Pay on Delivery')+'\n' +
+    '📍 *Address:* '+address+'\n\n' +
+    '👉 Go to Admin Panel → Orders to confirm.'
   );
-  window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${msg}`, '_blank');
+  window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg, '_blank');
 }
 
 // ===== SLIDER =====
