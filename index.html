@@ -11,7 +11,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Benim Shop">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="IMG-20260507-WA0041_1_.jpg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -742,7 +744,8 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 <body>
 <!-- PWA INSTALL BANNER -->
 <div id="pwa-install-banner">
-  <div class="pwa-banner-icon-fallback">🛍️</div>
+  <img class="pwa-banner-icon" src="icon-192.png" alt="Benim" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="pwa-banner-icon-fallback" style="display:none">🛍️</div>
   <div class="pwa-banner-text">
     <div class="pwa-banner-title">Install Benim Shop App</div>
     <div class="pwa-banner-sub" id="pwa-banner-sub">Add to home screen for faster shopping</div>
