@@ -742,14 +742,48 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 <body>
 <!-- PWA INSTALL BANNER -->
 <div id="pwa-install-banner">
-  <img class="pwa-banner-icon" src="IMG-20260507-WA0041_1_.jpg" alt="Benim" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-  <div class="pwa-banner-icon-fallback" style="display:none">🛍️</div>
+  <div class="pwa-banner-icon-fallback">🛍️</div>
   <div class="pwa-banner-text">
-    <div class="pwa-banner-title">Install Benim Shop</div>
-    <div class="pwa-banner-sub">Add to home screen for faster shopping</div>
+    <div class="pwa-banner-title">Install Benim Shop App</div>
+    <div class="pwa-banner-sub" id="pwa-banner-sub">Add to home screen for faster shopping</div>
   </div>
-  <button class="pwa-install-btn" id="pwa-install-btn">Install</button>
+  <button class="pwa-install-btn" id="pwa-install-btn">📲 Install</button>
   <button class="pwa-dismiss-btn" onclick="dismissPWABanner()" title="Dismiss">✕</button>
+</div>
+
+<!-- iOS INSTALL GUIDE MODAL -->
+<div class="modal-overlay" id="modal-ios-install">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-header">
+      <span class="modal-title">📲 Install Benim App</span>
+      <button class="modal-close" onclick="closeModal('modal-ios-install')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" style="padding:20px">
+      <p style="font-size:13px;color:var(--gray-600);margin-bottom:16px;line-height:1.6">Follow these 2 steps to install Benim Shop on your iPhone/iPad:</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:flex-start;gap:12px;background:var(--gray-50);border-radius:10px;padding:12px">
+          <div style="width:32px;height:32px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0">1</div>
+          <div>
+            <div style="font-weight:800;font-size:13px;margin-bottom:4px">Tap the Share button</div>
+            <div style="font-size:12px;color:var(--gray-500)">Tap the <strong>Share</strong> icon (box with arrow) at the bottom of Safari</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;background:var(--gray-50);border-radius:10px;padding:12px">
+          <div style="width:32px;height:32px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0">2</div>
+          <div>
+            <div style="font-weight:800;font-size:13px;margin-bottom:4px">Tap "Add to Home Screen"</div>
+            <div style="font-size:12px;color:var(--gray-500)">Scroll down in the menu and tap <strong>"Add to Home Screen"</strong> then tap <strong>Add</strong></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff3e0;border-radius:8px;padding:10px;margin-top:14px;border-left:3px solid var(--orange)">
+        <p style="font-size:11px;color:var(--orange);font-weight:700">⚠️ Must use Safari browser on iOS for this to work</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="closeModal('modal-ios-install')">Got it!</button>
+    </div>
+  </div>
 </div>
 <!-- SPLASH SCREEN -->
 <div id="splash-screen">
@@ -852,6 +886,7 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     <div class="sidebar-item" onclick="navigate('shipping-policy');toggleSidebar()"><i class="fas fa-shipping-fast"></i> Shipping Policy</div>
     <div class="sidebar-item" onclick="navigate('privacy-policy');toggleSidebar()"><i class="fas fa-shield-alt"></i> Privacy Policy</div>
     <div class="sidebar-item" onclick="navigate('terms');toggleSidebar()"><i class="fas fa-file-contract"></i> Terms & Conditions</div>
+    <div class="sidebar-item" onclick="document.getElementById('pwa-install-btn').click();toggleSidebar()" style="color:var(--orange);font-weight:800;border-top:1px solid var(--gray-100);margin-top:6px;padding-top:12px"><i class="fas fa-download" style="color:var(--orange)"></i> 📲 Install App</div>
   </div>
 
   <div class="sidebar-section" id="sb-logout-section" style="display:none">
@@ -4446,38 +4481,83 @@ async function init() {
   if(hash && hash !== 'home' && hash !== '__guard__' && document.getElementById('page-'+hash)) navigate(hash);
 }
 
-// ===== PWA INSTALL BANNER =====
+// ===== PWA INSTALL =====
 let _pwaInstallEvent = null;
+const _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const _isAndroid = /android/i.test(navigator.userAgent);
+const _isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+function _showPWABanner() {
+  if(_isStandalone) return; // already installed
+  const dismissed = localStorage.getItem('benim-pwa-dismissed');
+  if(dismissed && Date.now() - Number(dismissed) < 24*60*60*1000) return; // dismissed within 24h
+  setTimeout(() => {
+    document.getElementById('pwa-install-banner').classList.add('show');
+  }, 1500);
+}
+
+// Capture Chrome install event
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   _pwaInstallEvent = e;
-  // Only show if not dismissed in last 3 days
-  const dismissed = localStorage.getItem('benim-pwa-dismissed');
-  if(dismissed && Date.now() - Number(dismissed) < 3 * 24 * 60 * 60 * 1000) return;
-  // Only show if not already installed
-  if(window.matchMedia('(display-mode: standalone)').matches) return;
-  setTimeout(() => {
-    document.getElementById('pwa-install-banner').classList.add('show');
-  }, 2000);
+  _showPWABanner();
 });
-document.getElementById('pwa-install-btn').addEventListener('click', async () => {
-  if(!_pwaInstallEvent) return;
-  _pwaInstallEvent.prompt();
-  const { outcome } = await _pwaInstallEvent.userChoice;
-  if(outcome === 'accepted') {
-    showToast('Benim Shop installed! 🎉', 'success');
+
+// For iOS and other browsers — show banner anyway with instructions
+window.addEventListener('load', () => {
+  if(!_pwaInstallEvent && !_isStandalone) {
+    _showPWABanner();
   }
-  _pwaInstallEvent = null;
-  document.getElementById('pwa-install-banner').classList.remove('show');
 });
+
+document.getElementById('pwa-install-btn').addEventListener('click', async () => {
+  if(_pwaInstallEvent) {
+    // Chrome Android — native install prompt
+    _pwaInstallEvent.prompt();
+    const { outcome } = await _pwaInstallEvent.userChoice;
+    if(outcome === 'accepted') {
+      showToast('Benim Shop installed! 🎉','success');
+      document.getElementById('pwa-install-banner').classList.remove('show');
+    }
+    _pwaInstallEvent = null;
+  } else if(_isIOS) {
+    // iOS — show instructions modal
+    showIOSInstallGuide();
+  } else {
+    // Other browsers — show manual instructions
+    showManualInstallGuide();
+  }
+});
+
 window.dismissPWABanner = function() {
   document.getElementById('pwa-install-banner').classList.remove('show');
   localStorage.setItem('benim-pwa-dismissed', String(Date.now()));
 };
+
+window.showIOSInstallGuide = function() {
+  openModal('modal-ios-install');
+};
+
+window.showManualInstallGuide = function() {
+  showToast('Open this site in Chrome, tap the 3-dot menu → "Add to Home screen"','info');
+};
+
+// Update banner text based on device
+(function() {
+  const sub = document.getElementById('pwa-banner-sub');
+  if(sub) {
+    if(_isIOS) sub.textContent = 'Tap Install → follow 2 simple steps';
+    else if(_pwaInstallEvent || _isAndroid) sub.textContent = 'Tap Install — works like a real app!';
+    else sub.textContent = 'Add to home screen for faster shopping';
+  }
+})();
+
 // Register service worker
 if('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(e => console.log('SW failed:', e));
   });
 }
 
