@@ -2067,16 +2067,7 @@ function setLogos() {
   });
   */
   // Try to load image logo in header; on success hide text, on error keep text
-  const imgLogo = document.getElementById('site-logo');
-  if(imgLogo) {
-    imgLogo.onload = function() {
-      this.style.display = 'block';
-      const textLogo = document.getElementById('logo-text');
-      if(textLogo) textLogo.style.display = 'none';
-    };
-    imgLogo.onerror = function() { this.style.display = 'none'; };
-    imgLogo.src = 'IMG-20260507-WA0041_1_.jpg';
-  }
+  // Logo embedded as base64
 }
 setLogos();
 
