@@ -4,23 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benim Shop</title>
-<meta name="description" content="Benim — Your trusted online shopping destination. Quality products, fast delivery, great prices.">
-<meta name="theme-color" content="#e8420a">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Benim Shop">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
-  --orange: #e8420a;
-  --orange-light: #ff6b35;
-  --orange-dark: #c23608;
+  --orange: #1B2A6B;
+  --orange-light: #2E45A3;
+  --orange-dark: #111E50;
   --white: #ffffff;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -42,140 +32,79 @@
   --radius: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
-  --bg: #f5f5f5;
-  --surface: #ffffff;
-  --surface2: #f9fafb;
-  --border: #e5e7eb;
-  --text: #1f2937;
-  --text-muted: #6b7280;
 }
-body.dark-mode {
-  --bg: #0f0f0f;
-  --surface: #1a1a1a;
-  --surface2: #242424;
-  --border: #2e2e2e;
-  --text: #f0f0f0;
-  --text-muted: #9ca3af;
-  --gray-50: #1a1a1a;
-  --gray-100: #242424;
-  --gray-200: #2e2e2e;
-  --gray-300: #3a3a3a;
-  --gray-400: #6b7280;
-  --gray-500: #9ca3af;
-  --gray-600: #b0b8c4;
-  --gray-700: #d1d5db;
-  --gray-800: #f0f0f0;
-  --gray-900: #f9fafb;
-  --white: #1a1a1a;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
-  --shadow: 0 2px 8px rgba(0,0,0,.4);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.5);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.6);
+/* ===== DARK MODE ===== */
+body.dark-mode{
+  --white:#1a1a1a;
+  --gray-50:#1e1e1e;
+  --gray-100:#252525;
+  --gray-200:#333;
+  --gray-300:#444;
+  --gray-400:#888;
+  --gray-500:#aaa;
+  --gray-600:#bbb;
+  --gray-700:#ccc;
+  --gray-800:#e0e0e0;
+  --gray-900:#f0f0f0;
 }
-/* Dark mode toggle button */
-#dark-mode-btn{background:none;border:none;font-size:18px;cursor:pointer;padding:6px;border-radius:50%;transition:.2s;display:flex;align-items:center;justify-content:center;color:var(--gray-600)}
-#dark-mode-btn:hover{background:var(--gray-100)}
-
-/* ===== PWA INSTALL BANNER ===== */
-#pwa-install-banner{position:relative;top:0;left:0;right:0;z-index:99998;background:linear-gradient(135deg,#1a0800,#2d1000);color:#fff;padding:10px 14px;display:none;align-items:center;gap:10px;box-shadow:0 2px 12px rgba(0,0,0,.4);border-bottom:2px solid var(--orange)}
-#pwa-install-banner.show{display:flex}
-.pwa-banner-icon{width:40px;height:40px;border-radius:10px;object-fit:cover;flex-shrink:0;border:2px solid rgba(232,80,10,.5)}
-.pwa-banner-icon-fallback{width:40px;height:40px;border-radius:10px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.pwa-banner-text{flex:1;min-width:0}
-.pwa-banner-title{font-size:13px;font-weight:900;color:#fff;font-family:'Poppins',sans-serif}
-.pwa-banner-sub{font-size:11px;color:rgba(255,200,150,.8);margin-top:1px}
-.pwa-install-btn{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;font-family:'Poppins',sans-serif;letter-spacing:.3px}
-.pwa-install-btn:active{transform:scale(.97)}
-.pwa-dismiss-btn{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:4px;flex-shrink:0;line-height:1}
-.pwa-dismiss-btn:hover{color:#fff}
-
-/* ===== COMPREHENSIVE DARK MODE ===== */
-body.dark-mode,body.dark-mode .page,body.dark-mode #app{background:#0f0f0f;color:#f0f0f0}
-body.dark-mode header,body.dark-mode .header-search-row{background:#1a1a1a!important;border-bottom:1px solid #2e2e2e}
-body.dark-mode .header-search-wrap{background:#242424!important}
-body.dark-mode .header-search{color:#f0f0f0!important}
-body.dark-mode .hamburger,body.dark-mode .hicon{color:#e0e0e0!important}
-body.dark-mode .sidebar{background:#1a1a1a!important}
-body.dark-mode .sidebar-section{border-color:#2e2e2e!important}
-body.dark-mode .sidebar-item{color:#d0d0d0!important}
-body.dark-mode .sidebar-item:hover{background:#2a2a2a!important}
-body.dark-mode .sidebar-item .cat-count{background:#2e2e2e!important;color:#9ca3af!important}
-body.dark-mode .sidebar-overlay{background:rgba(0,0,0,.75)!important}
-body.dark-mode .bottom-nav{background:#1a1a1a!important;border-top:1px solid #2e2e2e!important}
-body.dark-mode .bottom-nav-item{color:#9ca3af!important}
-body.dark-mode .bottom-nav-item.active,body.dark-mode .bottom-nav-item.active .bnav-icon,body.dark-mode .bottom-nav-item.active .bnav-label{color:var(--orange)!important}
-body.dark-mode .pc{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .pc-name{color:#f0f0f0!important}
-body.dark-mode .pc-body{background:#1a1a1a!important}
-body.dark-mode .pc-wish-btn{background:rgba(26,26,26,.95)!important}
-body.dark-mode .home-section-title,.dark-mode .section-title{color:#f0f0f0!important}
-body.dark-mode .flash-ends-row{background:#242424!important;border-color:#2e2e2e!important;color:#f0f0f0!important}
-body.dark-mode .flash-time{background:#1a1a1a!important;color:var(--orange)!important}
-body.dark-mode .see-all-link{color:var(--orange)!important}
-body.dark-mode .cart-item,body.dark-mode .cart-summary{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .cart-item-name{color:#f0f0f0!important}
-body.dark-mode .checkout-section{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .checkout-title{color:#f0f0f0!important}
-body.dark-mode .form-input,body.dark-mode select,body.dark-mode textarea{background:#242424!important;border-color:#3a3a3a!important;color:#f0f0f0!important}
-body.dark-mode .form-label{color:#c0c0c0!important}
-body.dark-mode .address-card{border-color:#3a3a3a!important;background:#1a1a1a!important}
-body.dark-mode .address-card h4{color:#f0f0f0!important}
-body.dark-mode .order-card{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .order-id{color:#9ca3af!important}
-body.dark-mode .order-items{color:#b0b0b0!important}
-body.dark-mode .search-filters{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .filter-select{background:#242424!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
-body.dark-mode .size-btn{background:#242424!important;border-color:#3a3a3a!important;color:#f0f0f0!important}
-body.dark-mode .size-btn.selected{background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important}
-body.dark-mode .qty-btn{background:#2e2e2e!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
-body.dark-mode .detail-trust-row{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .detail-tabs-bar{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .detail-tab-btn{color:#9ca3af!important}
-body.dark-mode .detail-tab-btn.active{color:var(--orange)!important;border-color:var(--orange)!important}
-body.dark-mode .admin-card{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .admin-card-title{color:#f0f0f0!important;border-color:#2e2e2e!important}
-body.dark-mode .admin-tab{background:#1a1a1a!important;border-color:#2e2e2e!important;color:#c0c0c0!important}
-body.dark-mode .admin-table th{background:#242424!important;color:#b0b0b0!important;border-color:#2e2e2e!important}
-body.dark-mode .admin-table td{border-color:#2e2e2e!important;color:#d0d0d0!important}
-body.dark-mode .admin-table tr:hover td{background:#242424!important}
-body.dark-mode .banner-card{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .banner-preview-empty{background:linear-gradient(120deg,#1e1e1e,#2a2a2a)!important}
-body.dark-mode .modal{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .modal-overlay{background:rgba(0,0,0,.8)!important}
-body.dark-mode .modal-header,body.dark-mode .modal-footer{border-color:#2e2e2e!important;background:#1a1a1a!important}
-body.dark-mode .modal-title{color:#f0f0f0!important}
-body.dark-mode .modal-close{color:#9ca3af!important}
-body.dark-mode .modal-body{color:#d0d0d0!important}
-body.dark-mode .chatbot-window{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .chatbot-header{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .chatbot-body{background:#0f0f0f!important}
-body.dark-mode .bot-bubble{background:#242424!important;color:#f0f0f0!important}
-body.dark-mode .chatbot-input-row{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .chatbot-input{background:#242424!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
-body.dark-mode footer,.dark-mode .site-footer{background:#111!important;border-top:1px solid #2e2e2e!important;color:#9ca3af!important}
-body.dark-mode .review-card{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .track-result,body.dark-mode #track-result{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode .track-step-info h4{color:#f0f0f0!important}
-body.dark-mode .profile-card,body.dark-mode .profile-section,body.dark-mode .account-section{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode #page-home,body.dark-mode #page-search,body.dark-mode #page-cart,body.dark-mode #page-checkout,body.dark-mode #page-orders,body.dark-mode #page-track,body.dark-mode #page-wishlist,body.dark-mode #page-profile,body.dark-mode #page-login,body.dark-mode #page-register,body.dark-mode #page-product,body.dark-mode #page-admin{background:#0f0f0f!important}
-body.dark-mode [style*="background:#fff"],body.dark-mode [style*="background: #fff"],body.dark-mode [style*="background:white"],body.dark-mode [style*="background:#f9fafb"],body.dark-mode [style*="background:#f5f5f5"]{background:#1a1a1a!important}
-body.dark-mode [style*="background:var(--gray-50)"],body.dark-mode [style*="background:var(--gray-100)"]{background:#242424!important}
-body.dark-mode [style*="color:#1f2937"],body.dark-mode [style*="color:var(--gray-800)"]{color:#f0f0f0!important}
-body.dark-mode [style*="color:var(--gray-500)"],body.dark-mode [style*="color:var(--gray-600)"]{color:#9ca3af!important}
-body.dark-mode [style*="border:1px solid var(--gray"]{border-color:#2e2e2e!important}
-body.dark-mode .admin-stat-card{background:#1a1a1a!important;border:1px solid #2e2e2e!important}
-body.dark-mode .admin-stat-num{color:var(--orange)!important}
-body.dark-mode .btn-secondary{background:#242424!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
-body.dark-mode input[type="text"],body.dark-mode input[type="email"],body.dark-mode input[type="password"],body.dark-mode input[type="tel"],body.dark-mode input[type="number"],body.dark-mode input[type="range"],body.dark-mode input[type="hidden"]{background:#242424!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
-body.dark-mode .summary-row{border-color:#2e2e2e!important;color:#d0d0d0!important}
-body.dark-mode .order-detail-body{background:#1a1a1a!important}
-body.dark-mode #order-detail-body>div{background:#1a1a1a!important;border-color:#2e2e2e!important}
-body.dark-mode #order-detail-body [style*="background:var(--gray-50)"]{background:#242424!important}
-body.dark-mode #order-detail-body [style*="background:#fff"]{background:#2a2a2a!important}
-body.dark-mode .home-section{background:#0f0f0f!important}
-body.dark-mode .pc-sold-row .pc-bar-bg{background:#2e2e2e!important}
+body.dark-mode{background:#141414!important;color:#e0e0e0}
+body.dark-mode #header{background:#1a1a1a!important;border-bottom-color:#333!important}
+body.dark-mode .header-search-wrap{background:#252525!important}
+body.dark-mode .header-search{color:#e0e0e0!important}
+body.dark-mode #sidebar{background:#1a1a1a}
+body.dark-mode .sidebar-item{color:#ccc}
+body.dark-mode .sidebar-item:hover{background:#252525}
+body.dark-mode .home-section{background:#1e1e1e!important}
+body.dark-mode #page-home{background:#141414!important}
+body.dark-mode .pc{background:#1e1e1e}
+body.dark-mode .pc-name{color:#e0e0e0}
+body.dark-mode .bottom-nav{background:#1a1a1a!important;border-top-color:#333!important}
+body.dark-mode .bnav-item{color:#666!important}
+body.dark-mode .bnav-item.active{color:#1B2A6B!important}
+body.dark-mode .modal{background:#1e1e1e}
+body.dark-mode .form-input{background:#252525;border-color:#444;color:#e0e0e0}
+body.dark-mode .auth-card{background:#1e1e1e}
+body.dark-mode .page-header{background:#1a1a1a;color:#e0e0e0}
+body.dark-mode .page-header h2{color:#e0e0e0}
+body.dark-mode .cart-item,.dark-mode .order-card,.dark-mode .profile-section{background:#1e1e1e}
+body.dark-mode .cart-summary,.dark-mode .checkout-section,.dark-mode .admin-card{background:#1e1e1e}
+body.dark-mode .address-card,.dark-mode .payment-option{border-color:#444;background:#252525}
+body.dark-mode .bank-info{background:#252525}
+body.dark-mode .admin-header{background:#111}
+body.dark-mode .admin-tab{background:#252525;border-color:#444;color:#ccc}
+body.dark-mode .admin-table th{background:#252525;color:#aaa}
+body.dark-mode .admin-table td{color:#ccc;border-bottom-color:#333}
+body.dark-mode .stat-card{background:#1e1e1e}
+body.dark-mode #site-footer{background:#0d0d0d}
+body.dark-mode .review-card{background:#252525}
+body.dark-mode .tab-btns{border-bottom-color:#444}
+body.dark-mode .qty-controls{border-color:#444}
+body.dark-mode .qty-btn{background:#252525;color:#ccc}
+body.dark-mode .qty-input{background:#252525;color:#e0e0e0;border-color:#444}
+body.dark-mode .faq-item{border-color:#444}
+body.dark-mode .faq-q:hover{background:#252525}
+body.dark-mode .contact-card{background:#252525}
+body.dark-mode .filter-select{background:#252525;border-color:#444;color:#ccc}
+body.dark-mode .pickup-station-card{background:#252525;border-color:#444}
+body.dark-mode .delivery-type-btn{background:#252525;border-color:#444}
+body.dark-mode .search-filters{background:#1e1e1e}
+body.dark-mode .skel-card{background:#1e1e1e}
+body.dark-mode #chatbot-window{background:#1e1e1e}
+body.dark-mode .chat-msg.bot{background:#333;color:#e0e0e0}
+body.dark-mode .chat-input{background:#252525;color:#e0e0e0}
+body.dark-mode .chat-input-row{border-top-color:#444}
+body.dark-mode .profile-section{background:#1e1e1e}
+body.dark-mode .order-card{background:#1e1e1e}
+body.dark-mode .cart-item{background:#1e1e1e}
+body.dark-mode .checkout-section{background:#1e1e1e}
+body.dark-mode .admin-card{background:#1e1e1e}
+body.dark-mode .footer-page-wrap h2{color:#e0e0e0}
+body.dark-mode .fp-section p,.dark-mode .fp-section li{color:#aaa}
+body.dark-mode .fp-section h3{color:#ccc}
+#theme-toggle{background:none;border:none;cursor:pointer;font-size:20px;padding:6px 8px;border-radius:6px;color:var(--gray-700);transition:.2s;display:flex;align-items:center}
+#theme-toggle:hover{background:var(--gray-100)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+body{font-family:'Nunito',sans-serif;background:#f5f5f5;color:var(--gray-800);min-height:100vh;transition:background .3s,color .3s}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;outline:none;font-family:inherit}
 input,select,textarea{font-family:inherit;outline:none}
@@ -324,11 +253,11 @@ img{max-width:100%;display:block}
 .form-input:focus{border-color:var(--orange)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .address-card{border:2px solid var(--gray-200);border-radius:8px;padding:12px;cursor:pointer;transition:.2s;margin-bottom:8px}
-.address-card.selected{border-color:var(--orange);background:rgba(232,66,10,.04)}
+.address-card.selected{border-color:var(--orange);background:rgba(27,42,107,.04)}
 .address-card h4{font-size:14px;font-weight:700;margin-bottom:3px}
 .address-card p{font-size:13px;color:var(--gray-500)}
 .payment-option{display:flex;align-items:center;gap:12px;border:2px solid var(--gray-200);border-radius:8px;padding:12px;cursor:pointer;transition:.2s;margin-bottom:8px}
-.payment-option.selected{border-color:var(--orange);background:rgba(232,66,10,.04)}
+.payment-option.selected{border-color:var(--orange);background:rgba(27,42,107,.04)}
 .payment-option input{accent-color:var(--orange)}
 .bank-info{background:var(--gray-50);border-radius:8px;padding:12px;margin-top:8px}
 .bank-info p{font-size:13px;color:var(--gray-600);margin-bottom:4px}
@@ -387,7 +316,7 @@ img{max-width:100%;display:block}
 
 /* ====== PROFILE ====== */
 .profile-wrap{max-width:700px;margin:0 auto;padding:16px}
-.profile-header{background:linear-gradient(135deg,var(--orange),var(--orange-light));border-radius:var(--radius-xl);padding:24px;text-align:center;margin-bottom:16px;color:#fff}
+.profile-header{background:linear-gradient(135deg,#1B2A6B,#2E45A3);border-radius:var(--radius-xl);padding:24px;text-align:center;margin-bottom:16px;color:#fff}
 .profile-avatar{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px}
 .profile-name{font-size:20px;font-weight:900}
 .profile-email{font-size:14px;opacity:.8;margin-top:4px}
@@ -435,7 +364,7 @@ img{max-width:100%;display:block}
 .modal-footer{padding:16px 20px;border-top:1px solid var(--gray-200);display:flex;gap:10px;justify-content:flex-end}
 
 /* ====== TOAST ====== */
-#toast-container{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+#toast-container{position:fixed;bottom:80px;left:16px;z-index:9999;display:flex;flex-direction:column;gap:8px}
 .toast{background:#fff;border-radius:10px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;min-width:240px;animation:toastIn .3s ease;border-left:4px solid var(--green)}
 .toast.error{border-left-color:var(--red)}
 .toast.info{border-left-color:var(--orange)}
@@ -445,9 +374,9 @@ img{max-width:100%;display:block}
 @keyframes toastIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
 
 /* ====== CHATBOT ====== */
-#chatbot-btn{position:fixed;bottom:72px;right:14px;z-index:1500;background:var(--orange);color:#fff;width:46px;height:46px;border-radius:50%;border:none;font-size:18px;cursor:pointer;box-shadow:var(--shadow-md);transition:.2s;display:flex;align-items:center;justify-content:center}
+#chatbot-btn{position:fixed;bottom:80px;right:16px;z-index:1500;background:var(--orange);color:#fff;width:54px;height:54px;border-radius:50%;border:none;font-size:22px;cursor:pointer;box-shadow:var(--shadow-md);transition:.2s;display:flex;align-items:center;justify-content:center}
 #chatbot-btn:hover{transform:scale(1.1)}
-#chatbot-window{position:fixed;bottom:84px;left:20px;z-index:1500;background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);width:320px;max-height:440px;display:flex;flex-direction:column;overflow:hidden;transition:.25s;opacity:0;pointer-events:none;transform:translateY(10px)}
+#chatbot-window{position:fixed;bottom:146px;right:16px;z-index:1500;background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);width:320px;max-height:440px;display:flex;flex-direction:column;overflow:hidden;transition:.25s;opacity:0;pointer-events:none;transform:translateY(10px)}
 #chatbot-window.open{opacity:1;pointer-events:all;transform:translateY(0)}
 .chat-header{background:var(--orange);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
 .chat-header h4{font-size:14px;font-weight:800;flex:1}
@@ -482,12 +411,12 @@ body{padding-bottom:70px}
 
 /* IMAGE UPLOAD */
 .upload-area{border:2px dashed var(--gray-300);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:.2s}
-.upload-area:hover{border-color:var(--orange);background:rgba(232,66,10,.02)}
+.upload-area:hover{border-color:var(--orange);background:rgba(27,42,107,.02)}
 .upload-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .upload-preview img{width:80px;height:80px;object-fit:cover;border-radius:6px;border:2px solid var(--gray-200)}
 @media(max-width:480px){
   .form-row{grid-template-columns:1fr}
-  #chatbot-window{width:calc(100vw - 40px)}
+  #chatbot-window{width:calc(100vw - 32px);right:16px}
 }
 /* Inline notification */
 .notif-dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block}
@@ -500,7 +429,7 @@ body{padding-bottom:70px}
 .home-see-all:hover{text-decoration:underline}
 
 /* Flash ends-in row */
-.flash-ends-row{display:inline-flex;align-items:center;gap:5px;background:rgba(232,66,10,.08);border:1px solid rgba(232,66,10,.2);border-radius:20px;padding:4px 12px}
+.flash-ends-row{display:inline-flex;align-items:center;gap:5px;background:rgba(27,42,107,.08);border:1px solid rgba(27,42,107,.2);border-radius:20px;padding:4px 12px}
 .flash-bolt{color:var(--orange);font-size:13px}
 .flash-ends-text{font-size:12px;font-weight:700;color:var(--orange)}
 .flash-time{font-size:13px;font-weight:900;color:var(--orange);min-width:22px;text-align:center}
@@ -523,7 +452,7 @@ body{padding-bottom:70px}
 .product-old-price{font-size:11px;color:var(--gray-400);text-decoration:line-through}
 /* Sold progress bar */
 .product-sold-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
-.sold-bar-wrap{flex:1;height:4px;background:rgba(232,66,10,.15);border-radius:2px;overflow:hidden;margin-right:8px}
+.sold-bar-wrap{flex:1;height:4px;background:rgba(27,42,107,.15);border-radius:2px;overflow:hidden;margin-right:8px}
 .sold-bar{height:100%;background:var(--orange);border-radius:2px;transition:width .3s}
 .sold-count{font-size:10px;font-weight:700;color:var(--gray-400);white-space:nowrap}
 
@@ -531,26 +460,29 @@ body{padding-bottom:70px}
 .hero-slider{position:relative;overflow:hidden;border-radius:12px;margin:10px 14px;height:190px}
 @media(min-width:480px){.hero-slider{height:220px}}
 @media(min-width:768px){.hero-slider{height:320px;margin:16px 20px}}
-.slides-container{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);height:100%;will-change:transform}
-.slide{min-width:100%;width:100%;height:100%;display:flex;align-items:center;padding:22px 24px;position:relative;overflow:hidden;flex-shrink:0;box-sizing:border-box}
-.slide-1{background:linear-gradient(110deg,#e8420a 0%,#ff7a3c 100%)}
+.slides-container{display:flex;transition:transform .5s ease;height:100%}
+.slide{min-width:100%;height:100%;display:flex;align-items:center;padding:24px 28px;position:relative;overflow:hidden}
+.slide-1{background:linear-gradient(120deg,var(--orange) 0%,#2E45A3 100%)}
 .slide-2{background:linear-gradient(120deg,#1a1a2e,#16213e)}
 .slide-3{background:linear-gradient(120deg,#0f3460,#533483)}
-.slide-content{z-index:2;max-width:52%;min-width:0;flex-shrink:0}
-.slide-content h2{font-size:clamp(16px,4.5vw,28px);font-weight:900;line-height:1.2;margin-bottom:6px;color:#fff;font-family:'Poppins',sans-serif;word-break:break-word}
-.slide-content p{font-size:clamp(10px,2.5vw,13px);opacity:.92;margin-bottom:12px;color:rgba(255,255,255,.9);line-height:1.4;word-break:break-word}
-.slide-btn{display:inline-block;background:#fff;color:var(--orange);padding:8px 18px;border-radius:6px;font-weight:900;font-size:11px;cursor:pointer;border:none;transition:.2s;letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+/* Image slide styles */
+.slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.slide-overlay{position:absolute;inset:0}
+.slide-overlay.orange{background:linear-gradient(110deg,rgba(27,42,107,.82) 0%,rgba(27,42,107,.35) 55%,transparent 100%)}
+.slide-overlay.dark{background:linear-gradient(110deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.35) 60%,transparent 100%)}
+.slide-overlay.none{background:linear-gradient(110deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.1) 100%)}
+.slide.has-image{background:#222}
+.slide.has-image .slide-content{z-index:2}
+.slide.text-dark .slide-content h2,.slide.text-dark .slide-content p{color:#1a1a1a}
+.slide.text-dark .slide-btn{background:var(--orange);color:#fff}
+.slide-content{z-index:1;flex:1}
+.slide-content h2{font-size:clamp(18px,4vw,32px);font-weight:900;line-height:1.2;margin-bottom:8px;color:#fff;font-family:'Poppins',sans-serif}
+.slide-content p{font-size:clamp(11px,2vw,15px);opacity:.92;margin-bottom:14px;color:rgba(255,255,255,.9)}
+.slide-btn{display:inline-block;background:#fff;color:var(--orange);padding:9px 22px;border-radius:6px;font-weight:900;font-size:12px;cursor:pointer;border:none;transition:.2s;letter-spacing:.3px;text-transform:uppercase}
 .slide-btn:hover{transform:scale(1.04)}
-.slide-img{position:absolute;right:0;top:0;height:100%;width:50%;object-fit:cover;object-position:center top;pointer-events:none;z-index:1}
-.slide-img-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.05) 100%);z-index:1}
-.banner-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
-.banner-preview{width:100%;height:120px;object-fit:cover;display:block}
-.banner-preview-empty{width:100%;height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,var(--gray-100),var(--gray-200));color:var(--gray-400);font-size:32px}
-.banner-card-body{padding:12px}
-.banner-card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.slider-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
-.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
-.dot.active{background:#fff;width:20px;border-radius:4px}
+.slider-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.2s}
+.dot.active{background:#fff;width:18px;border-radius:4px}
 .slider-prev,.slider-next{display:none}
 
 /* ====== BOTTOM NAV ref image style ====== */
@@ -603,9 +535,35 @@ body{padding-bottom:70px}
 .faq-q:hover{background:var(--gray-50)}
 .faq-q i{color:var(--orange);transition:.3s}
 .faq-a{display:none;padding:0 16px 14px;font-size:13px;color:var(--gray-600);line-height:1.7}
-.faq-item.open .faq-q{background:rgba(232,66,10,.04);color:var(--orange)}
+.faq-item.open .faq-q{background:rgba(27,42,107,.04);color:var(--orange)}
 .faq-item.open .faq-q i{transform:rotate(180deg)}
 .faq-item.open .faq-a{display:block}
+
+/* ===== SPLASH SCREEN — 1688 inspired ===== */
+#splash-screen{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .8s ease,transform .8s ease;background:#111}
+#splash-screen.fade-out{opacity:0;pointer-events:none;transform:scale(1.03)}
+.splash-bg{position:absolute;inset:0;background:#111}
+.splash-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(61,90,241,.15) 0%,transparent 70%)}
+.splash-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(27,42,107,.04) 0%,transparent 100%)}
+/* Animated ring decoration */
+.splash-ring{position:absolute;border-radius:50%;border:1px solid rgba(27,42,107,.08);animation:splashRingPulse 3s ease-in-out infinite}
+.splash-ring:nth-child(1){width:300px;height:300px;animation-delay:0s}
+.splash-ring:nth-child(2){width:450px;height:450px;animation-delay:.6s}
+.splash-ring:nth-child(3){width:600px;height:600px;animation-delay:1.2s}
+@keyframes splashRingPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.02)}}
+.splash-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;text-align:center}
+.splash-brand{font-family:'Poppins',sans-serif;font-size:clamp(72px,18vw,110px);font-weight:900;line-height:1;color:#1B2A6B;letter-spacing:-2px;text-shadow:0 0 60px rgba(61,90,241,.6),0 0 120px rgba(27,42,107,.3);margin-bottom:16px;animation:splashBrandPop .9s cubic-bezier(.34,1.56,.64,1) .1s both}
+.splash-tagline{font-family:'Poppins',sans-serif;font-size:clamp(14px,3.5vw,18px);font-weight:500;color:rgba(255,255,255,.55);text-align:center;margin-bottom:10px;letter-spacing:.5px;animation:splashFadeUp .7s ease .5s both;font-style:italic}
+.splash-tagline strong{color:rgba(255,255,255,.75);font-weight:700;font-style:normal}
+.splash-subtitle-hidden{display:none}
+.splash-loader{width:200px;display:flex;flex-direction:column;align-items:center;gap:8px;animation:splashFadeUp .7s ease .9s both}
+.splash-bar{width:100%;height:2px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
+.splash-fill{height:100%;width:0%;background:linear-gradient(90deg,#1B2A6B,#2E45A3,#3D5AF1);border-radius:99px;transition:width .12s ease;box-shadow:0 0 12px rgba(61,90,241,.9)}
+.splash-pct{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:2px}
+
+@keyframes splashBrandPop{0%{opacity:0;transform:scale(.6) translateY(20px);filter:blur(8px)}60%{filter:blur(0)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes splashFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
 
 /* Delivery Type Toggle */
 .delivery-type-row{display:flex;gap:8px;margin-bottom:14px}
@@ -613,11 +571,11 @@ body{padding-bottom:70px}
 .delivery-type-btn i{font-size:22px;color:var(--gray-400)}
 .delivery-type-btn span{font-size:12px;font-weight:700;color:var(--gray-500)}
 .delivery-type-btn small{font-size:10px;color:var(--gray-400);font-weight:500;text-align:center;line-height:1.3}
-.delivery-type-btn.active{border-color:var(--orange);background:rgba(232,66,10,.05)}
+.delivery-type-btn.active{border-color:var(--orange);background:rgba(27,42,107,.05)}
 .delivery-type-btn.active i,.delivery-type-btn.active span{color:var(--orange)}
 /* Pickup station card */
 .pickup-station-card{border:2px solid var(--gray-200);border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;transition:.2s;background:#fff}
-.pickup-station-card.selected{border-color:var(--orange);background:rgba(232,66,10,.04)}
+.pickup-station-card.selected{border-color:var(--orange);background:rgba(27,42,107,.04)}
 .pickup-station-card h4{font-size:13px;font-weight:800;color:#111;margin-bottom:3px;font-family:'Poppins',sans-serif}
 .pickup-station-card p{font-size:12px;color:var(--gray-500);margin:0;line-height:1.5}
 .pickup-station-card .pickup-fee{font-size:11px;font-weight:700;color:var(--orange);margin-top:5px;display:block}
@@ -633,9 +591,9 @@ body{padding-bottom:70px}
 #header{background:#fff!important;box-shadow:0 1px 3px rgba(0,0,0,.08)!important}
 .header-top{padding:12px 14px 10px!important;gap:8px!important}
 .hamburger{color:#222!important;font-size:22px!important;background:none!important;border:none!important;padding:0!important}
-#logo-text{font-family:'Poppins',sans-serif!important;font-weight:900!important;font-size:24px!important;color:#e8420a!important;cursor:pointer!important;letter-spacing:-0.5px!important}
+#logo-text{font-family:'Poppins',sans-serif!important;font-weight:900!important;font-size:24px!important;color:#1B2A6B!important;cursor:pointer!important;letter-spacing:-0.5px!important}
 .hicon{background:transparent!important;color:#333!important;font-size:22px!important;padding:4px 6px!important;border:none!important}
-.hicon .badge{background:#e8420a!important;color:#fff!important;top:-5px!important;right:-4px!important;width:17px!important;height:17px!important;font-size:9px!important}
+.hicon .badge{background:#1B2A6B!important;color:#fff!important;top:-5px!important;right:-4px!important;width:17px!important;height:17px!important;font-size:9px!important}
 .hicon-label{display:none!important}
 .header-icons{gap:6px!important}
 
@@ -645,11 +603,16 @@ body{padding-bottom:70px}
 .header-search{background:transparent!important;border:none!important;padding:12px 0!important;font-size:13px!important;flex:1!important;outline:none!important;color:#333!important}
 .header-search::placeholder{color:#aaa!important;font-size:13px!important}
 .header-search-btn{background:transparent!important;color:#aaa!important;border:none!important;font-size:16px!important;padding:0!important;display:flex!important;align-items:center!important;cursor:pointer!important}
-.header-search-btn:hover{color:#e8420a!important}
+.header-search-btn:hover{color:#1B2A6B!important}
 
-/* HERO SLIDER — mobile tweaks only */
-.hero-slider{border-radius:10px!important;margin:0 14px 0!important;height:180px!important}
+/* HERO SLIDER */
+.hero-slider{border-radius:10px!important;margin:0 14px 0!important;height:180px!important;overflow:hidden!important}
 @media(min-width:480px){.hero-slider{height:210px!important}}
+.slide{padding:20px 24px!important;align-items:center!important;justify-content:flex-start!important}
+.slide-1{background:linear-gradient(110deg,#1B2A6B 0%,#ff7a3c 100%)!important}
+.slide-content h2{font-size:21px!important;font-weight:900!important;text-align:left!important;font-family:'Poppins',sans-serif!important;line-height:1.2!important}
+.slide-content p{font-size:12px!important;text-align:left!important;margin-bottom:14px!important}
+.slide-btn{padding:8px 20px!important;border-radius:6px!important;font-size:12px!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.5px!important}
 .slider-prev,.slider-next{display:none!important}
 .slider-dots{bottom:8px!important}
 
@@ -657,15 +620,15 @@ body{padding-bottom:70px}
 .home-section{background:#fff!important;margin:8px 0 0!important;padding:14px 12px 16px!important}
 .home-section-title{font-size:16px!important;font-weight:800!important;color:#111!important;font-family:'Poppins',sans-serif!important;margin-bottom:4px!important}
 .home-section-header{margin-bottom:14px!important}
-.home-see-all{color:#e8420a!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important}
+.home-see-all{color:#1B2A6B!important;font-size:13px!important;font-weight:700!important;white-space:nowrap!important;padding-top:2px!important}
 
 /* FLASH SECTION */
 #flash-section{margin-top:8px!important}
-.flash-ends-row{background:rgba(232,66,10,.08)!important;border:1px solid rgba(232,66,10,.2)!important;border-radius:20px!important;padding:3px 10px!important;display:inline-flex!important;align-items:center!important;gap:4px!important}
-.flash-ends-text{color:#e8420a!important;font-size:11px!important;font-weight:700!important}
-.flash-time{color:#e8420a!important;font-size:12px!important;font-weight:900!important}
-.flash-colon{color:#e8420a!important;font-weight:900!important}
-.flash-bolt{color:#e8420a!important}
+.flash-ends-row{background:rgba(27,42,107,.08)!important;border:1px solid rgba(27,42,107,.2)!important;border-radius:20px!important;padding:3px 10px!important;display:inline-flex!important;align-items:center!important;gap:4px!important}
+.flash-ends-text{color:#1B2A6B!important;font-size:11px!important;font-weight:700!important}
+.flash-time{color:#1B2A6B!important;font-size:12px!important;font-weight:900!important}
+.flash-colon{color:#1B2A6B!important;font-weight:900!important}
+.flash-bolt{color:#1B2A6B!important}
 
 /* PRODUCT GRID — 3 columns */
 .product-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important;padding:0 2px!important}
@@ -675,15 +638,15 @@ body{padding-bottom:70px}
 .pc:active{box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .pc-img-wrap{position:relative;width:100%;aspect-ratio:1/1;background:#f5f5f5;overflow:hidden;flex-shrink:0}
 .pc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-.pc-badge{position:absolute;top:7px;left:7px;background:#e8420a;color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;z-index:2;letter-spacing:.3px}
+.pc-badge{position:absolute;top:7px;left:7px;background:#1B2A6B;color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;z-index:2;letter-spacing:.3px}
 .pc-body{padding:7px 8px 9px;display:flex;flex-direction:column;gap:3px;flex:1}
 .pc-name{font-size:11.5px;font-weight:700;color:#111;line-height:1.3;font-family:'Poppins',sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
 .pc-prices{display:flex;align-items:baseline;gap:5px;flex-wrap:nowrap;margin-top:1px}
-.pc-price{font-size:13px;font-weight:900;color:#e8420a;font-family:'Poppins',sans-serif;white-space:nowrap}
+.pc-price{font-size:13px;font-weight:900;color:#1B2A6B;font-family:'Poppins',sans-serif;white-space:nowrap}
 .pc-old{font-size:10px;color:#bbb;text-decoration:line-through;font-family:'Poppins',sans-serif;white-space:nowrap}
 .pc-sold-row{display:flex;align-items:center;gap:5px;margin-top:3px}
 .pc-bar-bg{flex:1;height:4px;background:#fde0d8;border-radius:2px;overflow:hidden}
-.pc-bar-fill{height:100%;background:linear-gradient(90deg,#e8420a,#ff7a3c);border-radius:2px}
+.pc-bar-fill{height:100%;background:linear-gradient(90deg,#1B2A6B,#ff7a3c);border-radius:2px}
 .pc-sold-txt{font-size:10px;color:#999;white-space:nowrap;font-weight:600}
 /* hide old .product-card styles */
 .product-card{display:none!important}
@@ -699,7 +662,7 @@ body{padding-bottom:70px}
 .bottom-nav{background:#fff!important;border-top:1px solid #eee!important;padding:0!important}
 .bnav-item{padding:8px 4px 6px!important;font-size:10px!important;font-weight:600!important;color:#aaa!important;gap:2px!important}
 .bnav-item i{font-size:20px!important}
-.bnav-item.active{color:#e8420a!important}
+.bnav-item.active{color:#1B2A6B!important}
 .bnav-badge{top:4px!important;right:calc(50% - 18px)!important;font-size:9px!important;padding:1px 4px!important}
 
 /* PAGE BACKGROUNDS */
@@ -715,49 +678,18 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 </style>
 </head>
 <body>
-<!-- PWA INSTALL BANNER -->
-<div id="pwa-install-banner">
-  <img class="pwa-banner-icon" src="icon-192.png" alt="Benim" style="border-radius:12px" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-  <div class="pwa-banner-icon-fallback" style="display:none;background:#000">🛍️</div>
-  <div class="pwa-banner-text">
-    <div class="pwa-banner-title">Install Benim Shop App</div>
-    <div class="pwa-banner-sub" id="pwa-banner-sub">Free · No app store needed</div>
-  </div>
-  <button class="pwa-install-btn" id="pwa-install-btn">📲 Install</button>
-  <button class="pwa-dismiss-btn" onclick="dismissPWABanner()" title="Dismiss">✕</button>
-</div>
-
-<!-- iOS INSTALL GUIDE MODAL -->
-<div class="modal-overlay" id="modal-ios-install">
-  <div class="modal" style="max-width:360px">
-    <div class="modal-header">
-      <span class="modal-title">📲 Install Benim App</span>
-      <button class="modal-close" onclick="closeModal('modal-ios-install')"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body" style="padding:20px">
-      <p style="font-size:13px;color:var(--gray-600);margin-bottom:16px;line-height:1.6">Follow these 2 steps to install Benim Shop on your iPhone/iPad:</p>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <div style="display:flex;align-items:flex-start;gap:12px;background:var(--gray-50);border-radius:10px;padding:12px">
-          <div style="width:32px;height:32px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0">1</div>
-          <div>
-            <div style="font-weight:800;font-size:13px;margin-bottom:4px">Tap the Share button</div>
-            <div style="font-size:12px;color:var(--gray-500)">Tap the <strong>Share</strong> icon (box with arrow) at the bottom of Safari</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;background:var(--gray-50);border-radius:10px;padding:12px">
-          <div style="width:32px;height:32px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0">2</div>
-          <div>
-            <div style="font-weight:800;font-size:13px;margin-bottom:4px">Tap "Add to Home Screen"</div>
-            <div style="font-size:12px;color:var(--gray-500)">Scroll down in the menu and tap <strong>"Add to Home Screen"</strong> then tap <strong>Add</strong></div>
-          </div>
-        </div>
-      </div>
-      <div style="background:#fff3e0;border-radius:8px;padding:10px;margin-top:14px;border-left:3px solid var(--orange)">
-        <p style="font-size:11px;color:var(--orange);font-weight:700">⚠️ Must use Safari browser on iOS for this to work</p>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-primary" onclick="closeModal('modal-ios-install')">Got it!</button>
+<!-- SPLASH SCREEN -->
+<div id="splash-screen">
+  <div class="splash-bg"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-ring"></div>
+  <div class="splash-content">
+    <div class="splash-brand">BENIM</div>
+    <div class="splash-tagline">Where smart <strong>TRADE</strong> begins.</div>
+    <div class="splash-loader">
+      <div class="splash-bar"><div class="splash-fill" id="splash-fill"></div></div>
+      <div class="splash-pct" id="splash-pct">0%</div>
     </div>
   </div>
 </div>
@@ -774,8 +706,8 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
       <img id="site-logo" src="IMG-20260507-WA0041_1_.jpg" alt="Benim" class="header-logo" onclick="navigate('home')" onerror="this.style.display='none'" style="display:none;margin-left:6px">
     </div>
     <div class="header-icons" style="display:flex;align-items:center;gap:4px">
-      <button id="dark-mode-btn" onclick="toggleDarkMode()" title="Toggle dark/light mode">🌙</button>
       <button class="hicon" onclick="navigate('profile')" title="Account"><i class="fas fa-user-circle"></i><span class="badge hidden" id="wish-count">0</span></button>
+      <button id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode"><i id="theme-icon" class="fas fa-moon"></i></button>
       <button class="hicon" onclick="navigate('cart')" title="Cart" style="position:relative"><i class="fas fa-shopping-cart"></i><span class="badge hidden" id="cart-count">0</span></button>
     </div>
   </div>
@@ -844,7 +776,6 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     <div class="sidebar-item" onclick="navigate('shipping-policy');toggleSidebar()"><i class="fas fa-shipping-fast"></i> Shipping Policy</div>
     <div class="sidebar-item" onclick="navigate('privacy-policy');toggleSidebar()"><i class="fas fa-shield-alt"></i> Privacy Policy</div>
     <div class="sidebar-item" onclick="navigate('terms');toggleSidebar()"><i class="fas fa-file-contract"></i> Terms & Conditions</div>
-    <div class="sidebar-item" onclick="document.getElementById('pwa-install-btn').click();toggleSidebar()" style="color:var(--orange);font-weight:800;border-top:1px solid var(--gray-100);margin-top:6px;padding-top:12px"><i class="fas fa-download" style="color:var(--orange)"></i> 📲 Install App</div>
   </div>
 
   <div class="sidebar-section" id="sb-logout-section" style="display:none">
@@ -857,10 +788,10 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 
 <!-- HOME PAGE -->
 <div id="page-home" class="page active">
-  <!-- Hero Slider -->
+  <!-- Hero Slider — Dynamic (managed from Admin Panel) -->
   <div class="hero-slider">
     <div class="slides-container" id="slides">
-      <!-- Slides rendered by JS from Firestore / defaults -->
+      <!-- Slides rendered dynamically by JS from Firestore banners -->
     </div>
     <button class="slider-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
     <button class="slider-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
@@ -904,15 +835,9 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     </div>
     <div class="product-grid" id="trending-grid"></div>
   </div>
-  <!-- RECENTLY VIEWED -->
-  <div class="home-section" id="recently-viewed-section" style="display:none">
-    <div class="home-section-header">
-      <span class="home-section-title">👁️ Recently Viewed</span>
-      <a class="home-see-all" onclick="localStorage.removeItem('recentlyViewed');document.getElementById('recently-viewed-section').style.display='none'">Clear</a>
-    </div>
-    <div class="product-grid" id="recently-viewed-grid"></div>
-  </div>
 </div>
+
+<!-- SEARCH PAGE -->
 <div id="page-search" class="page">
   <div class="page-header">
     <button class="back-btn" onclick="navigate('home')"><i class="fas fa-arrow-left"></i></button>
@@ -1128,40 +1053,11 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
       </div>
     </div>
     <div class="checkout-section">
-      <div class="checkout-title"><i class="fas fa-tag"></i> Coupon Code</div>
-      <div style="display:flex;gap:8px">
-        <input class="form-input" id="coupon-input" placeholder="Enter coupon code" style="flex:1;text-transform:uppercase">
-        <button class="btn-primary" style="padding:10px 16px;font-size:13px;white-space:nowrap" onclick="applyCoupon()"><i class="fas fa-check"></i> Apply</button>
-      </div>
-      <div id="coupon-msg" style="font-size:12px;margin-top:6px;display:none"></div>
-    </div>
-    <div class="checkout-section" id="loyalty-pts-box" style="display:none">
-      <div class="checkout-title"><i class="fas fa-star" style="color:#f59e0b"></i> Loyalty Points</div>
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <div id="loyalty-pts-balance" style="font-size:15px;font-weight:900;color:var(--orange)">0 pts</div>
-          <div style="font-size:11px;color:var(--gray-400)">1 point = ₦1 discount</div>
-        </div>
-        <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;cursor:pointer">
-          <input type="checkbox" id="use-loyalty-pts" onchange="applyLoyaltyPoints()" style="width:18px;height:18px;accent-color:var(--orange)">
-          Use points
-        </label>
-      </div>
-      <div id="loyalty-discount-msg" style="font-size:12px;color:var(--green);margin-top:4px;display:none"></div>
-    </div>
-    <div class="checkout-section">
       <div class="checkout-title"><i class="fas fa-receipt"></i> Order Summary</div>
       <div id="checkout-items-summary"></div>
-      <div id="coupon-discount-row" class="summary-row" style="display:none;color:var(--green);font-weight:700">
-        <span id="coupon-discount-label">Coupon Discount</span><span id="coupon-discount-val"></span>
-      </div>
-      <div id="loyalty-discount-row" class="summary-row" style="display:none;color:var(--green);font-weight:700">
-        <span>Loyalty Points</span><span id="loyalty-discount-val"></span>
-      </div>
       <div class="summary-row total" style="padding-top:10px;border-top:2px solid var(--gray-200);margin-top:10px;display:flex;justify-content:space-between;font-size:18px;font-weight:900">
         <span>Total</span><span id="checkout-total" style="color:var(--orange)">&#8358;0</span>
       </div>
-      <div id="est-delivery-date" style="font-size:12px;color:var(--gray-500);margin-top:8px;text-align:center;display:none"><i class="fas fa-truck"></i> <span></span></div>
     </div>
     <button class="btn-checkout" onclick="placeOrder()"><i class="fas fa-check-circle"></i> Place Order</button>
   </div>
@@ -1334,83 +1230,10 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     <div class="admin-tabs">
       <button class="admin-tab active" onclick="switchAdminTab('products',this)">Products</button>
       <button class="admin-tab" onclick="switchAdminTab('orders',this)">Orders</button>
-      <button class="admin-tab" onclick="switchAdminTab('analytics',this)">📊 Analytics</button>
+      <button class="admin-tab" onclick="switchAdminTab('banners',this)"><i class="fas fa-images" style="margin-right:4px"></i>Banners</button>
       <button class="admin-tab" onclick="switchAdminTab('users',this)">Users</button>
       <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Reviews</button>
-      <button class="admin-tab" onclick="switchAdminTab('banners',this)">🖼️ Banners</button>
       <button class="admin-tab" onclick="switchAdminTab('chats',this)">Chat Sessions</button>
-    </div>
-    <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchAdminTab('products',this)">Products</button>
-      <button class="admin-tab" onclick="switchAdminTab('orders',this)">Orders</button>
-      <button class="admin-tab" onclick="switchAdminTab('analytics',this)">📊 Analytics</button>
-      <button class="admin-tab" onclick="switchAdminTab('coupons',this)">🏷️ Coupons</button>
-      <button class="admin-tab" onclick="switchAdminTab('users',this)">Users</button>
-      <button class="admin-tab" onclick="switchAdminTab('reviews',this)">Reviews</button>
-      <button class="admin-tab" onclick="switchAdminTab('banners',this)">🖼️ Banners</button>
-      <button class="admin-tab" onclick="switchAdminTab('chats',this)">Chat Sessions</button>
-    </div>
-    <!-- COUPONS & LOYALTY TAB -->
-    <div id="admin-coupons" class="admin-tab-content hidden">
-      <div class="admin-card">
-        <div class="admin-card-title">
-          <span>🏷️ Coupon Codes</span>
-          <button class="btn-primary" onclick="showCouponModal()"><i class="fas fa-plus"></i> New Coupon</button>
-        </div>
-        <p style="font-size:12px;color:var(--gray-500);margin-bottom:14px">Create and manage coupon codes with expiry date, usage limit, and minimum order amount.</p>
-        <div id="admin-coupons-list"><p style="color:var(--gray-400);font-size:13px"><i class="fas fa-spinner fa-spin"></i> Loading...</p></div>
-      </div>
-      <div class="admin-card" style="margin-top:14px">
-        <div class="admin-card-title">⭐ Loyalty Points</div>
-        <p style="font-size:12px;color:var(--gray-500);margin-bottom:14px">Search a customer to view or adjust their loyalty points balance.</p>
-        <div style="display:flex;gap:8px;margin-bottom:14px">
-          <input class="form-input" id="loyalty-search-email" placeholder="Search by email" style="flex:1">
-          <button class="btn-primary" style="padding:10px 14px;white-space:nowrap" onclick="searchLoyaltyUser()"><i class="fas fa-search"></i></button>
-        </div>
-        <div id="loyalty-user-result"></div>
-      </div>
-    </div>
-    <!-- Analytics Tab -->
-    <div id="admin-analytics" class="admin-tab-content hidden">
-      <div class="admin-card">
-        <div class="admin-card-title">📊 Sales Analytics</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-          <div id="analytics-total-revenue" style="background:linear-gradient(135deg,#e8420a,#ff7a3c);color:#fff;border-radius:10px;padding:14px;text-align:center">
-            <div style="font-size:11px;font-weight:700;opacity:.85">TOTAL REVENUE</div>
-            <div id="a-revenue" style="font-size:20px;font-weight:900;margin-top:4px">₦0</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;border-radius:10px;padding:14px;text-align:center">
-            <div style="font-size:11px;font-weight:700;opacity:.85">TOTAL ORDERS</div>
-            <div id="a-orders" style="font-size:20px;font-weight:900;margin-top:4px">0</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;border-radius:10px;padding:14px;text-align:center">
-            <div style="font-size:11px;font-weight:700;opacity:.85">DELIVERED</div>
-            <div id="a-delivered" style="font-size:20px;font-weight:900;margin-top:4px">0</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff;border-radius:10px;padding:14px;text-align:center">
-            <div style="font-size:11px;font-weight:700;opacity:.85">AVG ORDER</div>
-            <div id="a-avg" style="font-size:20px;font-weight:900;margin-top:4px">₦0</div>
-          </div>
-        </div>
-        <div class="admin-card-title" style="margin-top:16px">📦 Low Stock Alert</div>
-        <div id="low-stock-list"><p style="color:var(--gray-400);font-size:13px">Loading...</p></div>
-        <div class="admin-card-title" style="margin-top:16px">🏆 Top Selling Products</div>
-        <div id="top-products-list"><p style="color:var(--gray-400);font-size:13px">Loading...</p></div>
-        <div class="admin-card-title" style="margin-top:16px">📅 Revenue Last 7 Days</div>
-        <div id="revenue-chart" style="padding:10px 0"></div>
-        <div style="margin-top:16px;text-align:center">
-          <button class="btn-primary" onclick="sendDailySummaryWhatsApp()"><i class="fab fa-whatsapp"></i> Send Daily Summary to WhatsApp</button>
-        </div>
-      </div>
-    </div>
-    <div id="admin-banners" class="admin-tab-content hidden">
-      <div class="admin-card">
-        <div class="admin-card-title">
-          <span>🖼️ Homepage Slider — All 5 Slides</span>
-        </div>
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:14px">All 5 slides are always shown below. Click <strong>Edit</strong> on any slide to change its title, image, colours and button. Click <strong>Reset</strong> to restore the original default text.</p>
-        <div id="admin-banners-list"></div>
-      </div>
     </div>
     <!-- Products Tab -->
     <div id="admin-products" class="admin-tab-content">
@@ -1439,6 +1262,18 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
         </div>
       </div>
     </div>
+    <!-- Banners Tab -->
+    <div id="admin-banners" class="admin-tab-content hidden">
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span><i class="fas fa-images" style="color:var(--orange);margin-right:6px"></i>Homepage Banners / Slides</span>
+          <button class="btn-primary" onclick="showAddBannerModal()"><i class="fas fa-plus"></i> Add Banner</button>
+        </div>
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:16px">Upload image URLs for the homepage slider. Each banner shows a product image with text and a call-to-action button.</p>
+        <div id="admin-banners-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"></div>
+      </div>
+    </div>
+
     <!-- Reviews Tab -->
     <div id="admin-reviews" class="admin-tab-content hidden">
       <div class="admin-card">
@@ -1477,7 +1312,7 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
   <div class="footer-page-wrap">
 
     <!-- Brand hero banner -->
-    <div style="background:linear-gradient(135deg,var(--orange),var(--orange-light));border-radius:var(--radius-xl);padding:36px 24px;text-align:center;margin-bottom:28px;color:#fff">
+    <div style="background:linear-gradient(135deg,#1B2A6B,#2E45A3);border-radius:var(--radius-xl);padding:36px 24px;text-align:center;margin-bottom:28px;color:#fff">
       <div style="font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:8px">Est. Nigeria</div>
       <h2 style="font-size:clamp(28px,5vw,48px);font-weight:900;line-height:1.15;margin-bottom:12px;color:#fff;border:none;background:none;padding:0">BENIM</h2>
       <p style="font-size:15px;opacity:.92;max-width:500px;margin:0 auto;line-height:1.65">Modern Nigerian Trading &amp; Fashion Brand</p>
@@ -1970,7 +1805,7 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
         <label class="form-label">Available Colours <span style="color:var(--gray-400);font-weight:400;font-size:12px">(comma-separated, e.g. Red, Black, White)</span></label>
         <input class="form-input" id="p-colours" placeholder="e.g. Black, White, Red, Navy Blue">
       </div>
-      <div class="form-group" style="background:rgba(232,66,10,.06);border-radius:8px;padding:12px;border:1px solid rgba(232,66,10,.2)">
+      <div class="form-group" style="background:rgba(27,42,107,.06);border-radius:8px;padding:12px;border:1px solid rgba(27,42,107,.2)">
         <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;font-weight:700;color:var(--gray-700)">
           <input type="checkbox" id="p-flash" style="width:18px;height:18px;accent-color:var(--orange);cursor:pointer">
           <span><i class="fas fa-bolt" style="color:var(--orange)"></i> Show in Flash Sales section on homepage</span>
@@ -2076,122 +1911,6 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
   </div>
 </div>
 
-<!-- COUPON ADD/EDIT MODAL -->
-<div class="modal-overlay" id="modal-coupon">
-  <div class="modal" style="max-width:480px">
-    <div class="modal-header">
-      <span class="modal-title" id="coupon-modal-title">Create Coupon</span>
-      <button class="modal-close" onclick="closeModal('modal-coupon')"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body" style="display:flex;flex-direction:column;gap:14px">
-      <input type="hidden" id="coupon-edit-id">
-      <div>
-        <label class="form-label">Coupon Code * <span style="color:var(--gray-400);font-weight:400">(e.g. SAVE500, BLACKFRIDAY)</span></label>
-        <input class="form-input" id="coupon-code-input" placeholder="YOURCODE" style="text-transform:uppercase;font-weight:800;letter-spacing:2px">
-      </div>
-      <div>
-        <label class="form-label">Discount Type</label>
-        <select class="form-input" id="coupon-type-input" onchange="toggleCouponValueLabel()">
-          <option value="percent">Percentage Off (e.g. 10%)</option>
-          <option value="fixed">Fixed Amount Off (e.g. ₦500)</option>
-          <option value="shipping">Free Shipping</option>
-        </select>
-      </div>
-      <div id="coupon-value-wrap">
-        <label class="form-label" id="coupon-value-label">Discount Value *</label>
-        <input class="form-input" id="coupon-value-input" type="number" min="1" placeholder="e.g. 10">
-      </div>
-      <div>
-        <label class="form-label">Minimum Order Amount (₦) <span style="color:var(--gray-400);font-weight:400">optional</span></label>
-        <input class="form-input" id="coupon-minorder-input" type="number" min="0" placeholder="e.g. 5000 — leave empty for no minimum">
-      </div>
-      <div>
-        <label class="form-label">Usage Limit <span style="color:var(--gray-400);font-weight:400">optional — max times this code can be used</span></label>
-        <input class="form-input" id="coupon-limit-input" type="number" min="1" placeholder="e.g. 100 — leave empty for unlimited">
-      </div>
-      <div>
-        <label class="form-label">Expiry Date <span style="color:var(--gray-400);font-weight:400">optional</span></label>
-        <input class="form-input" id="coupon-expiry-input" type="date">
-      </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <input type="checkbox" id="coupon-active-input" style="width:18px;height:18px;accent-color:var(--orange)" checked>
-        <label for="coupon-active-input" style="font-size:13px;font-weight:700;cursor:pointer">Active (customers can use this coupon)</label>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeModal('modal-coupon')">Cancel</button>
-      <button class="btn-primary" onclick="saveCoupon()"><i class="fas fa-save"></i> Save Coupon</button>
-    </div>
-  </div>
-</div>
-
-<!-- BANNER ADD/EDIT MODAL -->
-<div class="modal-overlay" id="modal-banner">
-  <div class="modal" style="max-width:480px">
-    <div class="modal-header">
-      <span class="modal-title" id="banner-modal-title">Add Banner</span>
-      <button class="modal-close" onclick="closeModal('modal-banner')"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body" style="display:flex;flex-direction:column;gap:14px">
-      <input type="hidden" id="banner-edit-id">
-      <div>
-        <label class="form-label">Slide Title *</label>
-        <input class="form-input" id="banner-title" placeholder="e.g. Mega Savings on Top Deals">
-      </div>
-      <div>
-        <label class="form-label">Subtitle</label>
-        <input class="form-input" id="banner-subtitle" placeholder="e.g. Shop the best offers selected for you.">
-      </div>
-      <div>
-        <label class="form-label">Button Text</label>
-        <input class="form-input" id="banner-btn-text" placeholder="e.g. Shop Now">
-      </div>
-      <div>
-        <label class="form-label">Button Links To</label>
-        <select class="form-input" id="banner-btn-action">
-          <option value="all">All Products</option>
-          <option value="Men's Fashion">Men's Fashion</option>
-          <option value="Women's Fashion">Women's Fashion</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Beauty">Beauty</option>
-          <option value="Baby Products">Baby Products</option>
-          <option value="Home & Kitchen">Home & Kitchen</option>
-        </select>
-      </div>
-      <div>
-        <label class="form-label">Background Style</label>
-        <select class="form-input" id="banner-bg">
-          <option value="slide-1">Orange (Default)</option>
-          <option value="slide-2">Dark Navy</option>
-          <option value="slide-3">Deep Blue/Purple</option>
-          <option value="slide-green">Green</option>
-          <option value="slide-dark">Dark</option>
-        </select>
-      </div>
-      <div>
-        <label class="form-label">Product Image URL <span style="color:var(--gray-400);font-weight:400">(optional — paste a direct image link)</span></label>
-        <input class="form-input" id="banner-image" placeholder="https://example.com/image.jpg">
-        <div id="banner-img-preview" style="margin-top:8px;display:none"><img id="banner-img-preview-img" style="width:100%;max-height:120px;object-fit:cover;border-radius:8px;border:1px solid var(--gray-200)"></div>
-        <p style="font-size:11px;color:var(--gray-400);margin-top:6px"><i class="fas fa-info-circle"></i> Tip: upload your image to <strong>imgbb.com</strong> or <strong>imgur.com</strong> for free, then paste the direct link here.</p>
-      </div>
-      <div>
-        <label class="form-label">Display Order (Slide Position)</label>
-        <select class="form-input" id="banner-order">
-          <option value="1">Slide 1 (First)</option>
-          <option value="2">Slide 2 (Second)</option>
-          <option value="3">Slide 3 (Third)</option>
-          <option value="4">Slide 4 (Fourth)</option>
-          <option value="5">Slide 5 (Fifth)</option>
-        </select>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-secondary" onclick="closeModal('modal-banner')">Cancel</button>
-      <button class="btn-primary" onclick="saveBanner()"><i class="fas fa-save"></i> Save Banner</button>
-    </div>
-  </div>
-</div>
-
 <!-- ORDER DETAIL MODAL -->
 <div class="modal-overlay" id="modal-order-detail">
   <div class="modal" style="max-width:520px">
@@ -2208,6 +1927,81 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
     </div>
   </div>
 </div>
+<!-- Add/Edit Banner Modal -->
+<div class="modal-overlay" id="modal-banner">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <span class="modal-title" id="banner-modal-title">Add Banner</span>
+      <button class="modal-close" onclick="closeModal('modal-banner')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-banner-id">
+      <div class="form-group">
+        <label class="form-label">Banner Image URL *</label>
+        <input class="form-input" id="b-image" placeholder="https://example.com/banner.jpg">
+        <p style="font-size:11px;color:var(--gray-400);margin-top:4px">Use a direct image URL (jpg, png, webp). Recommended size: 900×400px</p>
+      </div>
+      <div id="b-image-preview" style="margin:10px 0;display:none">
+        <img id="b-preview-img" src="" style="width:100%;height:140px;object-fit:cover;border-radius:8px;border:2px solid var(--gray-200)" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Headline Text *</label>
+        <input class="form-input" id="b-title" placeholder="e.g. Mega Savings on Top Deals">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subtext</label>
+        <input class="form-input" id="b-subtitle" placeholder="e.g. Shop the best offers selected for you">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Button Text</label>
+          <input class="form-input" id="b-btn-text" placeholder="SHOP NOW">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Button Action</label>
+          <select class="form-input" id="b-btn-action">
+            <option value="all">All Products</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Men's Fashion">Men's Fashion</option>
+            <option value="Women's Fashion">Women's Fashion</option>
+            <option value="Baby Products">Baby Products</option>
+            <option value="Home & Kitchen">Home & Kitchen</option>
+            <option value="Beauty">Beauty</option>
+            <option value="Sports">Sports</option>
+            <option value="Phones">Phones</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Text Colour (on slide)</label>
+          <select class="form-input" id="b-text-color">
+            <option value="white">White (default)</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Overlay Tint</label>
+          <select class="form-input" id="b-overlay">
+            <option value="orange">Orange gradient</option>
+            <option value="dark">Dark overlay</option>
+            <option value="none">None (image only)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Sort Order <span style="color:var(--gray-400);font-weight:400;font-size:11px">(lower = shows first)</span></label>
+        <input class="form-input" id="b-order" type="number" placeholder="1" value="1">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeModal('modal-banner')">Cancel</button>
+      <button class="btn-primary" onclick="saveBanner()"><i class="fas fa-save"></i> Save Banner</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast-container"></div>
 
 <!-- ====== FIREBASE + APP SCRIPT ====== -->
@@ -2475,7 +2269,6 @@ function renderHome() {
   renderProductGrid('flash-grid', flashProducts.length ? flashProducts : nonFlash.slice(0,3), true);
   renderProductGrid('featured-grid', nonFlash.slice(0,6));
   renderProductGrid('trending-grid', nonFlash.slice(0,9));
-  renderRecentlyViewed();
 }
 
 function renderSkeletons(gridId, count) {
@@ -2552,19 +2345,8 @@ window.openProduct = function(id) {
   document.getElementById('detail-stars').textContent = starsHTML(p.rating||0);
   document.getElementById('detail-review-count').textContent = `(${p.reviewCount||0} reviews)`;
   const stockEl = document.getElementById('detail-stock');
-  if(!p.stock || p.stock <= 0) {
-    stockEl.innerHTML = '<i class="fas fa-times-circle"></i> Out of Stock';
-    stockEl.className = 'detail-stock out';
-  } else if(p.stock <= 5) {
-    stockEl.innerHTML = '<i class="fas fa-fire" style="color:#ef4444"></i> Only '+p.stock+' left — Order now!';
-    stockEl.className = 'detail-stock'; stockEl.style.color='#ef4444';
-  } else if(p.stock <= 15) {
-    stockEl.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i> Almost sold out! ('+p.stock+' left)';
-    stockEl.className = 'detail-stock'; stockEl.style.color='#f59e0b';
-  } else {
-    stockEl.innerHTML = '<i class="fas fa-check-circle"></i> In Stock ('+p.stock+' available)';
-    stockEl.className = 'detail-stock'; stockEl.style.color='';
-  }
+  stockEl.textContent = (p.stock>0) ? `In Stock (${p.stock} available)` : 'Out of Stock';
+  stockEl.className = 'detail-stock'+(p.stock<=0?' out':'');
   document.getElementById('detail-description').textContent = p.description||'No description available.';
   document.getElementById('qty-input').value = 1;
   // Images
@@ -2593,7 +2375,7 @@ window.openProduct = function(id) {
     document.getElementById('selected-colour-label').textContent = '';
     colOpts.innerHTML = colours.map(col=>{
       // Try to map colour name to css color
-      const cssMap = {black:'#000',white:'#fff',red:'#e53e3e',blue:'#3182ce',green:'#38a169',yellow:'#d69e2e',pink:'#ed64a6',purple:'#805ad5',orange:'#e8420a',brown:'#92400e',grey:'#718096',gray:'#718096',navy:'#1a365d','navy blue':'#1a365d','sky blue':'#63b3ed','light blue':'#bee3f8',beige:'#f5f0e8',cream:'#fffdd0'};
+      const cssMap = {black:'#000',white:'#fff',red:'#e53e3e',blue:'#3182ce',green:'#38a169',yellow:'#d69e2e',pink:'#ed64a6',purple:'#805ad5',orange:'#1B2A6B',brown:'#92400e',grey:'#718096',gray:'#718096',navy:'#1a365d','navy blue':'#1a365d','sky blue':'#63b3ed','light blue':'#bee3f8',beige:'#f5f0e8',cream:'#fffdd0'};
       const bg = cssMap[col.toLowerCase()]||'transparent';
       const border = col.toLowerCase()==='white'?'2px solid #e5e7eb':'2px solid transparent';
       return `<button class="colour-opt-btn" onclick="selectColour(this,'${col}')" title="${col}" style="width:32px;height:32px;border-radius:50%;background:${bg};border:${border};cursor:pointer;transition:.15s;box-shadow:0 1px 4px rgba(0,0,0,.15);position:relative" data-colour="${col}">
@@ -2801,7 +2583,7 @@ window.renderCart = function() {
     <div class="cart-item">
       <img class="cart-item-img" src="${item.image||'https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'}" onerror="this.src='https://placehold.co/80x80/f3f4f6/9ca3af?text=Img'">
       <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}${item.variantLabel?' <span style="font-size:11px;color:var(--orange);font-weight:700">('+item.variantLabel+')</span>':''}</div>
+        <div class="cart-item-name">${item.name}${item.variantLabel?` <span style="font-size:11px;color:var(--orange);font-weight:700">(${item.variantLabel})</span>`:''}</div>
         <div class="cart-item-price">₦${(item.price*item.qty).toLocaleString()}</div>
         <div class="cart-item-actions">
           <div class="qty-controls">
@@ -2888,12 +2670,6 @@ async function loadCheckout() {
   document.getElementById('checkout-total').innerHTML = '₦'+grandTotal.toLocaleString();
   window._checkoutDeliveryFee = deliveryFee;
   window._checkoutGrandTotal = grandTotal;
-  // Load loyalty points and reset coupon
-  appliedCoupon = null; useLoyaltyDiscount = 0;
-  const couponMsg = document.getElementById('coupon-msg'); if(couponMsg) couponMsg.style.display='none';
-  const couponInput = document.getElementById('coupon-input'); if(couponInput) couponInput.value='';
-  loadLoyaltyPoints();
-  updateCheckoutTotal();
 }
 
 window.selectAddr = async function(el, id) {
@@ -3168,9 +2944,7 @@ window.placeOrder = async function() {
     }
     const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
     const deliveryFee = window._checkoutDeliveryFee !== undefined ? window._checkoutDeliveryFee : 3500;
-    const couponDiscount = window._checkoutCouponDiscount || 0;
-    const loyaltyDiscount = useLoyaltyDiscount || 0;
-    const grandTotal = Math.max(0, subtotal - couponDiscount - loyaltyDiscount + deliveryFee);
+    const grandTotal = subtotal + deliveryFee;
     const orderId = 'BNM-'+Date.now();
     const itemsCopy = [...cart];
     const orderData = {
@@ -3178,52 +2952,49 @@ window.placeOrder = async function() {
       items: itemsCopy, address: addr, payment: selectedPayment,
       deliveryType: dType,
       pickupStation: dType === 'pickup' ? (window._selectedPickupStation?.name || '') : '',
-      subtotal, deliveryFee, couponCode: appliedCoupon?.code||'', couponDiscount, loyaltyDiscount,
-      total: grandTotal, status: 'pending',
+      subtotal, deliveryFee, total: grandTotal, status: 'pending',
       createdAt: serverTimestamp(),
       phone: addr.phone || addr.buyerPhone || '',
       buyerPhone: addr.phone || ''
     };
     const orderRef = await addDoc(collection(db,'orders'), orderData);
     lastOrderId = orderRef.id;
-    // Award loyalty points (2% of order as points)
-    awardLoyaltyPoints(orderId, grandTotal);
-    // Increment coupon usage count
-    if(appliedCoupon && appliedCoupon.firestoreId) {
-      try { await updateDoc(doc(db,'coupons',appliedCoupon.firestoreId), { usageCount: (appliedCoupon.usageCount||0)+1 }); } catch(e) {}
-    }
+    // === REDUCE INVENTORY ===
+    try {
+      for (const item of itemsCopy) {
+        if (item.productId) {
+          const prodRef = doc(db, 'products', item.productId);
+          const prodSnap = await getDoc(prodRef);
+          if (prodSnap.exists()) {
+            const currentStock = Number(prodSnap.data().stock) || 0;
+            const newStock = Math.max(0, currentStock - (item.qty || 1));
+            await updateDoc(prodRef, { stock: newStock });
+            // Update local allProducts array too
+            const localProd = allProducts.find(p => p.id === item.productId);
+            if (localProd) localProd.stock = newStock;
+          }
+        }
+      }
+    } catch(invErr) { console.warn('Inventory update failed:', invErr); }
+
     // Clear cart BEFORE notifications (so items don't appear empty)
-    const itemNames = itemsCopy.map(x=>{
-      let detail = x.name;
-      if(x.size) detail += ` (Size: ${x.size})`;
-      if(x.colour||x.color) detail += ` (Colour: ${x.colour||x.color})`;
-      if(x.qty>1) detail += ` ×${x.qty}`;
-      return detail;
+    // Build detailed item lines for WhatsApp (name, size, colour, qty)
+    const itemLines = itemsCopy.map(x => {
+      let line = x.name + ' x' + (x.qty||1);
+      if (x.size) line += ' | Size: ' + x.size;
+      if (x.colour || x.color) line += ' | Colour: ' + (x.colour||x.color);
+      return line;
     }).join('\n');
+    const itemNames = itemsCopy.map(x=>x.name).join(', ');
     const addrStr = [addr.street,addr.city,addr.state].filter(Boolean).join(', ');
     cart = [];
     await saveCart();
     updateCartBadge();
-    // Reduce stock for each item in Firestore
-    for(const item of itemsCopy) {
-      if(!item.productId && !item.id) continue;
-      const pid = item.productId || item.id;
-      try {
-        const pRef = doc(db,'products',pid);
-        const pSnap = await getDoc(pRef);
-        if(pSnap.exists()) {
-          const currentStock = Number(pSnap.data().stock || 0);
-          const newStock = Math.max(0, currentStock - (item.qty||1));
-          const currentSold = Number(pSnap.data().soldCount || 0);
-          await updateDoc(pRef, { stock: newStock, soldCount: currentSold + (item.qty||1) });
-        }
-      } catch(e) { console.warn('Stock update failed for', pid, e); }
-    }
     // Notify ADMIN first (gets the browser popup, most important)
-    notifyAdminWhatsApp(orderId, addr.name||currentUser.email.split('@')[0], currentUser.email, itemNames, subtotal, deliveryFee, selectedPayment, addrStr, addr.phone||'', couponDiscount, appliedCoupon?.code||'', loyaltyDiscount);
+    notifyAdminWhatsApp(orderId, addr.name||currentUser.email.split('@')[0], currentUser.email, itemLines, subtotal, deliveryFee, selectedPayment, addrStr, addr.phone||'');
     // Notify BUYER after a short delay (secondary popup — buyer gets receipt on screen anyway)
     setTimeout(()=>{
-      notifyBuyerWhatsApp(addr.phone||'', orderId, 'pending', itemNames, addr.name||currentUser.email.split('@')[0], grandTotal, deliveryFee);
+      notifyBuyerWhatsApp(addr.phone||'', orderId, 'pending', itemLines, addr.name||currentUser.email.split('@')[0], grandTotal, deliveryFee);
     }, 2000);
     // Show receipt
     showReceipt(orderId, orderData);
@@ -3237,11 +3008,6 @@ window.placeOrder = async function() {
 function showReceipt(orderId, data) {
   const wrap = document.getElementById('receipt-wrap');
   const deliveryFee = data.deliveryFee || 0;
-  const subtotal = data.subtotal || 0;
-  const couponDiscount = data.couponDiscount || 0;
-  const loyaltyDiscount = data.loyaltyDiscount || 0;
-  const couponCode = data.couponCode || '';
-  const savings = couponDiscount + loyaltyDiscount;
   wrap.innerHTML = `
     <h3 style="font-size:16px;font-weight:900;margin-bottom:14px;color:var(--orange)">🧾 Order Receipt</h3>
     <div class="summary-row"><span>Order ID</span><span style="font-weight:800">${orderId}</span></div>
@@ -3249,15 +3015,11 @@ function showReceipt(orderId, data) {
     <div class="summary-row"><span>Payment</span><span>${data.payment==='bank'?'Bank Transfer':'Pay on Delivery'}</span></div>
     <div class="summary-row"><span>${data.deliveryType==='pickup'?'Pickup Station':'Delivery to'}</span><span>${data.deliveryType==='pickup'?(data.pickupStation||data.address?.street||''):((data.address&&data.address.street)||'')+', '+((data.address&&data.address.city)||'')}</span></div>
     <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
-    ${data.items.map(x=>'<div class="summary-row"><span>'+x.name+' × '+x.qty+'</span><span>₦'+(x.price*x.qty).toLocaleString()+'</span></div>').join('')}
-    <hr style="border:none;border-top:1px solid var(--gray-200);margin:10px 0">
-    <div class="summary-row"><span>Subtotal</span><span>₦${subtotal.toLocaleString()}</span></div>
-    <div class="summary-row"><span style="color:${deliveryFee===0?'var(--green)':'inherit'}">Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE ✅':'₦'+deliveryFee.toLocaleString()}</span></div>
-    ${couponDiscount>0 ? '<div class="summary-row"><span style="color:var(--green)">🏷️ Coupon ('+(couponCode||'DISCOUNT')+')</span><span style="color:var(--green);font-weight:800">-₦'+couponDiscount.toLocaleString()+'</span></div>' : ''}
-    ${loyaltyDiscount>0 ? '<div class="summary-row"><span style="color:var(--green)">⭐ Loyalty Points</span><span style="color:var(--green);font-weight:800">-₦'+loyaltyDiscount.toLocaleString()+'</span></div>' : ''}
-    ${savings>0 ? '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 10px;margin:6px 0;font-size:12px;color:var(--green);font-weight:700;text-align:center">🎉 You saved ₦'+savings.toLocaleString()+' on this order!</div>' : ''}
-    <div class="summary-row total" style="border-top:2px solid var(--gray-200);padding-top:10px;margin-top:6px"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
-    ${data.payment==='bank'?'<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: '+orderId+'</p></div>':''}
+    ${data.items.map(x=>`<div class="summary-row"><span>${x.name} × ${x.qty}</span><span>₦${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="summary-row"><span>Subtotal</span><span>₦${(data.subtotal||data.total||0).toLocaleString()}</span></div>
+    <div class="summary-row"><span>Delivery Fee</span><span style="color:${deliveryFee===0?'var(--green)':'var(--gray-800)'}">${deliveryFee===0?'FREE':'₦'+deliveryFee.toLocaleString()}</span></div>
+    <div class="summary-row total"><span>Grand Total</span><span style="color:var(--orange)">₦${(data.total||0).toLocaleString()}</span></div>
+    ${data.payment==='bank'?`<div style="margin-top:12px;background:var(--gray-50);padding:10px;border-radius:8px;font-size:12px"><p style="font-weight:800;margin-bottom:4px">Transfer Details:</p><p>Bank: Opay</p><p>Account: Adewole Aderonke Aishat</p><p>Number: 9168031213</p><p style="color:var(--orange);font-weight:700;margin-top:6px">Reference: ${orderId}</p></div>`:''}
   `;
 }
 
@@ -3284,24 +3046,15 @@ window.loadOrders = async function() {
     list.innerHTML = sorted.map(d=>{
       const o = d.data();
       const statusClass = {'pending':'status-pending','confirmed':'status-confirmed','processing':'status-processing','out_for_delivery':'status-out','delivered':'status-delivered','cancelled':'status-cancelled'}[o.status]||'status-pending';
-      const canCancel = ['pending','confirmed'].includes(o.status||'pending');
-      const canReturn = o.status === 'delivered';
-      const itemDate = o.createdAt ? new Date(o.createdAt.toDate()).toLocaleDateString('en-NG',{day:'numeric',month:'short',year:'numeric'}) : '';
       return `<div class="order-card">
         <div class="order-header">
           <span class="order-id">${o.orderId||d.id}</span>
-          <span class="order-status ${statusClass}">${(o.status||'pending').replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</span>
+          <span class="order-status ${statusClass}">${(o.status||'pending').replace('_',' ').replace(/\b\w/g,l=>l.toUpperCase())}</span>
         </div>
-        ${itemDate ? '<div style="font-size:11px;color:var(--gray-400);margin-bottom:4px">'+itemDate+'</div>' : ''}
-        <div class="order-items">${(o.items||[]).map(x=>x.name+(x.size?' ('+x.size+')':'')).join(', ')}</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;flex-wrap:wrap;gap:6px">
+        <div class="order-items">${(o.items||[]).map(x=>x.name).join(', ')}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
           <span class="order-total">₦${(o.total||0).toLocaleString()}</span>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="track-order-btn" onclick="showTrackingModal('${o.orderId||d.id}')"><i class="fas fa-truck"></i> Track</button>
-            <button style="background:var(--gray-100);border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;color:var(--gray-700)" onclick="reorderItems('${d.id}')"><i class="fas fa-redo"></i> Reorder</button>
-            ${canCancel ? '<button style="background:none;border:2px solid var(--red);color:var(--red);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer" onclick="cancelOrder(\''+d.id+'\',\''+o.orderId+'\')"><i class="fas fa-times"></i> Cancel</button>' : ''}
-            ${canReturn ? '<button style="background:none;border:2px solid #8b5cf6;color:#8b5cf6;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer" onclick="requestReturn(\''+d.id+'\',\''+o.orderId+'\')"><i class="fas fa-undo"></i> Return</button>' : ''}
-          </div>
+          <button class="track-order-btn" onclick="showTrackingModal('${o.orderId||d.id}')"><i class="fas fa-truck"></i> Track</button>
         </div>
       </div>`;
     }).join('');
@@ -3429,16 +3182,6 @@ window.renderWishlist = async function() {
 };
 
 // ===== SEARCH =====
-window.toggleDarkMode = function() {
-  const isDark = document.body.classList.toggle('dark-mode');
-  document.getElementById('dark-mode-btn').textContent = isDark ? '☀️' : '🌙';
-  localStorage.setItem('benim-theme', isDark ? 'dark' : 'light');
-};
-// Restore saved theme on load
-(function(){
-  const saved = localStorage.getItem('benim-theme');
-  if(saved === 'dark') { document.body.classList.add('dark-mode'); const btn = document.getElementById('dark-mode-btn'); if(btn) btn.textContent = '☀️'; }
-})();
 window.handleSearchKey = function(e) {
   if(e.key==='Enter') doSearch();
 };
@@ -3697,25 +3440,22 @@ window.viewOrderDetails = async function(docId) {
       <!-- ITEMS -->
       <div style="padding:16px;border-bottom:1px solid var(--gray-100)">
         <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--gray-500);letter-spacing:.5px;margin-bottom:10px">🛍️ Items Ordered</div>
-        ${items.length ? items.map(item=>{
-          const imgHtml = item.image
-            ? '<img src="'+item.image+'" style="width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0" onerror="this.style.display=\'none\'">'
-            : '<div style="width:52px;height:52px;background:var(--gray-200);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:18px"><i class="fas fa-box"></i></div>';
-          const sizeHtml = item.size ? '<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">Size: '+item.size+'</span>' : '';
-          const colourHtml = (item.color||item.colour) ? '<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">Colour: '+(item.color||item.colour)+'</span>' : '';
-          const variantHtml = item.variant ? '<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">'+item.variant+'</span>' : '';
-          return '<div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--gray-50);border-radius:8px;margin-bottom:8px">'+
-            imgHtml+
-            '<div style="flex:1;min-width:0">'+
-              '<div style="font-size:13px;font-weight:800;color:var(--gray-800);margin-bottom:4px;line-height:1.3">'+(item.name||'Product')+'</div>'+
-              '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px">'+sizeHtml+colourHtml+variantHtml+'</div>'+
-              '<div style="display:flex;justify-content:space-between;align-items:center">'+
-                '<span style="font-size:12px;color:var(--gray-500)">Qty: <strong style="color:var(--gray-800)">'+(item.qty||1)+'</strong></span>'+
-                '<span style="font-size:13px;font-weight:900;color:var(--orange)">₦'+((item.price||0)*(item.qty||1)).toLocaleString()+'</span>'+
-              '</div>'+
-            '</div>'+
-          '</div>';
-        }).join('') : '<p style="font-size:13px;color:var(--gray-400)">No items found</p>'}
+        ${items.length ? items.map(item=>`
+          <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;background:var(--gray-50);border-radius:8px;margin-bottom:8px">
+            ${item.image ? `<img src="${item.image}" style="width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0" onerror="this.style.display='none'">` : '<div style="width:52px;height:52px;background:var(--gray-200);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:18px"><i class=\"fas fa-box\"></i></div>'}
+            <div style="flex:1;min-width:0">
+              <div style="font-size:13px;font-weight:800;color:var(--gray-800);margin-bottom:4px;line-height:1.3">${item.name||'Product'}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px">
+                ${item.size ? `<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">Size: ${item.size}</span>` : ''}
+                ${item.color||item.colour ? `<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">Colour: ${item.color||item.colour}</span>` : ''}
+                ${item.variant ? `<span style="background:#fff;border:1px solid var(--gray-200);border-radius:4px;font-size:11px;font-weight:700;padding:2px 7px;color:var(--gray-700)">${item.variant}</span>` : ''}
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:12px;color:var(--gray-500)">Qty: <strong style="color:var(--gray-800)">${item.qty||1}</strong></span>
+                <span style="font-size:13px;font-weight:900;color:var(--orange)">₦${((item.price||0)*(item.qty||1)).toLocaleString()}</span>
+              </div>
+            </div>
+          </div>`).join('') : '<p style="font-size:13px;color:var(--gray-400)">No items found</p>'}
       </div>
 
       <!-- CUSTOMER & DELIVERY -->
@@ -3734,7 +3474,10 @@ window.viewOrderDetails = async function(docId) {
             <div style="font-size:10px;font-weight:700;color:var(--gray-400);text-transform:uppercase;margin-bottom:3px">Delivery Address</div>
             <div style="font-size:13px;font-weight:700">${[addr.street,addr.city,addr.state].filter(Boolean).join(', ')||'—'}</div>
           </div>
-          ${addr.note ? '<div style="background:#fffbeb;border-radius:8px;padding:10px;grid-column:1/-1;border:1px solid #fde68a"><div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;margin-bottom:3px">📝 Note</div><div style="font-size:13px">'+addr.note+'</div></div>' : ''}
+          ${addr.note ? `<div style="background:#fffbeb;border-radius:8px;padding:10px;grid-column:1/-1;border:1px solid #fde68a">
+            <div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;margin-bottom:3px">📝 Note</div>
+            <div style="font-size:13px">${addr.note}</div>
+          </div>` : ''}
         </div>
       </div>
 
@@ -3743,7 +3486,7 @@ window.viewOrderDetails = async function(docId) {
         <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:var(--gray-500);letter-spacing:.5px;margin-bottom:10px">💰 Payment Summary</div>
         <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:var(--gray-500)">Payment Method</span><span style="font-weight:700">${o.payment==='bank'?'🏦 Bank Transfer (Opay)':'💵 Pay on Delivery'}</span></div>
         <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:var(--gray-500)">Subtotal</span><span style="font-weight:700">₦${((o.total||0)-(o.deliveryFee||0)).toLocaleString()}</span></div>
-        ${(o.deliveryFee||0)>0 ? '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:var(--gray-500)">Delivery Fee</span><span style="font-weight:700">₦'+(o.deliveryFee||0).toLocaleString()+'</span></div>' : ''}
+        ${(o.deliveryFee||0)>0 ? `<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:var(--gray-500)">Delivery Fee</span><span style="font-weight:700">₦${(o.deliveryFee||0).toLocaleString()}</span></div>` : ''}
         <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:900;border-top:2px solid var(--gray-200);padding-top:10px;margin-top:4px"><span>Total</span><span style="color:var(--orange)">₦${(o.total||0).toLocaleString()}</span></div>
       </div>`;
 
@@ -3847,15 +3590,11 @@ window.loadAdminChats = async function() {
           <span style="background:var(--gray-100);color:var(--gray-600);font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px">Session ${d.id.slice(-6)}</span>
         </div>
         <div style="background:var(--gray-50);border-radius:8px;padding:10px;max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:6px">
-          ${msgs.length ? msgs.map(m=>{
-              const isBot = m.role==='bot';
-              const txt = (m.text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-              const avatar = isBot ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
-              return '<div style="display:flex;gap:6px;align-items:flex-start;'+(isBot?'':'flex-direction:row-reverse')+'">'
-                +'<div style="width:22px;height:22px;border-radius:50%;background:'+(isBot?'var(--orange)':'var(--gray-300)')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff">'+avatar+'</div>'
-                +'<div style="background:'+(isBot?'#fff':'var(--orange)')+';color:'+(isBot?'var(--gray-800)':'#fff')+';border-radius:8px;padding:6px 10px;font-size:12px;max-width:80%;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.06)">'+txt+'</div>'
-                +'</div>';
-            }).join('') : '<p style="color:var(--gray-400);font-size:12px;text-align:center">No messages</p>'}
+          ${msgs.length ? msgs.map(m=>`
+            <div style="display:flex;gap:6px;align-items:flex-start;${m.role==='user'?'flex-direction:row-reverse':''}">
+              <div style="width:22px;height:22px;border-radius:50%;background:${m.role==='bot'?'var(--orange)':'var(--gray-300)'};display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:#fff">${m.role==='bot'?'<i class="fas fa-robot"></i>':'<i class="fas fa-user"></i>'}</div>
+              <div style="background:${m.role==='bot'?'#fff':'var(--orange)'};color:${m.role==='bot'?'var(--gray-800)':'#fff'};border-radius:8px;padding:6px 10px;font-size:12px;max-width:80%;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.06)">${(m.text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+            </div>`).join('') : '<p style="color:var(--gray-400);font-size:12px;text-align:center">No messages</p>'}
         </div>
       </div>`;
     }).join('');
@@ -3877,12 +3616,10 @@ window.switchAdminTab = function(tab, btn) {
   btn.classList.add('active');
   if(tab==='products') loadAdminProducts();
   else if(tab==='orders') loadAdminOrders();
+  else if(tab==='banners') loadAdminBanners();
   else if(tab==='users') loadAdminUsers();
   else if(tab==='reviews') loadAdminReviews();
   else if(tab==='chats') loadAdminChats();
-  else if(tab==='banners') loadAdminBanners();
-  else if(tab==='analytics') loadAnalytics();
-  else if(tab==='coupons') loadAdminCoupons();
 };
 
 
@@ -4261,216 +3998,218 @@ If you have any issues, reply to this message within 24 hours.`
   window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
 }
 
-function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, subtotal, deliveryFee, payment, address, buyerPhone, couponDiscount, couponCode, loyaltyDiscount) {
-  const cd = Number(couponDiscount||0);
-  const ld = Number(loyaltyDiscount||0);
+function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, total, deliveryFee, payment, address, buyerPhone) {
+  const grandTotal = Number(total||0) + Number(deliveryFee||0);
   const cleanBuyerPhone = String(buyerPhone||'').replace(/[^0-9]/g,'');
-  const grandTotal = Math.max(0, Number(subtotal||0) - cd - ld + Number(deliveryFee||0));
+  // items may contain multi-line detail strings (name, size, colour)
+  const itemsDisplay = items.includes('\n') ? '\n' + items.split('\n').map(l=>'  • '+l).join('\n') : items;
   const msg = encodeURIComponent(
-    '🛒 *NEW ORDER — Benim!*\n\n' +
-    '🧾 *Order ID:* '+orderId+'\n' +
-    '👤 *Customer:* '+customerName+'\n' +
-    '📧 *Email:* '+customerEmail+'\n' +
-    (cleanBuyerPhone ? '📱 *Phone:* '+buyerPhone+'\n' : '') +
-    '\n📦 *Items Ordered:*\n'+items+'\n\n' +
-    '💰 *Subtotal:* ₦'+Number(subtotal||0).toLocaleString()+'\n' +
-    (Number(deliveryFee)>0 ? '🚚 *Delivery Fee:* ₦'+Number(deliveryFee).toLocaleString()+'\n' : '🚚 *Delivery:* FREE ✅\n') +
-    (cd>0 ? '🏷️ *Coupon ('+(couponCode||'DISCOUNT')+'):* -₦'+cd.toLocaleString()+'\n' : '') +
-    (ld>0 ? '⭐ *Loyalty Points:* -₦'+ld.toLocaleString()+'\n' : '') +
-    (cd>0||ld>0 ? '🎉 *Total Savings:* ₦'+(cd+ld).toLocaleString()+'\n' : '') +
-    '💵 *Grand Total:* ₦'+grandTotal.toLocaleString()+'\n' +
-    '💳 *Payment:* '+(payment==='bank'?'Bank Transfer (Opay)':'Pay on Delivery')+'\n' +
-    '📍 *Address:* '+address+'\n\n' +
-    '👉 Go to Admin Panel → Orders to confirm.'
+    `🛒 *NEW ORDER — Benim!*\n\n` +
+    `🧾 *Order ID:* ${orderId}\n` +
+    `👤 *Customer:* ${customerName}\n` +
+    `📧 *Email:* ${customerEmail}\n` +
+    (cleanBuyerPhone ? `📱 *Phone:* ${buyerPhone}\n` : '') +
+    `📦 *Items Ordered:*${itemsDisplay}\n\n` +
+    `💰 *Subtotal:* ₦${Number(total||0).toLocaleString()}\n` +
+    (Number(deliveryFee)>0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}\n` : `🚚 *Delivery:* FREE\n`) +
+    `💵 *Grand Total:* ₦${grandTotal.toLocaleString()}\n` +
+    `💳 *Payment:* ${payment==='bank'?'Bank Transfer (Opay)':'Pay on Delivery'}\n` +
+    `📍 *Address:* ${address}\n\n` +
+    `👉 Go to Admin Panel → Orders to confirm this order.`
   );
-  window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg, '_blank');
+  window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${msg}`, '_blank');
 }
 
 // ===== SLIDER =====
-// ===== BANNER / SLIDER MANAGEMENT =====
-// 5 default slots — always shown. Firestore overrides by slotId field.
-const DEFAULT_BANNERS = [
-  { slotId:'slot-1', order:1, title:'Shop Smart.<br>Dress Better.', subtitle:'Premium fashion at honest prices.', btnText:'Shop Now', btnAction:'all', bg:'slide-1', image:'' },
-  { slotId:'slot-2', order:2, title:'Hot Deals<br>Every Day', subtitle:'Unbeatable prices on top brands', btnText:'Explore Deals', btnAction:'all', bg:'slide-2', image:'' },
-  { slotId:'slot-3', order:3, title:'Flash Sale<br>Is Live \uD83D\uDD25', subtitle:'Limited time offers — grab before it\'s gone', btnText:'View Flash Sale', btnAction:'all', bg:'slide-3', image:'' },
-  { slotId:'slot-4', order:4, title:'New Arrivals', subtitle:'Fresh styles added every week', btnText:'Shop New', btnAction:'all', bg:'slide-green', image:'' },
-  { slotId:'slot-5', order:5, title:'Exclusive Offers', subtitle:'Members-only deals just for you', btnText:'Claim Now', btnAction:'all', bg:'slide-dark', image:'' }
-];
-const SLIDE_BG_EXTRA = {
-  'slide-green':'background:linear-gradient(120deg,#16a34a,#22c55e)',
-  'slide-dark':'background:linear-gradient(120deg,#111827,#1f2937)'
-};
+// ===== BANNER/SLIDER MANAGEMENT =====
+let allBanners = []; // loaded from Firestore
 
-// Load all 5 slots: use Firestore value if saved, otherwise use default
-// Handles both new docs (with slotId) and old docs (matched by order number)
 async function loadBanners() {
   try {
-    const snap = await getDocs(collection(db,'banners'));
-    const savedBySlot = {};
-    const savedByOrder = {};
-    snap.docs.forEach(d => {
-      const s = d.data();
-      const entry = {firestoreId: d.id, ...s};
-      if(s.slotId) savedBySlot[s.slotId] = entry;
-      else if(s.order) savedByOrder[String(s.order)] = entry; // old format fallback
-    });
-    return DEFAULT_BANNERS.map(def => {
-      if(savedBySlot[def.slotId]) return {...def, ...savedBySlot[def.slotId]};
-      if(savedByOrder[String(def.order)]) return {...def, ...savedByOrder[String(def.order)], slotId: def.slotId};
-      return {...def};
-    });
-  } catch(e) { return DEFAULT_BANNERS.map(d=>({...d})); }
+    const snap = await getDocs(query(collection(db,'banners'), orderBy('order','asc')));
+    allBanners = snap.docs.map(d=>({id:d.id,...d.data()}));
+  } catch(e) {
+    // Firestore might not have 'order' index yet — fall back without orderBy
+    try {
+      const snap2 = await getDocs(collection(db,'banners'));
+      allBanners = snap2.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0));
+    } catch(e2){ allBanners = []; }
+  }
+  renderSlider();
 }
 
-async function renderSlider() {
-  const banners = await loadBanners();
+function renderSlider() {
   const container = document.getElementById('slides');
+  const dotsContainer = document.getElementById('slider-dots');
   if(!container) return;
-  container.innerHTML = banners.map(b=>`
-    <div class="slide ${b.bg||'slide-1'}" ${SLIDE_BG_EXTRA[b.bg]?`style="${SLIDE_BG_EXTRA[b.bg]}"`:''}>
-      ${b.image?`<img class="slide-img" src="${b.image}" alt="${(b.title||'').replace(/<[^>]+>/g,'')}" onerror="this.style.display='none'">` : ''}
-      ${b.image?'<div class="slide-img-overlay"></div>':''}
-      <div class="slide-content">
-        <h2>${b.title||''}</h2>
-        <p>${b.subtitle||''}</p>
-        <button class="slide-btn" onclick="filterByCategory('${b.btnAction||'all'}')">${b.btnText||'Shop Now'}</button>
-      </div>
-    </div>`).join('');
-  currentSlide = 0;
-  initSlider();
-}
 
-window.loadAdminBanners = async function() {
-  const list = document.getElementById('admin-banners-list');
-  list.innerHTML = '<p style="color:var(--gray-400);font-size:13px;padding:10px"><i class="fas fa-spinner fa-spin"></i> Loading all 5 slides...</p>';
-  const banners = await loadBanners();
-  console.log('Loaded banners:', banners.length, banners.map(b=>b.slotId));
-  const bgLabels = {'slide-1':'🟠 Orange','slide-2':'🌑 Dark Navy','slide-3':'🔵 Blue/Purple','slide-green':'🟢 Green','slide-dark':'⚫ Dark'};
-  list.innerHTML = `<p style="font-size:12px;color:var(--green);font-weight:700;margin-bottom:10px"><i class="fas fa-check-circle"></i> Showing all ${banners.length} slides</p>` + banners.map(b=>{
-    const isCustom = !!b.firestoreId;
-    return `<div class="banner-card">
-      ${b.image ? `<img class="banner-preview" src="${b.image}" onerror="this.src='';this.style.display='none'"><div class="banner-preview-empty" style="display:none">🖼️</div>` : '<div class="banner-preview-empty">🖼️<span style="font-size:11px;margin-top:4px;display:block;color:var(--gray-400)">No image</span></div>'}
-      <div class="banner-card-body">
-        <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:6px">
-          <span style="background:var(--orange);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px">Slide ${b.order}</span>
-          <span style="background:${isCustom?'#dcfce7':'var(--gray-100)'};color:${isCustom?'#16a34a':'var(--gray-500)'};font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px">${isCustom?'✓ Customised':'Default'}</span>
-          <span style="background:var(--gray-100);color:var(--gray-600);font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px">${bgLabels[b.bg]||b.bg}</span>
-        </div>
-        <div style="font-size:14px;font-weight:800;margin-bottom:2px;color:var(--text)">${(b.title||'').replace(/<br>/g,' ')}</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">${b.subtitle||'—'}</div>
-        <div style="font-size:11px;color:var(--gray-400)">Button: "${b.btnText||'Shop Now'}" → ${b.btnAction||'all'}</div>
-        <div class="banner-card-actions">
-          <button class="btn-primary" style="font-size:12px;padding:6px 14px" onclick="editBannerSlot('${b.slotId}')"><i class="fas fa-edit"></i> Edit Slide ${b.order}</button>
-          ${isCustom ? '<button style="font-size:12px;padding:6px 14px;background:var(--red);color:#fff;border:none;border-radius:6px;font-weight:700;cursor:pointer" onclick="resetBannerSlot(\''+b.slotId+'\',\''+(b.firestoreId||b.slotId)+'\')"><i class="fas fa-undo"></i> Reset</button>' : ''}
-        </div>
+  // Use Firestore banners if any, otherwise show default slides
+  const banners = allBanners.length ? allBanners : [
+    { title:'Shop Smart.<br>Dress Better.', subtitle:'Premium fashion at honest prices.', btnText:'SHOP NOW', btnAction:'all', overlay:'orange', textColor:'white' },
+    { title:'Hot Deals<br>Every Day', subtitle:'Unbeatable prices on top brands', btnText:'EXPLORE DEALS', btnAction:'all', overlay:'dark', textColor:'white' },
+    { title:'Flash Sale<br>Is Live 🔥', subtitle:'Limited time offers — grab before they are gone', btnText:'VIEW FLASH SALE', btnAction:'all', overlay:'dark', textColor:'white' }
+  ];
+
+  container.innerHTML = banners.map((b,i) => {
+    const textClass = (b.textColor==='dark') ? ' text-dark' : '';
+    const imgClass = b.image ? ' has-image' : '';
+    const bgStyle = (!b.image) ? `style="background:${i===0?'linear-gradient(120deg,var(--orange),#2E45A3)':i===1?'linear-gradient(120deg,#1a1a2e,#16213e)':'linear-gradient(120deg,#0f3460,#533483)'}"` : '';
+    const titleLines = (b.title||'').replace(/\\n/g,'<br>').replace(/\n/g,'<br>');
+    return `<div class="slide${imgClass}${textClass}" ${bgStyle}>
+      ${b.image ? `<img class="slide-img" src="${b.image}" alt="${b.title||''}" onerror="this.style.display='none'">` : ''}
+      ${b.image ? `<div class="slide-overlay ${b.overlay||'orange'}"></div>` : ''}
+      <div class="slide-content">
+        <h2>${titleLines}</h2>
+        ${b.subtitle ? `<p>${b.subtitle}</p>` : ''}
+        <button class="slide-btn" onclick="filterByCategory('${b.btnAction||'all'}')">${b.btnText||'SHOP NOW'}</button>
       </div>
     </div>`;
   }).join('');
+
+  currentSlide = 0;
+  const total = container.querySelectorAll('.slide').length;
+  if(dotsContainer) dotsContainer.innerHTML = Array(total).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
+  if(sliderInterval) clearInterval(sliderInterval);
+  sliderInterval = setInterval(()=>changeSlide(1), 4500);
+  updateSlider();
+}
+
+function initSlider() {
+  // Just render with defaults; loadBanners() will refresh with real data
+  renderSlider();
+}
+
+// ===== ADMIN BANNER FUNCTIONS =====
+window.loadAdminBanners = async function() {
+  const listEl = document.getElementById('admin-banners-list');
+  if(!listEl) return;
+  listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--gray-400)"><i class="fas fa-spinner fa-spin" style="font-size:24px"></i><p style="margin-top:10px;font-size:13px">Loading banners...</p></div>';
+  await loadBanners();
+  if(!allBanners.length) {
+    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--gray-400)"><i class="fas fa-image" style="font-size:40px;display:block;margin-bottom:10px"></i><p style="font-size:14px;font-weight:600">No banners yet</p><p style="font-size:12px;margin-top:4px">Add your first banner to customize the homepage slider</p></div>';
+    return;
+  }
+  listEl.innerHTML = allBanners.map(b => `
+    <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid var(--gray-100)">
+      <div style="position:relative;height:130px;background:${b.image?'#111':'linear-gradient(120deg,var(--orange),#2E45A3)'};overflow:hidden">
+        ${b.image ? `<img src="${b.image}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">` : ''}
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;padding:12px">
+          <div style="text-align:center;color:#fff">
+            <div style="font-size:14px;font-weight:800;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.5)">${(b.title||'').replace(/\n/g,'<br>')}</div>
+            ${b.subtitle?`<div style="font-size:11px;opacity:.85;margin-top:4px">${b.subtitle}</div>`:''}
+          </div>
+        </div>
+        <div style="position:absolute;top:8px;right:8px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px">#${b.order||1}</div>
+      </div>
+      <div style="padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--gray-700)">Button: ${b.btnText||'SHOP NOW'}</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:2px">→ ${b.btnAction||'all'}</div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn-primary" style="padding:6px 10px;font-size:11px" onclick="editBanner('${b.id}')"><i class="fas fa-edit"></i></button>
+          <button class="btn-danger" onclick="deleteBanner('${b.id}')"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>`).join('');
 };
 
 window.showAddBannerModal = function() {
-  // "Add Banner" just means edit — we always have 5 slots. Show a slot picker instead.
-  showToast('All 5 slides are shown below — click Edit on any slide to customise it.','info');
-};
-
-window.editBannerSlot = async function(slotId) {
-  const banners = await loadBanners();
-  const b = banners.find(x=>x.slotId===slotId);
-  if(!b) return showToast('Slide not found','error');
-  document.getElementById('banner-edit-id').value = slotId; // store slotId
-  document.getElementById('banner-title').value = (b.title||'').replace(/<br>/g,'\n');
-  document.getElementById('banner-subtitle').value = b.subtitle||'';
-  document.getElementById('banner-btn-text').value = b.btnText||'Shop Now';
-  document.getElementById('banner-btn-action').value = b.btnAction||'all';
-  document.getElementById('banner-bg').value = b.bg||'slide-1';
-  document.getElementById('banner-image').value = b.image||'';
-  document.getElementById('banner-order').value = String(b.order||1);
-  const prev = document.getElementById('banner-img-preview');
-  if(b.image){document.getElementById('banner-img-preview-img').src=b.image;prev.style.display='block';}else{prev.style.display='none';}
-  document.getElementById('banner-modal-title').textContent = `Edit Slide ${b.order}`;
+  document.getElementById('banner-modal-title').textContent = 'Add Banner';
+  document.getElementById('edit-banner-id').value = '';
+  ['b-image','b-title','b-subtitle','b-btn-text'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('b-btn-action').value = 'all';
+  document.getElementById('b-overlay').value = 'orange';
+  document.getElementById('b-text-color').value = 'white';
+  document.getElementById('b-order').value = (allBanners.length+1).toString();
+  document.getElementById('b-image-preview').style.display = 'none';
   openModal('modal-banner');
 };
 
-window.saveBanner = async function() {
-  const slotId = document.getElementById('banner-edit-id').value;
-  if(!slotId) return showToast('No slide selected','error');
-  const data = {
-    slotId,
-    title: document.getElementById('banner-title').value.trim().replace(/\n/g,'<br>'),
-    subtitle: document.getElementById('banner-subtitle').value.trim(),
-    btnText: document.getElementById('banner-btn-text').value.trim()||'Shop Now',
-    btnAction: document.getElementById('banner-btn-action').value,
-    bg: document.getElementById('banner-bg').value,
-    image: document.getElementById('banner-image').value.trim(),
-    order: Number(document.getElementById('banner-order').value)||1,
-    updatedAt: serverTimestamp()
-  };
-  if(!data.title) return showToast('Title is required','error');
-  try {
-    // Use slotId as the Firestore document ID — always 1 doc per slot, no duplicates
-    await setDoc(doc(db,'banners',slotId), data);
-    closeModal('modal-banner');
-    showToast('Slide saved! ✅','success');
-    await renderSlider();
-    loadAdminBanners();
-  } catch(e) { showToast('Error: '+e.message,'error'); }
+window.editBanner = function(id) {
+  const b = allBanners.find(x=>x.id===id);
+  if(!b) return;
+  document.getElementById('banner-modal-title').textContent = 'Edit Banner';
+  document.getElementById('edit-banner-id').value = id;
+  document.getElementById('b-image').value = b.image||'';
+  document.getElementById('b-title').value = b.title||'';
+  document.getElementById('b-subtitle').value = b.subtitle||'';
+  document.getElementById('b-btn-text').value = b.btnText||'';
+  document.getElementById('b-btn-action').value = b.btnAction||'all';
+  document.getElementById('b-overlay').value = b.overlay||'orange';
+  document.getElementById('b-text-color').value = b.textColor||'white';
+  document.getElementById('b-order').value = b.order||1;
+  const prev = document.getElementById('b-image-preview');
+  const prevImg = document.getElementById('b-preview-img');
+  if(b.image) { prevImg.src=b.image; prev.style.display='block'; } else { prev.style.display='none'; }
+  openModal('modal-banner');
 };
 
-window.resetBannerSlot = async function(slotId, firestoreId) {
-  if(!confirm('Reset this slide back to default?')) return;
-  try {
-    // Try deleting by slotId (new format) first, then by firestoreId (old format)
-    try { await deleteDoc(doc(db,'banners',slotId)); } catch(e){}
-    if(firestoreId && firestoreId !== slotId) {
-      try { await deleteDoc(doc(db,'banners',firestoreId)); } catch(e){}
-    }
-    showToast('Reset to default ✅','success');
-    await renderSlider();
-    loadAdminBanners();
-  } catch(e) { showToast('Error resetting slide','error'); }
-};
-
-// Keep old deleteBanner alias just in case
-window.deleteBanner = window.resetBannerSlot;
-window.editBanner = window.editBannerSlot;
-
-// Live image preview in banner modal
-document.addEventListener('input',e=>{
-  if(e.target.id==='banner-image'){
-    const url=e.target.value.trim();
-    const prev=document.getElementById('banner-img-preview');
-    const img=document.getElementById('banner-img-preview-img');
-    if(url){img.src=url;prev.style.display='block';}else{prev.style.display='none';}
+// Live image preview in modal
+document.addEventListener('DOMContentLoaded', ()=>{
+  const imgInput = document.getElementById('b-image');
+  if(imgInput) {
+    imgInput.addEventListener('input', function() {
+      const prev = document.getElementById('b-image-preview');
+      const prevImg = document.getElementById('b-preview-img');
+      if(this.value) { prevImg.src=this.value; prev.style.display='block'; }
+      else { prev.style.display='none'; }
+    });
   }
 });
 
-function initSlider() {
-  if(sliderInterval) clearInterval(sliderInterval);
-  const totalSlides = document.querySelectorAll('#slides .slide').length;
-  const dotsContainer = document.getElementById('slider-dots');
-  if(!dotsContainer || !totalSlides) return;
-  dotsContainer.innerHTML = Array(totalSlides).fill('').map((_,i)=>`<div class="dot${i===0?' active':''}" onclick="goToSlide(${i})"></div>`).join('');
-  updateSlider();
-  sliderInterval = setInterval(()=>changeSlide(1), 4500);
-}
+window.saveBanner = async function() {
+  if(!isAdmin) return;
+  const editId = document.getElementById('edit-banner-id').value;
+  const image = document.getElementById('b-image').value.trim();
+  const title = document.getElementById('b-title').value.trim();
+  const subtitle = document.getElementById('b-subtitle').value.trim();
+  const btnText = document.getElementById('b-btn-text').value.trim() || 'SHOP NOW';
+  const btnAction = document.getElementById('b-btn-action').value;
+  const overlay = document.getElementById('b-overlay').value;
+  const textColor = document.getElementById('b-text-color').value;
+  const order = Number(document.getElementById('b-order').value)||1;
+  if(!title) return showToast('Headline text is required','error');
+  const data = { image, title, subtitle, btnText, btnAction, overlay, textColor, order, updatedAt: serverTimestamp() };
+  try {
+    if(editId) {
+      await updateDoc(doc(db,'banners',editId), data);
+      showToast('Banner updated!');
+    } else {
+      data.createdAt = serverTimestamp();
+      await addDoc(collection(db,'banners'), data);
+      showToast('Banner added!');
+    }
+    closeModal('modal-banner');
+    await loadBanners();
+    renderSlider();
+    loadAdminBanners();
+  } catch(e) { showToast('Failed to save banner: '+e.message,'error'); }
+};
+
+window.deleteBanner = async function(id) {
+  if(!isAdmin || !confirm('Delete this banner?')) return;
+  try {
+    await deleteDoc(doc(db,'banners',id));
+    showToast('Banner deleted');
+    await loadBanners();
+    renderSlider();
+    loadAdminBanners();
+  } catch(e) { showToast('Failed to delete banner','error'); }
+};
 
 window.changeSlide = function(dir) {
-  const totalSlides = document.querySelectorAll('#slides .slide').length;
-  if(!totalSlides) return;
+  const totalSlides = document.querySelectorAll('.slide').length;
   currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
   updateSlider();
 };
 window.goToSlide = function(i) { currentSlide = i; updateSlider(); };
 function updateSlider() {
-  const slidesEl = document.getElementById('slides');
-  if(!slidesEl) return;
-  const sliderWidth = slidesEl.parentElement.offsetWidth;
-  slidesEl.style.transform = `translateX(-${currentSlide * sliderWidth}px)`;
-  document.querySelectorAll('#slider-dots .dot').forEach((d,i)=>d.classList.toggle('active',i===currentSlide));
+  document.getElementById('slides').style.transform = `translateX(-${currentSlide*100}%)`;
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===currentSlide));
 }
 
 // ===== COUNTDOWN =====
-window.addEventListener('resize', ()=>{ if(document.getElementById('slides')) updateSlider(); });
 function startCountdown() {
   const end = new Date(); end.setHours(23,59,59,999);
   function update() {
@@ -4586,6 +4325,25 @@ window.addEventListener('popstate', (e) => {
 });
 
 // ===== SIDEBAR =====
+// ===== DARK MODE TOGGLE =====
+window.toggleTheme = function() {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  const icon = document.getElementById('theme-icon');
+  if(icon) { icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon'; }
+  try { localStorage.setItem('benimTheme', isDark ? 'dark' : 'light'); } catch(e){}
+};
+// Restore saved theme
+(function(){
+  try {
+    if(localStorage.getItem('benimTheme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      const icon = document.getElementById('theme-icon');
+      if(icon) icon.className = 'fas fa-sun';
+    }
+  } catch(e){}
+})();
+
 window.toggleSidebar = function() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebar-overlay').classList.toggle('open');
@@ -4622,7 +4380,8 @@ window.showToast = function(message, type='success') {
 
 // ===== INIT =====
 async function init() {
-  renderSlider(); // loads banners from Firestore (or defaults) and inits slider
+  initSlider();
+  loadBanners(); // load dynamic banners from Firestore
   startCountdown();
   renderSkeletons('flash-grid',4);
   renderSkeletons('featured-grid',8);
@@ -4638,520 +4397,32 @@ async function init() {
   if(hash && hash !== 'home' && hash !== '__guard__' && document.getElementById('page-'+hash)) navigate(hash);
 }
 
-// ===== COUPON SYSTEM (Firestore-based) =====
-let appliedCoupon = null;
-window.applyCoupon = async function() {
-  const code = (document.getElementById('coupon-input').value||'').trim().toUpperCase();
-  const msg = document.getElementById('coupon-msg');
-  msg.style.display = 'block';
-  if(!code) { msg.style.color='var(--red)'; msg.textContent='Enter a coupon code'; return; }
-  msg.style.color='var(--gray-400)'; msg.textContent='Checking...';
-  try {
-    // Look up coupon in Firestore
-    const q = query(collection(db,'coupons'), where('code','==',code), where('active','==',true));
-    const snap = await getDocs(q);
-    if(snap.empty) { msg.style.color='var(--red)'; msg.textContent='Invalid or inactive coupon code'; appliedCoupon=null; updateCheckoutTotal(); return; }
-    const couponDoc = snap.docs[0];
-    const c = couponDoc.data();
-    // Check expiry
-    if(c.expiry && new Date(c.expiry) < new Date()) { msg.style.color='var(--red)'; msg.textContent='This coupon has expired'; appliedCoupon=null; updateCheckoutTotal(); return; }
-    // Check usage limit
-    if(c.limit && (c.usageCount||0) >= c.limit) { msg.style.color='var(--red)'; msg.textContent='This coupon has reached its usage limit'; appliedCoupon=null; updateCheckoutTotal(); return; }
-    // Check minimum order
-    const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
-    if(c.minOrder && subtotal < c.minOrder) { msg.style.color='var(--red)'; msg.textContent='Minimum order of ₦'+Number(c.minOrder).toLocaleString()+' required for this coupon'; appliedCoupon=null; updateCheckoutTotal(); return; }
-    // All good!
-    const label = c.type==='percent' ? c.value+'% off' : c.type==='fixed' ? '₦'+Number(c.value).toLocaleString()+' off' : 'Free Shipping';
-    appliedCoupon = { code, ...c, firestoreId: couponDoc.id };
-    msg.style.color='var(--green)'; msg.textContent='✅ Coupon applied: '+label;
-    updateCheckoutTotal();
-    showToast('Coupon '+code+' applied! '+label,'success');
-  } catch(e) { msg.style.color='var(--red)'; msg.textContent='Error checking coupon. Try again.'; }
-};
-
-// ===== LOYALTY POINTS =====
-let userLoyaltyPoints = 0;
-let useLoyaltyDiscount = 0;
-async function loadLoyaltyPoints() {
-  if(!currentUser) return;
-  try {
-    const snap = await getDoc(doc(db,'users',currentUser.uid));
-    userLoyaltyPoints = snap.exists() ? (snap.data().loyaltyPoints||0) : 0;
-    const box = document.getElementById('loyalty-pts-box');
-    if(box && userLoyaltyPoints > 0) {
-      box.style.display = 'block';
-      document.getElementById('loyalty-pts-balance').textContent = userLoyaltyPoints.toLocaleString()+' pts (₦'+userLoyaltyPoints.toLocaleString()+' value)';
-    }
-  } catch(e) {}
-}
-window.applyLoyaltyPoints = function() {
-  const cb = document.getElementById('use-loyalty-pts');
-  const msg = document.getElementById('loyalty-discount-msg');
-  if(cb && cb.checked) {
-    const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
-    useLoyaltyDiscount = Math.min(userLoyaltyPoints, Math.floor(subtotal*0.2)); // max 20% of subtotal
-    if(msg) { msg.style.display='block'; msg.textContent='Using '+useLoyaltyDiscount+' points = ₦'+useLoyaltyDiscount.toLocaleString()+' off'; }
-  } else {
-    useLoyaltyDiscount = 0;
-    if(msg) msg.style.display='none';
-  }
-  updateCheckoutTotal();
-};
-async function awardLoyaltyPoints(orderId, total) {
-  if(!currentUser) return;
-  const pts = Math.floor(total * 0.02); // 2% of order value as points
-  if(pts <= 0) return;
-  try {
-    const ref = doc(db,'users',currentUser.uid);
-    const snap = await getDoc(ref);
-    const current = snap.exists() ? (snap.data().loyaltyPoints||0) : 0;
-    const used = useLoyaltyDiscount || 0;
-    await updateDoc(ref, { loyaltyPoints: Math.max(0, current - used + pts) });
-  } catch(e) {}
-}
-
-// ===== UPDATE CHECKOUT TOTAL (with coupon + loyalty) =====
-function updateCheckoutTotal() {
-  const subtotal = cart.reduce((s,x)=>s+(x.price*x.qty),0);
-  const deliveryFee = window._checkoutDeliveryFee || getShippingFee(window._checkoutSelectedState||'', subtotal);
-  let discount = 0;
-  let couponRow = document.getElementById('coupon-discount-row');
-  let couponVal = document.getElementById('coupon-discount-val');
-  let couponLbl = document.getElementById('coupon-discount-label');
-  if(appliedCoupon) {
-    if(appliedCoupon.type==='percent') discount = Math.floor(subtotal * appliedCoupon.value/100);
-    else if(appliedCoupon.type==='fixed') discount = appliedCoupon.value;
-    else if(appliedCoupon.type==='shipping') { window._checkoutDeliveryFee = 0; }
-    if(couponRow) { couponRow.style.display='flex'; couponVal.textContent='-₦'+discount.toLocaleString(); couponLbl.textContent='Coupon ('+appliedCoupon.code+')'; }
-  } else {
-    if(couponRow) couponRow.style.display='none';
-  }
-  const loyaltyRow = document.getElementById('loyalty-discount-row');
-  const loyaltyVal = document.getElementById('loyalty-discount-val');
-  if(useLoyaltyDiscount > 0) {
-    if(loyaltyRow) { loyaltyRow.style.display='flex'; loyaltyVal.textContent='-₦'+useLoyaltyDiscount.toLocaleString(); }
-  } else {
-    if(loyaltyRow) loyaltyRow.style.display='none';
-  }
-  const effDelivery = (appliedCoupon && appliedCoupon.type==='shipping') ? 0 : deliveryFee;
-  const total = Math.max(0, subtotal - discount - useLoyaltyDiscount + effDelivery);
-  const totEl = document.getElementById('checkout-total');
-  if(totEl) totEl.innerHTML = '₦'+total.toLocaleString();
-  window._checkoutFinalTotal = total;
-  window._checkoutCouponDiscount = discount;
-  // Estimated delivery date
-  const estEl = document.getElementById('est-delivery-date');
-  if(estEl) {
-    const days = (window._checkoutSelectedState||'').toLowerCase().includes('lagos') ? 2 : 5;
-    const estDate = new Date(); estDate.setDate(estDate.getDate()+days);
-    const label = estDate.toLocaleDateString('en-NG',{weekday:'long',day:'numeric',month:'short'});
-    estEl.style.display='block'; estEl.querySelector('span').textContent='Estimated delivery: '+label;
-  }
-}
-
-// ===== RECENTLY VIEWED =====
-function renderRecentlyViewed() {
-  const rv = JSON.parse(localStorage.getItem('recentlyViewed')||'[]');
-  const section = document.getElementById('recently-viewed-section');
-  const grid = document.getElementById('recently-viewed-grid');
-  if(!rv.length || !allProducts.length || !section) return;
-  const items = rv.map(id=>allProducts.find(p=>p.id===id)).filter(Boolean).slice(0,6);
-  if(!items.length) return;
-  section.style.display='block';
-  renderProductGrid('recently-viewed-grid', items);
-}
-
-// ===== ADMIN COUPON MANAGEMENT =====
-window.toggleCouponValueLabel = function() {
-  const type = document.getElementById('coupon-type-input').value;
-  const wrap = document.getElementById('coupon-value-wrap');
-  const lbl = document.getElementById('coupon-value-label');
-  if(type==='shipping') { wrap.style.display='none'; }
-  else { wrap.style.display='block'; lbl.textContent = type==='percent' ? 'Percentage Off (%)' : 'Fixed Amount Off (₦)'; }
-};
-
-window.showCouponModal = function() {
-  document.getElementById('coupon-edit-id').value = '';
-  document.getElementById('coupon-code-input').value = '';
-  document.getElementById('coupon-type-input').value = 'percent';
-  document.getElementById('coupon-value-input').value = '';
-  document.getElementById('coupon-minorder-input').value = '';
-  document.getElementById('coupon-limit-input').value = '';
-  document.getElementById('coupon-expiry-input').value = '';
-  document.getElementById('coupon-active-input').checked = true;
-  document.getElementById('coupon-modal-title').textContent = 'Create Coupon';
-  toggleCouponValueLabel();
-  openModal('modal-coupon');
-};
-
-window.loadAdminCoupons = async function() {
-  const list = document.getElementById('admin-coupons-list');
-  list.innerHTML = '<p style="color:var(--gray-400);font-size:13px"><i class="fas fa-spinner fa-spin"></i> Loading...</p>';
-  try {
-    const snap = await getDocs(collection(db,'coupons'));
-    if(snap.empty) {
-      list.innerHTML = '<div style="text-align:center;padding:24px;color:var(--gray-400)"><i class="fas fa-tag" style="font-size:28px;display:block;margin-bottom:8px"></i><p style="font-size:13px">No coupons yet. Create your first one!</p></div>';
-      return;
-    }
-    const coupons = snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>a.code.localeCompare(b.code));
-    const typeLabel = {percent:'% off', fixed:'₦ off', shipping:'Free Shipping'};
-    list.innerHTML = coupons.map(c=>{
-      const expired = c.expiry && new Date(c.expiry) < new Date();
-      const usageDisplay = c.usageCount||0;
-      const limitDisplay = c.limit ? (usageCount+'/'+c.limit) : (usageDisplay+'/∞');
-      const statusColor = !c.active ? 'var(--gray-400)' : expired ? 'var(--red)' : 'var(--green)';
-      const statusText = !c.active ? 'Inactive' : expired ? 'Expired' : 'Active';
-      return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px">'+
-        '<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">'+
-          '<div>'+
-            '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'+
-              '<span style="font-size:16px;font-weight:900;letter-spacing:2px;color:var(--orange)">'+c.code+'</span>'+
-              '<span style="background:'+statusColor+';color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px">'+statusText+'</span>'+
-            '</div>'+
-            '<div style="font-size:13px;font-weight:700;color:var(--text)">'+
-              (c.type==='shipping' ? 'Free Shipping' : (c.type==='percent' ? c.value+'% off' : '₦'+Number(c.value||0).toLocaleString()+' off'))+
-              (c.minOrder ? ' • Min order ₦'+Number(c.minOrder).toLocaleString() : '')+
-            '</div>'+
-            '<div style="font-size:11px;color:var(--gray-400);margin-top:3px">'+
-              'Used: '+(c.usageCount||0)+(c.limit ? '/'+c.limit : ' times')+
-              (c.expiry ? ' • Expires: '+new Date(c.expiry).toLocaleDateString('en-NG',{day:'numeric',month:'short',year:'numeric'}) : '')+
-            '</div>'+
-          '</div>'+
-          '<div style="display:flex;gap:6px">'+
-            '<button class="btn-primary" style="font-size:12px;padding:6px 12px" onclick="editCoupon(\''+c.id+'\')"><i class="fas fa-edit"></i></button>'+
-            '<button style="background:var(--red);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:700" onclick="deleteCoupon(\''+c.id+'\',\''+c.code+'\')"><i class="fas fa-trash"></i></button>'+
-          '</div>'+
-        '</div>'+
-      '</div>';
-    }).join('');
-  } catch(e) { list.innerHTML = '<p style="color:var(--red);font-size:13px">Error: '+e.message+'</p>'; }
-};
-
-window.editCoupon = async function(id) {
-  try {
-    const snap = await getDoc(doc(db,'coupons',id));
-    if(!snap.exists()) return;
-    const c = snap.data();
-    document.getElementById('coupon-edit-id').value = id;
-    document.getElementById('coupon-code-input').value = c.code||'';
-    document.getElementById('coupon-type-input').value = c.type||'percent';
-    document.getElementById('coupon-value-input').value = c.value||'';
-    document.getElementById('coupon-minorder-input').value = c.minOrder||'';
-    document.getElementById('coupon-limit-input').value = c.limit||'';
-    document.getElementById('coupon-expiry-input').value = c.expiry||'';
-    document.getElementById('coupon-active-input').checked = c.active !== false;
-    document.getElementById('coupon-modal-title').textContent = 'Edit Coupon — '+c.code;
-    toggleCouponValueLabel();
-    openModal('modal-coupon');
-  } catch(e) { showToast('Error loading coupon','error'); }
-};
-
-window.saveCoupon = async function() {
-  const code = (document.getElementById('coupon-code-input').value||'').trim().toUpperCase().replace(/\s/g,'');
-  if(!code) return showToast('Enter a coupon code','error');
-  const type = document.getElementById('coupon-type-input').value;
-  const value = type==='shipping' ? 0 : Number(document.getElementById('coupon-value-input').value||0);
-  if(type!=='shipping' && (!value||value<=0)) return showToast('Enter a valid discount value','error');
-  const editId = document.getElementById('coupon-edit-id').value;
-  const data = {
-    code, type, value,
-    minOrder: Number(document.getElementById('coupon-minorder-input').value||0)||0,
-    limit: Number(document.getElementById('coupon-limit-input').value||0)||0,
-    expiry: document.getElementById('coupon-expiry-input').value||'',
-    active: document.getElementById('coupon-active-input').checked,
-    usageCount: 0,
-    updatedAt: serverTimestamp()
-  };
-  try {
-    if(editId) {
-      const existing = await getDoc(doc(db,'coupons',editId));
-      data.usageCount = existing.exists() ? (existing.data().usageCount||0) : 0;
-      await setDoc(doc(db,'coupons',editId), data);
-    } else {
-      data.createdAt = serverTimestamp();
-      await addDoc(collection(db,'coupons'), data);
-    }
-    closeModal('modal-coupon');
-    showToast('Coupon saved! ✅','success');
-    loadAdminCoupons();
-  } catch(e) { showToast('Error saving coupon: '+e.message,'error'); }
-};
-
-window.deleteCoupon = async function(id, code) {
-  if(!confirm('Delete coupon '+code+'?')) return;
-  try { await deleteDoc(doc(db,'coupons',id)); showToast('Coupon deleted','success'); loadAdminCoupons(); }
-  catch(e) { showToast('Error deleting','error'); }
-};
-
-// ===== LOYALTY POINTS ADMIN =====
-window.searchLoyaltyUser = async function() {
-  const email = document.getElementById('loyalty-search-email').value.trim().toLowerCase();
-  if(!email) return showToast('Enter an email address','error');
-  const result = document.getElementById('loyalty-user-result');
-  result.innerHTML = '<p style="color:var(--gray-400);font-size:13px"><i class="fas fa-spinner fa-spin"></i> Searching...</p>';
-  try {
-    const q = query(collection(db,'users'), where('email','==',email));
-    const snap = await getDocs(q);
-    if(snap.empty) { result.innerHTML = '<p style="color:var(--red);font-size:13px">No user found with that email.</p>'; return; }
-    const d = snap.docs[0];
-    const u = d.data();
-    const pts = u.loyaltyPoints||0;
-    result.innerHTML = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px">'+
-      '<div style="font-size:14px;font-weight:800;margin-bottom:4px">'+u.name+'</div>'+
-      '<div style="font-size:12px;color:var(--gray-500);margin-bottom:12px">'+u.email+'</div>'+
-      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">'+
-        '<span style="font-size:22px;font-weight:900;color:var(--orange)">'+pts.toLocaleString()+'</span>'+
-        '<span style="font-size:12px;color:var(--gray-500)">points = ₦'+pts.toLocaleString()+' value</span>'+
-      '</div>'+
-      '<div style="display:flex;gap:8px;flex-wrap:wrap">'+
-        '<input class="form-input" id="loyalty-adjust-val" type="number" placeholder="Points to add/deduct" style="flex:1;min-width:100px">'+
-        '<button class="btn-primary" style="font-size:12px;padding:8px 12px" onclick="adjustLoyalty(\''+d.id+'\','+pts+',1)"><i class="fas fa-plus"></i> Add</button>'+
-        '<button style="background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;padding:8px 12px;font-weight:700;cursor:pointer" onclick="adjustLoyalty(\''+d.id+'\','+pts+',-1)"><i class="fas fa-minus"></i> Deduct</button>'+
-      '</div>'+
-    '</div>';
-  } catch(e) { result.innerHTML = '<p style="color:var(--red);font-size:13px">Error: '+e.message+'</p>'; }
-};
-
-window.adjustLoyalty = async function(userId, current, direction) {
-  const val = Number(document.getElementById('loyalty-adjust-val').value||0);
-  if(!val||val<=0) return showToast('Enter a valid point amount','error');
-  const newPts = Math.max(0, current + (direction * val));
-  try {
-    await updateDoc(doc(db,'users',userId), { loyaltyPoints: newPts });
-    showToast((direction>0?'Added ':'Deducted ')+val+' points. New balance: '+newPts,'success');
-    searchLoyaltyUser();
-  } catch(e) { showToast('Error updating points','error'); }
-};
-window.cancelOrder = async function(docId, orderId) {
-  if(!confirm('Cancel order '+orderId+'? This cannot be undone.')) return;
-  try {
-    await updateDoc(doc(db,'orders',docId), { status:'cancelled', cancelledAt: serverTimestamp() });
-    showToast('Order cancelled','success');
-    // Notify admin via WhatsApp
-    const msg = encodeURIComponent('❌ *Order Cancelled*\nOrder: '+(orderId||docId)+'\nCustomer: '+(currentUser.email||'')+'\nPlease process any refund if payment was made.');
-    window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg,'_blank');
-    loadOrders();
-  } catch(e) { showToast('Could not cancel order: '+e.message,'error'); }
-};
-
-// ===== RETURN / REFUND REQUEST =====
-window.requestReturn = async function(docId, orderId) {
-  const reason = prompt('Please briefly describe the reason for return/refund:');
-  if(!reason) return;
-  try {
-    await updateDoc(doc(db,'orders',docId), { returnRequested:true, returnReason:reason, returnRequestedAt:serverTimestamp() });
-    showToast('Return request submitted! We will contact you shortly.','success');
-    const msg = encodeURIComponent('🔄 *Return/Refund Request*\nOrder: '+(orderId||docId)+'\nCustomer: '+(currentUser.email||'')+'\nReason: '+reason+'\n\nPlease review and process this request.');
-    window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg,'_blank');
-    loadOrders();
-  } catch(e) { showToast('Could not submit request: '+e.message,'error'); }
-};
-
-// ===== REORDER =====
-window.reorderItems = async function(docId) {
-  try {
-    const snap = await getDoc(doc(db,'orders',docId));
-    if(!snap.exists()) return showToast('Order not found','error');
-    const items = snap.data().items||[];
-    let added = 0;
-    items.forEach(item => {
-      const existing = cart.find(c=>c.productId===item.productId && c.size===item.size && c.colour===item.colour);
-      if(existing) existing.qty++;
-      else { cart.push({...item, qty:1}); }
-      added++;
-    });
-    await saveCart(); updateCartBadge();
-    showToast(added+' item(s) added to cart!','success');
-    navigate('cart');
-  } catch(e) { showToast('Could not reorder: '+e.message,'error'); }
-};
-
-// ===== ANALYTICS =====
-window.loadAnalytics = async function() {
-  try {
-    const snap = await getDocs(collection(db,'orders'));
-    const orders = snap.docs.map(d=>({id:d.id,...d.data()}));
-    const totalRevenue = orders.reduce((s,o)=>s+(o.total||0),0);
-    const delivered = orders.filter(o=>o.status==='delivered').length;
-    const avg = orders.length ? Math.floor(totalRevenue/orders.length) : 0;
-    document.getElementById('a-revenue').textContent = '₦'+totalRevenue.toLocaleString();
-    document.getElementById('a-orders').textContent = orders.length;
-    document.getElementById('a-delivered').textContent = delivered;
-    document.getElementById('a-avg').textContent = '₦'+avg.toLocaleString();
-    // Low stock
-    const lowStock = allProducts.filter(p=>(p.stock||0)<=10 && (p.stock||0)>0).sort((a,b)=>a.stock-b.stock);
-    const outStock = allProducts.filter(p=>(p.stock||0)<=0);
-    const lowEl = document.getElementById('low-stock-list');
-    if(outStock.length || lowStock.length) {
-      lowEl.innerHTML = [...outStock.map(p=>'<div style="display:flex;justify-content:space-between;padding:8px 10px;background:#fee2e2;border-radius:6px;margin-bottom:6px;font-size:13px"><span style="font-weight:700">'+p.name+'</span><span style="color:var(--red);font-weight:800">OUT OF STOCK</span></div>'),
-        ...lowStock.map(p=>'<div style="display:flex;justify-content:space-between;padding:8px 10px;background:#fef3c7;border-radius:6px;margin-bottom:6px;font-size:13px"><span style="font-weight:700">'+p.name+'</span><span style="color:#d97706;font-weight:800">'+p.stock+' left</span></div>')
-      ].join('');
-    } else { lowEl.innerHTML='<p style="color:var(--green);font-size:13px">✅ All products have good stock</p>'; }
-    // Top products
-    const topProds = [...allProducts].sort((a,b)=>(b.soldCount||0)-(a.soldCount||0)).slice(0,5);
-    document.getElementById('top-products-list').innerHTML = topProds.map((p,i)=>
-      '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-100)">'+
-      '<span style="width:24px;height:24px;background:var(--orange);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0">'+(i+1)+'</span>'+
-      '<span style="flex:1;font-size:13px;font-weight:700">'+p.name+'</span>'+
-      '<span style="font-size:12px;color:var(--gray-500)">'+(p.soldCount||0)+' sold</span>'+
-      '</div>'
-    ).join('');
-    // Revenue last 7 days chart (text-based)
-    const now = new Date();
-    const days7 = Array.from({length:7},(_,i)=>{ const d=new Date(now); d.setDate(d.getDate()-6+i); return d; });
-    const dayRevenue = days7.map(day=>{
-      const dayStr = day.toDateString();
-      return orders.filter(o=>o.createdAt && new Date(o.createdAt.toDate()).toDateString()===dayStr).reduce((s,o)=>s+(o.total||0),0);
-    });
-    const maxRev = Math.max(...dayRevenue,1);
-    document.getElementById('revenue-chart').innerHTML = '<div style="display:flex;align-items:flex-end;gap:4px;height:80px">' +
-      dayRevenue.map((rev,i)=>{
-        const pct = Math.round((rev/maxRev)*100);
-        const label = days7[i].toLocaleDateString('en-NG',{weekday:'short'});
-        return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">'+
-          '<div style="font-size:9px;color:var(--gray-400)">'+( rev>0?'₦'+(rev/1000).toFixed(0)+'k':'')+'</div>'+
-          '<div style="width:100%;background:var(--orange);border-radius:3px 3px 0 0;height:'+Math.max(pct,4)+'%"></div>'+
-          '<div style="font-size:9px;color:var(--gray-500);font-weight:700">'+label+'</div></div>';
-      }).join('')+'</div>';
-  } catch(e) { console.error('Analytics error:',e); }
-};
-
-// ===== DAILY SALES SUMMARY =====
-window.sendDailySummaryWhatsApp = async function() {
-  try {
-    const snap = await getDocs(collection(db,'orders'));
-    const orders = snap.docs.map(d=>({...d.data()}));
-    const today = new Date().toDateString();
-    const todayOrders = orders.filter(o=>o.createdAt && new Date(o.createdAt.toDate()).toDateString()===today);
-    const todayRevenue = todayOrders.reduce((s,o)=>s+(o.total||0),0);
-    const totalRevenue = orders.reduce((s,o)=>s+(o.total||0),0);
-    const pending = orders.filter(o=>o.status==='pending').length;
-    const msg = encodeURIComponent(
-      '📊 *Benim Shop — Daily Summary*\n'+
-      '📅 '+new Date().toLocaleDateString('en-NG',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+'\n\n'+
-      '🛒 *Today\'s Orders:* '+todayOrders.length+'\n'+
-      '💰 *Today\'s Revenue:* ₦'+todayRevenue.toLocaleString()+'\n'+
-      '📦 *Total All-time Orders:* '+orders.length+'\n'+
-      '💵 *Total Revenue:* ₦'+totalRevenue.toLocaleString()+'\n'+
-      '⏳ *Pending Orders:* '+pending+'\n\n'+
-      '👉 Login to admin panel to manage orders.'
-    );
-    window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg,'_blank');
-  } catch(e) { showToast('Could not generate summary','error'); }
-};
-
-// ===== WHATSAPP STATUS UPDATE TO CUSTOMER =====
-function notifyCustomerStatusUpdate(order) {
-  if(!order.phone && !(order.address && order.address.phone)) return;
-  const phone = (order.phone || order.address.phone).replace(/[^0-9]/g,'');
-  if(!phone) return;
-  const statusMessages = {
-    confirmed: '✅ Your order '+order.orderId+' has been confirmed! We are preparing it for you.',
-    processing: '🔄 Your order '+order.orderId+' is being processed and will be shipped soon.',
-    out_for_delivery: '🚚 Your order '+order.orderId+' is out for delivery! Expect it today.',
-    delivered: '🎉 Your order '+order.orderId+' has been delivered! Thank you for shopping with Benim.',
-    cancelled: '❌ Your order '+order.orderId+' has been cancelled. Contact us if you have questions.'
-  };
-  const msg = statusMessages[order.status];
-  if(!msg) return;
-  const fullMsg = encodeURIComponent('Hello '+((order.address&&order.address.name)||'')+'!\n\n'+msg+'\n\n— Benim Shop 🛍️');
-  window.open('https://wa.me/'+phone+'?text='+fullMsg,'_blank');
-}
-
-// Hook into admin status update to also notify customer
-const _origUpdateOrderStatus = window.updateOrderStatus;
-window.updateOrderStatus = async function() {
-  if(_origUpdateOrderStatus) await _origUpdateOrderStatus();
-  // After update, notify customer
-  const orderId = document.getElementById('status-order-id')?.value;
-  const newStatus = document.getElementById('status-select')?.value;
-  if(orderId && newStatus) {
-    try {
-      const snap = await getDoc(doc(db,'orders',orderId));
-      if(snap.exists()) notifyCustomerStatusUpdate({...snap.data(), status:newStatus});
-    } catch(e) {}
-  }
-};
-let _pwaInstallEvent = null;
-const _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-const _isAndroid = /android/i.test(navigator.userAgent);
-const _isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-function _showPWABanner() {
-  if(_isStandalone) return; // already installed
-  const dismissed = localStorage.getItem('benim-pwa-dismissed');
-  if(dismissed && Date.now() - Number(dismissed) < 24*60*60*1000) return; // dismissed within 24h
-  setTimeout(() => {
-    document.getElementById('pwa-install-banner').classList.add('show');
-  }, 1500);
-}
-
-// Capture Chrome install event
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  _pwaInstallEvent = e;
-  _showPWABanner();
-});
-
-// For iOS and other browsers — show banner anyway with instructions
-window.addEventListener('load', () => {
-  if(!_pwaInstallEvent && !_isStandalone) {
-    _showPWABanner();
-  }
-});
-
-document.getElementById('pwa-install-btn').addEventListener('click', async () => {
-  if(_pwaInstallEvent) {
-    // Chrome Android — native install prompt
-    _pwaInstallEvent.prompt();
-    const { outcome } = await _pwaInstallEvent.userChoice;
-    if(outcome === 'accepted') {
-      showToast('Benim Shop installed! 🎉','success');
-      document.getElementById('pwa-install-banner').classList.remove('show');
-    }
-    _pwaInstallEvent = null;
-  } else if(_isIOS) {
-    // iOS — show instructions modal
-    showIOSInstallGuide();
-  } else {
-    // Other browsers — show manual instructions
-    showManualInstallGuide();
-  }
-});
-
-window.dismissPWABanner = function() {
-  document.getElementById('pwa-install-banner').classList.remove('show');
-  localStorage.setItem('benim-pwa-dismissed', String(Date.now()));
-};
-
-window.showIOSInstallGuide = function() {
-  openModal('modal-ios-install');
-};
-
-window.showManualInstallGuide = function() {
-  showToast('Open this site in Chrome, tap the 3-dot menu → "Add to Home screen"','info');
-};
-
-// Update banner text based on device
-(function() {
-  const sub = document.getElementById('pwa-banner-sub');
-  if(sub) {
-    if(_isIOS) sub.textContent = 'Tap Install → follow 2 simple steps';
-    else sub.textContent = 'Free · No app store needed';
-  }
-})();
-
-// Register service worker
-if('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(() => console.log('SW registered'))
-      .catch(e => console.log('SW failed:', e));
-  });
-}
-
 init();
 
+// ===== SPLASH SCREEN ANIMATION =====
+(function() {
+  const splash = document.getElementById('splash-screen');
+  const fill   = document.getElementById('splash-fill');
+  const pct    = document.getElementById('splash-pct');
+  if (!splash) return;
+  // Normal load — always show splash
+  let tick = 0;
+  const steps = 87;
+  const timer = setInterval(() => {
+    tick++;
+    const raw = tick / steps;
+    const progress = Math.min(100, Math.round((1 - Math.pow(1 - raw, 2)) * 100));
+    if (fill) fill.style.width = progress + '%';
+    if (pct)  pct.textContent  = progress + '%';
+    if (tick >= steps) {
+      clearInterval(timer);
+      setTimeout(() => {
+        splash.classList.add('fade-out');
+        setTimeout(() => { splash.style.display = 'none'; }, 750);
+      }, 250);
+    }
+  }, 30);
+})();
 
 </script>
 </body>
