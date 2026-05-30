@@ -440,11 +440,59 @@ img{max-width:100%;display:block}
 .toast.info i{color:var(--orange)}
 @keyframes toastIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
 
-/* ====== CHATBOT ====== */
+/* ====== SUPPORT CHAT SYSTEM ====== */
 #chatbot-btn{position:fixed;bottom:72px;right:14px;z-index:1500;background:var(--orange);color:#fff;width:46px;height:46px;border-radius:50%;border:none;font-size:18px;cursor:pointer;box-shadow:var(--shadow-md);transition:.2s;display:flex;align-items:center;justify-content:center}
 #chatbot-btn:hover{transform:scale(1.1)}
-#chatbot-window{position:fixed;bottom:84px;left:20px;z-index:1500;background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);width:320px;max-height:440px;display:flex;flex-direction:column;overflow:hidden;transition:.25s;opacity:0;pointer-events:none;transform:translateY(10px)}
-#chatbot-window.open{opacity:1;pointer-events:all;transform:translateY(0)}
+#chatbot-window{position:fixed;bottom:126px;right:14px;z-index:1500;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.18);width:340px;max-height:520px;display:flex;flex-direction:column;overflow:hidden;transition:.3s cubic-bezier(.34,1.56,.64,1);opacity:0;pointer-events:none;transform:translateY(16px) scale(.97)}
+#chatbot-window.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+.chat-header{background:linear-gradient(135deg,var(--orange),#ff7a3c);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.chat-header-avatar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.chat-header-info{flex:1;min-width:0}
+.chat-header-info h4{font-size:14px;font-weight:800;margin:0;line-height:1.2}
+.chat-header-info span{font-size:11px;opacity:.85}
+.chat-status-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;box-shadow:0 0 6px #4ade80}
+.chat-status-dot.away{background:#fbbf24}
+.chat-status-dot.offline{background:#9ca3af}
+.chat-status-bar{background:rgba(0,0,0,.06);padding:6px 14px;font-size:11px;font-weight:700;text-align:center;flex-shrink:0;letter-spacing:.3px}
+.chat-status-bar.ai{color:rgba(255,255,255,.9);background:rgba(0,0,0,.1)}
+.chat-status-bar.human{color:#fff;background:rgba(0,0,0,.15)}
+.chat-status-bar.waiting{background:#fef3c7;color:#92400e}
+.chat-status-bar.offline-bar{background:#fee2e2;color:#991b1b}
+.chat-quick-actions{padding:10px 12px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid #f3f4f6;flex-shrink:0;background:#fafafa}
+.chat-quick-btn{font-size:11px;padding:5px 10px;border:1.5px solid var(--orange);color:var(--orange);background:#fff;border-radius:99px;cursor:pointer;font-weight:700;white-space:nowrap;transition:.15s}
+.chat-quick-btn:hover{background:var(--orange);color:#fff}
+.chat-messages{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:8px;background:#f8f8f8}
+.chat-msg{max-width:82%;padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.5;word-break:break-word;animation:msgPop .2s ease}
+@keyframes msgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{background:#fff;color:#1f2937;border-radius:4px 12px 12px 12px;align-self:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.chat-msg.user{background:var(--orange);color:#fff;border-radius:12px 12px 4px 12px;align-self:flex-end}
+.chat-msg.human-agent{background:#1e40af;color:#fff;border-radius:4px 12px 12px 12px;align-self:flex-start}
+.chat-msg.system{background:#f0fdf4;color:#15803d;font-size:11px;text-align:center;align-self:center;border-radius:99px;padding:4px 12px;font-weight:700;border:1px solid #bbf7d0}
+.chat-msg-time{font-size:10px;opacity:.55;margin-top:3px}
+.chat-transfer-card{background:#fff;border:2px solid var(--orange);border-radius:10px;padding:12px;margin:6px 0;align-self:flex-start;max-width:90%;box-shadow:0 2px 8px rgba(232,66,10,.1)}
+.chat-transfer-card p{font-size:12px;color:#374151;margin-bottom:10px;line-height:1.5}
+.chat-transfer-card .btn-human{width:100%;background:var(--orange);color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:6px}
+.chat-transfer-card .btn-wa{width:100%;background:#25d366;color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:800;cursor:pointer}
+.chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #f0f0f0;background:#fff;flex-shrink:0;align-items:flex-end}
+.chat-input{flex:1;border:1.5px solid #e5e7eb;border-radius:10px;padding:9px 12px;font-size:13px;resize:none;outline:none;font-family:inherit;max-height:80px;background:#fff;color:#1f2937;transition:.2s}
+.chat-input:focus{border-color:var(--orange)}
+.chat-send{background:var(--orange);color:#fff;border:none;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.2s}
+.chat-send:hover{background:var(--orange-dark)}
+.chat-typing-indicator{display:flex;gap:4px;align-items:center;padding:8px 12px;background:#fff;border-radius:4px 12px 12px 12px;align-self:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.chat-typing-indicator span{width:6px;height:6px;background:#9ca3af;border-radius:50%;animation:typingBounce 1.2s infinite}
+.chat-typing-indicator span:nth-child(2){animation-delay:.2s}
+.chat-typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+/* Admin support panel */
+.support-chat-item{border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;transition:.15s;background:var(--surface)}
+.support-chat-item:hover{border-color:var(--orange)}
+.support-chat-item.unread{border-left:3px solid var(--orange)}
+.support-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px}
+.badge-active{background:#dcfce7;color:#16a34a}
+.badge-pending{background:#fef3c7;color:#92400e}
+.badge-solved{background:#f3f4f6;color:#6b7280}
+.badge-waiting{background:#fee2e2;color:#dc2626}
+@media(max-width:480px){#chatbot-window{width:calc(100vw - 28px);right:14px;bottom:120px;max-height:480px}}
 .chat-header{background:var(--orange);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
 .chat-header h4{font-size:14px;font-weight:800;flex:1}
 .chat-close{background:none;border:none;color:#fff;font-size:18px;cursor:pointer}
@@ -1963,13 +2011,28 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
   </div>
 </footer>
 
-<!-- ====== CHATBOT ====== -->
-<button id="chatbot-btn" onclick="toggleChatbot()" title="Chat Support"><i class="fas fa-comment-dots"></i></button>
+<!-- ====== SUPPORT CHAT SYSTEM ====== -->
+<button id="chatbot-btn" onclick="toggleChatbot()" title="Chat Support" style="position:relative">
+  <i class="fas fa-comment-dots"></i>
+  <span id="chat-notif-dot" style="display:none;position:absolute;top:2px;right:2px;width:10px;height:10px;background:#ef4444;border-radius:50%;border:2px solid #fff"></span>
+</button>
 <div id="chatbot-window">
   <div class="chat-header">
-    <i class="fas fa-robot"></i>
-    <h4>Benim Support</h4>
-    <button class="chat-close" onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+    <div class="chat-header-avatar"><i class="fas fa-robot"></i></div>
+    <div class="chat-header-info">
+      <h4>Benim Support</h4>
+      <span id="chat-agent-name">AI Assistant</span>
+    </div>
+    <div class="chat-status-dot" id="chat-status-dot"></div>
+    <button onclick="toggleChatbot()" style="background:none;border:none;color:#fff;cursor:pointer;padding:4px;margin-left:4px;font-size:16px"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-status-bar ai" id="chat-status-bar">🤖 AI Support Active</div>
+  <div class="chat-quick-actions" id="chat-quick-actions">
+    <button class="chat-quick-btn" onclick="quickSupport('Track my order')">📦 Track Order</button>
+    <button class="chat-quick-btn" onclick="quickSupport('Payment issue')">💳 Payment Issue</button>
+    <button class="chat-quick-btn" onclick="quickSupport('Delivery problem')">🚚 Delivery Problem</button>
+    <button class="chat-quick-btn" onclick="quickSupport('Refund request')">🔄 Refund</button>
+    <button class="chat-quick-btn" onclick="requestHumanSupport()">👤 Human Support</button>
   </div>
   <div class="chat-messages" id="chat-messages"></div>
   <div class="chat-input-row">
@@ -2321,7 +2384,6 @@ let selectedAddress = null;
 let selectedPayment = null;
 let currentSlide = 0;
 let sliderInterval = null;
-let chatSessionId = null;
 let lastOrderId = null;
 let searchQuery = '';
 let searchCategory = 'all';
@@ -4038,337 +4100,424 @@ window.loadAdminStats = async function() {
   loadAdminOrders();
 };
 
-// ===== CHATBOT (Smart AI - Free) =====
+// ===== AI + HUMAN SUPPORT CHAT SYSTEM =====
 let chatOpen = false;
-let chatConversation = []; // full conversation history for context
+let chatConversation = [];
+let chatSessionId = null;
+let chatMode = 'ai'; // 'ai' | 'waiting' | 'human' | 'offline'
+let humanJoined = false;
+let supportListener = null;
 
-// Build live product context from store
+// ---- Build product context ----
 function buildProductContext() {
   if (!allProducts.length) return 'No products currently loaded.';
   return allProducts.map(p => {
     const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
-    const orig = Number(p.price) || 0;
-    const hasDisc = Number(p.discountPrice) > 0 && Number(p.discountPrice) < orig;
-    return `• ${p.name} | Cat: ${p.category} | Price: ₦${price.toLocaleString()}${hasDisc ? ` (orig ₦${orig.toLocaleString()})` : ''} | Stock: ${p.stock > 0 ? p.stock + ' in stock' : 'Out of stock'}${p.sizes && p.sizes.length ? ' | Sizes: ' + p.sizes.join(', ') : ''}${p.colours && p.colours.length ? ' | Colours: ' + p.colours.join(', ') : ''}`;
+    return `• ${p.name} | Cat: ${p.category} | ₦${price.toLocaleString()} | Stock: ${p.stock > 0 ? p.stock : 'Out of stock'}${p.sizes?.length ? ' | Sizes: '+p.sizes.join(', ') : ''}${p.colours?.length ? ' | Colours: '+p.colours.join(', ') : ''}`;
   }).join('\n');
 }
 
 function getSystemContext() {
-  return `You are Benim Support Bot — a helpful, friendly AI customer support assistant for BENIM, a Nigerian online fashion and lifestyle store.
-
-=== STORE INFO ===
-Name: Benim | Country: Nigeria | Nationwide delivery
-WhatsApp: +234 916 803 1213 | Email: shopwitbenim@gmail.com
-Hours: Mon–Sat, 8:00 AM – 8:00 PM (WAT)
-
-=== PAYMENT ===
-1. Bank Transfer (Opay): Adewole Aderonke Aishat | Acc: 9168031213 | Use Order ID as ref
-2. Pay on Delivery (POD)
-
-=== DELIVERY ===
-Free delivery: orders ₦150,000+
-Below ₦150,000: flat ₦3,500 fee
-Lagos: 1–2 days | Abuja/PH: 2–3 days | Other states: 3–5 days | Remote: 5–7 days
-
-=== CHECKOUT STEPS ===
-1. Browse & add items to cart (must be signed in)
-2. Go to Cart → tap "Proceed to Checkout"
-3. Add/select delivery address
-4. Choose Bank Transfer or Pay on Delivery
-5. Tap "Place Order" — WhatsApp confirmation sent
-
-=== ORDER TRACKING ===
-Menu → Track Order → enter Order ID or phone number
-
-=== RETURNS ===
-Contact WhatsApp +234 916 803 1213 within 24hrs of delivery
-
-=== CATEGORIES ===
-Men's Fashion, Women's Fashion, Electronics, Baby Products, Home & Kitchen, Beauty, Sports, Phones, Toys, Groceries
-
-=== CURRENT PRODUCTS ===
-${buildProductContext()}
-
-=== INSTRUCTIONS ===
-- Answer ONLY questions about Benim store, its products, orders, delivery, payments, checkout, account, categories, returns
-- If asked about a specific product by name, search the product list above and give accurate price, stock, sizes, colours
-- If product not found, say it may be out of stock and suggest contacting WhatsApp
-- Be warm, brief (2–4 lines), use simple English. Occasional Nigerian expressions (e.g. "No wahala!") are welcome
-- Never guess prices — always use the product list
-- For unrelated questions, politely redirect to store topics`;
+  return `You are Benim Support Bot — friendly AI assistant for BENIM, a Nigerian online fashion store.
+Store: Nigeria | WhatsApp: +234 916 803 1213 | Email: shopwitbenim@gmail.com | Hours: Mon–Sat 8AM–8PM WAT
+Payment: 1) Bank Transfer Opay - Adewole Aderonke Aishat | 9168031213 2) Pay on Delivery
+Delivery: Free above ₦150,000. ₦3,500 below. Lagos: 1-2 days. Abuja/PH: 2-3 days. Others: 3-5 days.
+Categories: Men's Fashion, Women's Fashion, Electronics, Baby Products, Home & Kitchen, Beauty, Sports, Phones, Toys, Groceries
+Current Products:\n${buildProductContext()}
+Instructions: Answer only about Benim. Be warm, brief (2-4 lines). Use simple English. If you cannot solve the issue, say so clearly and mention a human agent can help.`;
 }
 
-// Smart local fallback that knows the store well
 function smartLocalReply(text) {
   const t = text.toLowerCase();
-
-  // Greeting
-  if (/^(hi|hello|hey|good morning|good afternoon|good evening|sup|howdy|yo)\b/.test(t))
-    return "Hello! 👋 Welcome to Benim! I'm your support assistant. Ask me about products, prices, delivery, checkout, payments, or your orders!";
-
-  // Product search
+  if (/^(hi|hello|hey|good morning|good evening|sup)\b/.test(t)) return "Hello! 👋 Welcome to Benim! I'm your support assistant. Ask me about products, prices, delivery, checkout, or orders!";
   const found = allProducts.filter(p => (p.name||'').toLowerCase().split(' ').some(w => w.length > 3 && t.includes(w)));
   if (found.length) {
-    const p = found[0];
-    const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
-    const orig = Number(p.price) || 0;
-    const hasDisc = Number(p.discountPrice) > 0 && price < orig;
-    let reply = `I found *${p.name}*!\n💰 Price: ₦${price.toLocaleString()}${hasDisc ? ` (was ₦${orig.toLocaleString()})` : ''}\n📦 Stock: ${p.stock > 0 ? p.stock + ' available' : 'Out of stock'}`;
-    if (p.sizes && p.sizes.length) reply += `\n📏 Sizes: ${p.sizes.join(', ')}`;
-    if (p.colours && p.colours.length) reply += `\n🎨 Colours: ${p.colours.join(', ')}`;
-    reply += `\n\nTo buy: add to cart, go to checkout, choose payment. Need help? 😊`;
-    return reply;
+    const p = found[0]; const price = Number(p.discountPrice) > 0 ? Number(p.discountPrice) : Number(p.price);
+    let r = `I found *${p.name}*!\n💰 ₦${price.toLocaleString()} | 📦 ${p.stock > 0 ? p.stock+' in stock' : 'Out of stock'}`;
+    if (p.sizes?.length) r += `\n📏 Sizes: ${p.sizes.join(', ')}`;
+    if (p.colours?.length) r += `\n🎨 Colours: ${p.colours.join(', ')}`;
+    return r + '\n\nTap "Add to Cart" to buy. Need help? 😊';
   }
-
-  // Price / how much
-  if (/price|cost|how much|fee|charge/.test(t))
-    return "All prices are shown in Nigerian Naira (₦). Discounted prices appear in orange on product cards. Delivery fee is ₦3,500 for orders below ₦150,000 — FREE above ₦150,000! Want to know the price of a specific item? Just ask me by name 😊";
-
-  // Delivery
-  if (/deliver|shipping|ship|how long|when|days/.test(t))
-    return "🚚 Delivery info:\n• Lagos: 1–2 business days\n• Abuja / Port Harcourt: 2–3 days\n• Other states: 3–5 days\n• Remote areas: 5–7 days\n\nDelivery fee: ₦3,500 (FREE on orders ₦150,000+). You'll get WhatsApp updates at every step!";
-
-  // Payment
-  if (/pay|payment|transfer|bank|opay|pod|delivery payment|how to pay/.test(t))
-    return "💳 We accept:\n1. *Bank Transfer (Opay)*: Adewole Aderonke Aishat | 9168031213\n   (Use your Order ID as payment reference)\n2. *Pay on Delivery* — pay cash when your order arrives\n\nChoose your method during checkout!";
-
-  // Checkout / cart / order
-  if (/checkout|cart|order|buy|purchase|place order/.test(t))
-    return "🛒 How to order:\n1. Find a product & tap 'Add to Cart'\n2. Go to Cart → tap 'Proceed to Checkout'\n3. Add your delivery address\n4. Choose Bank Transfer or Pay on Delivery\n5. Tap 'Place Order' ✅\n\nYou must be signed in. Need help signing in?";
-
-  // Tracking
-  if (/track|tracking|where is|status|my order/.test(t))
-    return "📦 To track your order:\n• Tap Menu (☰) → Track Order\n• Enter your Order ID or phone number\n• You'll also get WhatsApp notifications for every status update!\n\nNeed help? Contact us: wa.me/2349168031213";
-
-  // Return / refund / exchange
-  if (/return|refund|exchange|wrong item|damaged|complaint/.test(t))
-    return "We're sorry to hear that! 😟 For returns or complaints:\n• Contact us within 24 hours of delivery\n• WhatsApp: +234 916 803 1213\n• Email: shopwitbenim@gmail.com\n\nWe'll make it right for you! Buyer protection is active on all orders.";
-
-  // Contact
-  if (/contact|reach|call|whatsapp|email|phone/.test(t))
-    return "📞 Contact Benim:\n• WhatsApp: +234 916 803 1213 (fastest!)\n• Email: shopwitbenim@gmail.com\n• Hours: Mon–Sat, 8:00 AM – 8:00 PM (WAT)\n\nTap the WhatsApp link to chat with us directly!";
-
-  // Categories
-  if (/categor|type|kind|what do you sell|what.*sell|collection/.test(t))
-    return "🛍️ We sell:\n• Men's & Women's Fashion\n• Electronics & Phones\n• Baby Products\n• Home & Kitchen\n• Beauty & Sports\n• Groceries & Toys\n\nBrowse by tapping Categories at the bottom or searching any product name!";
-
-  // Account / login / register
-  if (/account|sign in|login|register|sign up|password/.test(t))
-    return "👤 Account help:\n• Tap the person icon at top-right\n• Choose 'Sign In' or 'Create Account'\n• You can also sign in with Google\n• Forgot password? Use 'Forgot password' on the login page\n\nYou need an account to place orders!";
-
-  // Size
-  if (/size|sizing|fit|measurements/.test(t))
-    return "📏 Sizes vary by product. Each product page shows available sizes — just tap the product to see them. Sizes are listed as options you can select before adding to cart.\n\nNot sure about a specific size? Message us on WhatsApp: +234 916 803 1213";
-
-  // Discount / sale / promo
-  if (/discount|sale|promo|deal|offer|flash/.test(t))
-    return "🔥 Check our Flash Sales section on the home page for our best deals! Discounted items show the original price crossed out and the % discount badge.\n\nNew deals are added regularly — keep checking! 👀";
-
-  // About
-  if (/about|who are you|what is benim|benim/.test(t))
-    return "🧡 Benim is a Nigerian online fashion & lifestyle store. We offer quality products at honest prices with nationwide delivery across Nigeria.\n\nShop smart. Dress better. — That's the Benim promise!";
-
-  // Stock / availability
-  if (/stock|available|in stock|out of stock/.test(t))
-    return "Stock status is shown on every product page — it shows how many items are available. 'Out of Stock' means it's temporarily unavailable.\n\nWant to know if a specific item is in stock? Tell me the product name! 😊";
-
-  // Default — helpful and specific
-  return "I'm not sure I understood that, but I'm here to help! 😊 You can ask me about:\n• 🛍️ Products & prices\n• 🚚 Delivery & shipping\n• 💳 Payment methods\n• 🛒 How to checkout\n• 📦 Order tracking\n• 📞 Contact & returns\n\nOr reach us on WhatsApp: +234 916 803 1213";
+  if (/price|cost|how much|fee/.test(t)) return "Prices are in ₦ on each product. Delivery: ₦3,500 (FREE above ₦150,000). Ask me any product name for its price!";
+  if (/deliver|shipping|how long|when|days/.test(t)) return "🚚 Delivery:\n• Lagos: 1–2 days\n• Abuja/PH: 2–3 days\n• Others: 3–5 days\nFree delivery on orders ₦150,000+";
+  if (/pay|payment|transfer|bank|opay/.test(t)) return "💳 Payment options:\n1. Bank Transfer (Opay): Adewole Aderonke Aishat | 9168031213\n2. Pay on Delivery\nChoose at checkout!";
+  if (/track|where is|my order|status/.test(t)) return "📦 Track order: Menu → Track Order → enter Order ID or phone. You also get WhatsApp updates automatically!";
+  if (/return|refund|exchange|wrong|damaged/.test(t)) return "😟 For returns/refunds, contact us within 24hrs of delivery via WhatsApp: +234 916 803 1213";
+  if (/contact|whatsapp|call|reach/.test(t)) return "📞 Contact: WhatsApp +234 916 803 1213 | Email: shopwitbenim@gmail.com\nMon–Sat 8AM–8PM";
+  if (/size|sizing|fit/.test(t)) return "📏 Sizes are shown on each product page. Not sure? Message us on WhatsApp: +234 916 803 1213";
+  if (/discount|sale|promo|flash/.test(t)) return "🔥 Check Flash Sales on the home page for deals! New offers added regularly 👀";
+  if (/categor|what.*sell|collection/.test(t)) return "🛍️ We sell: Men's & Women's Fashion, Electronics, Phones, Baby Products, Home & Kitchen, Beauty, Sports, Groceries & Toys!";
+  if (/account|login|sign in|register|password/.test(t)) return "👤 Tap the person icon → Sign In or Create Account. You can also sign in with Google. Need account help?";
+  return null; // null = show human transfer option
 }
 
-window.toggleChatbot = function() {
-  chatOpen = !chatOpen;
-  document.getElementById('chatbot-window').classList.toggle('open', chatOpen);
-  if (chatOpen && !document.getElementById('chat-messages').innerHTML) {
-    addChatMsg("Hi! 👋 I'm Benim's smart support assistant. Ask me anything — products, prices, delivery, checkout, orders, and more!", 'bot');
+// ---- Chat Status UI ----
+function setChatStatus(mode) {
+  chatMode = mode;
+  const bar = document.getElementById('chat-status-bar');
+  const dot = document.getElementById('chat-status-dot');
+  const agentName = document.getElementById('chat-agent-name');
+  const avatar = document.querySelector('.chat-header-avatar i');
+  if (!bar) return;
+  if (mode === 'ai') {
+    bar.className = 'chat-status-bar ai'; bar.textContent = '🤖 AI Support Active';
+    if(dot){dot.className='chat-status-dot';} if(agentName)agentName.textContent='AI Assistant';
+    if(avatar){avatar.className='fas fa-robot';}
+  } else if (mode === 'waiting') {
+    bar.className = 'chat-status-bar waiting'; bar.textContent = '⏳ Waiting for Customer Care...';
+    if(dot){dot.className='chat-status-dot away';} if(agentName)agentName.textContent='Connecting...';
+  } else if (mode === 'human') {
+    bar.className = 'chat-status-bar human'; bar.style.background='#1e40af'; bar.style.color='#fff';
+    bar.textContent = '✅ Connected to Customer Care';
+    if(dot){dot.className='chat-status-dot';} if(agentName)agentName.textContent='Customer Care';
+    if(avatar){avatar.className='fas fa-user-tie';}
+  } else if (mode === 'offline') {
+    bar.className = 'chat-status-bar offline-bar'; bar.textContent = '💤 Support Offline — Message saved';
+    if(dot){dot.className='chat-status-dot offline';}
   }
-};
-window.openChatbot = function() { chatOpen = false; toggleChatbot(); };
+}
 
-window.chatKeyPress = function(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
-};
-
-window.sendChatMessage = async function() {
-  const input = document.getElementById('chat-input');
-  const text = input.value.trim();
-  if (!text) return;
-  addChatMsg(text, 'user');
-  saveChatSession(text, 'user');
-  input.value = '';
-
-  // Show typing
+// ---- Add message to UI ----
+function addChatMsg(text, role, time) {
   const msgs = document.getElementById('chat-messages');
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'chat-msg bot';
-  typingDiv.id = 'chat-typing';
-  typingDiv.innerHTML = '<span style="opacity:.5;font-style:italic">Typing…</span>';
-  msgs.appendChild(typingDiv);
-  msgs.scrollTop = msgs.scrollHeight;
-
-  // Add to conversation
-  chatConversation.push({ role: 'user', parts: [{ text }] });
-
-  // Try Gemini free API first
-  let reply = null;
-  try {
-    const GEMINI_KEY = 'AIzaSyDaGmWKa4JsXZ-g7dM7fLQy5X3Mg3Nf8Y0'; // free public demo key
-    const contextMsg = getSystemContext();
-    // Build messages: system as first user turn, then history
-    const history = chatConversation.slice(-8); // last 4 exchanges
-    const contents = [
-      { role: 'user', parts: [{ text: contextMsg + '\n\nCustomer says: ' + text }] }
-    ];
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents, generationConfig: { maxOutputTokens: 300, temperature: 0.7 } })
-      }
-    );
-    const data = await res.json();
-    reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
-  } catch(e) { reply = null; }
-
-  // If Gemini fails, use smart local reply
-  if (!reply) reply = smartLocalReply(text);
-
-  const typingEl = document.getElementById('chat-typing');
-  if (typingEl) typingEl.remove();
-
-  chatConversation.push({ role: 'model', parts: [{ text: reply }] });
-  addChatMsg(reply, 'bot');
-  saveChatSession(reply, 'bot');
-};
-
-function addChatMsg(text, role) {
-  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
   const div = document.createElement('div');
   div.className = 'chat-msg ' + role;
-  // Render newlines and *bold*
-  div.innerHTML = text
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*(.*?)\*/g,'<strong>$1</strong>')
-    .replace(/\n/g,'<br>');
+  const formatted = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*(.*?)\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  const ts = time ? '<div class="chat-msg-time">'+new Date(time).toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit'})+'</div>' : '';
+  div.innerHTML = formatted + ts;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-async function saveChatSession(text, role) {
-  try {
-    if(!chatSessionId) chatSessionId = 'session-'+Date.now();
-    const ref = doc(db,'chatbot_sessions',chatSessionId);
-    const snap = await getDoc(ref);
-    const existing = snap.exists() ? (snap.data().messages||[]) : [];
-    existing.push({ text, role, ts: Date.now() });
-    await setDoc(ref, { messages: existing, userEmail: currentUser?.email||'Guest', updatedAt: serverTimestamp() });
-  } catch(e){}
+function addSystemMsg(text) {
+  const msgs = document.getElementById('chat-messages');
+  if(!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg system';
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
-// ===== WHATSAPP =====
-const ADMIN_WHATSAPP = '2349168031213';
+function showTransferCard() {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-transfer-card';
+  div.innerHTML = '<p>I may not be able to fully resolve this. Would you like to speak with a human customer care agent?</p>'
+    +'<button class="btn-human" onclick="requestHumanSupport()"><i class="fas fa-user-headset"></i> Speak With Customer Care</button>'
+    +'<button class="btn-wa" onclick="window.open(\'https://wa.me/2349168031213\',\'_blank\')"><i class="fab fa-whatsapp"></i> Continue on WhatsApp</button>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
 
-function notifyBuyerWhatsApp(phone, orderId, status, items, customerName, total, deliveryFee) {
-  if (!phone) return;
-  let cleanPhone = String(phone).replace(/[^0-9]/g, '');
-  if (!cleanPhone) return;
-  // Convert 0xxxxxxxx to 234xxxxxxxx
-  if (cleanPhone.startsWith('0')) cleanPhone = '234' + cleanPhone.slice(1);
-
-  const STATUS_MESSAGES = {
-    pending: {
-      emoji: '⏳',
-      label: 'Order Received',
-      body: `We've received your order and it's currently being reviewed. You'll get another update once we confirm it.`
-    },
-    confirmed: {
-      emoji: '✅',
-      label: 'Order Confirmed',
-      body: `Great news! Your order has been *confirmed* by our team. We are now preparing your items for dispatch.`
-    },
-    processing: {
-      emoji: '⚙️',
-      label: 'Order Processing',
-      body: `Your order is currently being *processed and packaged* with care. It will be handed over to our delivery team soon.`
-    },
-    out_for_delivery: {
-      emoji: '🚚',
-      label: 'Out for Delivery',
-      body: `Your order is *on its way* to you right now! Our delivery agent will contact you before arrival. Please keep your phone reachable.`
-    },
-    delivered: {
-      emoji: '🎉',
-      label: 'Order Delivered',
-      body: `Your order has been *successfully delivered*! We hope you love your purchase. 😊
-
-Please drop a review — it means a lot to us!
-
-If you have any issues, reply to this message within 24 hours.`
-    },
-    cancelled: {
-      emoji: '❌',
-      label: 'Order Cancelled',
-      body: `We're sorry, your order has been *cancelled*. If this was a mistake or you have questions, please reply to this message or contact us directly.`
-    }
+// ---- Save / load session in Firestore ----
+async function ensureChatSession() {
+  if (chatSessionId) return;
+  chatSessionId = 'support-' + Date.now() + '-' + Math.random().toString(36).slice(2,7);
+  const data = {
+    sessionId: chatSessionId,
+    userId: currentUser?.uid || 'guest',
+    userEmail: currentUser?.email || 'Guest',
+    userName: currentUser?.displayName || currentUser?.email?.split('@')[0] || 'Guest',
+    messages: [],
+    status: 'active',
+    mode: 'ai',
+    humanJoined: false,
+    adminRead: false,
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
   };
-
-  const s = STATUS_MESSAGES[status] || { emoji: '📦', label: status.replace(/_/g,' ').replace(/\w/g,l=>l.toUpperCase()), body: 'Your order status has been updated.' };
-
-  const msg = encodeURIComponent(
-    `Hello *${customerName}*! 👋
-
-` +
-    `${s.emoji} *${s.label}* — Benim Order Update
-
-` +
-    `${s.body}
-
-` +
-    `━━━━━━━━━━━━━━━
-` +
-    `🧾 *Order ID:* ${orderId}
-` +
-    `🛍️ *Items:* ${items}
-` +
-    `💰 *Total Paid:* ₦${Number(total||0).toLocaleString()}
-` +
-    (Number(deliveryFee) > 0 ? `🚚 *Delivery Fee:* ₦${Number(deliveryFee).toLocaleString()}
-` : '') +
-    `━━━━━━━━━━━━━━━
-
-` +
-    `Thank you for shopping with *Benim*! 🧡
-` +
-    `Need help? Call/WhatsApp: +234 916 803 1213`
-  );
-  window.open(`https://wa.me/${cleanPhone}?text=${msg}`, '_blank');
+  await setDoc(doc(db, 'support_chats', chatSessionId), data);
 }
 
-function notifyAdminWhatsApp(orderId, customerName, customerEmail, items, subtotal, deliveryFee, payment, address, buyerPhone, couponDiscount, couponCode, loyaltyDiscount) {
-  const cd = Number(couponDiscount||0);
-  const ld = Number(loyaltyDiscount||0);
-  const cleanBuyerPhone = String(buyerPhone||'').replace(/[^0-9]/g,'');
-  const grandTotal = Math.max(0, Number(subtotal||0) - cd - ld + Number(deliveryFee||0));
-  const msg = encodeURIComponent(
-    '🛒 *NEW ORDER — Benim!*\n\n' +
-    '🧾 *Order ID:* '+orderId+'\n' +
-    '👤 *Customer:* '+customerName+'\n' +
-    '📧 *Email:* '+customerEmail+'\n' +
-    (cleanBuyerPhone ? '📱 *Phone:* '+buyerPhone+'\n' : '') +
-    '\n📦 *Items Ordered:*\n'+items+'\n\n' +
-    '💰 *Subtotal:* ₦'+Number(subtotal||0).toLocaleString()+'\n' +
-    (Number(deliveryFee)>0 ? '🚚 *Delivery Fee:* ₦'+Number(deliveryFee).toLocaleString()+'\n' : '🚚 *Delivery:* FREE ✅\n') +
-    (cd>0 ? '🏷️ *Coupon ('+(couponCode||'DISCOUNT')+'):* -₦'+cd.toLocaleString()+'\n' : '') +
-    (ld>0 ? '⭐ *Loyalty Points:* -₦'+ld.toLocaleString()+'\n' : '') +
-    (cd>0||ld>0 ? '🎉 *Total Savings:* ₦'+(cd+ld).toLocaleString()+'\n' : '') +
-    '💵 *Grand Total:* ₦'+grandTotal.toLocaleString()+'\n' +
-    '💳 *Payment:* '+(payment==='bank'?'Bank Transfer (Opay)':'Pay on Delivery')+'\n' +
-    '📍 *Address:* '+address+'\n\n' +
-    '👉 Go to Admin Panel → Orders to confirm.'
-  );
-  window.open('https://wa.me/'+ADMIN_WHATSAPP+'?text='+msg, '_blank');
+async function saveMsg(text, role) {
+  try {
+    await ensureChatSession();
+    const ref = doc(db, 'support_chats', chatSessionId);
+    const snap = await getDoc(ref);
+    const msgs = snap.exists() ? (snap.data().messages || []) : [];
+    msgs.push({ text, role, ts: Date.now() });
+    await updateDoc(ref, {
+      messages: msgs,
+      updatedAt: serverTimestamp(),
+      status: role === 'user' ? 'active' : undefined,
+      adminRead: role === 'user' ? false : undefined
+    });
+  } catch(e) { console.warn('saveMsg error:', e); }
 }
+
+// ---- Real-time listener for admin replies ----
+function startSupportListener() {
+  if (!chatSessionId || supportListener) return;
+  supportListener = onSnapshot(doc(db, 'support_chats', chatSessionId), snap => {
+    if (!snap.exists()) return;
+    const data = snap.data();
+    // Check if human agent joined
+    if (data.humanJoined && !humanJoined) {
+      humanJoined = true;
+      setChatStatus('human');
+      addSystemMsg('✅ A customer care agent has joined the chat');
+    }
+    // Show new admin messages in real-time
+    const msgs = data.messages || [];
+    const lastAdminMsg = msgs.filter(m => m.role === 'admin').pop();
+    if (lastAdminMsg) {
+      const existing = document.querySelectorAll('.chat-msg.human-agent');
+      const lastShown = existing.length ? existing[existing.length-1].dataset.ts : 0;
+      if (lastAdminMsg.ts > Number(lastShown)) {
+        addChatMsg(lastAdminMsg.text, 'human-agent', lastAdminMsg.ts);
+        const el = document.querySelector('.chat-msg.human-agent:last-child');
+        if (el) el.dataset.ts = lastAdminMsg.ts;
+        // Show notification dot if window is closed
+        if (!chatOpen) {
+          const dot = document.getElementById('chat-notif-dot');
+          if (dot) dot.style.display = 'block';
+        }
+      }
+    }
+  });
+}
+
+// ---- Request human support ----
+window.requestHumanSupport = async function() {
+  try {
+    await ensureChatSession();
+    // Check if admin is online (simple check via settings doc)
+    let adminOnline = false;
+    try {
+      const onlineSnap = await getDoc(doc(db, 'settings', 'admin_status'));
+      adminOnline = onlineSnap.exists() && onlineSnap.data().online === true;
+    } catch(e) {}
+
+    await updateDoc(doc(db, 'support_chats', chatSessionId), {
+      status: 'waiting',
+      mode: 'waiting',
+      requestedHuman: true,
+      requestedAt: serverTimestamp()
+    });
+
+    if (adminOnline) {
+      setChatStatus('waiting');
+      addSystemMsg('⏳ Connecting you to a customer care agent...');
+      startSupportListener();
+      // Notify admin
+      const msg = encodeURIComponent('🆘 *Customer Support Request*\nFrom: '+(currentUser?.email||'Guest')+'\nSession: '+chatSessionId+'\n\nGo to Admin Panel → Chat Sessions to reply.');
+      setTimeout(() => window.open('https://wa.me/2349168031213?text='+msg,'_blank'), 800);
+    } else {
+      setChatStatus('offline');
+      addChatMsg("Our customer care team is currently offline. Your message has been saved and we'll get back to you as soon as we're available. You can also reach us on WhatsApp: +234 916 803 1213 😊", 'bot');
+      showToast('Message saved! We\'ll respond soon.','info');
+    }
+  } catch(e) { addChatMsg("Sorry, there was an error. Please try WhatsApp: +234 916 803 1213", 'bot'); }
+};
+
+// ---- Quick support shortcuts ----
+window.quickSupport = function(text) {
+  const input = document.getElementById('chat-input');
+  if (input) { input.value = text; sendChatMessage(); }
+};
+
+// ---- Main send function ----
+window.sendChatMessage = async function() {
+  const input = document.getElementById('chat-input');
+  const text = (input?.value || '').trim();
+  if (!text) return;
+  addChatMsg(text, 'user', Date.now());
+  saveMsg(text, 'user');
+  input.value = '';
+  startSupportListener();
+
+  // If human agent is active, don't auto-reply with AI
+  if (humanJoined || chatMode === 'human') return;
+  if (chatMode === 'waiting') {
+    addChatMsg("You're in the queue for a human agent. We'll connect you shortly! You can also reach us on WhatsApp: +234 916 803 1213", 'bot');
+    return;
+  }
+
+  // Show typing indicator
+  const msgs = document.getElementById('chat-messages');
+  const typing = document.createElement('div');
+  typing.className = 'chat-typing-indicator'; typing.id = 'chat-typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight;
+
+  chatConversation.push({ role: 'user', parts: [{ text }] });
+
+  let reply = null;
+  try {
+    const GEMINI_KEY = 'AIzaSyDaGmWKa4JsXZ-g7dM7fLQy5X3Mg3Nf8Y0';
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: getSystemContext() + '\n\nCustomer: ' + text }] }], generationConfig: { maxOutputTokens: 300, temperature: 0.7 } })
+    });
+    const data = await res.json();
+    reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+  } catch(e) { reply = null; }
+
+  if (!reply) reply = smartLocalReply(text);
+
+  document.getElementById('chat-typing')?.remove();
+
+  if (!reply) {
+    // AI doesn't know — offer human transfer
+    addChatMsg("I'm not fully sure how to help with that. Let me connect you with our customer care team!", 'bot');
+    saveMsg("AI could not resolve: " + text, 'bot');
+    showTransferCard();
+    return;
+  }
+
+  chatConversation.push({ role: 'model', parts: [{ text: reply }] });
+  addChatMsg(reply, 'bot', Date.now());
+  saveMsg(reply, 'bot');
+
+  // After 3 AI replies, suggest human support
+  const userMsgs = chatConversation.filter(m => m.role === 'user').length;
+  if (userMsgs === 4 && !humanJoined) {
+    setTimeout(() => {
+      addChatMsg("Still need help? Our customer care team is available to assist you directly.", 'bot');
+      showTransferCard();
+    }, 800);
+  }
+};
+
+window.toggleChatbot = function() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('chatbot-window');
+  if (win) win.classList.toggle('open', chatOpen);
+  if (chatOpen) {
+    const dot = document.getElementById('chat-notif-dot');
+    if (dot) dot.style.display = 'none';
+    if (!document.getElementById('chat-messages').innerHTML) {
+      setChatStatus('ai');
+      addChatMsg("Hello! 👋 Welcome to *Benim Support*! I'm your AI assistant.\n\nAsk me about products, prices, delivery, orders — or tap a quick option below!", 'bot');
+    }
+  }
+};
+window.openChatbot = function() { chatOpen = false; toggleChatbot(); };
+window.chatKeyPress = function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); } };
+
+// ===== ADMIN SUPPORT DASHBOARD (enhanced loadAdminChats) =====
+window.loadAdminChats = async function() {
+  const wrap = document.getElementById('admin-chats-list');
+  wrap.innerHTML = '<p style="color:var(--gray-400);font-size:13px"><i class="fas fa-spinner fa-spin"></i> Loading support chats...</p>';
+  try {
+    // Toggle admin online status
+    await setDoc(doc(db,'settings','admin_status'), { online: true, lastSeen: serverTimestamp() }, { merge: true });
+
+    const snap = await getDocs(collection(db, 'support_chats'));
+    if (snap.empty) {
+      wrap.innerHTML = '<div style="text-align:center;padding:30px;color:var(--gray-400)"><i class="fas fa-comments" style="font-size:36px;display:block;margin-bottom:10px"></i><p>No support chats yet</p></div>';
+      return;
+    }
+    const chats = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.updatedAt?.seconds||0) - (a.updatedAt?.seconds||0));
+
+    const waiting = chats.filter(c => c.status === 'waiting' || c.requestedHuman).length;
+    wrap.innerHTML = (waiting > 0 ? '<div style="background:#fee2e2;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:13px;font-weight:700;color:#dc2626"><i class="fas fa-bell"></i> '+waiting+' customer(s) waiting for human support</div>' : '')
+      + chats.map(c => {
+      const lastMsg = (c.messages||[]).slice(-1)[0];
+      const unread = !c.adminRead && lastMsg?.role === 'user';
+      const statusClass = c.status === 'waiting' ? 'badge-waiting' : c.status === 'solved' ? 'badge-solved' : c.status === 'human' ? 'badge-active' : 'badge-pending';
+      const statusLabel = c.status === 'waiting' ? '🔴 Waiting' : c.status === 'solved' ? '✅ Solved' : c.status === 'human' ? '🟢 Active' : '🟡 Pending';
+      return '<div class="support-chat-item'+(unread?' unread':'')+'" onclick="openSupportChat(\''+c.id+'\')">'+
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">'+
+          '<div style="font-size:13px;font-weight:800">'+(c.userName||c.userEmail||'Guest')+'</div>'+
+          '<span class="support-badge '+statusClass+'">'+statusLabel+'</span>'+
+        '</div>'+
+        '<div style="font-size:11px;color:var(--gray-400);margin-bottom:6px">'+(c.userEmail||'')+'</div>'+
+        (lastMsg ? '<div style="font-size:12px;color:var(--gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px">'+(lastMsg.role==='user'?'👤 ':'🤖 ')+(lastMsg.text||'').substring(0,60)+'</div>' : '')+
+      '</div>';
+    }).join('');
+  } catch(e) {
+    wrap.innerHTML = '<p style="color:var(--red);font-size:13px">Error: '+e.message+'</p>';
+  }
+};
+
+// Open a specific support chat for admin reply
+window.openSupportChat = async function(sessionId) {
+  try {
+    const snap = await getDoc(doc(db, 'support_chats', sessionId));
+    if (!snap.exists()) return;
+    const chat = snap.data();
+    const msgs = chat.messages || [];
+
+    // Mark as admin read
+    await updateDoc(doc(db, 'support_chats', sessionId), { adminRead: true });
+
+    // Show in modal
+    const body = document.getElementById('order-detail-body');
+    const modal = document.getElementById('modal-order-detail');
+    if (!body || !modal) return;
+
+    body.innerHTML = '<div style="padding:14px">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">'
+        + '<div><div style="font-size:14px;font-weight:800">'+(chat.userName||'Guest')+'</div><div style="font-size:12px;color:var(--gray-500)">'+(chat.userEmail||'')+'</div></div>'
+        + '<div style="display:flex;gap:6px;flex-wrap:wrap">'
+          + '<button onclick="updateChatStatus(\''+sessionId+'\',\'active\')" style="font-size:11px;padding:5px 10px;background:#dcfce7;color:#16a34a;border:none;border-radius:6px;cursor:pointer;font-weight:700">🟢 Active</button>'
+          + '<button onclick="updateChatStatus(\''+sessionId+'\',\'solved\')" style="font-size:11px;padding:5px 10px;background:#f3f4f6;color:#6b7280;border:none;border-radius:6px;cursor:pointer;font-weight:700">✅ Solved</button>'
+          + '<button onclick="joinAsHuman(\''+sessionId+'\')" style="font-size:11px;padding:5px 10px;background:var(--orange);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700">👤 Join Chat</button>'
+        + '</div>'
+      + '</div>'
+      + '<div style="background:var(--gray-50);border-radius:10px;padding:10px;max-height:280px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:12px">'
+        + (msgs.length ? msgs.map(m => {
+            const isUser = m.role==='user'; const isAdmin = m.role==='admin';
+            const bg = isUser ? 'var(--orange)' : isAdmin ? '#1e40af' : 'var(--gray-100)';
+            const color = (isUser||isAdmin) ? '#fff' : 'var(--gray-800)';
+            const align = isUser ? 'flex-end' : 'flex-start';
+            const label = isUser ? '👤' : isAdmin ? '🎧' : '🤖';
+            return '<div style="display:flex;flex-direction:column;align-items:'+align+'"><div style="background:'+bg+';color:'+color+';padding:7px 11px;border-radius:10px;font-size:12px;max-width:85%;line-height:1.5">'+label+' '+(m.text||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div><div style="font-size:10px;color:var(--gray-400);margin-top:2px">'+(m.ts?new Date(m.ts).toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit'}):'')+'</div></div>';
+          }).join('') : '<p style="color:var(--gray-400);font-size:12px;text-align:center">No messages</p>')
+      + '</div>'
+      + '<div style="display:flex;gap:8px">'
+        + '<textarea id="admin-reply-input" class="form-input" rows="2" placeholder="Type your reply to the customer..." style="flex:1;resize:none;font-size:13px"></textarea>'
+        + '<button onclick="sendAdminReply(\''+sessionId+'\')" style="background:var(--orange);color:#fff;border:none;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0"><i class="fas fa-paper-plane"></i></button>'
+      + '</div>'
+      + '</div>';
+
+    document.getElementById('order-detail-update-btn').style.display = 'none';
+    document.querySelector('#modal-order-detail .modal-title').textContent = '💬 Support Chat';
+    openModal('modal-order-detail');
+  } catch(e) { showToast('Error: '+e.message,'error'); }
+};
+
+window.sendAdminReply = async function(sessionId) {
+  const input = document.getElementById('admin-reply-input');
+  const text = (input?.value||'').trim();
+  if (!text) return showToast('Enter a reply','error');
+  try {
+    const snap = await getDoc(doc(db,'support_chats',sessionId));
+    const msgs = snap.exists() ? (snap.data().messages||[]) : [];
+    msgs.push({ text, role: 'admin', ts: Date.now() });
+    await updateDoc(doc(db,'support_chats',sessionId), {
+      messages: msgs, updatedAt: serverTimestamp(),
+      humanJoined: true, mode: 'human', status: 'active'
+    });
+    if(input) input.value = '';
+    showToast('Reply sent ✅','success');
+    openSupportChat(sessionId);
+  } catch(e) { showToast('Error: '+e.message,'error'); }
+};
+
+window.joinAsHuman = async function(sessionId) {
+  try {
+    await updateDoc(doc(db,'support_chats',sessionId), { humanJoined: true, mode: 'human', status: 'active', updatedAt: serverTimestamp() });
+    showToast('You joined the chat as a human agent','success');
+    openSupportChat(sessionId);
+  } catch(e) {}
+};
+
+window.updateChatStatus = async function(sessionId, status) {
+  await updateDoc(doc(db,'support_chats',sessionId), { status, updatedAt: serverTimestamp() });
+  showToast('Chat marked as '+status,'success');
+  openSupportChat(sessionId);
+};
+
+// Legacy saveChatSession alias (used in old code)
+async function saveChatSession(text, role) { await saveMsg(text, role); }
 
 // ===== SLIDER =====
 // ===== BANNER / SLIDER MANAGEMENT =====
