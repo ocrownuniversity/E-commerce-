@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benim Shop</title>
 <script>
-// Apply dark mode BEFORE page renders to prevent white flash
+// Always black background unless user chose light
 if(localStorage.getItem('benim-theme') !== 'light') {
   document.documentElement.style.background = '#0f0f0f';
 }
@@ -757,7 +757,7 @@ body{padding-bottom:65px!important;background:#f2f2f2!important}
 .card-btn-buy:hover{background:#111;color:#fff}
 </style>
 </head>
-<body>
+<body class="dark-mode">
 <!-- PWA INSTALL BANNER -->
 <div id="pwa-install-banner">
   <img class="pwa-banner-icon" src="icon-192.png" alt="Benim" style="border-radius:12px" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -3543,15 +3543,15 @@ window.toggleDarkMode = function() {
   document.getElementById('dark-mode-btn').textContent = isDark ? '☀️' : '🌙';
   localStorage.setItem('benim-theme', isDark ? 'dark' : 'light');
 };
-// Default is DARK — only switch to light if user explicitly chose it
+// Dark is the default — only go light if user explicitly chose it
 (function(){
   const saved = localStorage.getItem('benim-theme');
   if(saved === 'light') {
-    // User chose light — stay light
+    document.body.classList.remove('dark-mode');
     const btn = document.getElementById('dark-mode-btn');
     if(btn) btn.textContent = '🌙';
   } else {
-    // Default dark mode
+    // Ensure dark mode is on (it's already in the class, this just syncs the button)
     document.body.classList.add('dark-mode');
     const btn = document.getElementById('dark-mode-btn');
     if(btn) btn.textContent = '☀️';
